@@ -8,7 +8,8 @@
 
     <div class="w-full max-w-sm mx-auto">
       <ValidationObserver ref="form" v-slot="{ handleSubmit }" slim>
-        <form @submit.prevent="handleSubmit(submit)">
+        <form @submit.prevent="handleSubmit(localLogin)">
+          <!-- INPUT E-Mail -->
           <label class="block">
             <span>E-Mail</span>
             <validation-provider
@@ -26,6 +27,7 @@
             </validation-provider>
           </label>
 
+          <!-- INPUT Password -->
           <label class="block">
             <span>Passwort</span>
             <validation-provider
@@ -68,7 +70,7 @@
               <button
                 type="button"
                 class="border w-full"
-                @click.prevent="$router.push('/signup')"
+                @click.prevent="$router.push('/account/signup')"
               >
                 Neu registrieren
               </button>
@@ -117,6 +119,8 @@
 
 <script>
 /* eslint-disable camelcase */
+/* access_token comes from external service */
+
 import { mapActions } from 'vuex'
 
 export default {
@@ -126,7 +130,6 @@ export default {
 
   data: () => ({
     pending: null,
-    shadow: 'shadow-0',
     guest: {
       email: '',
       password: '',
@@ -135,18 +138,28 @@ export default {
   }),
   methods: {
     ...mapActions(['setLocalUser', 'getMe']),
-    async submit(e) {
+    async localLogin(e) {
       try {
+        // Set Loading
         this.pending = 'local'
-        // Login
+        // Authenticate with local auth service
         const {
           data: { token },
         } = await this.$axios.post(`/api/auth`, this.guest)
+
+        // Set local access token to store and cookie
         await this.setLocalUser(token)
+
+        // Get user informations
         await this.getMe()
+
+        // Unset Loading
         this.pending = null
+
+        // Redirect on successfull authentication
         await this.$router.push('/')
       } catch ({ response: { data } }) {
+        // TODO: Catch error
         this.pending = null
         this.$refs.form.setErrors({
           email: [data.message],
@@ -155,20 +168,35 @@ export default {
     },
     async socialLogin(provider) {
       try {
+        // Set Loading
         this.pending = provider
+
+        // Authenticate with external service
         const {
           authResponse: { access_token },
         } = await this.$socialLoginService(provider)
+
+        // Post the access_token to login user on backend
         const {
           data: { token },
         } = await this.$axios.post(`/api/auth/${provider}`, {
           token: access_token,
         })
+
+        // Set local access token to store and cookie
         await this.setLocalUser(token)
+
+        // Get user informations
         await this.getMe()
+
+        // Unset Loading
         this.pending = null
+
+        // Redirect on successfull authentication
         await this.$router.push('/')
       } catch (error) {
+        // Error handler
+        // TODO: Catch error
         console.log(error)
         this.pending = null
       }
@@ -176,5 +204,3 @@ export default {
   },
 }
 </script>
-
-<style lang="css" scoped></style>

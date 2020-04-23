@@ -32,7 +32,6 @@ export const actions = {
    * token and user validation
    */
   async nuxtServerInit({ commit, dispatch }, { app }) {
-    /*
     try {
       // Try to get token from Browser
       const accessToken = await this.$cookies.get('getit')
@@ -51,31 +50,6 @@ export const actions = {
       // Clean store if user not exist with logout action
       await dispatch('logout')
     }
-    */
-  },
-  /**
-   * loginWithSocial action.
-   * If user want to login or signup with social providers
-   */
-  async loginWithSocial({ dispatch }, { accessToken, provider }) {
-    // Try to get userinformation from backend
-    const { data } = await this.$axios.post(`/api/auth/${provider}`, {
-      token: accessToken,
-    })
-    dispatch('setLocalUser', data)
-    dispatch('getMe')
-  },
-  async loginWithEmail({ dispatch, commit }, { email, password, accessToken }) {
-    commit('setPending', { login: true })
-    // Try to get userinformation from backend
-    const { data } = await this.$axios.post(`/api/auth`, {
-      token: accessToken,
-      email,
-      password,
-    })
-    dispatch('setLocalUser', data)
-    dispatch('getMe')
-    commit('setPending', { login: false })
   },
   async setLocalUser({ commit }, token) {
     // Set CSR Token
@@ -86,14 +60,7 @@ export const actions = {
     })
     commit('setToken', token)
   },
-  async createUser({ commit }, { name, email, password, accessToken }) {
-    await this.$axios.post(`/api/users`, {
-      name,
-      email,
-      password,
-      token: accessToken,
-    })
-  },
+  // TODO: I will move that away
   async updateUser(
     { commit, state, dispatch },
     { name, picture, description, location }
@@ -107,6 +74,7 @@ export const actions = {
     })
     await dispatch('getMe')
   },
+  // TODO: I will move that away
   async forgotPassword({ dispatch }, { email, link, accessToken }) {
     await this.$axios.post(`/api/password-resets`, {
       email,
@@ -114,33 +82,24 @@ export const actions = {
       token: accessToken,
     })
   },
-  /**
-   * logout Action
-   * logout the user clean the state, remove cookie and reset axios config
-   */
+
+  // TODO: I will move that away
   async passwordReset({ dispatch, commit }, { token, password }) {
     await this.$axios.patch(`/api/password-resets/${token}`, { password })
   },
+  // TODO: I will move that away
   async verifyToken({ dispatch }, { token }) {
     const { data } = await this.$axios.get(`/api/password-resets/${token}`)
     return data
   },
   /**
-   * logout Action
-   * logout the user clean the state, remove cookie and reset axios config
+   * resetUser Action
+   * resetUser the user clean the state, remove cookie and reset axios config
    */
-  async logout({ commit }, clientLogout) {
-    try {
-      if (!clientLogout) {
-        await this.$axios.post(`/api/auth/logout`)
-      }
-    } catch (error) {
-      console.log(error)
-    } finally {
-      await this.$axios.setToken(false)
-      await this.$cookies.remove('getit')
-      commit('setToken', null)
-    }
+  async resetUser({ commit }) {
+    await this.$axios.setToken(false)
+    await this.$cookies.remove('getit')
+    commit('setToken', null)
   },
   /**
    * getMe Action

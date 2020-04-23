@@ -1,9 +1,9 @@
 <template>
-  <div class="min-h-screen flex flex-col">
+  <div>
     <navigation
       class="hidden md:block sticky top-0 py-2 container mx-auto px-2"
     />
-    <nuxt class="flex-grow container mx-auto px-2 mb-20 md:mb-10" />
+    <nuxt class="container mx-auto px-2 mb-20 md:mb-10" />
     <navbar class="block md:hidden fixed bottom-0 w-full" />
   </div>
 </template>

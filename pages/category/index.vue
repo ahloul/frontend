@@ -101,7 +101,7 @@ export default {
   }
 
   &-item {
-    @apply text-primary my-2 block bg-white shadow rounded cursor-pointer;
+    @apply text-primary my-2 block bg-white shadow rounded cursor-pointer select-none;
 
     &:hover {
       @apply shadow-lg;

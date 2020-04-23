@@ -1,3 +1,9 @@
+/*
+ ** Access to ENV variables
+ */
+
+require('dotenv').config()
+
 export default {
   mode: 'universal',
   /*
@@ -28,6 +34,16 @@ export default {
       productionTip: false,
       devtools: true,
     },
+  },
+
+  /**
+   * ENV Variables passing to nuxt project
+   */
+  env: {
+    VUE_APP_GOOGLE_ID: process.env.VUE_APP_GOOGLE_ID,
+    VUE_APP_FACEBOOK_ID: process.env.VUE_APP_FACEBOOK_ID,
+    VUE_APP_MASTER_KEY: process.env.VUE_APP_MASTER_KEY,
+    VUE_APP_URL: process.env.VUE_APP_URL,
   },
 
   /**
@@ -90,6 +106,7 @@ export default {
     // { src: '~/plugins/modules/localstorage', mode: 'client' },
     { src: '~/plugins/modules/timeago', mode: 'client' },
     { src: '~/plugins/modules/validation', mode: 'client' },
+    { src: '~/plugins/modules/socialAuthentication', mode: 'client' },
   ],
 
   /*
@@ -115,17 +132,27 @@ export default {
     '@nuxtjs/dotenv',
     // Doc: https://github.com/nuxt-community/device-module#readme
     '@nuxtjs/device',
+    // https://github.com/microcipcip/cookie-universal/tree/master/packages/cookie-universal-nuxt#readme
+    'cookie-universal-nuxt',
   ],
 
   /**
    ** Server Middleware configuration
    */
   serverMiddleware: ['redirect-ssl'],
-  /*
-   ** Axios module configuration
-   ** See https://axios.nuxtjs.org/options
+
+  /**
+   * Axios module configuration
+   * See https://axios.nuxtjs.org/options
    */
-  axios: {},
+  axios: {
+    proxy: true,
+  },
+
+  proxy: {
+    '/api': { target: process.env.API_URL },
+  },
+
   /*
    ** Build configuration
    */

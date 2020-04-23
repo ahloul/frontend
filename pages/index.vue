@@ -151,6 +151,7 @@ export default {
     // Toggle,
     Wysiwyg,
   },
+  middleware: 'authenticated',
 }
 </script>
 <style lang="scss" scoped>

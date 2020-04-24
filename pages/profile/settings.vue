@@ -70,7 +70,7 @@
 
 <script>
 import { mapActions } from 'vuex'
-import imageUpload from '~/components/utils/imageUpload'
+import imageUpload from '~/components/utils/ImageUpload'
 import Wysiwyg from '~/components/utils/Wysiwyg'
 import Autocomplete from '~/components/elements/Autocomplete'
 

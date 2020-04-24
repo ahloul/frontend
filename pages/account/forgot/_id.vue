@@ -1,62 +1,14 @@
 <template>
   <div class="min-h-screen flex flex-col justify-center p-2">
-    <!-- Modal -->
-    <modal
-      :show="showModal"
-      :dismiss="null"
-      confirm="Zum Login"
-      centered
-      @confirm="goToLogin"
-      >Deine Registrierung war erfolgreich! <br />
-      Du kannst dich jetzt einloggen.
-    </modal>
-    <!-- Headline -->
     <div class="w-full max-w-sm mx-auto">
       <h1 class="text-center font-bold text-secondary">
         get it!
       </h1>
     </div>
 
-    <!-- Form -->
     <div class="w-full max-w-sm mx-auto">
-      <ValidationObserver ref="signup" v-slot="{ handleSubmit }" slim>
-        <form @submit.prevent="handleSubmit(localSignup)">
-          <!-- INPUT Name -->
-          <label class="block">
-            <span>Name</span>
-            <validation-provider
-              v-slot="{ errors }"
-              mode="lazy"
-              name="Name"
-              rules="min:2|required"
-            >
-              <input
-                v-model="guest.name"
-                class="form-input"
-                placeholder="Thorsten Jankowski"
-              />
-              <span class="error">{{ errors[0] }}</span>
-            </validation-provider>
-          </label>
-
-          <!-- INPUT E-Mail -->
-          <label class="block">
-            <span>E-Mail</span>
-            <validation-provider
-              v-slot="{ errors }"
-              mode="lazy"
-              name="email"
-              rules="email|required"
-            >
-              <input
-                v-model="guest.email"
-                class="form-input"
-                placeholder="lothar@mustermail.com"
-              />
-              <span class="error">{{ errors[0] }}</span>
-            </validation-provider>
-          </label>
-
+      <ValidationObserver ref="newPassword" v-slot="{ handleSubmit }" slim>
+        <form @submit.prevent="handleSubmit(localNewPassword)">
           <!-- INPUT Password -->
           <label class="block">
             <span>Passwort</span>
@@ -68,7 +20,7 @@
               rules="required|verify_password"
             >
               <input
-                v-model="guest.password"
+                v-model="password"
                 class="form-input"
                 type="password"
                 placeholder="******************"
@@ -88,7 +40,7 @@
             >
               <input
                 id="confirmPassword"
-                v-model="guest.confirmPassword"
+                v-model="confirmPassword"
                 class="form-input"
                 type="password"
                 placeholder="******************"
@@ -101,10 +53,10 @@
             <span class="block w-full">
               <button
                 class="primary w-full"
-                :class="{ 'spinner-light': pending }"
+                :class="{ 'spinner-dark': pending }"
                 type="submit"
               >
-                Registrieren
+                Neues Passwort speichern
               </button>
             </span>
           </div>
@@ -126,6 +78,8 @@
 </template>
 
 <script>
+// TODO: Verify token
+// const { data } = await this.$axios.get(`/api/password-resets/${token}`)
 export default {
   name: 'Login',
   layout: 'blank',
@@ -133,39 +87,33 @@ export default {
 
   data: () => ({
     pending: false,
-    showModal: false,
-    guest: {
-      name: '',
-      email: '',
-      password: '',
-      confirmPassword: '',
-      token: process.env.VUE_APP_MASTER_KEY,
-    },
+    password: '',
+    confirmPassword: '',
+    token: process.env.VUE_APP_MASTER_KEY,
   }),
   methods: {
-    async localSignup(e) {
+    async localNewPassword(e) {
       try {
         // Set Loading
         this.pending = true
-        // Sign up local user
-        await this.$axios.post(`/api/users`, this.guest)
+
+        // TODO: I will move that away
+        await this.$axios.patch(`/api/password-resets/${this.token}`, {
+          password: this.password,
+        })
 
         // Unset Loading
         this.pending = false
 
         // Redirect on successfull authentication
-        this.showModal = true
+        await this.$router.push('/')
       } catch ({ response: { data } }) {
         // TODO: Catch error
-        this.pending = false
-        this.$refs.signup.setErrors({
-          email: [data.message],
+        this.pending = null
+        this.$refs.newPassword.setErrors({
+          password: [data.message],
         })
       }
-    },
-    goToLogin() {
-      this.showModal = false
-      this.$router.push('/')
     },
   },
 }

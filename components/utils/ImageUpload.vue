@@ -8,18 +8,14 @@
     <!-- articlePicture FILE -->
     <div v-if="imgLocal.url">
       <img :src="imgLocal.url" alt="" class="rounded-lg mx-auto" />
-      <button
-        v-if="imgLocal.id"
-        class="w-auto mx-auto"
-        @click="removeImageAction"
-      >
+      <button class="w-auto mx-auto" @click="removeImageAction">
         Entfernen
       </button>
     </div>
     <div v-else class="dropbox">
       <div class="dropbox-content">
-        <div>
-          <icon v-if="!isUploading" name="image-outline" />
+        <div class="mx-auto">
+          <icon v-if="!isUploading" name="image-outline" class="inline-block" />
           <p :class="{ 'spinner-dark': isUploading }">
             {{ placeholder }}
           </p>
@@ -40,7 +36,6 @@
 
 <script>
 import { ValidationProvider } from 'vee-validate'
-import { mapActions } from 'vuex'
 export default {
   name: 'ImageUpload',
   components: {
@@ -77,10 +72,6 @@ export default {
     },
   },
   methods: {
-    ...mapActions({
-      uploadImage: 'filehandler/imageUpload',
-      removeImage: 'filehandler/imageRemove',
-    }),
     async handleFileChange(e) {
       this.file = this.$refs[this.folder].files[0]
       const formData = new FormData()
@@ -88,11 +79,8 @@ export default {
       try {
         this.isUploading = true
         await this.$refs.provider.validate(e)
-        this.imgLocal = await this.uploadImage({
-          formData,
-          folder: this.folder,
-          user: this.user,
-        })
+        this.imgLocal = await this.$axios.$post(`/api/media/user`, formData)
+
         this.isUploading = false
       } catch (error) {
         this.isUploading = false
@@ -100,8 +88,10 @@ export default {
       }
     },
     async removeImageAction() {
-      if (this.imgLocal.public_id)
-        await this.removeImage(this.imgLocal.public_id)
+      if (this.imgLocal.id)
+        await this.$axios.$delete(`/api/media`, {
+          data: { id: this.imgLocal.id },
+        })
       this.$emit('target', {})
     },
   },
@@ -114,9 +104,9 @@ export default {
 .dropbox {
   @apply transition-all duration-100 ease-in-out;
   @apply flex content-center justify-center flex-wrap;
-  @apply bg-white text-primary border-2 border-dashed border-2 rounded text-center h-40 cursor-pointer;
+  @apply bg-grey text-primary border-2 border-dashed border-2 rounded text-center h-40 cursor-pointer;
   &:hover {
-    @apply bg-grey;
+    @apply bg-white;
   }
   &-content {
     @apply absolute mt-16;

@@ -1,9 +1,12 @@
 <template>
   <div class="container max-w-md">
-    <div class="animated settings md:flex">
+    <div
+      class="animated settings md:flex"
+      @click="$router.push('/profile/settings')"
+    >
       <img
         class="h-16 w-16 md:h-24 md:w-24 rounded-full mx-auto md:mx-0 md:mr-6"
-        :src="user.picture"
+        :src="user.picture.url"
       />
       <div class="text-center md:text-left">
         <h2
@@ -29,7 +32,8 @@
 import { mapActions, mapGetters } from 'vuex'
 
 export default {
-  name: 'Index',
+  name: 'Profile',
+  middleware: 'authenticated',
   data: () => ({}),
   computed: {
     ...mapGetters(['user']),

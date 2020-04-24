@@ -69,11 +69,27 @@
         ><icon name="link-2-outline" class="mr-1" />Full List</a
       >
     </div>
-    <!-- Alerts -->
-    <h2 class="my-5">Alert</h2>
+    <!-- Modal -->
+    <h2>Modal</h2>
 
-    <div class="bg-white text-center py-4 lg:px-4">
-      <notification pill="new"
+    <modal
+      :show="showModal"
+      centered
+      dismiss="Close Modal"
+      @dismiss="showModal = false"
+      @confirm="showModal = false"
+      >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque,
+      dignissimos?
+      <br />
+      <b>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</b></modal
+    >
+
+    <button class="primary" @click="showModal = !showModal">Open Modal</button>
+    <!-- Notification -->
+    <h2 class="my-5">Notification</h2>
+
+    <div class="text-center py-4 lg:px-4">
+      <notification pill="new" icon="github"
         >Get the coolest t-shirts from our brand new store</notification
       >
     </div>
@@ -152,6 +168,9 @@ export default {
     Wysiwyg,
   },
   middleware: 'authenticated',
+  data: () => ({
+    showModal: false,
+  }),
 }
 </script>
 <style lang="scss" scoped>

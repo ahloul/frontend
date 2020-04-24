@@ -1,7 +1,9 @@
 export const state = () => {
   return {
     accessToken: null,
-    user: null,
+    user: {
+      name: null,
+    },
     pending: {
       login: false,
       signup: false,
@@ -83,15 +85,6 @@ export const actions = {
     })
   },
 
-  // TODO: I will move that away
-  async passwordReset({ dispatch, commit }, { token, password }) {
-    await this.$axios.patch(`/api/password-resets/${token}`, { password })
-  },
-  // TODO: I will move that away
-  async verifyToken({ dispatch }, { token }) {
-    const { data } = await this.$axios.get(`/api/password-resets/${token}`)
-    return data
-  },
   /**
    * resetUser Action
    * resetUser the user clean the state, remove cookie and reset axios config

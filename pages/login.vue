@@ -1,11 +1,13 @@
 <template>
   <div class="min-h-screen flex flex-col justify-center p-2">
+    <!-- Headline -->
     <div class="w-full max-w-sm mx-auto">
       <h1 class="text-center font-bold text-secondary">
         get it!
       </h1>
     </div>
 
+    <!-- Form -->
     <div class="w-full max-w-sm mx-auto">
       <ValidationObserver ref="form" v-slot="{ handleSubmit }" slim>
         <form @submit.prevent="handleSubmit(localLogin)">
@@ -46,15 +48,15 @@
             </validation-provider>
           </label>
 
-          <div class="mt-3 flex items-center justify-end">
+          <div class="mt-5 flex items-center justify-end">
             <div class="leading-5">
-              <n-link to="/">
+              <n-link to="/account/forgot">
                 Hilfe bei der Anmeldung?
               </n-link>
             </div>
           </div>
 
-          <div class="mt-3">
+          <div class="mt-5">
             <span class="block w-full">
               <button
                 class="primary w-full"
@@ -78,14 +80,14 @@
           </div>
         </form>
       </ValidationObserver>
-
+      <!-- Bottom Social Area -->
       <div class="mt-6">
         <div class="relative">
           <div class="absolute inset-0 flex items-center">
             <div class="w-full border-t"></div>
           </div>
           <div class="relative flex justify-center text-sm leading-5">
-            <span class="px-2 bg-white text-primary">
+            <span class="px-2 bg-grey text-primary">
               Oder melde dich an mit
             </span>
           </div>

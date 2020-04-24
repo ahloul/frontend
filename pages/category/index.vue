@@ -83,6 +83,7 @@
 import EmptyState from '~/components/elements/EmptyState'
 export default {
   name: 'Categories',
+  middleware: 'authenticated',
   components: {
     EmptyState,
   },

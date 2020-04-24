@@ -36,6 +36,7 @@
 <script>
 export default {
   name: 'CreateCategory',
+  middleware: 'authenticated',
   data: () => ({
     category: {},
     loadState: {
@@ -45,7 +46,8 @@ export default {
   methods: {
     async submit() {
       try {
-        // axios send
+        await this.$axios.post(`/api/categories`, this.category)
+        this.category = {}
         // send toast
         await this.$router.push('/categories')
       } catch (error) {

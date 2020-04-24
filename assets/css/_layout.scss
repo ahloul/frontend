@@ -40,11 +40,11 @@ a {
     @apply text-tertiary transition ease-in-out duration-150;
 
     &:hover {
-        @apply text-secondary underline;
+        @apply text-info no-underline;
     }
 
     &:focus {
-        @apply text-secondary outline-none underline;
+        @apply text-info outline-none no-underline;
     }
 }
 

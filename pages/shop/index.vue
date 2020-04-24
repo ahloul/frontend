@@ -7,7 +7,10 @@
     >
       <div class="flex justify-end">
         <div class="">
-          <button to="/" class="button icon-r my-3">
+          <button
+            class="button icon-r my-3"
+            @click="$router.push('/shop/settings')"
+          >
             <icon name="settings-outline" class="mx-1" fill="white" />
           </button>
         </div>

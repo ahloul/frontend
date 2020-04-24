@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen flex flex-col justify-center">
+  <div class="min-h-screen flex flex-col justify-center p-2">
     <div class="w-full max-w-sm mx-auto">
       <h1 class="text-center font-bold text-secondary">
         get it!

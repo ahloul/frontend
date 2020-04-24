@@ -7,7 +7,7 @@
       <div class="animated-slow absolute settings-icon">
         <icon name="settings-outline" />
       </div>
-      <div class="w-full">
+      <div class="w-24 mx-auto">
         <img class="rounded-full mx-auto" :src="user.picture.url" />
       </div>
 

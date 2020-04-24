@@ -1,23 +1,30 @@
 <template>
   <div class="container max-w-md">
     <div
-      class="animated settings md:flex"
+      class="animated settings flex flex-col"
       @click="$router.push('/profile/settings')"
     >
-      <img
-        class="h-16 w-16 md:h-24 md:w-24 rounded-full mx-auto md:mx-0 md:mr-6"
-        :src="user.picture.url"
-      />
-      <div class="text-center md:text-left">
+      <div class="animated-slow absolute settings-icon">
+        <icon name="settings-outline" />
+      </div>
+      <div class="w-full">
+        <img class="rounded-full mx-auto" :src="user.picture.url" />
+      </div>
+
+      <div class="text-center my-3">
         <h2
           class="text-lg font-semibold leading-none text-secondary mt-4 md:mt-0"
         >
           {{ user.name }}
         </h2>
-        <!-- <div class="text-info leading-snug text-sm">{{user.location}}</div> -->
-      </div>
-      <div class="animated-slow flex justify-end ml-auto settings-icon">
-        <icon name="settings-outline" />
+        <div v-if="user.location" class="text-info leading-snug text-sm">
+          {{ user.location.label }}
+        </div>
+        <div
+          v-if="user.description"
+          class="break-words mt-3 text-light"
+          v-html="user.description"
+        />
       </div>
     </div>
     <div class="flex justify-end">
@@ -55,7 +62,7 @@ export default {
 
 <style lang="scss" scoped>
 .settings {
-  @apply bg-white cursor-pointer shadow rounded p-6 mt-3;
+  @apply bg-white cursor-pointer shadow rounded px-6 py-4 mt-3;
   .settings-icon {
     @apply opacity-0 text-info;
   }

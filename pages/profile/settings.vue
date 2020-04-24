@@ -2,35 +2,59 @@
   <div class="max-w-md mt-5">
     <!-- <pre>{{ user }}</pre> -->
     <div class="mt-3 flex justify-center">
-      <div class="max-w-sm p-3">
+      <div class="max-w-sm p-3 w-40">
         <image-upload
           folder="profilepictures"
           placeholder="Profilbild Hochladen"
           :image="user.picture"
-          @target="setImage"
+          @target="selectImage"
         />
       </div>
     </div>
     <ValidationObserver v-slot="{ handleSubmit }" slim>
       <form @submit.prevent="handleSubmit(updateUser)">
-        <ValidationProvider v-slot="{ errors }" rules="min:2|required">
-          <!-- categoryName INPUT -->
-          <div class="form-content" :class="{ error: errors[0] }">
-            <label for="userName">
-              <span>Name</span>
-              <input
-                id="userName"
-                v-model="user.name"
-                name="Username"
-                type="text"
-                class="form-input"
-                placeholder="Tayfun Gülcan"
-              />
-              <div class="error">{{ errors[0] }}</div>
-            </label>
-          </div>
-        </ValidationProvider>
-        <div class="flex justify-end my-3">
+        <!-- INPUT Name -->
+        <label class="block">
+          <span>Name</span>
+          <ValidationProvider v-slot="{ errors }" rules="min:2|required">
+            <input
+              id="userName"
+              v-model="user.name"
+              name="Username"
+              type="text"
+              class="form-input"
+              placeholder="Tayfun Gülcan"
+            />
+            <span class="error">{{ errors[0] }}</span>
+          </ValidationProvider>
+        </label>
+
+        <!-- INPUT User location -->
+        <label class="block">
+          <span>Wohnort</span>
+          <autocomplete
+            label="Wohnort"
+            :value="userLocation"
+            endpoint="maps/geocode"
+            queryname="query"
+            display-name="label"
+            @selection="selectLocation"
+          />
+        </label>
+
+        <!-- TEXTAREA Description -->
+        <label class="block">
+          <span>Profilbeschreibung</span>
+          <ValidationProvider v-slot="{ errors }" name="Benutzertext">
+            <wysiwyg
+              :initial-content="user.description"
+              @content="(data) => (user.description = data)"
+            />
+            <span class="error-message">{{ errors[0] }}</span>
+          </ValidationProvider>
+        </label>
+
+        <div class="flex justify-end my-6">
           <button
             class="primary"
             :class="{ 'spinner-light': pending }"
@@ -47,12 +71,16 @@
 <script>
 import { mapActions } from 'vuex'
 import imageUpload from '~/components/utils/imageUpload'
+import Wysiwyg from '~/components/utils/Wysiwyg'
+import Autocomplete from '~/components/elements/Autocomplete'
 
 export default {
   name: 'ProfileSettings',
   middleware: 'authenticated',
   components: {
     imageUpload,
+    Autocomplete,
+    Wysiwyg,
   },
   async asyncData({ $axios }) {
     const user = await $axios.$get('/api/users/me')
@@ -61,6 +89,12 @@ export default {
   data: () => ({
     pending: false,
   }),
+  computed: {
+    userLocation() {
+      if (!this.user.location) return
+      return this.user.location?.label
+    },
+  },
   methods: {
     ...mapActions(['getMe']),
     async updateUser() {
@@ -75,15 +109,20 @@ export default {
 
         // Set pending
         this.pending = false
+
+        // Back to user
+        this.$router.push('/profile')
       } catch (error) {
         // Error handling
         this.pending = false
-        console.log(error)
       }
     },
-    setImage(target) {
-      console.log(target)
+    selectImage(target) {
       this.user.picture = target
+    },
+    selectLocation(data) {
+      if (!data.locationId) return
+      this.user.location = data
     },
   },
 }

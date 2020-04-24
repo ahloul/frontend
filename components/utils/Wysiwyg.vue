@@ -1,7 +1,6 @@
 <template>
   <div class="editor">
     <client-only>
-      <span v-if="label" class="text-info">{{ label }}</span>
       <editor-menu-bar v-slot="{ commands, isActive }" :editor="editor">
         <div class="menubar-wrapper">
           <ul class="menubar">
@@ -80,10 +79,6 @@ export default {
       type: String,
       default: null,
     },
-    label: {
-      type: String,
-      default: null,
-    },
   },
   data: () => ({
     editor: null,
@@ -112,23 +107,19 @@ export default {
 <style lang="scss">
 .menubar {
   &-wrapper {
-    @apply my-1;
+    @apply;
   }
-  @apply flex flex-wrap justify-center;
+  @apply flex flex-wrap justify-start;
   &li {
     @apply flex-auto;
   }
 }
 
-.active {
-  @apply bg-grey;
-}
-
 .editor {
   &-content {
-    @apply mt-3 text-base border p-3 rounded-lg;
+    @apply text-base border p-3 rounded-md bg-white;
     &:focus {
-      @apply shadow-outline;
+      @apply shadow-none border-primary;
     }
   }
 }

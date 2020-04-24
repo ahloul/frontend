@@ -4,20 +4,18 @@
       <form @submit.prevent="handleSubmit(submit)">
         <ValidationProvider v-slot="{ errors }" rules="required">
           <!-- categoryName INPUT -->
-          <div class="form-content" :class="{ error: errors[0] }">
-            <label for="categoryName">
-              <span>Name der Kategorie</span>
-              <input
-                id="categoryName"
-                v-model="category.name"
-                name="Kategorie"
-                type="text"
-                class="form-input"
-                placeholder="z.B. Getränke"
-              />
-              <div class="error">{{ errors[0] }}</div>
-            </label>
-          </div>
+          <label class="block">
+            <span>Name der Kategorie</span>
+            <input
+              id="categoryName"
+              v-model="category.name"
+              name="Kategorie"
+              type="text"
+              class="form-input"
+              placeholder="z.B. Getränke"
+            />
+            <div class="error">{{ errors[0] }}</div>
+          </label>
         </ValidationProvider>
         <div class="flex justify-end my-3">
           <button

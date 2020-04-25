@@ -50,7 +50,7 @@ export const actions = {
       }
     } catch (e) {
       // Clean store if user not exist with logout action
-      await dispatch('logout')
+      await dispatch('resetUser')
     }
   },
   async setLocalUser({ commit }, token) {
@@ -103,7 +103,7 @@ export const actions = {
       const { data } = await this.$axios.get('/api/users/me')
       commit('setUser', data)
     } catch (error) {
-      await dispatch('logout')
+      await dispatch('resetUser')
     }
   },
   /**

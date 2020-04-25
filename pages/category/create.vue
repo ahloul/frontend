@@ -17,7 +17,7 @@
             <div class="error">{{ errors[0] }}</div>
           </label>
         </ValidationProvider>
-        <div class="flex justify-end my-3">
+        <div class="flex justify-end my-5">
           <button
             class="primary"
             :class="{ 'spinner-light': loadState.create }"

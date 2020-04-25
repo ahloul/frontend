@@ -1,11 +1,11 @@
 <template>
   <div class="max-w-md mt-5">
-    <!-- <pre>{{ user }}</pre> -->
+    <pre>{{ user }}</pre>
     <div class="mt-3 flex justify-center">
       <div class="max-w-sm p-3 w-40">
         <image-upload
           folder="profilepictures"
-          placeholder="Profilbild Hochladen"
+          placeholder="Profilbild"
           :image="user.picture"
           @target="selectImage"
         />

@@ -63,6 +63,20 @@ export default {
     },
   },
 
+  /*
+  // Options
+  // TODO: Prepare Push Notifications
+  oneSignal: {
+    init: {
+      appId: 'YOUR_APP_ID',
+      allowLocalhostAsSecureOrigin: true,
+      welcomeNotification: {
+        disable: true,
+      },
+    },
+  },
+  */
+
   /**
    ** PurgeCSS configuration
    */

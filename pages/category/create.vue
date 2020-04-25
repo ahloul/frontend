@@ -44,11 +44,14 @@ export default {
   methods: {
     async submit() {
       try {
+        this.loadState.create = true
         await this.$axios.post(`/api/categories`, this.category)
+        this.loadState.create = false
         this.category = {}
         // send toast
         await this.$router.push('/categories')
       } catch (error) {
+        this.loadState.create = false
         console.log(error)
       }
     },

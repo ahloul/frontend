@@ -22,7 +22,6 @@
             ></n-link
           >
         </li>
-        <li></li>
         <li>
           <n-link to="/profile"
             ><icon name="person-outline" width="20"

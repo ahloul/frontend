@@ -196,7 +196,7 @@
                 v-model="shop.contact.phone"
                 type="text"
                 class="form-input mt-1 block w-full"
-                placeholder="+49 123 45678"
+                placeholder="Vorwahl und Nummer"
               />
               <span class="error">{{ errors[0] }}</span>
             </ValidationProvider>
@@ -307,7 +307,7 @@ export default {
       create: false,
     },
     // http://vee-validate.logaretm.com/v2/guide/interaction.html
-    validationMode: 'eager',
+    validationMode: 'lazy',
     shop: {
       name: null,
       size: null,

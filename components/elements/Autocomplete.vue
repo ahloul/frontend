@@ -5,6 +5,7 @@
       :name="name"
       :rules="rules"
       autocomplete="off"
+      mode="lazy"
     >
       <!-- Name INPUT -->
       <input

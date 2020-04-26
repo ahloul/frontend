@@ -6,7 +6,12 @@
           <n-link to="/">get it!</n-link>
         </div>
         <div class="ml-3">
-          <ul>
+          <ul v-if="!haveShop">
+            <li>
+              <n-link to="/shop/create">Shop anlegen</n-link>
+            </li>
+          </ul>
+          <ul v-if="haveShop">
             <li>
               <n-link to="/#1">Vorgänge</n-link>
             </li>
@@ -34,12 +39,17 @@
 /**
  * Default top navigation for desktop view.
  */
+import { mapGetters } from 'vuex'
+
 export default {
   name: 'Navigation',
   data() {
     return {
       menuShow: false,
     }
+  },
+  computed: {
+    ...mapGetters(['haveShop']),
   },
   methods: {
     toggleNavbar() {

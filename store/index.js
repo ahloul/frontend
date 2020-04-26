@@ -111,4 +111,5 @@ export const actions = {
 export const getters = {
   user: (state) => state.user,
   pending: (state) => state.pending,
+  haveShop: (state) => !!state.user.activeShop,
 }

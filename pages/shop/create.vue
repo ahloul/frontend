@@ -12,50 +12,61 @@
     </modal>
     <div class="flex mt-2 justify-between max-w-xs mx-auto">
       <button
-        :class="{ secondary: openTab == 1 }"
+        :class="{ secondary: currentStep == 1 }"
         class="tooltip"
-        @click="toggleTab(1)"
+        @click="currentStep = 1"
       >
-        <icon :name="openTab == 1 ? 'radio-button-on' : 'radio-button-off'" />
-        <div class="tooltip-content" :class="{ active: openTab == 1 }">
+        <icon
+          :name="currentStep == 1 ? 'radio-button-on' : 'radio-button-off'"
+        />
+        <div class="tooltip-content" :class="{ active: currentStep == 1 }">
           Informationen
         </div>
       </button>
       <button
-        :class="{ secondary: openTab == 2 }"
+        :class="{ secondary: currentStep == 2 }"
         class="tooltip"
-        @click="toggleTab(2)"
+        @click="currentStep = 2"
       >
-        <icon :name="openTab == 2 ? 'radio-button-on' : 'radio-button-off'" />
-        <div class="tooltip-content" :class="{ active: openTab == 2 }">
+        <icon
+          :name="currentStep == 2 ? 'radio-button-on' : 'radio-button-off'"
+        />
+        <div class="tooltip-content" :class="{ active: currentStep == 2 }">
           Kontaktdaten
         </div>
       </button>
       <button
-        :class="{ secondary: openTab == 3 }"
+        :class="{ secondary: currentStep == 3 }"
         class="tooltip"
-        @click="toggleTab(3)"
+        @click="currentStep = 3"
       >
-        <icon :name="openTab == 3 ? 'radio-button-on' : 'radio-button-off'" />
-        <div class="tooltip-content" :class="{ active: openTab == 3 }">
+        <icon
+          :name="currentStep == 3 ? 'radio-button-on' : 'radio-button-off'"
+        />
+        <div class="tooltip-content" :class="{ active: currentStep == 3 }">
           Bilder
         </div>
       </button>
       <button
-        :class="{ secondary: openTab == 4 }"
+        :class="{ secondary: currentStep == 4 }"
         class="tooltip"
-        @click="toggleTab(4)"
+        @click="currentStep = 4"
       >
-        <icon :name="openTab == 4 ? 'radio-button-on' : 'radio-button-off'" />
-        <div class="tooltip-content" :class="{ active: openTab == 4 }">
+        <icon
+          :name="currentStep == 4 ? 'radio-button-on' : 'radio-button-off'"
+        />
+        <div class="tooltip-content" :class="{ active: currentStep == 4 }">
           Beschreibung
         </div>
       </button>
     </div>
-    <ValidationObserver v-slot="{ handleSubmit }" class="mt-10" slim>
+    <!-- ---- -->
+    <!-- Forms -->
+    <!-- ---- -->
+    <ValidationObserver ref="shop" v-slot="{ handleSubmit }" class="mt-10" slim>
       <form @submit.prevent="handleSubmit(createShop)">
         <!-- Informationen -->
-        <div v-show="openTab === 1" :key="1" class="tab-section">
+        <fieldset v-if="currentStep === 1" class="tab-section">
           <p class="tab-heading">
             Vielen Dank für deine Anmeldung! Mit ein paar wenigen Schritten
             helfen wir dir, dein Shop anzulegen. Los gehts!
@@ -128,16 +139,9 @@
               <span class="error-message">{{ errors[0] }}</span>
             </ValidationProvider>
           </label>
-
-          <!-- Next BUTTON -->
-          <div class="flex justify-end">
-            <button type="button" class="border my-10" @click="openTab = 2">
-              Weiter
-            </button>
-          </div>
-        </div>
+        </fieldset>
         <!-- Kontaktdaten -->
-        <div v-show="openTab === 2" :key="2" class="tab-section">
+        <fieldset v-else-if="currentStep === 2" class="tab-section">
           <p class="tab-heading">
             Gib die Addresse deines Shops an damit andere wissen, wo sie dich
             finden können.
@@ -153,7 +157,10 @@
               queryname="query"
               display-name="label"
               placeholder="Sesamstrasse 12"
-              :rules="{ required: true, address: { address: shop.address } }"
+              :rules="{
+                required: true,
+                address: { address: shop.address },
+              }"
               @selection="selectLocation"
             />
             <div
@@ -213,19 +220,9 @@
               <span class="error">{{ errors[0] }}</span>
             </ValidationProvider>
           </label>
-
-          <!-- Next Back BUTTON -->
-          <div class="flex justify-between">
-            <button type="button" class="border my-10" @click="openTab = 1">
-              Zurück
-            </button>
-            <button type="button" class="border my-10" @click="openTab = 3">
-              Weiter
-            </button>
-          </div>
-        </div>
+        </fieldset>
         <!-- Bilder -->
-        <div v-show="openTab === 3" :key="3" class="tab-section">
+        <fieldset v-else-if="currentStep === 3" class="tab-section">
           <p class="tab-heading">
             Zeig dein Shop mit einem Foto und deinem Logo.
           </p>
@@ -246,18 +243,9 @@
               @target="selectPicture"
             />
           </div>
-          <!-- Next Back BUTTON -->
-          <div class="flex justify-between">
-            <button type="button" class="border my-10" @click="openTab = 2">
-              Zurück
-            </button>
-            <button type="button" class="border my-10" @click="openTab = 4">
-              Weiter
-            </button>
-          </div>
-        </div>
+        </fieldset>
         <!-- Beschreibung -->
-        <div v-show="openTab === 4" :key="4" class="tab-section">
+        <fieldset v-else-if="currentStep === 4" class="tab-section">
           <p class="tab-heading">
             Wenn du möchtest, beschreib dein Geschäft mit ein paar Sätzen. Lass
             deiner Kreativität freien lauf!
@@ -273,18 +261,24 @@
             </ValidationProvider>
           </label>
           <!-- Back BUTTON -->
-          <div class="flex justify-between">
-            <button type="button" class="border my-10" @click="openTab = 3">
-              Zurück
-            </button>
-            <button
-              type="submit"
-              class="primary my-10"
-              :class="{ 'spinner-light': loadState.create }"
-            >
-              Erstellen
-            </button>
-          </div>
+        </fieldset>
+
+        <div class="flex justify-between max-w-md mx-auto">
+          <button
+            v-if="currentStep !== 1"
+            type="button"
+            class="border my-10"
+            @click="currentStep--"
+          >
+            Zurück
+          </button>
+          <button
+            type="submit"
+            class="primary my-10 ml-auto"
+            :class="{ 'spinner-light': loadState.create }"
+          >
+            {{ currentStep === 4 ? 'Speichern' : 'Weiter' }}
+          </button>
         </div>
       </form>
     </ValidationObserver>
@@ -293,19 +287,21 @@
 
 <script>
 import { debounce } from 'lodash'
+import { mapActions } from 'vuex'
 import Autocomplete from '~/components/elements/Autocomplete'
 import imageUpload from '~/components/utils/ImageUpload'
 import Wysiwyg from '~/components/utils/Wysiwyg'
 
 export default {
   name: 'CreateShop',
+  middleware: 'haveShop',
   components: {
     Autocomplete,
     imageUpload,
     Wysiwyg,
   },
   data: () => ({
-    openTab: 1,
+    currentStep: 1,
     showModal: false,
     loadState: {
       create: false,
@@ -332,8 +328,18 @@ export default {
     },
   },
   methods: {
-    toggleTab(tabNumber) {
-      this.openTab = tabNumber
+    ...mapActions(['getMe']),
+    goToStep(step) {
+      if (step < 1) {
+        return
+      }
+
+      if (step > 4) {
+        this.onSubmit()
+        return
+      }
+
+      this.createShop = step
     },
     selectLogo(target) {
       this.shop.logo = target
@@ -350,18 +356,23 @@ export default {
           name: this.shop.name,
         })
       } catch ({ response: { data } }) {
-        this.$refs.start.setErrors({
+        this.$refs.shop.setErrors({
           Shopname: ['Shopname existiert bereits'],
         })
       }
     }, 500),
     async createShop() {
       try {
-        this.loadState.create = true
-
-        await this.$axios.post(`/api/shops`, this.shop)
-        this.loadState.create = false
-        this.showModal = true
+        if (this.currentStep === 4) {
+          this.loadState.create = true
+          await this.$axios.post(`/api/shops`, this.shop)
+          // Update user in storage
+          await this.getMe()
+          // Todo: Get shop
+          this.loadState.create = false
+          this.showModal = true
+        }
+        this.currentStep++
       } catch (error) {
         this.loadState.create = false
         console.log(error)

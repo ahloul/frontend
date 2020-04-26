@@ -2,19 +2,27 @@
   <div class="p-2 md:p-3">
     <nav class="navbar">
       <ul>
-        <li>
+        <li v-if="haveShop">
           <n-link to="/#1" exact
             ><icon name="layers-outline" width="20"
           /></n-link>
         </li>
-        <li>
+        <li v-if="haveShop">
           <n-link to="/category"
             ><icon name="cube-outline" width="20"
           /></n-link>
         </li>
-        <li>
+        <li v-if="haveShop">
           <n-link to="/shop"><icon name="home-outline" width="20" /></n-link>
         </li>
+        <li v-if="!haveShop" class="mx-auto">
+          <n-link to="/shop/create"
+            ><icon name="plus-outline" width="20" /><span class="text-xs"
+              >SHOP ANLEGEN</span
+            ></n-link
+          >
+        </li>
+        <li></li>
         <li>
           <n-link to="/profile"
             ><icon name="person-outline" width="20"
@@ -29,12 +37,17 @@
 /**
  * Default top navigation for desktop view.
  */
+import { mapGetters } from 'vuex'
+
 export default {
   name: 'Navigation',
   data() {
     return {
       menuShow: false,
     }
+  },
+  computed: {
+    ...mapGetters(['haveShop']),
   },
   methods: {
     toggleNavbar() {

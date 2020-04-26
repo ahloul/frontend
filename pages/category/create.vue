@@ -2,9 +2,9 @@
   <div class="max-w-md mt-5">
     <ValidationObserver v-slot="{ handleSubmit }" slim>
       <form @submit.prevent="handleSubmit(submit)">
-        <ValidationProvider v-slot="{ errors }" rules="required">
-          <!-- categoryName INPUT -->
-          <label class="block">
+        <!-- categoryName INPUT -->
+        <label class="block">
+          <ValidationProvider v-slot="{ errors }" rules="required">
             <span>Name der Kategorie</span>
             <input
               id="categoryName"
@@ -15,8 +15,9 @@
               placeholder="z.B. Getränke"
             />
             <div class="error">{{ errors[0] }}</div>
-          </label>
-        </ValidationProvider>
+          </ValidationProvider>
+        </label>
+
         <div class="flex justify-end my-5">
           <button
             class="primary"

@@ -106,19 +106,6 @@ export const actions = {
       await dispatch('resetUser')
     }
   },
-  /**
-   * refreshToken Action
-   * get new access token for the user
-   */
-  async refreshToken({ state, dispatch }) {
-    try {
-      const { data } = await this.$axios.patch(`/api/auth/refresh`)
-      await dispatch('setLocalUser', data)
-      await dispatch('getMe')
-    } catch (error) {
-      console.log(error)
-    }
-  },
 }
 
 export const getters = {

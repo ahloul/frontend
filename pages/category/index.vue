@@ -5,69 +5,31 @@
         ><icon name="plus" /> Hinzufügen</n-link
       >
     </div>
+    <!--
     <empty-state />
-
+  -->
     <ul class="category-box">
-      <li class="animated category-item" @click="goToDetail">
+      <li
+        v-for="category in categories"
+        :key="category._id"
+        class="animated category-item"
+        @click="goToDetail"
+      >
         <div class="flex items-center p-6">
           <div class="min-w-0 flex-1 flex items-center">
             <div class="min-w-0 flex-1 px-4 md:grid md:grid-cols-2 md:gap-4">
               <div>
                 <div class="text-xl leading-5 font-bold truncate">
-                  Getränke
+                  {{ category.name }}
                 </div>
+                <!--
                 <div
                   class="mt-2 flex items-center text-sm leading-5 text-info inline-block align-middle"
                 >
                   <icon name="cube-outline" width="15" />
                   <span class="ml-1">214 Artikel</span>
                 </div>
-              </div>
-            </div>
-          </div>
-          <div>
-            <icon name="chevron-right" />
-          </div>
-        </div>
-      </li>
-      <!-- Example -->
-      <li class="animated category-item">
-        <div class="flex items-center p-6">
-          <div class="min-w-0 flex-1 flex items-center">
-            <div class="min-w-0 flex-1 px-4 md:grid md:grid-cols-2 md:gap-4">
-              <div>
-                <div class="text-xl leading-5 font-bold truncate">
-                  Lebensmittel
-                </div>
-                <div
-                  class="mt-2 flex items-center text-sm leading-5 text-info inline-block align-middle"
-                >
-                  <icon name="cube-outline" width="15" />
-                  <span class="ml-1">911 Artikel</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div>
-            <icon name="chevron-right" />
-          </div>
-        </div>
-      </li>
-      <li class="animated category-item">
-        <div class="flex items-center p-6">
-          <div class="min-w-0 flex-1 flex items-center">
-            <div class="min-w-0 flex-1 px-4 md:grid md:grid-cols-2 md:gap-4">
-              <div>
-                <div class="text-xl leading-5 font-bold truncate">
-                  Textilwaren
-                </div>
-                <div
-                  class="mt-2 flex items-center text-sm leading-5 text-info inline-block align-middle"
-                >
-                  <icon name="cube-outline" width="15" />
-                  <span class="ml-1">154 Artikel</span>
-                </div>
-              </div>
+              --></div>
             </div>
           </div>
           <div>
@@ -80,12 +42,16 @@
 </template>
 
 <script>
-import EmptyState from '~/components/elements/EmptyState'
+// import EmptyState from '~/components/elements/EmptyState'
 export default {
   name: 'Categories',
   middleware: 'authenticated',
   components: {
-    EmptyState,
+    // EmptyState,
+  },
+  async asyncData({ $axios }) {
+    const categories = await $axios.$get('/api/categories')
+    return { categories }
   },
   methods: {
     goToDetail() {

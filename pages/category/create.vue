@@ -50,7 +50,7 @@ export default {
         this.loadState.create = false
         this.category = {}
         // send toast
-        await this.$router.push('/categories')
+        await this.$router.push('/category')
       } catch (error) {
         this.loadState.create = false
         console.log(error)

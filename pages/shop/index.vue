@@ -3,7 +3,11 @@
     <!-- CTA -->
     <div
       class="hero-wrap h-48 md:h-64"
-      style="background-image: url('/img/placeholder-bg.png');"
+      :style="{
+        backgroundImage: `url('${
+          shop.picture ? shop.picture.url : '/img/placeholder-bg.png'
+        }')`,
+      }"
     >
       <div class="flex justify-end">
         <div class="">
@@ -17,13 +21,20 @@
       </div>
       <div class="flex mt-auto hero-info rounded-b-lg">
         <div class="p-2 m-2 bg-white rounded shadow-sm">
-          <img src="/img/placeholder.png" alt="" width="100" />
+          <img
+            :src="shop.logo ? shop.logo.url : '/img/placeholder.png'"
+            alt=""
+            width="100"
+            @error="imagePlaceholder"
+          />
         </div>
         <div class="mt-auto mb-4 flex flex-col">
           <div>
             <h3>{{ shop.name }}</h3>
           </div>
-          <div class="leading-none">District of shop</div>
+          <div v-if="shop.address" class="leading-none">
+            {{ shop.address.city }}
+          </div>
         </div>
       </div>
     </div>
@@ -41,16 +52,18 @@
         <button class="icon"><icon name="email-outline" class="mx-1" /></button>
       </div>
       <div>
-        <button class="icon"><icon name="phone-outline" class="mx-1" /></button>
+        <a class="button icon" :href="'tel:' + shop.contact.phone"
+          ><icon name="phone-outline" class="mx-1"
+        /></a>
       </div>
     </div>
     <!-- Content -->
     <empty-content
+      v-if="!shop.description"
       content="Keine Beschreibung vorhanden."
       route="/"
       class="mt-5"
     />
-    {{ shop }}
   </div>
 </template>
 
@@ -84,4 +97,3 @@ export default {
   }
 }
 </style>
-0,0,

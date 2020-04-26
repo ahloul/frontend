@@ -33,7 +33,7 @@ export const actions = {
    * nuxtServerInit start on initial loading
    * token and user validation
    */
-  async nuxtServerInit({ commit, dispatch }, { app }) {
+  async nuxtServerInit({ commit, dispatch, state }, { app }) {
     try {
       // Try to get token from Browser
       const accessToken = await this.$cookies.get('getit')
@@ -101,6 +101,7 @@ export const actions = {
   async getMe({ commit, dispatch }) {
     try {
       const { data } = await this.$axios.get('/api/users/me')
+      await dispatch('shop/getActiveShop', data)
       commit('setUser', data)
     } catch (error) {
       await dispatch('resetUser')

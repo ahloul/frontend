@@ -20,7 +20,9 @@
           <img src="/img/placeholder.png" alt="" width="100" />
         </div>
         <div class="mt-auto mb-4 flex flex-col">
-          <div><h3>Name of shop</h3></div>
+          <div>
+            <h3>{{ shop.name }}</h3>
+          </div>
           <div class="leading-none">District of shop</div>
         </div>
       </div>
@@ -48,15 +50,22 @@
       route="/"
       class="mt-5"
     />
+    {{ shop }}
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import emptyContent from '~/components/elements/EmptyContent'
 export default {
   name: 'Shop',
   components: {
     emptyContent,
+  },
+  computed: {
+    ...mapGetters({
+      shop: 'shop/shop',
+    }),
   },
 }
 </script>

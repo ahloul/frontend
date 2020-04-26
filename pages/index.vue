@@ -17,11 +17,19 @@
         <!-- Bottom -->
       </div>
     </div>
+    {{ shop }}
   </div>
 </template>
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   middleware: 'authenticated',
+  computed: {
+    ...mapGetters({
+      shop: 'shop/shop',
+    }),
+  },
 }
 </script>
 <style lang="scss" scoped>

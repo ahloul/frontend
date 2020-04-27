@@ -4,7 +4,7 @@
     <div class="mt-3 flex justify-center">
       <div class="max-w-sm p-3 w-40">
         <image-upload
-          folder="profilepictures"
+          folder="user"
           placeholder="Profilbild"
           :image="user.picture"
           @target="selectImage"

@@ -1,22 +1,11 @@
 <template>
   <div class="flex flex-col">
-    <!-- Modal -->
-    <modal
-      :show="showModal"
-      :dismiss="null"
-      confirm="Zum shop"
-      centered
-      @confirm="$router.push('/')"
-      >Du hast erfogreich ein Shop erstellt! <br />
-      Du kannst jetzt loslegen.
-    </modal>
-    <!-- Top Buttons -->
     <!-- Top Buttons -->
     <div class="flex mt-2 justify-between max-w-xs mx-auto">
       <button
         :class="{ secondary: currentStep == 1 }"
         class="tooltip"
-        @click="currentStep = 1"
+        @click="changeStep(1)"
       >
         <icon :name="currentStep == 1 ? 'info' : 'info-outline'" />
         <div class="tooltip-content" :class="{ active: currentStep == 1 }">
@@ -26,7 +15,7 @@
       <button
         :class="{ secondary: currentStep == 2 }"
         class="tooltip"
-        @click="currentStep = 2"
+        @click="changeStep(2)"
       >
         <icon :name="currentStep == 2 ? 'pin' : 'pin-outline'" />
         <div class="tooltip-content" :class="{ active: currentStep == 2 }">
@@ -36,7 +25,7 @@
       <button
         :class="{ secondary: currentStep == 3 }"
         class="tooltip"
-        @click="currentStep = 3"
+        @click="changeStep(3)"
       >
         <icon :name="currentStep == 3 ? 'camera' : 'camera-outline'" />
         <div class="tooltip-content" :class="{ active: currentStep == 3 }">
@@ -46,7 +35,7 @@
       <button
         :class="{ secondary: currentStep == 4 }"
         class="tooltip"
-        @click="currentStep = 4"
+        @click="changeStep(4)"
       >
         <icon :name="currentStep == 4 ? 'edit' : 'edit-outline'" />
         <div class="tooltip-content" :class="{ active: currentStep == 4 }">
@@ -56,13 +45,9 @@
     </div>
     <!-- Forms -->
     <ValidationObserver ref="shop" v-slot="{ handleSubmit }" class="mt-10" slim>
-      <form @submit.prevent="handleSubmit(createShop)">
+      <form @submit.prevent="handleSubmit(updateShop)">
         <!-- Informationen -->
         <fieldset v-if="currentStep === 1" class="tab-section">
-          <p class="tab-heading">
-            Vielen Dank für deine Anmeldung! Mit ein paar wenigen Schritten
-            helfen wir dir, dein Shop anzulegen. Los gehts!
-          </p>
           <!-- shopName INPUT -->
           <label class="block">
             <ValidationProvider
@@ -137,11 +122,6 @@
         </fieldset>
         <!-- Kontaktdaten -->
         <fieldset v-else-if="currentStep === 2" class="tab-section">
-          <p class="tab-heading">
-            Gib die Addresse deines Shops an damit andere wissen, wo sie dich
-            finden können.
-          </p>
-
           <!-- userLocation INPUT -->
           <label class="block">
             <span>Vollständige Adresse</span>
@@ -218,10 +198,6 @@
         </fieldset>
         <!-- Bilder -->
         <fieldset v-else-if="currentStep === 3" class="tab-section">
-          <p class="tab-heading">
-            Zeig dein Shop mit einem Foto und deinem Logo.
-          </p>
-
           <div class="mt-5 flex justify-center">
             <image-upload
               folder="logo"
@@ -241,10 +217,6 @@
         </fieldset>
         <!-- Beschreibung -->
         <fieldset v-else-if="currentStep === 4" class="tab-section">
-          <p class="tab-heading">
-            Wenn du möchtest, beschreib dein Geschäft mit ein paar Sätzen. Lass
-            deiner Kreativität freien lauf!
-          </p>
           <!-- TEXTAREA Description -->
           <label class="block">
             <ValidationProvider v-slot="{ errors }" name="Benutzertext">
@@ -260,19 +232,11 @@
 
         <div class="flex justify-between max-w-md mx-auto">
           <button
-            v-if="currentStep !== 1"
-            type="button"
-            class="border my-10"
-            @click="currentStep--"
-          >
-            Zurück
-          </button>
-          <button
             type="submit"
             class="primary my-10 ml-auto"
             :class="{ 'spinner-light': loadState.create }"
           >
-            {{ currentStep === 4 ? 'Speichern' : 'Weiter' }}
+            Speichern
           </button>
         </div>
       </form>
@@ -282,37 +246,27 @@
 
 <script>
 import { mapActions } from 'vuex'
-import Autocomplete from '~/components/elements/Autocomplete'
 import imageUpload from '~/components/utils/ImageUpload'
 import Wysiwyg from '~/components/utils/Wysiwyg'
+import Autocomplete from '~/components/elements/Autocomplete'
 
 export default {
-  name: 'CreateShop',
-  middleware: ['haveShop'],
+  name: 'EditShop',
   components: {
     Autocomplete,
     imageUpload,
     Wysiwyg,
   },
+  async asyncData({ $axios, store }) {
+    const { user } = store.state
+    const shop = await $axios.$get(`/api/users/${user._id}/shops/active`)
+    return { shop }
+  },
   data: () => ({
     currentStep: 1,
-    showModal: false,
-    loadState: {
-      create: false,
-    },
-    // http://vee-validate.logaretm.com/v2/guide/interaction.html
     validationMode: 'lazy',
-    shop: {
-      name: null,
-      size: null,
-      phone: null,
-      website: null,
-      companyType: null,
-      address: {},
-      picture: {},
-      contact: {},
-      logo: {},
-      description: null,
+    loadState: {
+      pending: false,
     },
   }),
   computed: {
@@ -323,26 +277,37 @@ export default {
   },
   methods: {
     ...mapActions(['getMe']),
-    goToStep(step) {
-      if (step < 1) {
-        return
+    async checkValidation() {
+      // Check if name is valid on submit
+      const isValid = await this.checkName()
+      // Check if other forms are valid
+      const validate = await this.$refs.shop.validate()
+      if (!isValid || !validate) throw new Error('Invalid')
+      this.$nextTick(() => {
+        this.$refs.shop.reset()
+      })
+    },
+    async changeStep(stepNumber) {
+      try {
+        await this.checkValidation()
+        this.currentStep = stepNumber
+      } catch (error) {}
+    },
+    async updateShop() {
+      try {
+        await this.checkValidation()
+        // Only Step 4
+        this.loadState.update = true
+        await this.$axios.patch(`/api/shops/${this.shop._id}`, this.shop)
+        // Update user in storage
+        await this.getMe()
+        // Todo: Get shop
+        this.loadState.update = false
+        this.$router.push('/shop')
+      } catch (error) {
+        this.loadState.update = false
+        console.log(error)
       }
-
-      if (step > 4) {
-        this.onSubmit()
-        return
-      }
-
-      this.createShop = step
-    },
-    selectLogo(target) {
-      this.shop.logo = target
-    },
-    selectPicture(target) {
-      this.shop.picture = target
-    },
-    selectLocation({ address, locationId, label }) {
-      this.shop.address = { ...address, label, locationId }
     },
     async checkName() {
       try {
@@ -354,39 +319,19 @@ export default {
         this.$refs.shop.setErrors({ shopName: ['Shopname existiert bereits'] })
       }
     },
-    async createShop() {
-      try {
-        // Only Step 1
-        if (this.currentStep === 1) {
-          // Check if name is valid on submit
-          const isValid = await this.checkName()
-          // Check if other forms are valid
-          await this.$refs.shop.validate()
-          if (!isValid) return
-          this.$nextTick(() => {
-            this.$refs.shop.reset()
-          })
-        }
-        // Only Step 4
-        if (this.currentStep === 4) {
-          this.loadState.create = true
-          await this.$axios.post(`/api/shops`, this.shop)
-          // Update user in storage
-          await this.getMe()
-          // Todo: Get shop
-          this.loadState.create = false
-          this.showModal = true
-        }
-        // Go to next step
-        this.currentStep++
-      } catch (error) {
-        this.loadState.create = false
-        console.log(error)
-      }
+    selectPicture(target) {
+      this.shop.picture = target
+    },
+    selectLogo(target) {
+      this.shop.logo = target
+    },
+    selectLocation({ address, locationId, label }) {
+      this.shop.address = { ...address, label, locationId }
     },
   },
 }
 </script>
+
 <style lang="scss" scoped>
 .tab {
   &-heading {

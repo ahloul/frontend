@@ -1,3 +1,4 @@
+import validUrl from 'valid-url'
 import { extend, localize } from 'vee-validate'
 import { debounce } from 'lodash'
 import de from 'vee-validate/dist/locale/de.json'
@@ -76,11 +77,18 @@ extend('shopname', {
       await check(name)
       return true
     } catch (error) {
-      console.log(error)
       return false
     }
   }, 250),
   message: 'Shopname existiert bereits',
+})
+
+extend('validUrl', (value) => {
+  if (validUrl.isUri(value)) {
+    return true
+  }
+
+  return 'Es muss eine gültige Internetadresse sein.'
 })
 
 extend('min', min)

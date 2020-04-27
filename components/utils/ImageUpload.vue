@@ -8,7 +8,7 @@
     <!-- articlePicture FILE -->
     <div v-if="imgLocal.url">
       <img :src="imgLocal.url" alt="" class="rounded-lg mx-auto" />
-      <button class="w-auto mx-auto" @click="removeImageAction">
+      <button type="button" class="w-auto mx-auto" @click="removeImageAction">
         Entfernen
       </button>
     </div>
@@ -79,7 +79,10 @@ export default {
       try {
         this.isUploading = true
         await this.$refs.provider.validate(e)
-        this.imgLocal = await this.$axios.$post(`/api/media/user`, formData)
+        this.imgLocal = await this.$axios.$post(
+          `/api/media/${this.folder}`,
+          formData
+        )
 
         this.isUploading = false
       } catch (error) {

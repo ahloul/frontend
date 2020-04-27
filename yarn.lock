@@ -6129,6 +6129,11 @@ hellojs@^1.18.4:
   resolved "https://registry.yarnpkg.com/hellojs/-/hellojs-1.18.4.tgz#0bfb2df0d3aefb674a512ec869ccb23199bdb4d4"
   integrity sha512-h9s7cYE5TlojfgPtdMDXWAyYInQuBCC21jL9TwJGY3NN6wYOw4B83NrEC4p+R015kndQAqZamWe/VolOaQrLeQ==
 
+here-js-api@^1.0.11:
+  version "1.0.11"
+  resolved "https://registry.yarnpkg.com/here-js-api/-/here-js-api-1.0.11.tgz#e8a8d513c48788c431e2a00be4211fa2fae08ae1"
+  integrity sha512-uF4Uh0iY+/aLtb4sseP7XI8wbBoBMy8rkY0R/mmOcrr8/8e052mouQfsAZKR73Rk1FnSASmnQXVWVmvLEOmTGA==
+
 hex-color-regex@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/hex-color-regex/-/hex-color-regex-1.1.0.tgz#4c06fccb4602fe2602b3c93df82d7e7dbf1a8a8e"
@@ -13753,6 +13758,11 @@ v8-to-istanbul@^4.1.3:
     "@types/istanbul-lib-coverage" "^2.0.1"
     convert-source-map "^1.6.0"
     source-map "^0.7.3"
+
+valid-url@^1.0.9:
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/valid-url/-/valid-url-1.0.9.tgz#1c14479b40f1397a75782f115e4086447433a200"
+  integrity sha1-HBRHm0DxOXp1eC8RXkCGRHQzogA=
 
 validate-npm-package-license@^3.0.1:
   version "3.0.4"

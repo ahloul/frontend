@@ -4,7 +4,7 @@
       <form @submit.prevent="handleSubmit(submit)">
         <!-- categoryName INPUT -->
         <label class="block">
-          <ValidationProvider v-slot="{ errors }" rules="required">
+          <ValidationProvider v-slot="{ errors }" mode="lazy" rules="required">
             <span>Name der Kategorie</span>
             <input
               id="categoryName"

@@ -5,9 +5,7 @@
         ><icon name="plus" /> Hinzufügen</n-link
       >
     </div>
-    <!--
-    <empty-state />
-  -->
+    <empty-state v-if="showEmpty" />
     <ul class="category-box">
       <li
         v-for="category in categories"
@@ -44,16 +42,20 @@
 </template>
 
 <script>
-// import EmptyState from '~/components/elements/EmptyState'
+import EmptyState from '~/components/elements/EmptyState'
 export default {
   name: 'Categories',
   middleware: 'authenticated',
   components: {
-    // EmptyState,
+    EmptyState,
   },
   async asyncData({ $axios }) {
+    let showEmpty = false
     const categories = await $axios.$get('/api/categories')
-    return { categories }
+    if (!categories.length) {
+      showEmpty = true
+    }
+    return { categories, showEmpty }
   },
   methods: {
     goToDetail({ _id }) {

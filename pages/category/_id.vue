@@ -118,7 +118,7 @@ export default {
       .right-icon {
         @apply transition ease-in-out duration-300;
         @apply text-primary;
-        transform: translate(0.7em, 0);
+        transform: translate(0.5em, 0);
       }
     }
 

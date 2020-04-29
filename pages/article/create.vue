@@ -144,6 +144,7 @@
             Speichern
           </button>
         </div>
+        <pre>{{ article }}</pre>
       </form>
     </ValidationObserver>
   </div>
@@ -193,6 +194,10 @@ export default {
     haveStock() {
       return this.article.stock !== -1
     },
+  },
+  mounted() {
+    if (isEmpty(this.category)) return
+    this.article.category = this.category._id
   },
   methods: {
     selectImage(target) {

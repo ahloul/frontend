@@ -1,9 +1,24 @@
 <template>
   <div>
-    <div class="flex justify-start my-4">
+    <modal
+      :show="showModal"
+      centered
+      dismiss="Close Modal"
+      @dismiss="showModal = false"
+      @confirm="deleteArticle"
+      >Bist du sicher, dass du diesen Artikel unwiederuflich löschen möchtest?
+    </modal>
+    <div class="flex justify-between my-4">
       <n-link :to="`/article/${article.id}`" class="button icon-r"
         ><icon name="arrow-ios-back-outline" /> Zurück</n-link
       >
+      <button
+        :class="{ 'spinner-dark': loadState.delete }"
+        type="button"
+        @click="showModal = true"
+      >
+        <icon name="trash-outline" />
+      </button>
     </div>
     <div class="max-w-md mx-auto mt-5">
       <image-upload
@@ -186,6 +201,7 @@ export default {
     }
   },
   data: () => ({
+    showModal: false,
     article: {
       picture: {},
       category: null,
@@ -195,6 +211,7 @@ export default {
     },
     loadState: {
       create: false,
+      delete: false,
     },
   }),
   computed: {
@@ -231,6 +248,13 @@ export default {
       } catch (error) {
         console.log(error)
       }
+    },
+    async deleteArticle() {
+      this.showModal = false
+      this.loadState.delete = true
+      await this.$axios.delete(`/api/articles/${this.article.id}`)
+      this.loadState.delete = false
+      await this.$router.push(`/category/${this.category._id}`)
     },
   },
 }

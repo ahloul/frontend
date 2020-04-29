@@ -3,42 +3,42 @@
     <!-- Top Buttons -->
     <div class="flex mt-2 justify-between max-w-xs mx-auto">
       <button
-        :class="{ secondary: currentStep == 1 }"
+        :class="{ secondary: step == 1 }"
         class="tooltip"
         @click="changeStep(1)"
       >
-        <icon :name="currentStep == 1 ? 'info' : 'info-outline'" />
-        <div class="tooltip-content" :class="{ active: currentStep == 1 }">
+        <icon :name="step == 1 ? 'info' : 'info-outline'" />
+        <div class="tooltip-content" :class="{ active: step == 1 }">
           Informationen
         </div>
       </button>
       <button
-        :class="{ secondary: currentStep == 2 }"
+        :class="{ secondary: step == 2 }"
         class="tooltip"
         @click="changeStep(2)"
       >
-        <icon :name="currentStep == 2 ? 'pin' : 'pin-outline'" />
-        <div class="tooltip-content" :class="{ active: currentStep == 2 }">
+        <icon :name="step == 2 ? 'pin' : 'pin-outline'" />
+        <div class="tooltip-content" :class="{ active: step == 2 }">
           Kontaktdaten
         </div>
       </button>
       <button
-        :class="{ secondary: currentStep == 3 }"
+        :class="{ secondary: step == 3 }"
         class="tooltip"
         @click="changeStep(3)"
       >
-        <icon :name="currentStep == 3 ? 'camera' : 'camera-outline'" />
-        <div class="tooltip-content" :class="{ active: currentStep == 3 }">
+        <icon :name="step == 3 ? 'camera' : 'camera-outline'" />
+        <div class="tooltip-content" :class="{ active: step == 3 }">
           Bilder
         </div>
       </button>
       <button
-        :class="{ secondary: currentStep == 4 }"
+        :class="{ secondary: step == 4 }"
         class="tooltip"
         @click="changeStep(4)"
       >
-        <icon :name="currentStep == 4 ? 'edit' : 'edit-outline'" />
-        <div class="tooltip-content" :class="{ active: currentStep == 4 }">
+        <icon :name="step == 4 ? 'edit' : 'edit-outline'" />
+        <div class="tooltip-content" :class="{ active: step == 4 }">
           Beschreibung
         </div>
       </button>
@@ -47,7 +47,7 @@
     <ValidationObserver ref="shop" v-slot="{ handleSubmit }" class="mt-10" slim>
       <form @submit.prevent="handleSubmit(updateShop)">
         <!-- Informationen -->
-        <fieldset v-if="currentStep === 1" class="tab-section">
+        <fieldset v-if="step === 1" class="tab-section">
           <!-- shopName INPUT -->
           <label class="block">
             <ValidationProvider
@@ -121,7 +121,7 @@
           </label>
         </fieldset>
         <!-- Kontaktdaten -->
-        <fieldset v-else-if="currentStep === 2" class="tab-section">
+        <fieldset v-else-if="step === 2" class="tab-section">
           <!-- userLocation INPUT -->
           <label class="block">
             <span>Vollständige Adresse</span>
@@ -197,7 +197,7 @@
           </label>
         </fieldset>
         <!-- Bilder -->
-        <fieldset v-else-if="currentStep === 3" class="tab-section">
+        <fieldset v-else-if="step === 3" class="tab-section">
           <div class="mt-5 flex justify-center">
             <image-upload
               folder="logo"
@@ -216,7 +216,7 @@
           </div>
         </fieldset>
         <!-- Beschreibung -->
-        <fieldset v-else-if="currentStep === 4" class="tab-section">
+        <fieldset v-else-if="step === 4" class="tab-section">
           <!-- TEXTAREA Description -->
           <label class="block">
             <ValidationProvider v-slot="{ errors }" name="Benutzertext">
@@ -258,13 +258,13 @@ export default {
     imageUpload,
     Wysiwyg,
   },
-  async asyncData({ $axios, store }) {
+  async asyncData({ $axios, store, query }) {
     const { user } = store.state
     const coreShop = await $axios.$get(`/api/users/${user._id}/shops/active`)
-    return { shop: clone(coreShop), coreShop }
+    return { shop: clone(coreShop) }
   },
   data: () => ({
-    currentStep: 1,
+    step: 1,
     validationMode: 'lazy',
     loadState: {
       pending: false,
@@ -291,7 +291,7 @@ export default {
     async changeStep(stepNumber) {
       try {
         await this.checkValidation()
-        this.currentStep = stepNumber
+        this.step = stepNumber
       } catch (error) {}
     },
     async updateShop() {

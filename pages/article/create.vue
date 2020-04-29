@@ -144,7 +144,6 @@
             Speichern
           </button>
         </div>
-        <pre>{{ article }}</pre>
       </form>
     </ValidationObserver>
   </div>

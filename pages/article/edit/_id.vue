@@ -3,7 +3,7 @@
     <modal
       :show="showModal"
       centered
-      dismiss="Close Modal"
+      dismiss="Schließen"
       @dismiss="showModal = false"
       @confirm="deleteArticle"
       >Bist du sicher, dass du diesen Artikel unwiederuflich löschen möchtest?

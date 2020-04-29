@@ -3,7 +3,7 @@
     <modal
       :show="showModal"
       centered
-      dismiss="Close Modal"
+      dismiss="Schließen"
       @dismiss="showModal = false"
       @confirm="deleteCategory"
       >Bist du sicher, dass du die Kategorie löschen möchtest?

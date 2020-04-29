@@ -1,5 +1,13 @@
 <template>
   <div class="flex flex-col">
+    <modal
+      :show="showModal"
+      centered
+      dismiss="Schließen"
+      @dismiss="showModal = false"
+      >Bitte kontaktiere uns, wenn du dein Account löschen möchtest <br />
+      <a href="mailto:support@getit.social">Support</a>
+    </modal>
     <!-- Top Buttons -->
     <div class="flex mt-2 justify-between max-w-xs mx-auto">
       <button
@@ -261,11 +269,12 @@ export default {
   async asyncData({ $axios, store, query }) {
     const { user } = store.state
     const coreShop = await $axios.$get(`/api/users/${user._id}/shops/active`)
-    return { shop: clone(coreShop) }
+    return { shop: clone(coreShop), coreShop }
   },
   data: () => ({
     step: 1,
     validationMode: 'lazy',
+    showModal: false,
     loadState: {
       pending: false,
     },
@@ -297,7 +306,6 @@ export default {
     async updateShop() {
       try {
         await this.checkValidation()
-        // Only Step 4
         this.loadState.update = true
         await this.$axios.patch(
           `/api/shops/${this.shop._id}`,

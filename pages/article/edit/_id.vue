@@ -113,7 +113,10 @@
         <label class="block mb-3">
           <span>Artikelbeschreibung</span>
           <ValidationProvider v-slot="{ errors }" name="Artikelbeschreibung">
-            <wysiwyg @content="(data) => (article.description = data)" />
+            <wysiwyg
+              :initial-content="article.description"
+              @content="(data) => (article.description = data)"
+            />
             <span class="error-message">{{ errors[0] }}</span>
           </ValidationProvider>
         </label>
@@ -150,7 +153,8 @@
 </template>
 
 <script>
-import { isEmpty } from 'lodash'
+import { clone } from 'lodash'
+import { difference } from '~/utils/object'
 import Autocomplete from '~/components/elements/Autocomplete'
 import imageUpload from '~/components/utils/ImageUpload'
 import Wysiwyg from '~/components/utils/Wysiwyg'
@@ -163,14 +167,15 @@ export default {
     imageUpload,
     Wysiwyg,
   },
-  async asyncData({ $axios, query }) {
-    let category = {}
-    if (isEmpty(query)) return
+  async asyncData({ $axios, params }) {
     try {
-      category = await $axios.$get(`/api/categories/${query.id}`)
-      return { category }
+      const coreArticle = await $axios.$get(`/api/articles/${params.id}`)
+      const category = await $axios.$get(
+        `/api/categories/${coreArticle.category._id}`
+      )
+      return { article: clone(coreArticle), coreArticle, category }
     } catch (error) {
-      // console.log(error)
+      console.log(error)
     }
   },
   data: () => ({
@@ -210,10 +215,12 @@ export default {
     },
     async submit() {
       try {
-        await this.$axios.post(`/api/articles`, this.article)
-        // send toast
+        await this.$axios.patch(
+          `/api/articles/${this.article.id}`,
+          difference(this.article, this.coreArticle)
+        ) // send toast
         // TODO: Back to right category
-        await this.$router.push(`/category/${this.article.category}`)
+        await this.$router.push(`/article/${this.article.id}`)
       } catch (error) {
         console.log(error)
       }

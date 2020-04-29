@@ -51,11 +51,6 @@ export default {
   computed: {
     ...mapGetters(['haveShop']),
   },
-  methods: {
-    toggleNavbar() {
-      this.menuShow = !this.menuShow
-    },
-  },
 }
 </script>
 <style lang="scss">

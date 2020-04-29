@@ -246,10 +246,11 @@
 
 <script>
 import { mapActions } from 'vuex'
+import { clone } from 'lodash'
 import imageUpload from '~/components/utils/ImageUpload'
 import Wysiwyg from '~/components/utils/Wysiwyg'
 import Autocomplete from '~/components/elements/Autocomplete'
-
+import { difference } from '~/utils/object'
 export default {
   name: 'EditShop',
   components: {
@@ -259,8 +260,8 @@ export default {
   },
   async asyncData({ $axios, store }) {
     const { user } = store.state
-    const shop = await $axios.$get(`/api/users/${user._id}/shops/active`)
-    return { shop }
+    const coreShop = await $axios.$get(`/api/users/${user._id}/shops/active`)
+    return { shop: clone(coreShop), coreShop }
   },
   data: () => ({
     currentStep: 1,
@@ -298,7 +299,10 @@ export default {
         await this.checkValidation()
         // Only Step 4
         this.loadState.update = true
-        await this.$axios.patch(`/api/shops/${this.shop._id}`, this.shop)
+        await this.$axios.patch(
+          `/api/shops/${this.shop._id}`,
+          difference(this.shop, this.coreShop)
+        )
         // Update user in storage
         await this.getMe()
         // Todo: Get shop

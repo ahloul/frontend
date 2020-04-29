@@ -34,17 +34,12 @@
 
 <script>
 /**
- * Default top navigation for desktop view.
+ * Default top navigation for mobile view.
  */
 import { mapGetters } from 'vuex'
 
 export default {
-  name: 'Navigation',
-  data() {
-    return {
-      menuShow: false,
-    }
-  },
+  name: 'Navbar',
   computed: {
     ...mapGetters(['haveShop']),
   },

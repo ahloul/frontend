@@ -13,7 +13,7 @@
         v-for="category in categories"
         :key="category._id"
         class="animated category-item"
-        @click="goToDetail"
+        @click="goToDetail(category)"
       >
         <div class="flex items-center p-6">
           <div class="min-w-0 flex-1 flex items-center">
@@ -22,14 +22,16 @@
                 <div class="text-xl leading-5 font-bold truncate">
                   {{ category.name }}
                 </div>
-                <!--
                 <div
                   class="mt-2 flex items-center text-sm leading-5 text-info inline-block align-middle"
                 >
-                  <icon name="cube-outline" width="15" />
-                  <span class="ml-1">214 Artikel</span>
+                  <icon name="keypad-outline" width="15" />
+                  <span v-if="category.article_count" class="ml-1"
+                    >{{ category.article_count }} Artikel</span
+                  >
+                  <span v-else class="ml-1">Keine Artikel</span>
                 </div>
-              --></div>
+              </div>
             </div>
           </div>
           <div>
@@ -54,8 +56,8 @@ export default {
     return { categories }
   },
   methods: {
-    goToDetail() {
-      this.$router.push('/category')
+    goToDetail({ _id }) {
+      this.$router.push(`/category/${_id}`)
     },
   },
 }
@@ -64,7 +66,7 @@ export default {
 <style lang="scss" scoped>
 .category {
   &-box {
-    @apply max-w-md mx-auto;
+    @apply max-w-xl mx-auto;
   }
 
   &-item {

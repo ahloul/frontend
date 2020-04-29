@@ -1,6 +1,5 @@
 <template>
   <div class="max-w-md mt-5">
-    <pre>{{ user }}</pre>
     <div class="mt-3 flex justify-center">
       <div class="max-w-sm p-3 w-40">
         <image-upload
@@ -70,6 +69,8 @@
 
 <script>
 import { mapActions } from 'vuex'
+import { clone } from 'lodash'
+import { difference } from '~/utils/object'
 import imageUpload from '~/components/utils/ImageUpload'
 import Wysiwyg from '~/components/utils/Wysiwyg'
 import Autocomplete from '~/components/elements/Autocomplete'
@@ -83,8 +84,8 @@ export default {
     Wysiwyg,
   },
   async asyncData({ $axios }) {
-    const user = await $axios.$get('/api/users/me')
-    return { user }
+    const coreUser = await $axios.$get('/api/users/me')
+    return { user: clone(coreUser), coreUser }
   },
   data: () => ({
     pending: false,
@@ -102,8 +103,10 @@ export default {
         // Set pending
         this.pending = true
         // Save new User
-        await this.$axios.patch(`/api/users/${this.user._id}`, this.user)
-
+        await this.$axios.patch(
+          `/api/users/${this.user._id}`,
+          difference(this.user, this.coreUser)
+        )
         // Update user in storage
         await this.getMe()
 

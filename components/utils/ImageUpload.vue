@@ -92,9 +92,7 @@ export default {
     },
     async removeImageAction() {
       if (this.imgLocal.id)
-        await this.$axios.$delete(`/api/media`, {
-          data: { id: this.imgLocal.id },
-        })
+        await this.$axios.$delete(`/api/media/${this.imgLocal.id}`)
       this.$emit('target', {})
     },
   },

@@ -1,154 +1,161 @@
 <template>
-  <div class="max-w-md mt-5">
-    <image-upload
-      folder="article"
-      :image="article.picture"
-      @target="selectImage"
-    />
+  <div>
+    <div class="flex justify-start my-4">
+      <n-link :to="`/article/${article.id}`" class="button icon-r"
+        ><icon name="arrow-ios-back-outline" /> Zurück</n-link
+      >
+    </div>
+    <div class="max-w-md mx-auto mt-5">
+      <image-upload
+        folder="article"
+        :image="article.picture"
+        @target="selectImage"
+      />
 
-    <ValidationObserver v-slot="{ handleSubmit }" slim>
-      <form @submit.prevent="handleSubmit(submit)">
-        <!-- userLocation INPUT -->
-        <label class="block">
-          <span>Kategorie</span>
-          <autocomplete
-            endpoint="categories"
-            :value="articleCategory"
-            @selection="selectCategory"
-          />
-        </label>
-
-        <ValidationProvider v-slot="{ errors }" rules="required">
-          <!-- INPUT articleName -->
+      <ValidationObserver v-slot="{ handleSubmit }" slim>
+        <form @submit.prevent="handleSubmit(submit)">
+          <!-- userLocation INPUT -->
           <label class="block">
-            <span>Name des Artikels</span>
-            <input
-              id="articleName"
-              v-model="article.name"
-              name="Artikel"
-              type="text"
-              class="form-input"
-              placeholder="z.B. Kugelschreiber"
+            <span>Kategorie</span>
+            <autocomplete
+              endpoint="categories"
+              :value="articleCategory"
+              @selection="selectCategory"
             />
-            <div class="error">{{ errors[0] }}</div>
           </label>
-        </ValidationProvider>
 
-        <!-- INPUT articleStock -->
-        <label class="block" for="articleStock">
-          <span>Lagerbestand</span>
-          <ValidationProvider
-            v-if="haveStock"
-            v-slot="{ errors }"
-            tag="div"
-            name="Lagerbestand"
-            rules="numeric"
-          >
-            <div class="flex">
+          <ValidationProvider v-slot="{ errors }" rules="required">
+            <!-- INPUT articleName -->
+            <label class="block">
+              <span>Name des Artikels</span>
               <input
-                id="articleStock"
-                v-model.number="article.stock"
-                type="number"
-                class="form-input block w-full"
-                placeholder="z.B. 250"
+                id="articleName"
+                v-model="article.name"
+                name="Artikel"
+                type="text"
+                class="form-input"
+                placeholder="z.B. Kugelschreiber"
               />
-              <button class="w-auto" @click="removeStock">
-                <icon name="close-outline" fill="currentColor" width="20" />
-              </button>
-
-              <span class="error">{{ errors[0] }}</span>
-            </div>
+              <div class="error">{{ errors[0] }}</div>
+            </label>
           </ValidationProvider>
-          <div v-else>
-            <button class="primary" @click="addStock">
-              Lagerbestand anlegen
+
+          <!-- INPUT articleStock -->
+          <label class="block" for="articleStock">
+            <span>Lagerbestand</span>
+            <ValidationProvider
+              v-if="haveStock"
+              v-slot="{ errors }"
+              tag="div"
+              name="Lagerbestand"
+              rules="numeric"
+            >
+              <div class="flex">
+                <input
+                  id="articleStock"
+                  v-model.number="article.stock"
+                  type="number"
+                  class="form-input block w-full"
+                  placeholder="z.B. 250"
+                />
+                <button class="w-auto" @click="removeStock">
+                  <icon name="close-outline" fill="currentColor" width="20" />
+                </button>
+
+                <span class="error">{{ errors[0] }}</span>
+              </div>
+            </ValidationProvider>
+            <div v-else>
+              <button class="primary" @click="addStock">
+                Lagerbestand anlegen
+              </button>
+            </div>
+          </label>
+
+          <!-- INPUT articlePrice -->
+          <label class="block" for="articlePrice">
+            <span>Stückpreis</span>
+            <ValidationProvider
+              v-slot="{ errors }"
+              name="Preis"
+              rules="decimal|required"
+            >
+              <!-- articlePrice INPUT -->
+              <currency-input
+                v-model="article.price"
+                class="form-input"
+                locale="de"
+                placeholder="z.B. 12,00"
+              />
+              <span class="error">{{ errors[0] }}</span>
+            </ValidationProvider>
+          </label>
+
+          <!-- TAX INPUT -->
+          <label class="block">
+            <span>Steuersatz</span>
+            <ValidationProvider
+              v-slot="{ errors }"
+              mode="lazy"
+              slim
+              rules="required"
+              name="Steuersatz"
+            >
+              <select v-model="article.tax" class="form-select w-full">
+                <option :value="19">
+                  19 %
+                </option>
+                <option :value="7">
+                  7 %
+                </option>
+                <option :value="0">
+                  Steuerfrei
+                </option>
+              </select>
+              <span class="error">{{ errors[0] }}</span>
+            </ValidationProvider>
+          </label>
+          <!-- TEXTAREA Description -->
+          <label class="block mb-3">
+            <span>Artikelbeschreibung</span>
+            <ValidationProvider v-slot="{ errors }" name="Artikelbeschreibung">
+              <wysiwyg
+                :initial-content="article.description"
+                @content="(data) => (article.description = data)"
+              />
+              <span class="error-message">{{ errors[0] }}</span>
+            </ValidationProvider>
+          </label>
+
+          <!-- CHECKBOX published -->
+          <label class="inline-block my-3">
+            <input
+              v-model="article.published"
+              type="checkbox"
+              class="form-checkbox"
+              checked
+            />
+            <span class="ml-2"
+              >Artikel wird
+              <span class="font-bold">{{
+                article.published ? 'öffentlich' : 'nicht öffentlich'
+              }}</span>
+              geschaltet.</span
+            >
+          </label>
+
+          <div class="flex justify-end my-5">
+            <button
+              class="primary"
+              :class="{ 'spinner-light': loadState.create }"
+              type="submit"
+            >
+              Speichern
             </button>
           </div>
-        </label>
-
-        <!-- INPUT articlePrice -->
-        <label class="block" for="articlePrice">
-          <span>Stückpreis</span>
-          <ValidationProvider
-            v-slot="{ errors }"
-            name="Preis"
-            rules="decimal|required"
-          >
-            <!-- articlePrice INPUT -->
-            <currency-input
-              v-model="article.price"
-              class="form-input"
-              locale="de"
-              placeholder="z.B. 12,00"
-            />
-            <span class="error">{{ errors[0] }}</span>
-          </ValidationProvider>
-        </label>
-
-        <!-- TAX INPUT -->
-        <label class="block">
-          <span>Steuersatz</span>
-          <ValidationProvider
-            v-slot="{ errors }"
-            mode="lazy"
-            slim
-            rules="required"
-            name="Steuersatz"
-          >
-            <select v-model="article.tax" class="form-select w-full">
-              <option :value="19">
-                19 %
-              </option>
-              <option :value="7">
-                7 %
-              </option>
-              <option :value="0">
-                Steuerfrei
-              </option>
-            </select>
-            <span class="error">{{ errors[0] }}</span>
-          </ValidationProvider>
-        </label>
-        <!-- TEXTAREA Description -->
-        <label class="block mb-3">
-          <span>Artikelbeschreibung</span>
-          <ValidationProvider v-slot="{ errors }" name="Artikelbeschreibung">
-            <wysiwyg
-              :initial-content="article.description"
-              @content="(data) => (article.description = data)"
-            />
-            <span class="error-message">{{ errors[0] }}</span>
-          </ValidationProvider>
-        </label>
-
-        <!-- CHECKBOX published -->
-        <label class="inline-block my-3">
-          <input
-            v-model="article.published"
-            type="checkbox"
-            class="form-checkbox"
-            checked
-          />
-          <span class="ml-2"
-            >Artikel wird
-            <span class="font-bold">{{
-              article.published ? 'öffentlich' : 'nicht öffentlich'
-            }}</span>
-            geschaltet.</span
-          >
-        </label>
-
-        <div class="flex justify-end my-5">
-          <button
-            class="primary"
-            :class="{ 'spinner-light': loadState.create }"
-            type="submit"
-          >
-            Speichern
-          </button>
-        </div>
-      </form>
-    </ValidationObserver>
+        </form>
+      </ValidationObserver>
+    </div>
   </div>
 </template>
 

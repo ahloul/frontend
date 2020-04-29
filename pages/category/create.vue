@@ -1,6 +1,6 @@
 <template>
   <div class="max-w-md mt-5">
-    <ValidationObserver v-slot="{ handleSubmit }" slim>
+    <ValidationObserver ref="category" v-slot="{ handleSubmit }" slim>
       <form @submit.prevent="handleSubmit(submit)">
         <!-- categoryName INPUT -->
         <label class="block">
@@ -48,7 +48,10 @@ export default {
         this.loadState.create = true
         await this.$axios.post(`/api/categories`, this.category)
         this.loadState.create = false
-        this.category = {}
+        this.$nextTick(() => {
+          this.category = {}
+          this.$refs.category.reset()
+        })
         // send toast
         await this.$router.push('/category')
       } catch (error) {

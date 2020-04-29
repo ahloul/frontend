@@ -52,7 +52,7 @@
               </div>
             </div>
           </div>
-          <div class="pr-3">
+          <div class="right-icon text-light pr-5">
             <icon name="chevron-right" />
           </div>
         </div>
@@ -114,6 +114,12 @@ export default {
 
     &:hover {
       @apply shadow-lg;
+
+      .right-icon {
+        @apply transition ease-in-out duration-300;
+        @apply text-primary;
+        transform: translate(0.7em, 0);
+      }
     }
 
     &:focus {

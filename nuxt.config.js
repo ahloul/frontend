@@ -156,7 +156,7 @@ export default {
       'nuxt-bugsnag',
       {
         config: {
-          apiKey: process.env.VUE_APP_BUG_SNAG,
+          apiKey: process.env.BUGSNAG_API_KEY,
         },
       },
     ],

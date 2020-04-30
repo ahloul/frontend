@@ -31,7 +31,7 @@
             <span class="block w-full">
               <button
                 class="primary w-full"
-                :class="{ 'spinner-dark': pending }"
+                :class="{ 'spinner-light': pending }"
                 type="submit"
               >
                 Neues Passwort anfordern
@@ -78,6 +78,10 @@ export default {
         // Post forgot api endpoint
         await this.$axios.post(`/api/password-resets`, this.guest)
 
+        // Send Notification
+        this.$store.dispatch('toast/add', {
+          message: `Du hast Post bekommen ✉️!`,
+        })
         // Unset Loading
         this.pending = false
 

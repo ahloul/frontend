@@ -1,11 +1,21 @@
 <template>
   <div class="min-h-screen flex flex-col justify-center p-2">
     <div class="w-full max-w-sm mx-auto">
-      <h1 class="text-center font-bold text-secondary">
+      <h1 class="text-center font-bold text-secondary mb-5">
         get it!
       </h1>
     </div>
-
+    <div class="max-w-xs mx-auto">
+      <img
+        :src="user.picture.url"
+        width="100"
+        class="rounded-full mx-auto"
+        :alt="user.name"
+      />
+      <p class="text-center text-lg text-primary mt-3 select-none">
+        {{ user.name }}
+      </p>
+    </div>
     <div class="w-full max-w-sm mx-auto">
       <ValidationObserver ref="newPassword" v-slot="{ handleSubmit }" slim>
         <form @submit.prevent="handleSubmit(localNewPassword)">
@@ -53,7 +63,7 @@
             <span class="block w-full">
               <button
                 class="primary w-full"
-                :class="{ 'spinner-dark': pending }"
+                :class="{ 'spinner-light': pending }"
                 type="submit"
               >
                 Neues Passwort speichern
@@ -84,7 +94,16 @@ export default {
   name: 'Login',
   layout: 'blank',
   middleware: 'notAuthenticated',
-
+  async asyncData({ params, store, redirect, $axios }) {
+    try {
+      const { id } = params
+      const user = await $axios.$get(`/api/password-resets/${id}`)
+      return { user, token: id }
+    } catch (e) {
+      console.log(e)
+      redirect('/account/forgot')
+    }
+  },
   data: () => ({
     pending: false,
     password: '',
@@ -100,6 +119,11 @@ export default {
         // TODO: I will move that away
         await this.$axios.patch(`/api/password-resets/${this.token}`, {
           password: this.password,
+        })
+
+        // Send Notification
+        this.$store.dispatch('toast/add', {
+          message: `Passwort wurde zurückgesetzt`,
         })
 
         // Unset Loading

@@ -32,7 +32,12 @@
       </div>
     </div>
 
-    <div class="flex justify-between sm:justify-end">
+    <div class="flex mt-3">
+      <div class="w-full">
+        <a :href="`tel:${shop.contact.phone}`" class="button primary icon-r"
+          ><icon name="phone" /> Anrufen</a
+        >
+      </div>
       <div>
         <button class="icon" @click="openTab = 1">
           <icon
@@ -53,26 +58,6 @@
           />
         </button>
       </div>
-      <div>
-        <button class="icon" @click="openTab = 3">
-          <icon
-            :name="openTab === 3 ? 'clock' : 'clock-outline'"
-            class="mx-1"
-            :height="iconSize"
-            :width="iconSize"
-          />
-        </button>
-      </div>
-      <div>
-        <button class="icon" @click="openTab = 4">
-          <icon
-            :name="openTab === 4 ? 'phone' : 'phone-outline'"
-            class="mx-1"
-            :height="iconSize"
-            :width="iconSize"
-          />
-        </button>
-      </div>
     </div>
     <div class="mt-5">
       <div v-if="openTab === 1">
@@ -84,44 +69,35 @@
           class="mt-5"
         />
         <div v-else v-html="shop.description"></div>
+        <hr class="my-5" />
+        <div v-if="shop.contact" class="flex flex-col text-right">
+          <div class="leading-tight">
+            <a :href="shop.contact.website" target="_blank">Zur Webseite</a>
+          </div>
+        </div>
       </div>
       <div v-else-if="openTab === 2">
         <!-- Map -->
+        <div class="grid grid-cols-3 gap-3">
+          <div v-if="shop.address.locationId" class="flex flex-col">
+            <div class="leading-tight">
+              {{ shop.address.street }} {{ shop.address.houseNumber }}
+            </div>
+            <div class="leading-tight">
+              {{ shop.address.postalCode }} {{ shop.address.city }}
+              {{
+                shop.address.district === shop.address.city
+                  ? ''
+                  : shop.address.district
+              }}
+            </div>
+          </div>
+        </div>
+        <hr class="my-4" />
         <here-map
           :position="shop.displayPosition"
           :polygon="shop.polygonCoordinates"
         />
-      </div>
-      <div v-else-if="openTab === 3">
-        <!-- Clock -->
-        <p class="text-center">Keine Öffnungszeiten angegeben.</p>
-      </div>
-      <div v-else-if="openTab === 4">
-        <!-- Contact -->
-        <div class="flex flex-col">
-          <span class="inline-flex text-primary font-bold">
-            <icon
-              name="phone-outline"
-              class="mx-3"
-              :height="iconSize"
-              :width="iconSize"
-            />
-            <a :href="'tel:' + shop.contact.phone">{{
-              shop.contact.phone
-            }}</a></span
-          >
-          <span class="inline-flex text-primary font-bold mt-3">
-            <icon
-              name="globe"
-              class="mx-3"
-              :height="iconSize"
-              :width="iconSize"
-            />
-            <a :href="shop.contact.website" target="_blank">{{
-              shop.contact.website
-            }}</a></span
-          >
-        </div>
       </div>
     </div>
   </div>

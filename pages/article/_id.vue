@@ -93,7 +93,7 @@ export default {
         await this.$axios.patch(`/api/articles/${this.article.id}`, {
           stock: this.article.stock,
         }) // send toast
-        // TODO: Back to right category
+        this.$store.dispatch('toast/add', { message: `Bestand aktualisiert` })
       } catch (error) {
         console.log(error)
       }

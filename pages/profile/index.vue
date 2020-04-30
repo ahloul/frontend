@@ -1,7 +1,7 @@
 <template>
   <div class="container max-w-lg">
     <div
-      class="animated settings flex flex-col"
+      class="animated bg-white shadow-xs hover:shadow-lg settings flex flex-col"
       @click="$router.push('/profile/settings')"
     >
       <div class="animated-slow absolute settings-icon">
@@ -53,6 +53,8 @@ export default {
         await this.$axios.post(`/api/auth/logout`)
         await this.resetUser()
         await this.$router.push('/')
+        // Send toast
+        this.$store.dispatch('toast/add', { message: `Ausgeloggt 👋` })
       } catch (error) {
         console.log(error)
       }
@@ -63,7 +65,7 @@ export default {
 
 <style lang="scss" scoped>
 .settings {
-  @apply cursor-pointer shadow-none rounded px-6 py-4 mt-3;
+  @apply cursor-pointer rounded px-6 py-4 mt-3;
   .settings-icon {
     @apply opacity-0 text-info;
   }

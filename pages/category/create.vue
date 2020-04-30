@@ -52,7 +52,7 @@ export default {
           this.category = {}
           this.$refs.category.reset()
         })
-        // send toast
+        this.$store.dispatch('toast/add', { message: `Kategorie erstellt!` })
         await this.$router.push('/category')
       } catch (error) {
         this.loadState.create = false

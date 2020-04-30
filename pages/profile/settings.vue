@@ -113,6 +113,9 @@ export default {
         // Set pending
         this.pending = false
 
+        // Send toast
+        this.$store.dispatch('toast/add', { message: `Profil gespeichert` })
+
         // Back to user
         this.$router.push('/profile')
       } catch (error) {

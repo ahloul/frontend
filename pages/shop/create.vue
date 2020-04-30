@@ -11,45 +11,54 @@
       Du kannst jetzt loslegen.
     </modal>
     <!-- Top Buttons -->
-    <!-- Top Buttons -->
     <div class="flex mt-2 justify-between max-w-xs mx-auto">
       <button
-        :class="{ secondary: currentStep == 1 }"
+        :class="{ secondary: step == 1 }"
         class="tooltip"
-        @click="currentStep = 1"
+        @click="step = 1"
       >
-        <icon :name="currentStep == 1 ? 'info' : 'info-outline'" />
-        <div class="tooltip-content" :class="{ active: currentStep == 1 }">
+        <icon :name="step == 1 ? 'info' : 'info-outline'" />
+        <div class="tooltip-content" :class="{ active: step == 1 }">
           Informationen
         </div>
       </button>
       <button
-        :class="{ secondary: currentStep == 2 }"
+        :class="{ secondary: step == 2 }"
         class="tooltip"
-        @click="currentStep = 2"
+        @click="step = 2"
       >
-        <icon :name="currentStep == 2 ? 'pin' : 'pin-outline'" />
-        <div class="tooltip-content" :class="{ active: currentStep == 2 }">
+        <icon :name="step == 2 ? 'pin' : 'pin-outline'" />
+        <div class="tooltip-content" :class="{ active: step == 2 }">
           Kontaktdaten
         </div>
       </button>
       <button
-        :class="{ secondary: currentStep == 3 }"
+        :class="{ secondary: step == 3 }"
         class="tooltip"
-        @click="currentStep = 3"
+        @click="step = 3"
       >
-        <icon :name="currentStep == 3 ? 'camera' : 'camera-outline'" />
-        <div class="tooltip-content" :class="{ active: currentStep == 3 }">
+        <icon :name="step == 3 ? 'car' : 'car-outline'" />
+        <div class="tooltip-content" :class="{ active: step == 3 }">
+          Versandmöglichkeiten
+        </div>
+      </button>
+      <button
+        :class="{ secondary: step == 4 }"
+        class="tooltip"
+        @click="step = 4"
+      >
+        <icon :name="step == 4 ? 'camera' : 'camera-outline'" />
+        <div class="tooltip-content" :class="{ active: step == 4 }">
           Bilder
         </div>
       </button>
       <button
-        :class="{ secondary: currentStep == 4 }"
+        :class="{ secondary: step == 5 }"
         class="tooltip"
-        @click="currentStep = 4"
+        @click="step = 5"
       >
-        <icon :name="currentStep == 4 ? 'edit' : 'edit-outline'" />
-        <div class="tooltip-content" :class="{ active: currentStep == 4 }">
+        <icon :name="step == 5 ? 'edit' : 'edit-outline'" />
+        <div class="tooltip-content" :class="{ active: step == 5 }">
           Beschreibung
         </div>
       </button>
@@ -58,7 +67,7 @@
     <ValidationObserver ref="shop" v-slot="{ handleSubmit }" class="mt-10" slim>
       <form @submit.prevent="handleSubmit(createShop)">
         <!-- Informationen -->
-        <fieldset v-if="currentStep === 1" class="tab-section">
+        <fieldset v-if="step === 1" class="tab-section">
           <p class="tab-heading">
             Vielen Dank für deine Anmeldung! Mit ein paar wenigen Schritten
             helfen wir dir, dein Shop anzulegen. Los gehts!
@@ -136,7 +145,7 @@
           </label>
         </fieldset>
         <!-- Kontaktdaten -->
-        <fieldset v-else-if="currentStep === 2" class="tab-section">
+        <fieldset v-else-if="step === 2" class="tab-section">
           <p class="tab-heading">
             Gib die Addresse deines Shops an damit andere wissen, wo sie dich
             finden können.
@@ -216,8 +225,28 @@
             </ValidationProvider>
           </label>
         </fieldset>
+        <!-- Dispatch Informations -->
+        <fieldset v-else-if="step === 3" class="tab-section">
+          <!-- CHECKBOX published -->
+          <div v-for="(deliveryOption, index) in deliverySelect" :key="index">
+            <label
+              class="flex animated inline-block my-2 bg-white w-full p-3 shadow hover:shadow-lg rounded-lg cursor-pointer"
+            >
+              <input
+                v-model="shop.deliveryOptions"
+                type="checkbox"
+                class="form-checkbox mt-2"
+                :value="deliveryOption.value"
+              />
+              <span class="ml-2"
+                >Ich biete <b>{{ deliveryOption.name }}</b> an.
+                {{ deliveryOption.description }}.</span
+              >
+            </label>
+          </div>
+        </fieldset>
         <!-- Bilder -->
-        <fieldset v-else-if="currentStep === 3" class="tab-section">
+        <fieldset v-else-if="step === 4" class="tab-section">
           <p class="tab-heading">
             Zeig dein Shop mit einem Foto und deinem Logo.
           </p>
@@ -240,7 +269,7 @@
           </div>
         </fieldset>
         <!-- Beschreibung -->
-        <fieldset v-else-if="currentStep === 4" class="tab-section">
+        <fieldset v-else-if="step === 5" class="tab-section">
           <p class="tab-heading">
             Wenn du möchtest, beschreib dein Geschäft mit ein paar Sätzen. Lass
             deiner Kreativität freien lauf!
@@ -260,10 +289,10 @@
 
         <div class="flex justify-between max-w-md mx-auto">
           <button
-            v-if="currentStep !== 1"
+            v-if="step !== 1"
             type="button"
             class="border my-10"
-            @click="currentStep--"
+            @click="step--"
           >
             Zurück
           </button>
@@ -272,7 +301,7 @@
             class="primary my-10 ml-auto"
             :class="{ 'spinner-light': loadState.create }"
           >
-            {{ currentStep === 4 ? 'Speichern' : 'Weiter' }}
+            {{ step === 4 ? 'Speichern' : 'Weiter' }}
           </button>
         </div>
       </form>
@@ -295,11 +324,30 @@ export default {
     Wysiwyg,
   },
   data: () => ({
-    currentStep: 1,
+    step: 1,
     showModal: false,
     loadState: {
       create: false,
     },
+    deliverySelect: [
+      {
+        name: 'Lokale lieferung',
+        value: 'LD',
+        description:
+          'Wir sorgen dafür, dass unsere Kunden Ihre ware Zeitnah erhalten',
+      },
+      {
+        name: 'Post- und Paketversand',
+        value: 'MU',
+        description:
+          'Auf wunsch versenden wir die Pakete auch per Brief und Post',
+      },
+      {
+        name: 'Abholung',
+        value: 'PU',
+        description: 'Kunden können unsere Waren auch vorort abholen',
+      },
+    ],
     // http://vee-validate.logaretm.com/v2/guide/interaction.html
     validationMode: 'lazy',
     shop: {
@@ -313,6 +361,7 @@ export default {
       contact: {},
       logo: {},
       description: null,
+      deliveryOptions: [],
     },
   }),
   computed: {
@@ -328,7 +377,7 @@ export default {
         return
       }
 
-      if (step > 4) {
+      if (step > 5) {
         this.onSubmit()
         return
       }
@@ -357,7 +406,7 @@ export default {
     async createShop() {
       try {
         // Only Step 1
-        if (this.currentStep === 1) {
+        if (this.step === 1) {
           // Check if name is valid on submit
           const isValid = await this.checkName()
           // Check if other forms are valid
@@ -368,7 +417,7 @@ export default {
           })
         }
         // Only Step 4
-        if (this.currentStep === 4) {
+        if (this.step === 4) {
           this.loadState.create = true
           await this.$axios.post(`/api/shops`, this.shop)
           // Update user in storage
@@ -378,7 +427,7 @@ export default {
           this.showModal = true
         }
         // Go to next step
-        this.currentStep++
+        this.step++
       } catch (error) {
         this.loadState.create = false
         console.log(error)

@@ -187,7 +187,6 @@ export default {
   }),
   computed: {
     articleCategory(e) {
-      // if (!this.myUser.location) return
       return this.category?.name
     },
     haveStock() {
@@ -215,7 +214,7 @@ export default {
     async submit() {
       try {
         await this.$axios.post(`/api/articles`, this.article)
-        // send toast
+        this.$store.dispatch('toast/add', { message: `Artikel erstellt!` })
         // TODO: Back to right category
         await this.$router.push(`/category/${this.article.category}`)
       } catch (error) {

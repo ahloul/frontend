@@ -242,8 +242,9 @@ export default {
         await this.$axios.patch(
           `/api/articles/${this.article.id}`,
           difference(this.article, this.coreArticle)
-        ) // send toast
-        // TODO: Back to right category
+        )
+        // send toast
+        this.$store.dispatch('toast/add', { message: `Artikel bearbeitet!` })
         await this.$router.push(`/article/${this.article.id}`)
       } catch (error) {
         console.log(error)
@@ -254,6 +255,7 @@ export default {
       this.loadState.delete = true
       await this.$axios.delete(`/api/articles/${this.article.id}`)
       this.loadState.delete = false
+      this.$store.dispatch('toast/add', { message: `Artikel gelöscht!` })
       await this.$router.push(`/category/${this.category._id}`)
     },
   },

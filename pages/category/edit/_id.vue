@@ -80,7 +80,7 @@ export default {
           this.category = {}
           this.$refs.category.reset()
         })
-        // send toast
+        this.$store.dispatch('toast/add', { message: `Kategorie geändert!` })
         await this.$router.push('/category')
       } catch (error) {
         this.loadState.update = false
@@ -92,6 +92,9 @@ export default {
       this.loadState.delete = true
       await this.$axios.delete(`/api/categories/${this.category._id}`)
       this.loadState.delete = false
+      this.$store.dispatch('toast/add', {
+        message: `Kategorie samt Inhalt gelöscht!`,
+      })
       await this.$router.push('/category')
     },
   },

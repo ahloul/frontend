@@ -1,5 +1,6 @@
 <template>
   <div>
+    <toast />
     <navigation
       class="hidden md:block sticky top-0 py-2 container mx-auto px-2"
     />
@@ -10,10 +11,12 @@
 <script>
 import Navigation from '~/components/layout/Navigation'
 import Navbar from '~/components/layout/Navbar'
+import Toast from '~/components/elements/Toast'
 export default {
   components: {
     Navigation,
     Navbar,
+    Toast,
   },
 }
 </script>

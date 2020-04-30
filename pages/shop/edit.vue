@@ -13,7 +13,7 @@
       <button
         :class="{ secondary: step == 1 }"
         class="tooltip"
-        @click="changeStep(1)"
+        @click="step = 1"
       >
         <icon :name="step == 1 ? 'info' : 'info-outline'" />
         <div class="tooltip-content" :class="{ active: step == 1 }">
@@ -23,7 +23,7 @@
       <button
         :class="{ secondary: step == 2 }"
         class="tooltip"
-        @click="changeStep(2)"
+        @click="step = 2"
       >
         <icon :name="step == 2 ? 'pin' : 'pin-outline'" />
         <div class="tooltip-content" :class="{ active: step == 2 }">
@@ -33,20 +33,30 @@
       <button
         :class="{ secondary: step == 3 }"
         class="tooltip"
-        @click="changeStep(3)"
+        @click="step = 3"
       >
-        <icon :name="step == 3 ? 'camera' : 'camera-outline'" />
+        <icon :name="step == 3 ? 'car' : 'car-outline'" />
         <div class="tooltip-content" :class="{ active: step == 3 }">
-          Bilder
+          Versandmöglichkeiten
         </div>
       </button>
       <button
         :class="{ secondary: step == 4 }"
         class="tooltip"
-        @click="changeStep(4)"
+        @click="step = 4"
       >
-        <icon :name="step == 4 ? 'edit' : 'edit-outline'" />
+        <icon :name="step == 4 ? 'camera' : 'camera-outline'" />
         <div class="tooltip-content" :class="{ active: step == 4 }">
+          Bilder
+        </div>
+      </button>
+      <button
+        :class="{ secondary: step == 5 }"
+        class="tooltip"
+        @click="step = 5"
+      >
+        <icon :name="step == 5 ? 'edit' : 'edit-outline'" />
+        <div class="tooltip-content" :class="{ active: step == 5 }">
           Beschreibung
         </div>
       </button>
@@ -204,8 +214,28 @@
             </ValidationProvider>
           </label>
         </fieldset>
-        <!-- Bilder -->
+        <!-- Dispatch Informations -->
         <fieldset v-else-if="step === 3" class="tab-section">
+          <!-- CHECKBOX published -->
+          <div v-for="(deliveryOption, index) in deliverySelect" :key="index">
+            <label
+              class="flex animated inline-block my-2 bg-white w-full p-3 shadow hover:shadow-lg rounded-lg cursor-pointer"
+            >
+              <input
+                v-model="shop.deliveryOptions"
+                type="checkbox"
+                class="form-checkbox mt-2"
+                :value="deliveryOption.value"
+              />
+              <span class="ml-2"
+                >Ich biete <b>{{ deliveryOption.name }}</b> an.
+                {{ deliveryOption.description }}.</span
+              >
+            </label>
+          </div>
+        </fieldset>
+        <!-- Bilder -->
+        <fieldset v-else-if="step === 4" class="tab-section">
           <div class="mt-5 flex justify-center">
             <image-upload
               folder="logo"
@@ -223,8 +253,9 @@
             />
           </div>
         </fieldset>
+
         <!-- Beschreibung -->
-        <fieldset v-else-if="step === 4" class="tab-section">
+        <fieldset v-else-if="step === 5" class="tab-section">
           <!-- TEXTAREA Description -->
           <label class="block">
             <ValidationProvider v-slot="{ errors }" name="Benutzertext">
@@ -275,6 +306,25 @@ export default {
     step: 1,
     validationMode: 'lazy',
     showModal: false,
+    deliverySelect: [
+      {
+        name: 'Lokale lieferung',
+        value: 'LD',
+        description:
+          'Wir sorgen dafür, dass unsere Kunden Ihre ware Zeitnah erhalten',
+      },
+      {
+        name: 'Post- und Paketversand',
+        value: 'MU',
+        description:
+          'Auf wunsch versenden wir die Pakete auch per Brief und Post',
+      },
+      {
+        name: 'Abholung',
+        value: 'PU',
+        description: 'Kunden können unsere Waren auch vorort abholen',
+      },
+    ],
     loadState: {
       pending: false,
     },
@@ -315,6 +365,7 @@ export default {
         await this.getMe()
         // Todo: Get shop
         this.loadState.update = false
+        this.$store.dispatch('toast/add', { message: `Shop geändert!` })
         this.$router.push('/shop')
       } catch (error) {
         this.loadState.update = false

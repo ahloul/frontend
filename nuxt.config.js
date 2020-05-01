@@ -178,7 +178,7 @@ export default {
           },
         ],
         langDir: 'lang/',
-        defaultLocale: 'en',
+        defaultLocale: 'de',
         lazy: true,
       },
     ],

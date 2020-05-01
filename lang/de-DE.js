@@ -16,6 +16,7 @@ export default {
     intro:
       'Vielen Dank für Deine Anmeldung! Mit ein paar wenigen Schritten helfen wir Dir, deinen Shop anzulegen. Los gehts!',
     name_of_shop: 'Name Deines Shops',
+    name_of_shop_example: 'Sam u. Partner GmbH',
     legal_form: 'Rechtsform',
     legal_form_options: {
       independent: 'Selbstständig',
@@ -29,6 +30,8 @@ export default {
     no_of_employees: 'Anzahl Mitarbeiter',
     shop_created_confirmation:
       'Du hast erfogreich einen Shop erstellt! <br />Du kannst jetzt loslegen.',
+    shop_error_confirmation:
+      'Schau noch einmal nach, ob du alle Felder korrekt ausgefüllt hast.',
   },
   contact_data: {
     section_name: 'Kontaktdaten',

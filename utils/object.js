@@ -1,4 +1,4 @@
-import { transform, isObject, isEqual } from 'lodash'
+import { transform, isObject, isEqual, isArray } from 'lodash'
 
 /**
  * Deep diff between two object, using lodash
@@ -6,12 +6,14 @@ import { transform, isObject, isEqual } from 'lodash'
  * @param  {Object} base   Object to compare with
  * @return {Object}        Return a new object who represent the diff
  */
-export const difference = (object, base) => {
+export const difference = (object, base, ignoreArray) => {
   function changes(object, base) {
     return transform(object, function (result, value, key) {
       if (!isEqual(value, base[key])) {
         result[key] =
-          isObject(value) && isObject(base[key])
+          isObject(value) &&
+          (ignoreArray ? !isArray(value) : true) &&
+          isObject(base[key])
             ? changes(value, base[key])
             : value
       }

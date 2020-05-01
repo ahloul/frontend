@@ -45,7 +45,7 @@
             <validation-provider
               v-slot="{ errors }"
               mode="lazy"
-              name="email"
+              name="Email"
               rules="email|required"
             >
               <input
@@ -159,7 +159,7 @@ export default {
         // TODO: Catch error
         this.pending = false
         this.$refs.signup.setErrors({
-          email: [data.message],
+          Email: [data.message],
         })
       }
     },

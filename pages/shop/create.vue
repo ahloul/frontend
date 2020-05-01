@@ -454,7 +454,7 @@ export default {
   }
 }
 .tooltip {
-  @apply relative mx-2 z-10;
+  @apply relative z-10;
   &-content {
     @apply absolute p-3;
     @apply transition duration-150 ease-in-out;

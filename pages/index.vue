@@ -12,7 +12,7 @@
       --></div>
       <div class="self-center flex-1 text-center px-4 py-2 m-2">
         <h1 class="antialiased text-white font-semibold">
-          Herzlich Willkommen
+          {{ $t('processes.welcome') }}
         </h1>
       </div>
       <div class="flex-1 text-center px-4 py-2 m-2">
@@ -21,14 +21,12 @@
     </div>
     <div class="card text-primary mt-5">
       <p class="font-bold max-w-md mx-auto py-3 text-center">
-        Aktuell befinden wir uns im Aufbau. <br />Du kannst nun deinen Shop mit
-        Leben füllen, indem du erste Artikel einpflegst. Damit hilfst du bei der
-        Weiterentwicklung unserer Plattform.
+        {{ $t('processes.intro') }}
       </p>
       <div class="w-auto max-w-xs mx-auto">
-        <n-link class="button primary mx-auto" to="/category"
-          >Artikel hinzufügen</n-link
-        >
+        <n-link class="button primary mx-auto" to="/category">
+          {{ $t('processes.add_article') }}
+        </n-link>
       </div>
     </div>
     <!-- {{ shop }} -->

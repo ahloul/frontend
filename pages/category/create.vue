@@ -5,14 +5,14 @@
         <!-- categoryName INPUT -->
         <label class="block">
           <ValidationProvider v-slot="{ errors }" mode="lazy" rules="required">
-            <span>Name der Kategorie</span>
+            <span>{{ $t('category.name') }}</span>
             <input
               id="categoryName"
               v-model="category.name"
               name="Kategorie"
               type="text"
               class="form-input"
-              placeholder="z.B. Getränke"
+              :placeholder="$t('category.hint')"
             />
             <div class="error">{{ errors[0] }}</div>
           </ValidationProvider>
@@ -24,7 +24,7 @@
             :class="{ 'spinner-light': loadState.create }"
             type="submit"
           >
-            Kategorie anlegen
+            {{ $t('category.create') }}
           </button>
         </div>
       </form>

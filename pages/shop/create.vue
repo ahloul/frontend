@@ -7,8 +7,7 @@
       confirm="Zum shop"
       centered
       @confirm="$router.push('/')"
-      >Du hast erfogreich ein Shop erstellt! <br />
-      Du kannst jetzt loslegen.
+      >{{ $t('information.shop_created_confirmation') }}
     </modal>
     <!-- Top Buttons -->
     <div class="flex mt-2 justify-between max-w-xs mx-auto">
@@ -19,7 +18,7 @@
       >
         <icon :name="step == 1 ? 'info' : 'info-outline'" />
         <div class="tooltip-content" :class="{ active: step == 1 }">
-          Informationen
+          {{ $t('information.section_name') }}
         </div>
       </button>
       <button
@@ -29,7 +28,7 @@
       >
         <icon :name="step == 2 ? 'pin' : 'pin-outline'" />
         <div class="tooltip-content" :class="{ active: step == 2 }">
-          Kontaktdaten
+          {{ $t('contact_data.section_name') }}
         </div>
       </button>
       <button
@@ -39,7 +38,7 @@
       >
         <icon :name="step == 3 ? 'car' : 'car-outline'" />
         <div class="tooltip-content" :class="{ active: step == 3 }">
-          Versandmöglichkeiten
+          {{ $t('delivery_options.section_name') }}
         </div>
       </button>
       <button
@@ -49,7 +48,7 @@
       >
         <icon :name="step == 4 ? 'camera' : 'camera-outline'" />
         <div class="tooltip-content" :class="{ active: step == 4 }">
-          Bilder
+          {{ $t('picture.section_name') }}
         </div>
       </button>
       <button
@@ -59,7 +58,7 @@
       >
         <icon :name="step == 5 ? 'edit' : 'edit-outline'" />
         <div class="tooltip-content" :class="{ active: step == 5 }">
-          Beschreibung
+          {{ $t('description.section_name') }}
         </div>
       </button>
     </div>
@@ -69,8 +68,7 @@
         <!-- Informationen -->
         <fieldset v-if="step === 1" class="tab-section">
           <p class="tab-heading">
-            Vielen Dank für deine Anmeldung! Mit ein paar wenigen Schritten
-            helfen wir dir, dein Shop anzulegen. Los gehts!
+            {{ $t('information.intro') }}
           </p>
           <!-- shopName INPUT -->
           <label class="block">
@@ -84,13 +82,13 @@
               }"
               :mode="validationMode"
             >
-              <span>Name des shops</span>
+              <span>{{ $t('information.name_of_shop') }}</span>
               <input
                 v-model="shop.name"
                 name="Shopname"
                 type="text"
                 class="form-input"
-                placeholder="z.B. Sam & Partner GbR"
+                :placeholder="$t('information.name_of_shop_example')"
               />
               <div class="error">{{ errors[0] }}</div>
             </ValidationProvider>
@@ -98,7 +96,7 @@
 
           <!-- companyType SELECT -->
           <label class="block" for="companyType">
-            <span>Rechtsform</span>
+            <span>{{ $t('information.legal_form') }}</span>
             <ValidationProvider
               v-slot="{ errors }"
               rules="required"
@@ -110,16 +108,24 @@
                 v-model="shop.companyType"
                 class="form-select"
               >
-                <option value="SS">Selbstständig</option>
-                <option value="EU">Einzelunternehmer</option>
-                <option value="PG"
-                  >Personengesellschaft (z. B. GdbR, OHG, KG)</option
-                >
-                <option value="GN">Gemeinnützig / Verein</option>
-                <option value="GP"
-                  >Gesellschaft in privater Hand (z. B. GmbH, UG, Ltd.)</option
-                >
-                <option value="AG">Aktiengesellschaft</option>
+                <option value="SS">
+                  {{ $t('information.legal_form_options.independent') }}
+                </option>
+                <option value="EU">
+                  {{ $t('information.legal_form_options.sole') }}
+                </option>
+                <option value="PG">
+                  {{ $t('information.legal_form_options.partnership') }}
+                </option>
+                <option value="GN">
+                  {{ $t('information.legal_form_options.non_profit') }}
+                </option>
+                <option value="GP">
+                  {{ $t('information.legal_form_options.private_partnership') }}
+                </option>
+                <option value="AG">
+                  {{ $t('information.legal_form_options.stock_company') }}
+                </option>
               </select>
               <span class="error">{{ errors[0] }}</span>
             </ValidationProvider>
@@ -127,7 +133,7 @@
 
           <!-- companySize SELECT -->
           <label class="block" for="companySize">
-            <span>Mitarbeiterzahl</span>
+            <span>{{ $t('information.no_of_employees') }}</span>
             <ValidationProvider
               v-slot="{ errors }"
               rules="required"
@@ -147,13 +153,14 @@
         <!-- Kontaktdaten -->
         <fieldset v-else-if="step === 2" class="tab-section">
           <p class="tab-heading">
-            Gib die Addresse deines Shops an damit andere wissen, wo sie dich
-            finden können.
+            {{ $t('contact_data.intro') }}
           </p>
 
           <!-- userLocation INPUT -->
           <label class="block">
-            <span>Vollständige Adresse</span>
+            <span>
+              {{ $t('contact_data.full_address') }}
+            </span>
             <autocomplete
               name="Strasse"
               :value="companyLocation"
@@ -188,7 +195,9 @@
 
           <!-- phone INPUT -->
           <label class="block" for="companyPhone">
-            <span>Telefonnummer</span>
+            <span>
+              {{ $t('contact_data.phone_number') }}
+            </span>
             <ValidationProvider
               v-slot="{ errors }"
               rules="required"
@@ -200,7 +209,7 @@
                 v-model="shop.contact.phone"
                 type="text"
                 class="form-input mt-1 block w-full"
-                placeholder="Vorwahl und Nummer"
+                :placeholder="$t('contact_data.prefix_and_number')"
               />
               <span class="error">{{ errors[0] }}</span>
             </ValidationProvider>
@@ -208,7 +217,9 @@
 
           <!-- Website INPUT -->
           <label class="form-label w-full" for="companyPhone">
-            <span>Webseite</span>
+            <span>
+              {{ $t('contact_data.website') }}
+            </span>
             <ValidationProvider
               v-slot="{ errors }"
               rules="max:200|validUrl"
@@ -238,23 +249,23 @@
                 class="form-checkbox mt-2"
                 :value="deliveryOption.value"
               />
-              <span class="ml-2"
-                >Ich biete <b>{{ deliveryOption.name }}</b> an.
-                {{ deliveryOption.description }}.</span
-              >
+              <span class="ml-2">
+                {{ $t('delivery_options.offer_prefix') }}
+                <b>{{ $t(deliveryOption.name) }}</b>
+                {{ $t('delivery_options.offer_suffix') }}.
+                {{ $t(deliveryOption.description) }}.
+              </span>
             </label>
           </div>
         </fieldset>
         <!-- Bilder -->
         <fieldset v-else-if="step === 4" class="tab-section">
-          <p class="tab-heading">
-            Zeig dein Shop mit einem Foto und deinem Logo.
-          </p>
+          <p class="tab-heading">{{ $t('picture.intro') }}</p>
 
           <div class="mt-5 flex justify-center">
             <image-upload
               folder="logo"
-              placeholder="Logo"
+              :placeholder="$t('picture.logo')"
               :image="shop.logo"
               @target="selectLogo"
             />
@@ -262,7 +273,7 @@
           <div class="mt-5 flex justify-center">
             <image-upload
               folder="shop"
-              placeholder="Shopbild"
+              :placeholder="$t('picture.shop_picture')"
               :image="shop.picture"
               @target="selectPicture"
             />
@@ -271,8 +282,7 @@
         <!-- Beschreibung -->
         <fieldset v-else-if="step === 5" class="tab-section">
           <p class="tab-heading">
-            Wenn du möchtest, beschreib dein Geschäft mit ein paar Sätzen. Lass
-            deiner Kreativität freien lauf!
+            {{ $t('description.intro') }}
           </p>
           <!-- TEXTAREA Description -->
           <label class="block">
@@ -294,14 +304,14 @@
             class="border my-10"
             @click="step--"
           >
-            Zurück
+            {{ $t('back') }}
           </button>
           <button
             type="submit"
             class="primary my-10 ml-auto"
             :class="{ 'spinner-light': loadState.create }"
           >
-            {{ step === 4 ? 'Speichern' : 'Weiter' }}
+            {{ $t(step === 4 ? 'save' : 'continue') }}
           </button>
         </div>
       </form>
@@ -331,21 +341,19 @@ export default {
     },
     deliverySelect: [
       {
-        name: 'Lokale lieferung',
+        name: 'delivery_options.options.local_delivery.name',
         value: 'LD',
-        description:
-          'Wir sorgen dafür, dass unsere Kunden Ihre ware Zeitnah erhalten',
+        description: 'delivery_options.options.local_delivery.description',
       },
       {
-        name: 'Post- und Paketversand',
+        name: 'delivery_options.options.parcel.name',
         value: 'MU',
-        description:
-          'Auf wunsch versenden wir die Pakete auch per Brief und Post',
+        description: 'delivery_options.options.parcel.description',
       },
       {
-        name: 'Abholung',
+        name: 'delivery_options.options.pickup.name',
         value: 'PU',
-        description: 'Kunden können unsere Waren auch vorort abholen',
+        description: 'delivery_options.options.pickup.description',
       },
     ],
     // http://vee-validate.logaretm.com/v2/guide/interaction.html

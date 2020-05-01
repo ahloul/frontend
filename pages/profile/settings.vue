@@ -59,7 +59,7 @@
             :class="{ 'spinner-light': pending }"
             type="submit"
           >
-            Speichern
+            {{ $t('save') }}
           </button>
         </div>
       </form>

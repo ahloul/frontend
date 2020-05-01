@@ -40,7 +40,7 @@
           </div>
         </div>
         <label v-if="article.haveStock" class="block" for="articleStock">
-          <span>Lagerbestand</span>
+          <span>{{ $t('article.stock') }}</span>
           <ValidationProvider
             v-slot="{ errors }"
             tag="div"
@@ -53,7 +53,7 @@
                 v-model.number="article.stock"
                 type="number"
                 class="form-input block w-full"
-                placeholder="z.B. 250"
+                :placeholder="$t('article.price_hint')"
                 @blur="change"
                 @keyup.enter="change"
               />
@@ -62,7 +62,7 @@
           </ValidationProvider>
         </label>
 
-        <div class="mt-10 mb-3 text-light">Artikelbeschreibung</div>
+        <div class="mt-10 mb-3 text-light">{{ $t(article.description) }}</div>
         <div
           v-if="article.description"
           class="w-full"

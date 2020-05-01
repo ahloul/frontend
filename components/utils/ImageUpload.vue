@@ -9,7 +9,7 @@
     <div v-if="imgLocal.url">
       <img :src="imgLocal.url" alt="" class="rounded-lg mx-auto" />
       <button type="button" class="w-auto mx-auto" @click="removeImageAction">
-        Entfernen
+        {{ $t('remove') }}
       </button>
     </div>
     <div v-else class="dropbox">

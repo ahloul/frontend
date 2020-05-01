@@ -17,9 +17,9 @@
         </li>
         <li v-if="!haveShop" class="mr-auto">
           <n-link to="/shop/create" class="font-bold"
-            ><icon name="plus-outline" width="20" /><span class="text-xs"
-              >SHOP ANLEGEN</span
-            ></n-link
+            ><icon name="plus-outline" width="20" /><span class="text-xs">
+              {{ $t('navbar.create_shop') }}
+            </span></n-link
           >
         </li>
         <li>

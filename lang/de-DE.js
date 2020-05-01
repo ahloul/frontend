@@ -145,4 +145,6 @@ export default {
   save: 'Speichern',
   remove: 'Entfernen',
   edit: 'Editieren',
+  enter_shop: 'Zum Shop',
+  enter_login: 'Zum Login',
 }

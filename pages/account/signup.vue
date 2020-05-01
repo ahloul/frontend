@@ -4,7 +4,7 @@
     <modal
       :show="showModal"
       :dismiss="null"
-      confirm="Zum Login"
+      :confirm="$t('enter_login')"
       centered
       @confirm="goToLogin"
     >

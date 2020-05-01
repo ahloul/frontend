@@ -141,4 +141,6 @@ export default {
   save: 'Save',
   remove: 'Remove',
   edit: 'Edit',
+  enter_shop: 'To the Shop',
+  enter_login: 'To the Login',
 }

@@ -45,7 +45,7 @@ export default {
     async verifyUser() {
       try {
         this.pending = true
-        await this.$axios.$post(`/api/verification/${this.$route.params.id}`)
+        await this.$axios.$get(`/api/verification/${this.$route.params.id}`)
         this.pending = false
         this.submitted = true
         this.redirect()

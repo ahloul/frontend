@@ -54,7 +54,7 @@ export default {
         await this.resetUser()
         await this.$router.push('/')
         // Send toast
-        this.$store.dispatch('toast/add', { message: `Ausgeloggt 👋` })
+        this.$store.dispatch('toast/add', { message: `toast.logout` })
       } catch (error) {
         console.log(error)
       }

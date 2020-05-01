@@ -35,7 +35,7 @@
     <div class="flex mt-3">
       <div class="w-full">
         <a :href="`tel:${shop.contact.phone}`" class="button primary icon-r"
-          ><icon name="phone" /> Anrufen</a
+          ><icon name="phone" /> {{ $t('call') }}</a
         >
       </div>
       <div>
@@ -74,7 +74,7 @@
         <!-- Content -->
         <empty-content
           v-if="!shop.description"
-          content="Keine Beschreibung vorhanden."
+          :content="$t('no_description')"
           route="/shop/edit"
           class="mt-5"
         />
@@ -82,7 +82,9 @@
         <hr class="my-5" />
         <div v-if="shop.contact" class="flex flex-col text-right">
           <div class="leading-tight">
-            <a :href="shop.contact.website" target="_blank">Zur Webseite</a>
+            <a :href="shop.contact.website" target="_blank">
+              {{ $t('enter_website') }}
+            </a>
           </div>
         </div>
       </div>

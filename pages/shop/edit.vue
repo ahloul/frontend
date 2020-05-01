@@ -17,7 +17,7 @@
       >
         <icon :name="step == 1 ? 'info' : 'info-outline'" />
         <div class="tooltip-content" :class="{ active: step == 1 }">
-          Infos
+          {{ $t('information.section_name') }}
         </div>
       </button>
       <button
@@ -27,7 +27,7 @@
       >
         <icon :name="step == 2 ? 'pin' : 'pin-outline'" />
         <div class="tooltip-content" :class="{ active: step == 2 }">
-          Kontaktdaten
+          {{ $t('contact_data.section_name') }}
         </div>
       </button>
       <button
@@ -37,7 +37,7 @@
       >
         <icon :name="step == 3 ? 'car' : 'car-outline'" />
         <div class="tooltip-content" :class="{ active: step == 3 }">
-          Versandmöglichkeiten
+          {{ $t('delivery_options.section_name') }}
         </div>
       </button>
       <button
@@ -47,7 +47,7 @@
       >
         <icon :name="step == 4 ? 'camera' : 'camera-outline'" />
         <div class="tooltip-content" :class="{ active: step == 4 }">
-          Bilder
+          {{ $t('picture.section_name') }}
         </div>
       </button>
       <button
@@ -57,7 +57,7 @@
       >
         <icon :name="step == 5 ? 'edit' : 'edit-outline'" />
         <div class="tooltip-content" :class="{ active: step == 5 }">
-          Beschreibung
+          {{ $t('description.section_name') }}
         </div>
       </button>
     </div>
@@ -78,13 +78,13 @@
               }"
               :mode="validationMode"
             >
-              <span>Name des shops</span>
+              <span>{{ $t('information.name_of_shop') }}</span>
               <input
                 v-model="shop.name"
                 name="Shopname"
                 type="text"
                 class="form-input"
-                placeholder="z.B. Sam & Partner GbR"
+                :placeholder="$t('information.name_of_shop_example')"
               />
               <div class="error">{{ errors[0] }}</div>
             </ValidationProvider>
@@ -92,7 +92,7 @@
 
           <!-- companyType SELECT -->
           <label class="block" for="companyType">
-            <span>Rechtsform</span>
+            <span>{{ $t('information.legal_form') }}</span>
             <ValidationProvider
               v-slot="{ errors }"
               rules="required"
@@ -104,16 +104,24 @@
                 v-model="shop.companyType"
                 class="form-select"
               >
-                <option value="SS">Selbstständig</option>
-                <option value="EU">Einzelunternehmer</option>
-                <option value="PG"
-                  >Personengesellschaft (z. B. GdbR, OHG, KG)</option
-                >
-                <option value="GN">Gemeinnützig / Verein</option>
-                <option value="GP"
-                  >Gesellschaft in privater Hand (z. B. GmbH, UG, Ltd.)</option
-                >
-                <option value="AG">Aktiengesellschaft</option>
+                <option value="SS">
+                  {{ $t('information.legal_form_options.independent') }}
+                </option>
+                <option value="EU">
+                  {{ $t('information.legal_form_options.sole') }}
+                </option>
+                <option value="PG">
+                  {{ $t('information.legal_form_options.partnership') }}
+                </option>
+                <option value="GN">
+                  {{ $t('information.legal_form_options.non_profit') }}
+                </option>
+                <option value="GP">
+                  {{ $t('information.legal_form_options.private_partnership') }}
+                </option>
+                <option value="AG">
+                  {{ $t('information.legal_form_options.stock_company') }}
+                </option>
               </select>
               <span class="error">{{ errors[0] }}</span>
             </ValidationProvider>
@@ -121,7 +129,7 @@
 
           <!-- companySize SELECT -->
           <label class="block" for="companySize">
-            <span>Mitarbeiterzahl</span>
+            <span>{{ $t('information.no_of_employees') }}</span>
             <ValidationProvider
               v-slot="{ errors }"
               rules="required"
@@ -142,7 +150,7 @@
         <fieldset v-else-if="step === 2" class="tab-section">
           <!-- userLocation INPUT -->
           <label class="block">
-            <span>Vollständige Adresse</span>
+            <span>{{ $t('contact_data.full_address') }}</span>
             <autocomplete
               name="Strasse"
               :value="companyLocation"
@@ -177,7 +185,7 @@
 
           <!-- phone INPUT -->
           <label class="block" for="companyPhone">
-            <span>Telefonnummer</span>
+            <span>{{ $t('contact_data.phone_number') }}</span>
             <ValidationProvider
               v-slot="{ errors }"
               rules="required"
@@ -197,7 +205,7 @@
 
           <!-- Website INPUT -->
           <label class="form-label w-full" for="companyPhone">
-            <span>Webseite</span>
+            <span>{{ $t('contact_data.website') }}</span>
             <ValidationProvider
               v-slot="{ errors }"
               rules="max:200|validUrl"
@@ -227,10 +235,12 @@
                 class="form-checkbox mt-2"
                 :value="deliveryOption.value"
               />
-              <span class="ml-2"
-                >Ich biete <b>{{ deliveryOption.name }}</b> an.
-                {{ deliveryOption.description }}.</span
-              >
+              <span class="ml-2">
+                {{ $t('delivery_options.offer_prefix') }}
+                <b>{{ $t(deliveryOption.name) }}</b>
+                {{ $t('delivery_options.offer_suffix') }}.
+                {{ $t(deliveryOption.description) }}.
+              </span>
             </label>
           </div>
         </fieldset>
@@ -275,7 +285,7 @@
             class="primary my-10 ml-auto"
             :class="{ 'spinner-light': loadState.create }"
           >
-            Speichern
+            {{ $t('save') }}
           </button>
         </div>
       </form>
@@ -308,21 +318,19 @@ export default {
     showModal: false,
     deliverySelect: [
       {
-        name: 'Lokale lieferung',
+        name: 'delivery_options.options.local_delivery.name',
         value: 'LD',
-        description:
-          'Wir sorgen dafür, dass unsere Kunden Ihre ware Zeitnah erhalten',
+        description: 'delivery_options.options.local_delivery.description',
       },
       {
-        name: 'Post- und Paketversand',
+        name: 'delivery_options.options.parcel.name',
         value: 'MU',
-        description:
-          'Auf wunsch versenden wir die Pakete auch per Brief und Post',
+        description: 'delivery_options.options.parcel.description',
       },
       {
-        name: 'Abholung',
+        name: 'delivery_options.options.pickup.name',
         value: 'PU',
-        description: 'Kunden können unsere Waren auch vorort abholen',
+        description: 'delivery_options.options.pickup.description',
       },
     ],
     loadState: {
@@ -365,7 +373,7 @@ export default {
         await this.getMe()
         // Todo: Get shop
         this.loadState.update = false
-        this.$store.dispatch('toast/add', { message: `Shop geändert!` })
+        this.$store.dispatch('toast/add', { message: `toast.updated_shop` })
         this.$router.push('/shop')
       } catch (error) {
         this.loadState.update = false

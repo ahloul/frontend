@@ -18,7 +18,7 @@
         <!-- categoryName INPUT -->
         <label class="block">
           <ValidationProvider v-slot="{ errors }" mode="lazy" rules="required">
-            <span>Name der Kategorie</span>
+            <span>{{ $t('category.name') }}</span>
             <input
               id="categoryName"
               v-model="category.name"
@@ -44,7 +44,7 @@
             :class="{ 'spinner-light': loadState.update }"
             type="submit"
           >
-            Speichern
+            {{ $t('save') }}
           </button>
         </div>
       </form>
@@ -80,7 +80,7 @@ export default {
           this.category = {}
           this.$refs.category.reset()
         })
-        this.$store.dispatch('toast/add', { message: `Kategorie geändert!` })
+        this.$store.dispatch('toast/add', { message: `toast.updated_category` })
         await this.$router.push('/category')
       } catch (error) {
         this.loadState.update = false

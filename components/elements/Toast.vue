@@ -23,7 +23,7 @@
             </div>
             <div class="w-0 flex-1 flex justify-between">
               <p>
-                {{ t.message }}
+                {{ $t(t.message) }}
               </p>
             </div>
             <div class="ml-4 flex-shrink-0 flex">

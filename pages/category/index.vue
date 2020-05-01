@@ -2,7 +2,7 @@
   <div>
     <div class="flex justify-end my-3">
       <n-link to="/category/create" class="button primary icon-r"
-        ><icon name="plus" /> Hinzufügen</n-link
+        ><icon name="plus" /> {{ $t('add') }}</n-link
       >
     </div>
     <empty-state v-if="showEmpty" />
@@ -27,7 +27,7 @@
                   <span v-if="category.article_count" class="ml-1"
                     >{{ category.article_count }} Artikel</span
                   >
-                  <span v-else class="ml-1">Keine Artikel</span>
+                  <span v-else class="ml-1">{{ $t('article.empty') }}</span>
                 </div>
               </div>
             </div>

@@ -4,7 +4,7 @@
       <n-link
         :to="`/article/create?id=${category._id}`"
         class="button primary icon-r"
-        ><icon name="plus" /> Hinzufügen</n-link
+        ><icon name="plus" /> {{ $t('add') }}</n-link
       >
     </div>
 

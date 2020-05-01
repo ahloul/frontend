@@ -12,7 +12,7 @@ export default {
     welcome: 'Herzlich Willkommen',
   },
   information: {
-    section_name: 'Informationen',
+    section_name: 'Infos',
     intro:
       'Vielen Dank für Deine Anmeldung! Mit ein paar wenigen Schritten helfen wir Dir, deinen Shop anzulegen. Los gehts!',
     name_of_shop: 'Name Deines Shops',

@@ -41,11 +41,13 @@
     "nuxt": "^2.12.2",
     "nuxt-webfontloader": "^1.1.0",
     "redirect-ssl": "^1.4.1",
+    "sinon": "^9.0.2",
     "tiptap": "^1.27.0",
     "tiptap-extensions": "^1.29.0",
     "valid-url": "^1.0.9",
     "vee-validate": "^3.3.0",
     "vue-currency-input": "^1.18.2",
+    "vue-client-only": "^2.0.0",
     "vue-styleguidist": "^4.18.0",
     "vue-timeago": "^5.1.2",
     "vuex-persistedstate": "^3.0.1"

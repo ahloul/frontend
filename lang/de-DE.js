@@ -7,7 +7,7 @@ export default {
   },
   processes: {
     intro:
-      'Aktuell befinden wir uns im Aufbau. Du kannst nun Deinen Shop mit Leben füllen, indem du erste Artikel einpflegst. Damit hilfst Du bei der Weiterentwicklung unserer Plattform.',
+      'Aktuell befinden wir uns im Aufbau. Du kannst nun Deinen Shop mit Leben füllen, indem Du erste Artikel einpflegst. Damit hilfst Du bei der Weiterentwicklung unserer Plattform.',
     add_article: 'Artikel hinzufügen',
     welcome: 'Herzlich Willkommen',
   },
@@ -31,7 +31,7 @@ export default {
     shop_created_confirmation: 'Du hast erfogreich einen Shop erstellt!',
     ready_to_start: 'Du kannst jetzt loslegen.',
     shop_error_confirmation:
-      'Schau noch einmal nach, ob du alle Felder korrekt ausgefüllt hast.',
+      'Schau noch einmal nach, ob Du alle Felder korrekt ausgefüllt hast.',
   },
   contact_data: {
     section_name: 'Kontaktdaten',
@@ -50,7 +50,7 @@ export default {
       local_delivery: {
         name: 'Lokale Lieferung',
         description:
-          'Wir sorgen dafür, dass unsere Kunden Ihre ware Zeitnah erhalten',
+          'Wir sorgen dafür, dass unsere Kunden Ihre Ware zeitnah erhalten',
       },
       parcel: {
         name: 'Post- und Paketversand',
@@ -80,7 +80,7 @@ export default {
     create: 'Kategorie anlegen',
     hint: 'z.B. Getränke',
     delete_confirmation:
-      'Bist du sicher, dass du die Kategorie löschen möchtest? Die darin enthaltenen Artikel werden ebenfalls unwiederuflich gelöscht!',
+      'Bist Du sicher, dass Du die Kategorie löschen möchtest? Die darin enthaltenen Artikel werden ebenfalls unwideruflich gelöscht!',
   },
   article: {
     description: 'Artikelbeschreibung',
@@ -98,7 +98,7 @@ export default {
     public: 'öffentlich',
     non_public: 'nicht öffentlich',
     delete_confirmation:
-      'Bist du sicher, dass du diesen Artikel unwiederuflich löschen möchtest?',
+      'Bist Du sicher, dass Du diesen Artikel unwideruflich löschen möchtest?',
   },
   profile: {
     description: 'Profilbeschreibung',
@@ -112,7 +112,7 @@ export default {
     request_new_password: 'Neues Kennwort anfordern',
     help: 'Hilfe bei der Anmeldung?',
     login: 'Anmelden',
-    thirdparty: 'Oder melde dich an mit',
+    thirdparty: 'Oder melde Dich an mit',
   },
   signup: {
     successful_registration:
@@ -133,7 +133,7 @@ export default {
   },
 
   contact_to_delete:
-    'Bitte kontaktiere uns, wenn du dein Account löschen möchtest',
+    'Bitte kontaktiere uns, wenn Du dein Account löschen möchtest',
   select_image: 'Bild auswählen',
   back: 'Zurück',
   back_to_start: 'Zurück auf Start',

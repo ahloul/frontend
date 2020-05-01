@@ -9,7 +9,7 @@
       <a href="mailto:support@getit.social">Support</a>
     </modal>
     <!-- Top Buttons -->
-    <div class="flex mt-2 justify-between max-w-xs mx-auto">
+    <div class="flex mt-2 justify-between max-w-xs mx-auto px-3">
       <button
         :class="{ secondary: step == 1 }"
         class="tooltip"
@@ -17,7 +17,7 @@
       >
         <icon :name="step == 1 ? 'info' : 'info-outline'" />
         <div class="tooltip-content" :class="{ active: step == 1 }">
-          Informationen
+          Infos
         </div>
       </button>
       <button

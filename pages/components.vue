@@ -40,6 +40,31 @@
         Button with icon
       </button>
     </div>
+    <!-- Toast -->
+    <h2 class="my-5">
+      Toast
+    </h2>
+    <div class="flex flex-wrap examples-button">
+      <button
+        class="primary"
+        @click="
+          $store.dispatch('toast/add', { message: `Toast ${uniqueId()}` })
+        "
+      >
+        Add Toast
+      </button>
+      <button
+        class="primary"
+        @click="
+          $store.dispatch('toast/add', {
+            message: `Toast ${uniqueId()}`,
+            dontHide: true,
+          })
+        "
+      >
+        Add Toast (dont hide)
+      </button>
+    </div>
     <!-- Icon examples -->
     <h2 class="my-5">Icon Examples</h2>
     <div class="flex flex-wrap">
@@ -155,6 +180,7 @@
   </div>
 </template>
 <script>
+import { uniqueId } from 'lodash'
 import Navbar from '~/components/layout/Navbar'
 import Notification from '~/components/elements/Notification'
 // import Toggle from '~/components/elements/Toggle'
@@ -170,6 +196,7 @@ export default {
   middleware: 'authenticated',
   data: () => ({
     showModal: false,
+    uniqueId,
   }),
 }
 </script>

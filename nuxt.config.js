@@ -151,6 +151,37 @@ export default {
     'cookie-universal-nuxt',
     // https://dm4t2.github.io/vue-currency-input/
     ['vue-currency-input/nuxt', { globalOptions: { currency: 'EUR' } }],
+    // https://github.com/julianmar/nuxt-bugsnag#readme
+    [
+      'nuxt-bugsnag',
+      {
+        config: {
+          apiKey: process.env.BUGSNAG_API_KEY,
+        },
+      },
+    ],
+    [
+      'nuxt-i18n',
+      {
+        locales: [
+          {
+            name: 'English',
+            code: 'en',
+            iso: 'en-US',
+            file: 'en-US.js',
+          },
+          {
+            name: 'Deutsch',
+            code: 'de',
+            iso: 'de-DE',
+            file: 'de-DE.js',
+          },
+        ],
+        langDir: 'lang/',
+        defaultLocale: 'de',
+        lazy: true,
+      },
+    ],
   ],
 
   /**

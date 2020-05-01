@@ -2,8 +2,8 @@ import 'here-js-api/scripts/mapsjs-core'
 import 'here-js-api/scripts/mapsjs-service'
 
 const heremaps = new window.H.service.Platform({
-  app_id: '1ea3QGi3uOkP30f8yJN0',
-  app_code: 'rnIwOcfe5gsuPys1bIdnKg',
+  app_id: process.env.VUE_APP_HERE_ID,
+  app_code: process.env.VUE_APP_HERE_CODE,
 })
 
 export default ({ app }, inject) => {

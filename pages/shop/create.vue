@@ -2,55 +2,71 @@
   <div class="flex flex-col">
     <!-- Modal -->
     <modal
+      :show="haveError"
+      :dismiss="null"
+      confirm="Okay"
+      centered
+      @confirm="haveError = false"
+      >{{ $t('information.shop_error_confirmation') }}
+    </modal>
+    <modal
       :show="showModal"
       :dismiss="null"
       confirm="Zum shop"
       centered
       @confirm="$router.push('/')"
-      >Du hast erfogreich ein Shop erstellt! <br />
-      Du kannst jetzt loslegen.
+      >{{ $t('information.shop_created_confirmation') }}
     </modal>
-    <!-- Top Buttons -->
     <!-- Top Buttons -->
     <div class="flex mt-2 justify-between max-w-xs mx-auto">
       <button
-        :class="{ secondary: currentStep == 1 }"
+        :class="{ secondary: step == 1 }"
         class="tooltip"
-        @click="currentStep = 1"
+        @click="step = 1"
       >
-        <icon :name="currentStep == 1 ? 'info' : 'info-outline'" />
-        <div class="tooltip-content" :class="{ active: currentStep == 1 }">
-          Informationen
+        <icon :name="step == 1 ? 'info' : 'info-outline'" />
+        <div class="tooltip-content" :class="{ active: step == 1 }">
+          {{ $t('information.section_name') }}
         </div>
       </button>
       <button
-        :class="{ secondary: currentStep == 2 }"
+        :class="{ secondary: step == 2 }"
         class="tooltip"
-        @click="currentStep = 2"
+        @click="step = 2"
       >
-        <icon :name="currentStep == 2 ? 'pin' : 'pin-outline'" />
-        <div class="tooltip-content" :class="{ active: currentStep == 2 }">
-          Kontaktdaten
+        <icon :name="step == 2 ? 'pin' : 'pin-outline'" />
+        <div class="tooltip-content" :class="{ active: step == 2 }">
+          {{ $t('contact_data.section_name') }}
         </div>
       </button>
       <button
-        :class="{ secondary: currentStep == 3 }"
+        :class="{ secondary: step == 3 }"
         class="tooltip"
-        @click="currentStep = 3"
+        @click="step = 3"
       >
-        <icon :name="currentStep == 3 ? 'camera' : 'camera-outline'" />
-        <div class="tooltip-content" :class="{ active: currentStep == 3 }">
-          Bilder
+        <icon :name="step == 3 ? 'car' : 'car-outline'" />
+        <div class="tooltip-content" :class="{ active: step == 3 }">
+          {{ $t('delivery_options.section_name') }}
         </div>
       </button>
       <button
-        :class="{ secondary: currentStep == 4 }"
+        :class="{ secondary: step == 4 }"
         class="tooltip"
-        @click="currentStep = 4"
+        @click="step = 4"
       >
-        <icon :name="currentStep == 4 ? 'edit' : 'edit-outline'" />
-        <div class="tooltip-content" :class="{ active: currentStep == 4 }">
-          Beschreibung
+        <icon :name="step == 4 ? 'camera' : 'camera-outline'" />
+        <div class="tooltip-content" :class="{ active: step == 4 }">
+          {{ $t('picture.section_name') }}
+        </div>
+      </button>
+      <button
+        :class="{ secondary: step == 5 }"
+        class="tooltip"
+        @click="step = 5"
+      >
+        <icon :name="step == 5 ? 'edit' : 'edit-outline'" />
+        <div class="tooltip-content" :class="{ active: step == 5 }">
+          {{ $t('description.section_name') }}
         </div>
       </button>
     </div>
@@ -58,10 +74,9 @@
     <ValidationObserver ref="shop" v-slot="{ handleSubmit }" class="mt-10" slim>
       <form @submit.prevent="handleSubmit(createShop)">
         <!-- Informationen -->
-        <fieldset v-if="currentStep === 1" class="tab-section">
+        <fieldset v-if="step === 1" class="tab-section">
           <p class="tab-heading">
-            Vielen Dank für deine Anmeldung! Mit ein paar wenigen Schritten
-            helfen wir dir, dein Shop anzulegen. Los gehts!
+            {{ $t('information.intro') }}
           </p>
           <!-- shopName INPUT -->
           <label class="block">
@@ -75,13 +90,13 @@
               }"
               :mode="validationMode"
             >
-              <span>Name des shops</span>
+              <span>{{ $t('information.name_of_shop') }}</span>
               <input
                 v-model="shop.name"
                 name="Shopname"
                 type="text"
                 class="form-input"
-                placeholder="z.B. Sam & Partner GbR"
+                :placeholder="$t('information.name_of_shop_example')"
               />
               <div class="error">{{ errors[0] }}</div>
             </ValidationProvider>
@@ -89,7 +104,7 @@
 
           <!-- companyType SELECT -->
           <label class="block" for="companyType">
-            <span>Rechtsform</span>
+            <span>{{ $t('information.legal_form') }}</span>
             <ValidationProvider
               v-slot="{ errors }"
               rules="required"
@@ -101,16 +116,24 @@
                 v-model="shop.companyType"
                 class="form-select"
               >
-                <option value="SS">Selbstständig</option>
-                <option value="EU">Einzelunternehmer</option>
-                <option value="PG"
-                  >Personengesellschaft (z. B. GdbR, OHG, KG)</option
-                >
-                <option value="GN">Gemeinnützig / Verein</option>
-                <option value="GP"
-                  >Gesellschaft in privater Hand (z. B. GmbH, UG, Ltd.)</option
-                >
-                <option value="AG">Aktiengesellschaft</option>
+                <option value="SS">
+                  {{ $t('information.legal_form_options.independent') }}
+                </option>
+                <option value="EU">
+                  {{ $t('information.legal_form_options.sole') }}
+                </option>
+                <option value="PG">
+                  {{ $t('information.legal_form_options.partnership') }}
+                </option>
+                <option value="GN">
+                  {{ $t('information.legal_form_options.non_profit') }}
+                </option>
+                <option value="GP">
+                  {{ $t('information.legal_form_options.private_partnership') }}
+                </option>
+                <option value="AG">
+                  {{ $t('information.legal_form_options.stock_company') }}
+                </option>
               </select>
               <span class="error">{{ errors[0] }}</span>
             </ValidationProvider>
@@ -118,7 +141,7 @@
 
           <!-- companySize SELECT -->
           <label class="block" for="companySize">
-            <span>Mitarbeiterzahl</span>
+            <span>{{ $t('information.no_of_employees') }}</span>
             <ValidationProvider
               v-slot="{ errors }"
               rules="required"
@@ -136,15 +159,16 @@
           </label>
         </fieldset>
         <!-- Kontaktdaten -->
-        <fieldset v-else-if="currentStep === 2" class="tab-section">
+        <fieldset v-else-if="step === 2" class="tab-section">
           <p class="tab-heading">
-            Gib die Addresse deines Shops an damit andere wissen, wo sie dich
-            finden können.
+            {{ $t('contact_data.intro') }}
           </p>
 
           <!-- userLocation INPUT -->
           <label class="block">
-            <span>Vollständige Adresse</span>
+            <span>
+              {{ $t('contact_data.full_address') }}
+            </span>
             <autocomplete
               name="Strasse"
               :value="companyLocation"
@@ -179,7 +203,9 @@
 
           <!-- phone INPUT -->
           <label class="block" for="companyPhone">
-            <span>Telefonnummer</span>
+            <span>
+              {{ $t('contact_data.phone_number') }}
+            </span>
             <ValidationProvider
               v-slot="{ errors }"
               rules="required"
@@ -191,7 +217,7 @@
                 v-model="shop.contact.phone"
                 type="text"
                 class="form-input mt-1 block w-full"
-                placeholder="Vorwahl und Nummer"
+                :placeholder="$t('contact_data.prefix_and_number')"
               />
               <span class="error">{{ errors[0] }}</span>
             </ValidationProvider>
@@ -199,7 +225,9 @@
 
           <!-- Website INPUT -->
           <label class="form-label w-full" for="companyPhone">
-            <span>Webseite</span>
+            <span>
+              {{ $t('contact_data.website') }}
+            </span>
             <ValidationProvider
               v-slot="{ errors }"
               rules="max:200|validUrl"
@@ -216,16 +244,36 @@
             </ValidationProvider>
           </label>
         </fieldset>
+        <!-- Dispatch Informations -->
+        <fieldset v-else-if="step === 3" class="tab-section">
+          <!-- CHECKBOX published -->
+          <div v-for="(deliveryOption, index) in deliverySelect" :key="index">
+            <label
+              class="flex animated inline-block my-2 bg-white w-full p-3 shadow hover:shadow-lg rounded-lg cursor-pointer"
+            >
+              <input
+                v-model="shop.deliveryOptions"
+                type="checkbox"
+                class="form-checkbox mt-2"
+                :value="deliveryOption.value"
+              />
+              <span class="ml-2">
+                {{ $t('delivery_options.offer_prefix') }}
+                <b>{{ $t(deliveryOption.name) }}</b>
+                {{ $t('delivery_options.offer_suffix') }}.
+                {{ $t(deliveryOption.description) }}.
+              </span>
+            </label>
+          </div>
+        </fieldset>
         <!-- Bilder -->
-        <fieldset v-else-if="currentStep === 3" class="tab-section">
-          <p class="tab-heading">
-            Zeig dein Shop mit einem Foto und deinem Logo.
-          </p>
+        <fieldset v-else-if="step === 4" class="tab-section">
+          <p class="tab-heading">{{ $t('picture.intro') }}</p>
 
           <div class="mt-5 flex justify-center">
             <image-upload
               folder="logo"
-              placeholder="Logo"
+              :placeholder="$t('picture.logo')"
               :image="shop.logo"
               @target="selectLogo"
             />
@@ -233,17 +281,16 @@
           <div class="mt-5 flex justify-center">
             <image-upload
               folder="shop"
-              placeholder="Shopbild"
+              :placeholder="$t('picture.shop_picture')"
               :image="shop.picture"
               @target="selectPicture"
             />
           </div>
         </fieldset>
         <!-- Beschreibung -->
-        <fieldset v-else-if="currentStep === 4" class="tab-section">
+        <fieldset v-else-if="step === 5" class="tab-section">
           <p class="tab-heading">
-            Wenn du möchtest, beschreib dein Geschäft mit ein paar Sätzen. Lass
-            deiner Kreativität freien lauf!
+            {{ $t('description.intro') }}
           </p>
           <!-- TEXTAREA Description -->
           <label class="block">
@@ -260,19 +307,19 @@
 
         <div class="flex justify-between max-w-md mx-auto">
           <button
-            v-if="currentStep !== 1"
+            v-if="step !== 1"
             type="button"
             class="border my-10"
-            @click="currentStep--"
+            @click="step--"
           >
-            Zurück
+            {{ $t('back') }}
           </button>
           <button
             type="submit"
             class="primary my-10 ml-auto"
             :class="{ 'spinner-light': loadState.create }"
           >
-            {{ currentStep === 4 ? 'Speichern' : 'Weiter' }}
+            {{ $t(step === 5 ? 'save' : 'continue') }}
           </button>
         </div>
       </form>
@@ -295,13 +342,31 @@ export default {
     Wysiwyg,
   },
   data: () => ({
-    currentStep: 1,
+    step: 1,
     showModal: false,
     loadState: {
       create: false,
     },
+    deliverySelect: [
+      {
+        name: 'delivery_options.options.local_delivery.name',
+        value: 'LD',
+        description: 'delivery_options.options.local_delivery.description',
+      },
+      {
+        name: 'delivery_options.options.parcel.name',
+        value: 'MU',
+        description: 'delivery_options.options.parcel.description',
+      },
+      {
+        name: 'delivery_options.options.pickup.name',
+        value: 'PU',
+        description: 'delivery_options.options.pickup.description',
+      },
+    ],
     // http://vee-validate.logaretm.com/v2/guide/interaction.html
     validationMode: 'lazy',
+    haveError: false,
     shop: {
       name: null,
       size: null,
@@ -313,6 +378,7 @@ export default {
       contact: {},
       logo: {},
       description: null,
+      deliveryOptions: [],
     },
   }),
   computed: {
@@ -328,7 +394,7 @@ export default {
         return
       }
 
-      if (step > 4) {
+      if (step >= 5) {
         this.onSubmit()
         return
       }
@@ -357,7 +423,7 @@ export default {
     async createShop() {
       try {
         // Only Step 1
-        if (this.currentStep === 1) {
+        if (this.step === 1) {
           // Check if name is valid on submit
           const isValid = await this.checkName()
           // Check if other forms are valid
@@ -368,7 +434,7 @@ export default {
           })
         }
         // Only Step 4
-        if (this.currentStep === 4) {
+        if (this.step === 5) {
           this.loadState.create = true
           await this.$axios.post(`/api/shops`, this.shop)
           // Update user in storage
@@ -378,9 +444,10 @@ export default {
           this.showModal = true
         }
         // Go to next step
-        this.currentStep++
+        this.step++
       } catch (error) {
         this.loadState.create = false
+        this.haveError = true
         console.log(error)
       }
     },
@@ -397,7 +464,7 @@ export default {
   }
 }
 .tooltip {
-  @apply relative mx-2 z-10;
+  @apply relative z-10;
   &-content {
     @apply absolute p-3;
     @apply transition duration-150 ease-in-out;

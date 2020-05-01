@@ -8,18 +8,18 @@
         <div class="ml-3">
           <ul v-if="!haveShop">
             <li>
-              <n-link to="/shop/create">Shop anlegen</n-link>
+              <n-link to="/shop/create">{{ $t('navbar.create_shop') }}</n-link>
             </li>
           </ul>
           <ul v-if="haveShop">
             <li>
-              <n-link to="/#1">Vorgänge</n-link>
+              <n-link to="/#1">{{ $t('navbar.processes') }}</n-link>
             </li>
             <li>
-              <n-link to="/category">Bestand</n-link>
+              <n-link to="/category">{{ $t('navbar.stock') }}</n-link>
             </li>
             <li>
-              <n-link to="/shop">Shop</n-link>
+              <n-link to="/shop">{{ $t('navbar.shop') }}</n-link>
             </li>
           </ul>
         </div>
@@ -50,11 +50,6 @@ export default {
   },
   computed: {
     ...mapGetters(['haveShop']),
-  },
-  methods: {
-    toggleNavbar() {
-      this.menuShow = !this.menuShow
-    },
   },
 }
 </script>

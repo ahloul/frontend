@@ -1,45 +1,63 @@
 <template>
   <div class="flex flex-col">
+    <modal
+      :show="showModal"
+      centered
+      dismiss="Schließen"
+      @dismiss="showModal = false"
+      >Bitte kontaktiere uns, wenn du dein Account löschen möchtest <br />
+      <a href="mailto:support@getit.social">Support</a>
+    </modal>
     <!-- Top Buttons -->
     <div class="flex mt-2 justify-between max-w-xs mx-auto">
       <button
-        :class="{ secondary: currentStep == 1 }"
+        :class="{ secondary: step == 1 }"
         class="tooltip"
-        @click="changeStep(1)"
+        @click="step = 1"
       >
-        <icon :name="currentStep == 1 ? 'info' : 'info-outline'" />
-        <div class="tooltip-content" :class="{ active: currentStep == 1 }">
-          Informationen
+        <icon :name="step == 1 ? 'info' : 'info-outline'" />
+        <div class="tooltip-content" :class="{ active: step == 1 }">
+          {{ $t('information.section_name') }}
         </div>
       </button>
       <button
-        :class="{ secondary: currentStep == 2 }"
+        :class="{ secondary: step == 2 }"
         class="tooltip"
-        @click="changeStep(2)"
+        @click="step = 2"
       >
-        <icon :name="currentStep == 2 ? 'pin' : 'pin-outline'" />
-        <div class="tooltip-content" :class="{ active: currentStep == 2 }">
-          Kontaktdaten
+        <icon :name="step == 2 ? 'pin' : 'pin-outline'" />
+        <div class="tooltip-content" :class="{ active: step == 2 }">
+          {{ $t('contact_data.section_name') }}
         </div>
       </button>
       <button
-        :class="{ secondary: currentStep == 3 }"
+        :class="{ secondary: step == 3 }"
         class="tooltip"
-        @click="changeStep(3)"
+        @click="step = 3"
       >
-        <icon :name="currentStep == 3 ? 'camera' : 'camera-outline'" />
-        <div class="tooltip-content" :class="{ active: currentStep == 3 }">
-          Bilder
+        <icon :name="step == 3 ? 'car' : 'car-outline'" />
+        <div class="tooltip-content" :class="{ active: step == 3 }">
+          {{ $t('delivery_options.section_name') }}
         </div>
       </button>
       <button
-        :class="{ secondary: currentStep == 4 }"
+        :class="{ secondary: step == 4 }"
         class="tooltip"
-        @click="changeStep(4)"
+        @click="step = 4"
       >
-        <icon :name="currentStep == 4 ? 'edit' : 'edit-outline'" />
-        <div class="tooltip-content" :class="{ active: currentStep == 4 }">
-          Beschreibung
+        <icon :name="step == 4 ? 'camera' : 'camera-outline'" />
+        <div class="tooltip-content" :class="{ active: step == 4 }">
+          {{ $t('picture.section_name') }}
+        </div>
+      </button>
+      <button
+        :class="{ secondary: step == 5 }"
+        class="tooltip"
+        @click="step = 5"
+      >
+        <icon :name="step == 5 ? 'edit' : 'edit-outline'" />
+        <div class="tooltip-content" :class="{ active: step == 5 }">
+          {{ $t('description.section_name') }}
         </div>
       </button>
     </div>
@@ -47,7 +65,7 @@
     <ValidationObserver ref="shop" v-slot="{ handleSubmit }" class="mt-10" slim>
       <form @submit.prevent="handleSubmit(updateShop)">
         <!-- Informationen -->
-        <fieldset v-if="currentStep === 1" class="tab-section">
+        <fieldset v-if="step === 1" class="tab-section">
           <!-- shopName INPUT -->
           <label class="block">
             <ValidationProvider
@@ -60,13 +78,13 @@
               }"
               :mode="validationMode"
             >
-              <span>Name des shops</span>
+              <span>{{ $t('information.name_of_shop') }}</span>
               <input
                 v-model="shop.name"
                 name="Shopname"
                 type="text"
                 class="form-input"
-                placeholder="z.B. Sam & Partner GbR"
+                :placeholder="$t('information.name_of_shop_example')"
               />
               <div class="error">{{ errors[0] }}</div>
             </ValidationProvider>
@@ -74,7 +92,7 @@
 
           <!-- companyType SELECT -->
           <label class="block" for="companyType">
-            <span>Rechtsform</span>
+            <span>{{ $t('information.legal_form') }}</span>
             <ValidationProvider
               v-slot="{ errors }"
               rules="required"
@@ -86,16 +104,24 @@
                 v-model="shop.companyType"
                 class="form-select"
               >
-                <option value="SS">Selbstständig</option>
-                <option value="EU">Einzelunternehmer</option>
-                <option value="PG"
-                  >Personengesellschaft (z. B. GdbR, OHG, KG)</option
-                >
-                <option value="GN">Gemeinnützig / Verein</option>
-                <option value="GP"
-                  >Gesellschaft in privater Hand (z. B. GmbH, UG, Ltd.)</option
-                >
-                <option value="AG">Aktiengesellschaft</option>
+                <option value="SS">
+                  {{ $t('information.legal_form_options.independent') }}
+                </option>
+                <option value="EU">
+                  {{ $t('information.legal_form_options.sole') }}
+                </option>
+                <option value="PG">
+                  {{ $t('information.legal_form_options.partnership') }}
+                </option>
+                <option value="GN">
+                  {{ $t('information.legal_form_options.non_profit') }}
+                </option>
+                <option value="GP">
+                  {{ $t('information.legal_form_options.private_partnership') }}
+                </option>
+                <option value="AG">
+                  {{ $t('information.legal_form_options.stock_company') }}
+                </option>
               </select>
               <span class="error">{{ errors[0] }}</span>
             </ValidationProvider>
@@ -103,7 +129,7 @@
 
           <!-- companySize SELECT -->
           <label class="block" for="companySize">
-            <span>Mitarbeiterzahl</span>
+            <span>{{ $t('information.no_of_employees') }}</span>
             <ValidationProvider
               v-slot="{ errors }"
               rules="required"
@@ -121,10 +147,10 @@
           </label>
         </fieldset>
         <!-- Kontaktdaten -->
-        <fieldset v-else-if="currentStep === 2" class="tab-section">
+        <fieldset v-else-if="step === 2" class="tab-section">
           <!-- userLocation INPUT -->
           <label class="block">
-            <span>Vollständige Adresse</span>
+            <span>{{ $t('contact_data.full_address') }}</span>
             <autocomplete
               name="Strasse"
               :value="companyLocation"
@@ -159,7 +185,7 @@
 
           <!-- phone INPUT -->
           <label class="block" for="companyPhone">
-            <span>Telefonnummer</span>
+            <span>{{ $t('contact_data.phone_number') }}</span>
             <ValidationProvider
               v-slot="{ errors }"
               rules="required"
@@ -179,7 +205,7 @@
 
           <!-- Website INPUT -->
           <label class="form-label w-full" for="companyPhone">
-            <span>Webseite</span>
+            <span>{{ $t('contact_data.website') }}</span>
             <ValidationProvider
               v-slot="{ errors }"
               rules="max:200|validUrl"
@@ -196,8 +222,30 @@
             </ValidationProvider>
           </label>
         </fieldset>
+        <!-- Dispatch Informations -->
+        <fieldset v-else-if="step === 3" class="tab-section">
+          <!-- CHECKBOX published -->
+          <div v-for="(deliveryOption, index) in deliverySelect" :key="index">
+            <label
+              class="flex animated inline-block my-2 bg-white w-full p-3 shadow hover:shadow-lg rounded-lg cursor-pointer"
+            >
+              <input
+                v-model="shop.deliveryOptions"
+                type="checkbox"
+                class="form-checkbox mt-2"
+                :value="deliveryOption.value"
+              />
+              <span class="ml-2">
+                {{ $t('delivery_options.offer_prefix') }}
+                <b>{{ $t(deliveryOption.name) }}</b>
+                {{ $t('delivery_options.offer_suffix') }}.
+                {{ $t(deliveryOption.description) }}.
+              </span>
+            </label>
+          </div>
+        </fieldset>
         <!-- Bilder -->
-        <fieldset v-else-if="currentStep === 3" class="tab-section">
+        <fieldset v-else-if="step === 4" class="tab-section">
           <div class="mt-5 flex justify-center">
             <image-upload
               folder="logo"
@@ -215,8 +263,9 @@
             />
           </div>
         </fieldset>
+
         <!-- Beschreibung -->
-        <fieldset v-else-if="currentStep === 4" class="tab-section">
+        <fieldset v-else-if="step === 5" class="tab-section">
           <!-- TEXTAREA Description -->
           <label class="block">
             <ValidationProvider v-slot="{ errors }" name="Benutzertext">
@@ -236,7 +285,7 @@
             class="primary my-10 ml-auto"
             :class="{ 'spinner-light': loadState.create }"
           >
-            Speichern
+            {{ $t('save') }}
           </button>
         </div>
       </form>
@@ -246,10 +295,11 @@
 
 <script>
 import { mapActions } from 'vuex'
+import { clone } from 'lodash'
 import imageUpload from '~/components/utils/ImageUpload'
 import Wysiwyg from '~/components/utils/Wysiwyg'
 import Autocomplete from '~/components/elements/Autocomplete'
-
+import { difference } from '~/utils/object'
 export default {
   name: 'EditShop',
   components: {
@@ -257,14 +307,32 @@ export default {
     imageUpload,
     Wysiwyg,
   },
-  async asyncData({ $axios, store }) {
+  async asyncData({ $axios, store, query }) {
     const { user } = store.state
-    const shop = await $axios.$get(`/api/users/${user._id}/shops/active`)
-    return { shop }
+    const coreShop = await $axios.$get(`/api/users/${user._id}/shops/active`)
+    return { shop: clone(coreShop), coreShop }
   },
   data: () => ({
-    currentStep: 1,
+    step: 1,
     validationMode: 'lazy',
+    showModal: false,
+    deliverySelect: [
+      {
+        name: 'delivery_options.options.local_delivery.name',
+        value: 'LD',
+        description: 'delivery_options.options.local_delivery.description',
+      },
+      {
+        name: 'delivery_options.options.parcel.name',
+        value: 'MU',
+        description: 'delivery_options.options.parcel.description',
+      },
+      {
+        name: 'delivery_options.options.pickup.name',
+        value: 'PU',
+        description: 'delivery_options.options.pickup.description',
+      },
+    ],
     loadState: {
       pending: false,
     },
@@ -290,19 +358,22 @@ export default {
     async changeStep(stepNumber) {
       try {
         await this.checkValidation()
-        this.currentStep = stepNumber
+        this.step = stepNumber
       } catch (error) {}
     },
     async updateShop() {
       try {
         await this.checkValidation()
-        // Only Step 4
         this.loadState.update = true
-        await this.$axios.patch(`/api/shops/${this.shop._id}`, this.shop)
+        await this.$axios.patch(
+          `/api/shops/${this.shop._id}`,
+          difference(this.shop, this.coreShop, true)
+        )
         // Update user in storage
         await this.getMe()
         // Todo: Get shop
         this.loadState.update = false
+        this.$store.dispatch('toast/add', { message: `toast.updated_shop` })
         this.$router.push('/shop')
       } catch (error) {
         this.loadState.update = false
@@ -342,7 +413,7 @@ export default {
   }
 }
 .tooltip {
-  @apply relative mx-2 z-10;
+  @apply relative z-10;
   &-content {
     @apply absolute p-3;
     @apply transition duration-150 ease-in-out;

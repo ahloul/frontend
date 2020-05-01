@@ -9,7 +9,7 @@
     <div v-if="imgLocal.url">
       <img :src="imgLocal.url" alt="" class="rounded-lg mx-auto" />
       <button type="button" class="w-auto mx-auto" @click="removeImageAction">
-        Entfernen
+        {{ $t('remove') }}
       </button>
     </div>
     <div v-else class="dropbox">
@@ -92,9 +92,7 @@ export default {
     },
     async removeImageAction() {
       if (this.imgLocal.id)
-        await this.$axios.$delete(`/api/media`, {
-          data: { id: this.imgLocal.id },
-        })
+        await this.$axios.$delete(`/api/media/${this.imgLocal.id}`)
       this.$emit('target', {})
     },
   },

@@ -17,9 +17,9 @@
         </li>
         <li v-if="!haveShop" class="mr-auto">
           <n-link to="/shop/create" class="font-bold"
-            ><icon name="plus-outline" width="20" /><span class="text-xs"
-              >SHOP ANLEGEN</span
-            ></n-link
+            ><icon name="plus-outline" width="20" /><span class="text-xs">
+              {{ $t('navbar.create_shop') }}
+            </span></n-link
           >
         </li>
         <li>
@@ -34,17 +34,12 @@
 
 <script>
 /**
- * Default top navigation for desktop view.
+ * Default top navigation for mobile view.
  */
 import { mapGetters } from 'vuex'
 
 export default {
-  name: 'Navigation',
-  data() {
-    return {
-      menuShow: false,
-    }
-  },
+  name: 'Navbar',
   computed: {
     ...mapGetters(['haveShop']),
   },

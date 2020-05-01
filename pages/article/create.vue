@@ -1,24 +1,34 @@
 <template>
   <div class="max-w-md mt-5">
     <image-upload
-      folder="articles"
+      folder="article"
       :image="article.picture"
       @target="selectImage"
     />
 
     <ValidationObserver v-slot="{ handleSubmit }" slim>
       <form @submit.prevent="handleSubmit(submit)">
+        <!-- userLocation INPUT -->
+        <label class="block">
+          <span>{{ $t('category.title') }}</span>
+          <autocomplete
+            endpoint="categories"
+            :value="articleCategory"
+            @selection="selectCategory"
+          />
+        </label>
+
         <ValidationProvider v-slot="{ errors }" rules="required">
           <!-- INPUT articleName -->
           <label class="block">
-            <span>Name des Artikels</span>
+            <span>{{ $t('article.name') }}</span>
             <input
               id="articleName"
               v-model="article.name"
               name="Artikel"
               type="text"
               class="form-input"
-              placeholder="z.B. Kugelschreiber"
+              :placeholder="$t('article.name_hint')"
             />
             <div class="error">{{ errors[0] }}</div>
           </label>
@@ -26,7 +36,7 @@
 
         <!-- INPUT articleStock -->
         <label class="block" for="articleStock">
-          <span>Lagerbestand</span>
+          <span>{{ $t('article.stock') }}</span>
           <ValidationProvider
             v-if="haveStock"
             v-slot="{ errors }"
@@ -51,14 +61,14 @@
           </ValidationProvider>
           <div v-else>
             <button class="primary" @click="addStock">
-              Lagerbestand anlegen
+              {{ $t('article.create_stock') }}
             </button>
           </div>
         </label>
 
         <!-- INPUT articlePrice -->
         <label class="block" for="articlePrice">
-          <span>Stückpreis</span>
+          <span>{{ $t('article.unit_price') }}</span>
           <ValidationProvider
             v-slot="{ errors }"
             name="Preis"
@@ -69,7 +79,7 @@
               v-model="article.price"
               class="form-input"
               locale="de"
-              placeholder="z.B. 12,00"
+              :placeholder="$t('article.price_hint')"
             />
             <span class="error">{{ errors[0] }}</span>
           </ValidationProvider>
@@ -77,7 +87,7 @@
 
         <!-- TAX INPUT -->
         <label class="block">
-          <span>Steuersatz</span>
+          <span>{{ $t('article.tax_rate') }}</span>
           <ValidationProvider
             v-slot="{ errors }"
             mode="lazy"
@@ -93,7 +103,7 @@
                 7 %
               </option>
               <option :value="0">
-                Steuerfrei
+                {{ $t('article.tax_free') }}
               </option>
             </select>
             <span class="error">{{ errors[0] }}</span>
@@ -101,7 +111,7 @@
         </label>
         <!-- TEXTAREA Description -->
         <label class="block mb-3">
-          <span>Artikelbeschreibung</span>
+          <span>{{ $t('article.description') }}</span>
           <ValidationProvider v-slot="{ errors }" name="Artikelbeschreibung">
             <wysiwyg @content="(data) => (article.description = data)" />
             <span class="error-message">{{ errors[0] }}</span>
@@ -117,11 +127,13 @@
             checked
           />
           <span class="ml-2"
-            >Artikel wird
-            <span class="font-bold">{{
-              article.published ? 'öffentlich' : 'nicht öffentlich'
-            }}</span>
-            geschaltet.</span
+            >{{ $t('article.public_prefix') }}
+            <span class="font-bold">
+              {{
+                $t(article.published ? 'article.public' : 'article.non_public')
+              }}
+            </span>
+            {{ $t('article.public_suffix') }}.</span
           >
         </label>
 
@@ -131,7 +143,7 @@
             :class="{ 'spinner-light': loadState.create }"
             type="submit"
           >
-            Artikel anlegen
+            {{ $t('save') }}
           </button>
         </div>
       </form>
@@ -140,6 +152,8 @@
 </template>
 
 <script>
+import { isEmpty } from 'lodash'
+import Autocomplete from '~/components/elements/Autocomplete'
 import imageUpload from '~/components/utils/ImageUpload'
 import Wysiwyg from '~/components/utils/Wysiwyg'
 
@@ -147,15 +161,24 @@ export default {
   name: 'CreateArticle',
   middleware: 'authenticated',
   components: {
+    Autocomplete,
     imageUpload,
     Wysiwyg,
   },
+  async asyncData({ $axios, query }) {
+    let category = {}
+    if (isEmpty(query)) return
+    try {
+      category = await $axios.$get(`/api/categories/${query.id}`)
+      return { category }
+    } catch (error) {
+      // console.log(error)
+    }
+  },
   data: () => ({
     article: {
-      picture: {
-        id: null,
-        url: null,
-      },
+      picture: {},
+      category: null,
       description: null,
       published: true,
       stock: -1,
@@ -165,13 +188,24 @@ export default {
     },
   }),
   computed: {
+    articleCategory(e) {
+      return this.category?.name
+    },
     haveStock() {
       return this.article.stock !== -1
     },
   },
+  mounted() {
+    if (isEmpty(this.category)) return
+    this.article.category = this.category._id
+  },
   methods: {
     selectImage(target) {
       this.article.picture = target
+    },
+    selectCategory(category) {
+      this.article.category = category._id
+      this.$router.replace({ query: { id: category._id } })
     },
     addStock() {
       this.article.stock = 0
@@ -182,10 +216,9 @@ export default {
     async submit() {
       try {
         await this.$axios.post(`/api/articles`, this.article)
-        this.category = {}
-        // send toast
+        this.$store.dispatch('toast/add', { message: `toast.created_article` })
         // TODO: Back to right category
-        await this.$router.push('/categories')
+        await this.$router.push(`/category/${this.article.category}`)
       } catch (error) {
         console.log(error)
       }

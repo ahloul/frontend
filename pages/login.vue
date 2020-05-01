@@ -60,7 +60,7 @@
             <span class="block w-full">
               <button
                 class="primary w-full"
-                :class="{ 'spinner-dark': pending === 'local' }"
+                :class="{ 'spinner-light': pending === 'local' }"
                 type="submit"
               >
                 Anmelden

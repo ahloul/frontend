@@ -62,28 +62,6 @@ export const actions = {
     })
     commit('setToken', token)
   },
-  // TODO: I will move that away
-  async updateUser(
-    { commit, state, dispatch },
-    { name, picture, description, location }
-  ) {
-    await this.$axios.patch(`/api/users/${state.user._id}`, {
-      name,
-      picture,
-      description,
-      location,
-      token: state.accessToken,
-    })
-    await dispatch('getMe')
-  },
-  // TODO: I will move that away
-  async forgotPassword({ dispatch }, { email, link, accessToken }) {
-    await this.$axios.post(`/api/password-resets`, {
-      email,
-      link,
-      token: accessToken,
-    })
-  },
 
   /**
    * resetUser Action

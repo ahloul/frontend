@@ -80,7 +80,7 @@ export default {
           this.category = {}
           this.$refs.category.reset()
         })
-        this.$store.dispatch('toast/add', { message: `Kategorie geändert!` })
+        this.$store.dispatch('toast/add', { message: `toast.updated_category` })
         await this.$router.push('/category')
       } catch (error) {
         this.loadState.update = false

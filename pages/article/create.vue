@@ -216,7 +216,7 @@ export default {
     async submit() {
       try {
         await this.$axios.post(`/api/articles`, this.article)
-        this.$store.dispatch('toast/add', { message: `Artikel erstellt!` })
+        this.$store.dispatch('toast/add', { message: `toast.created_article` })
         // TODO: Back to right category
         await this.$router.push(`/category/${this.article.category}`)
       } catch (error) {

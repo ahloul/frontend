@@ -91,6 +91,21 @@ export default {
     public: 'public',
     non_public: 'non-public',
   },
+  profile: {
+    description: 'Profile Description',
+    city: 'City',
+  },
+  toast: {
+    updated_profile: 'Updated Profile',
+    saved_profile: 'Saved Profile',
+    updated_stock: 'Updated Stock',
+    created_article: 'Article Created',
+    deleted_article: 'Deleted Article',
+    created_category: 'Category Created',
+    updated_category: 'Updated Category',
+    logout: 'Logged out 👋',
+    updated_shop: 'Updated Shop',
+  },
 
   back: 'Back',
   continue: 'Continue',

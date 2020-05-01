@@ -93,7 +93,7 @@ export default {
         await this.$axios.patch(`/api/articles/${this.article.id}`, {
           stock: this.article.stock,
         }) // send toast
-        this.$store.dispatch('toast/add', { message: `Bestand aktualisiert` })
+        this.$store.dispatch('toast/add', { message: `toast.updated_stock` })
       } catch (error) {
         console.log(error)
       }

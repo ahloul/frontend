@@ -93,6 +93,21 @@ export default {
     public: 'öffentlich',
     non_public: 'nicht öffentlich',
   },
+  profile: {
+    description: 'Profilbeschreibung',
+    city: 'Wohnort',
+  },
+  toast: {
+    updated_profile: 'Profile bearbeitet',
+    saved_profile: 'Profil gespeichert',
+    updated_stock: 'Bestand aktualisiert',
+    created_article: 'Artikel erstellt',
+    deleted_article: 'Artikel gelöscht',
+    created_category: 'Kategorie erstellt',
+    updated_category: 'Kategorie geändert',
+    logout: 'Ausgeloggt 👋',
+    updated_shop: 'Shop aktualisiert',
+  },
 
   back: 'Zurück',
   continue: 'Weiter',

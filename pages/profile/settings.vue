@@ -30,7 +30,7 @@
 
         <!-- INPUT User location -->
         <label class="block">
-          <span>Wohnort</span>
+          <span>{{ $t('profile.city') }}</span>
           <autocomplete
             label="Wohnort"
             :value="userLocation"
@@ -43,7 +43,7 @@
 
         <!-- TEXTAREA Description -->
         <label class="block">
-          <span>Profilbeschreibung</span>
+          <span>{{ $t('profile.description') }}</span>
           <ValidationProvider v-slot="{ errors }" name="Benutzertext">
             <wysiwyg
               :initial-content="user.description"
@@ -114,7 +114,7 @@ export default {
         this.pending = false
 
         // Send toast
-        this.$store.dispatch('toast/add', { message: `Profil gespeichert` })
+        this.$store.dispatch('toast/add', { message: `toast.saved_profile` })
 
         // Back to user
         this.$router.push('/profile')

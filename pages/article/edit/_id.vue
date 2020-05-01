@@ -244,7 +244,7 @@ export default {
           difference(this.article, this.coreArticle)
         )
         // send toast
-        this.$store.dispatch('toast/add', { message: `Artikel bearbeitet!` })
+        this.$store.dispatch('toast/add', { message: `toast.updated_profile` })
         await this.$router.push(`/article/${this.article.id}`)
       } catch (error) {
         console.log(error)
@@ -255,7 +255,7 @@ export default {
       this.loadState.delete = true
       await this.$axios.delete(`/api/articles/${this.article.id}`)
       this.loadState.delete = false
-      this.$store.dispatch('toast/add', { message: `Artikel gelöscht!` })
+      this.$store.dispatch('toast/add', { message: `toast.deleted_article` })
       await this.$router.push(`/category/${this.category._id}`)
     },
   },

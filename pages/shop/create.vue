@@ -11,7 +11,7 @@
       Du kannst jetzt loslegen.
     </modal>
     <!-- Top Buttons -->
-    <div class="flex mt-2 justify-between max-w-xs mx-auto px-3">
+    <div class="flex mt-2 justify-between max-w-xs mx-auto">
       <button
         :class="{ secondary: step == 1 }"
         class="tooltip"
@@ -446,7 +446,7 @@ export default {
   }
 }
 .tooltip {
-  @apply relative mx-2 z-10;
+  @apply relative z-10;
   &-content {
     @apply absolute p-3;
     @apply transition duration-150 ease-in-out;

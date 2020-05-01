@@ -50,7 +50,7 @@
 
           <div class="mt-5 flex items-center justify-end">
             <div class="leading-5">
-              <n-link to="/account/forgot">
+              <n-link :to="localePath('/account/forgot')">
                 Hilfe bei der Anmeldung?
               </n-link>
             </div>

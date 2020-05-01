@@ -9,7 +9,7 @@
       >{{ $t('article.delete_confirmation') }}
     </modal>
     <div class="flex justify-between my-4">
-      <n-link :to="`/article/${article.id}`" class="button icon-r"
+      <n-link :to="localePath(`/article/${article.id}`)" class="button icon-r"
         ><icon name="arrow-ios-back-outline" /> Zurück</n-link
       >
       <button

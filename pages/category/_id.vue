@@ -9,7 +9,7 @@
     </div>
 
     <n-link
-      :to="`/category/edit/${category._id}`"
+      :to="localePath(`/category/edit/${category._id}`)"
       class="headline text-3xl inline-flex"
       >{{ category.name }} <icon name="edit-outline" />
     </n-link>

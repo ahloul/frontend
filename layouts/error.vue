@@ -5,7 +5,7 @@
         {{ error.statusCode }}
       </h1>
       <h3 class="text-info mb-3">{{ error.message }}</h3>
-      <n-link to="/" class="hover:text-white hover:no-underline">
+      <n-link :to="localePath('/')" class="hover:text-white hover:no-underline">
         {{ $t('back_to_start') }}
       </n-link>
     </div>

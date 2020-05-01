@@ -7,7 +7,7 @@ export default {
   },
   processes: {
     intro:
-      'Aktuell befinden wir uns im Aufbau. <br />Du kannst nun deinen Shop mit Leben füllen, indem du erste Artikel einpflegst. Damit hilfst du bei der Weiterentwicklung unserer Plattform.',
+      'Aktuell befinden wir uns im Aufbau. Du kannst nun deinen Shop mit Leben füllen, indem du erste Artikel einpflegst. Damit hilfst du bei der Weiterentwicklung unserer Plattform.',
     add_article: 'Artikel hinzufügen',
     welcome: 'Herzlich Willkommen',
   },

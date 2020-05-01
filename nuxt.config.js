@@ -179,6 +179,9 @@ export default {
         ],
         langDir: 'lang/',
         defaultLocale: 'en',
+        detectBrowserLanguage: {
+          useCookie: false,
+        },
         lazy: true,
       },
     ],

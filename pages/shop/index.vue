@@ -72,7 +72,7 @@
             <span v-if="deliveryOption === 'PU'" class="tag m-1">
               Abholung
             </span>
-            <span v-if="deliveryOption === 'LD'" class="tag m-1">
+            <span v-if="deliveryOption === 'MU'" class="tag m-1">
               Postversand
             </span>
           </div>

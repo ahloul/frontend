@@ -107,6 +107,9 @@ export default {
     password: 'Password',
     back_to_login: 'Back to login',
     request_new_password: 'Request new password',
+    help: 'Help with the registration?',
+    login: 'Login',
+    thirdparty: 'Or sign up with',
   },
   signup: {
     successful_registration:

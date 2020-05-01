@@ -245,7 +245,7 @@ export default {
         )
         // send toast
         this.$store.dispatch('toast/add', { message: `toast.updated_profile` })
-        await this.$router.push(`/article/${this.article.id}`)
+        await this.$router.push(this.localePath(`/article/${this.article.id}`))
       } catch (error) {
         console.log(error)
       }

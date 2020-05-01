@@ -110,11 +110,14 @@ export default {
     password: 'Kennwort',
     back_to_login: 'Zurück zum Login',
     request_new_password: 'Neues Kennwort anfordern',
+    help: 'Hilfe bei der Anmeldung?',
+    login: 'Anmelden',
+    thirdparty: 'Oder melde dich an mit',
   },
   signup: {
     successful_registration:
       'Deine Registrierung war erfolgreich! Du kannst dich jetzt einloggen.',
-    register: 'Registrieren',
+    register: 'Neu Registrieren',
   },
   toast: {
     updated_profile: 'Profile bearbeitet',

@@ -117,7 +117,7 @@ export default {
         this.$store.dispatch('toast/add', { message: `toast.saved_profile` })
 
         // Back to user
-        this.$router.push('/profile')
+        this.$router.push(this.localePath('/profile'))
       } catch (error) {
         // Error handling
         this.pending = false

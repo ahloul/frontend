@@ -31,7 +31,7 @@
 
           <!-- INPUT Password -->
           <label class="block">
-            <span>Passwort</span>
+            <span>{{ $t('login.password') }}</span>
             <validation-provider
               v-slot="{ errors }"
               name="password"
@@ -51,7 +51,7 @@
           <div class="mt-5 flex items-center justify-end">
             <div class="leading-5">
               <n-link :to="localePath('/account/forgot')">
-                Hilfe bei der Anmeldung?
+                {{ $t('login.help') }}
               </n-link>
             </div>
           </div>
@@ -63,7 +63,7 @@
                 :class="{ 'spinner-light': pending === 'local' }"
                 type="submit"
               >
-                Anmelden
+                {{ $t('login.login') }}
               </button>
             </span>
           </div>
@@ -72,9 +72,9 @@
               <button
                 type="button"
                 class="border w-full"
-                @click.prevent="$router.push('/account/signup')"
+                @click.prevent="$router.push(localePath('/account/signup'))"
               >
-                Neu registrieren
+                {{ $t('signup.register') }}
               </button>
             </span>
           </div>
@@ -88,7 +88,7 @@
           </div>
           <div class="relative flex justify-center text-sm leading-5">
             <span class="px-2 bg-grey text-primary">
-              Oder melde dich an mit
+              {{ $t('login.thirdparty') }}
             </span>
           </div>
         </div>
@@ -159,7 +159,7 @@ export default {
         this.pending = null
 
         // Redirect on successfull authentication
-        await this.$router.push('/')
+        await this.$router.push(this.localePath('/'))
       } catch ({ response: { data } }) {
         // TODO: Catch error
         this.pending = null
@@ -195,7 +195,7 @@ export default {
         this.pending = null
 
         // Redirect on successfull authentication
-        await this.$router.push('/')
+        await this.$router.push(this.localePath('/'))
       } catch (error) {
         // Error handler
         // TODO: Catch error

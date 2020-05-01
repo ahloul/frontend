@@ -43,7 +43,7 @@
               <button
                 type="button"
                 class="border w-full"
-                @click.prevent="$router.push('/')"
+                @click.prevent="$router.push(localePath('/'))"
               >
                 {{ $t('login.back_to_login') }}
               </button>
@@ -86,7 +86,7 @@ export default {
         this.pending = false
 
         // Redirect on successfull authentication
-        await this.$router.push('/')
+        await this.$router.push(this.localePath('/'))
       } catch ({ response: { data } }) {
         // TODO: Catch error
         this.pending = null

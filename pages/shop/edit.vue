@@ -374,7 +374,7 @@ export default {
         // Todo: Get shop
         this.loadState.update = false
         this.$store.dispatch('toast/add', { message: `toast.updated_shop` })
-        this.$router.push('/shop')
+        this.$router.push(this.localePath('/shop'))
       } catch (error) {
         this.loadState.update = false
         console.log(error)

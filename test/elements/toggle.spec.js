@@ -11,6 +11,8 @@ describe('Toggle', () => {
   })
   test('toogle function', () => {
     wrapper = mount(Toggle)
-    expect(wrapper.vm.changeToggle()).toBe(false)
+    expect(wrapper.vm.$data.isCheckedInternal).toBe(false)
+    wrapper.vm.changeToggle()
+    expect(wrapper.vm.$data.isCheckedInternal).toBe(true)
   })
 })

@@ -11,11 +11,9 @@ describe('Wysiwyg props', () => {
     const wrapper = shallowMount(Wysiwyg, {
       propsData: {
         initialContent: null,
-        label: null,
       },
     })
     expect(wrapper.props().initialContent).toBe(null)
-    expect(wrapper.props().label).toBe(null)
   })
 })
 

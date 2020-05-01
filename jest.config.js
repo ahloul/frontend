@@ -10,8 +10,11 @@ module.exports = {
     '.*\\.(vue)$': 'vue-jest',
   },
   collectCoverage: true,
+  coverageReporters: ['json', 'html'],
   collectCoverageFrom: [
     '<rootDir>/components/**/*.vue',
     '<rootDir>/pages/**/*.vue',
   ],
+  coverageDirectory: '<rootDir>/test/covergeReport',
+  coveragePathIgnorePatterns: ['<rootDir>/node_modules'],
 }

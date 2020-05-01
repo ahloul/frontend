@@ -5,28 +5,19 @@
         <div class="menubar-wrapper">
           <ul class="menubar">
             <li>
-              <button
-                :class="{ active: isActive.bold() }"
-                @click.prevent="commands.bold"
-              >
+              <button :class="{ active: isActive.bold() }" @click.prevent="commands.bold">
                 <b>B</b>
               </button>
             </li>
 
             <li>
-              <button
-                :class="{ active: isActive.italic() }"
-                @click.prevent="commands.italic"
-              >
+              <button :class="{ active: isActive.italic() }" @click.prevent="commands.italic">
                 <i>I</i>
               </button>
             </li>
 
             <li>
-              <button
-                :class="{ active: isActive.underline() }"
-                @click.prevent="commands.underline"
-              >
+              <button :class="{ active: isActive.underline() }" @click.prevent="commands.underline">
                 <u>U</u>
               </button>
             </li>
@@ -35,27 +26,21 @@
               <button
                 :class="{ active: isActive.heading({ level: 1 }) }"
                 @click.prevent="commands.heading({ level: 1 })"
-              >
-                H1
-              </button>
+              >H1</button>
             </li>
 
             <li>
               <button
                 :class="{ active: isActive.heading({ level: 2 }) }"
                 @click.prevent="commands.heading({ level: 2 })"
-              >
-                H2
-              </button>
+              >H2</button>
             </li>
 
             <li>
               <button
                 :class="{ active: isActive.heading({ level: 3 }) }"
                 @click.prevent="commands.heading({ level: 3 })"
-              >
-                H3
-              </button>
+              >H3</button>
             </li>
           </ul>
         </div>
@@ -69,10 +54,12 @@
 <script>
 import { Editor, EditorContent, EditorMenuBar } from 'tiptap'
 import { Heading, Bold, Italic, Link, Underline } from 'tiptap-extensions'
+import ClientOnly from 'vue-client-only'
 export default {
   components: {
     EditorContent,
     EditorMenuBar,
+    ClientOnly,
   },
   props: {
     initialContent: {

@@ -4,9 +4,7 @@
     :class="{ 'cursor-pointer hover:border-light hover:text-light': route }"
     @click="goToRoute"
   >
-    <div class="p-4">
-      {{ content }}
-    </div>
+    <div class="p-4">{{ content }}</div>
   </div>
 </template>
 

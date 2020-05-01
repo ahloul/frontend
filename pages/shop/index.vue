@@ -61,6 +61,16 @@
     </div>
     <div class="mt-5">
       <div v-if="openTab === 1">
+        <div v-if="shop.deliveryOptions" class="flex justify-start">
+          <div
+            v-for="(deliveryOption, index) in shop.deliveryOptions"
+            :key="index"
+          >
+            <div v-if="deliveryOption === 'LD'">Lokale Lieferung</div>
+            <div v-if="deliveryOption === 'MD'">Postversand</div>
+            <div v-if="deliveryOption === 'PU'">Zum Abholen</div>
+          </div>
+        </div>
         <!-- Content -->
         <empty-content
           v-if="!shop.description"

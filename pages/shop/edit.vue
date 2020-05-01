@@ -367,7 +367,7 @@ export default {
         this.loadState.update = true
         await this.$axios.patch(
           `/api/shops/${this.shop._id}`,
-          difference(this.shop, this.coreShop)
+          difference(this.shop, this.coreShop, true)
         )
         // Update user in storage
         await this.getMe()
@@ -413,7 +413,7 @@ export default {
   }
 }
 .tooltip {
-  @apply relative mx-2 z-10;
+  @apply relative z-10;
   &-content {
     @apply absolute p-3;
     @apply transition duration-150 ease-in-out;

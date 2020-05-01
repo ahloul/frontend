@@ -2,7 +2,7 @@
   <div>
     <div class="flex justify-end my-3">
       <n-link :to="`/article/edit/${article.id}`" class="button primary icon-r"
-        ><icon name="edit" /> Editieren</n-link
+        ><icon name="edit" /> {{ $t('edit') }}</n-link
       >
     </div>
 

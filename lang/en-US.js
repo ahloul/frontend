@@ -27,8 +27,8 @@ export default {
       stock_company: 'Stock Company',
     },
     no_of_employees: 'Number of Employees',
-    shop_created_confirmation:
-      'You have successfully created a shop!\nYou can start now.',
+    shop_created_confirmation: 'You have successfully created a shop!',
+    ready_to_start: 'You are ready to start now.',
   },
   contact_data: {
     section_name: 'Contact Data',
@@ -74,6 +74,8 @@ export default {
     name: 'Name of Category',
     create: 'Create Category',
     hint: 'i.e. drinks',
+    delete_confirmation:
+      'Are you sure you want to delete the category? The articles contained in it will also be irretrievably deleted!',
   },
   article: {
     description: 'Article Description',
@@ -90,10 +92,24 @@ export default {
     public_suffix: '',
     public: 'public',
     non_public: 'non-public',
+    delete_confirmation:
+      'Are you sure you want to delete this article permanently?',
   },
   profile: {
     description: 'Profile Description',
     city: 'City',
+  },
+  login: {
+    save_new_password: 'Save new password',
+    confirm_password: 'Confirm Password',
+    password: 'Password',
+    back_to_login: 'Back to login',
+    request_new_password: 'Request new password',
+  },
+  signup: {
+    successful_registration:
+      'Your registration was successful! You can log in now.',
+    register: 'Register',
   },
   toast: {
     updated_profile: 'Updated Profile',
@@ -105,10 +121,16 @@ export default {
     updated_category: 'Updated Category',
     logout: 'Logged out 👋',
     updated_shop: 'Updated Shop',
+    you_got_mail: 'You got mail ✉️!',
   },
 
+  contact_to_delete: 'Please contact us if you wish to delete your account',
+  select_image: 'Select Image',
   back: 'Back',
+  back_to_start: 'Back to start',
   continue: 'Continue',
+  confirm: 'Okay',
+  dismiss: 'Abort',
   no_items: 'You have no entries yet',
   add: 'Add',
   call: 'Give us a Call',
@@ -116,4 +138,5 @@ export default {
   no_description: 'No description available.',
   save: 'Save',
   remove: 'Remove',
+  edit: 'Edit',
 }

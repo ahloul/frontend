@@ -5,7 +5,7 @@
       centered
       dismiss="Schließen"
       @dismiss="showModal = false"
-      >Bitte kontaktiere uns, wenn du dein Account löschen möchtest <br />
+      >{{ $t('contact_to_delete') }} <br />
       <a href="mailto:support@getit.social">Support</a>
     </modal>
     <!-- Top Buttons -->

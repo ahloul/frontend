@@ -21,7 +21,7 @@
         <form @submit.prevent="handleSubmit(localNewPassword)">
           <!-- INPUT Password -->
           <label class="block">
-            <span>Passwort</span>
+            <span>{{ $t('login.password') }}</span>
             <validation-provider
               id="password"
               v-slot="{ errors }"
@@ -41,7 +41,7 @@
 
           <!-- INPUT Confirm password -->
           <label class="block">
-            <span>Passwort wiederholen</span>
+            <span>{{ $t('login.confirm_password') }}</span>
             <validation-provider
               v-slot="{ errors }"
               name="Password wiederholen"
@@ -66,7 +66,7 @@
                 :class="{ 'spinner-light': pending }"
                 type="submit"
               >
-                Neues Passwort speichern
+                {{ $t('login.save_new_password') }}
               </button>
             </span>
           </div>
@@ -77,7 +77,7 @@
                 class="border w-full"
                 @click.prevent="$router.push('/')"
               >
-                Zurück zum login
+                {{ $t('login.back_to_login') }}
               </button>
             </span>
           </div>

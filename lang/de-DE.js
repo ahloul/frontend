@@ -27,8 +27,8 @@ export default {
       stock_company: 'Aktiengesellschaft',
     },
     no_of_employees: 'Anzahl Mitarbeiter',
-    shop_created_confirmation:
-      'Du hast erfogreich einen Shop erstellt! <br />Du kannst jetzt loslegen.',
+    shop_created_confirmation: 'Du hast erfogreich einen Shop erstellt!',
+    ready_to_start: 'Du kannst jetzt loslegen.',
   },
   contact_data: {
     section_name: 'Kontaktdaten',
@@ -76,6 +76,8 @@ export default {
     name: 'Name der Kategorie',
     create: 'Kategorie anlegen',
     hint: 'z.B. Getränke',
+    delete_confirmation:
+      'Bist du sicher, dass du die Kategorie löschen möchtest? Die darin enthaltenen Artikel werden ebenfalls unwiederuflich gelöscht!',
   },
   article: {
     description: 'Artikelbeschreibung',
@@ -92,10 +94,24 @@ export default {
     public_suffix: 'geschaltet',
     public: 'öffentlich',
     non_public: 'nicht öffentlich',
+    delete_confirmation:
+      'Bist du sicher, dass du diesen Artikel unwiederuflich löschen möchtest?',
   },
   profile: {
     description: 'Profilbeschreibung',
     city: 'Wohnort',
+  },
+  login: {
+    save_new_password: 'Neues Kennwort speichern',
+    confirm_password: 'Kennwort wiederholen',
+    password: 'Kennwort',
+    back_to_login: 'Zurück zum Login',
+    request_new_password: 'Neues Kennwort anfordern',
+  },
+  signup: {
+    successful_registration:
+      'Deine Registrierung war erfolgreich! Du kannst dich jetzt einloggen.',
+    register: 'Registrieren',
   },
   toast: {
     updated_profile: 'Profile bearbeitet',
@@ -107,10 +123,17 @@ export default {
     updated_category: 'Kategorie geändert',
     logout: 'Ausgeloggt 👋',
     updated_shop: 'Shop aktualisiert',
+    you_got_mail: 'Du hast Post bekommen ✉️!',
   },
 
+  contact_to_delete:
+    'Bitte kontaktiere uns, wenn du dein Account löschen möchtest',
+  select_image: 'Bild auswählen',
   back: 'Zurück',
+  back_to_start: 'Zurück auf Start',
   continue: 'Weiter',
+  confirm: 'Okay',
+  dismiss: 'Abbruch',
   no_items: 'Du hast noch keine Einträge',
   add: 'Hinzufügen',
   call: 'Anrufen',
@@ -118,4 +141,5 @@ export default {
   no_description: 'Keine Beschreibung vorhanden.',
   save: 'Speichern',
   remove: 'Entfernen',
+  edit: 'Editieren',
 }

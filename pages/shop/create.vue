@@ -2,6 +2,14 @@
   <div class="flex flex-col">
     <!-- Modal -->
     <modal
+      :show="haveError"
+      :dismiss="null"
+      confirm="Okay"
+      centered
+      @confirm="haveError = false"
+      >{{ $t('information.shop_error_confirmation') }}
+    </modal>
+    <modal
       :show="showModal"
       :dismiss="null"
       confirm="Zum shop"
@@ -314,7 +322,7 @@
             class="primary my-10 ml-auto"
             :class="{ 'spinner-light': loadState.create }"
           >
-            {{ $t(step === 4 ? 'save' : 'continue') }}
+            {{ $t(step === 5 ? 'save' : 'continue') }}
           </button>
         </div>
       </form>
@@ -361,6 +369,7 @@ export default {
     ],
     // http://vee-validate.logaretm.com/v2/guide/interaction.html
     validationMode: 'lazy',
+    haveError: false,
     shop: {
       name: null,
       size: null,
@@ -388,7 +397,7 @@ export default {
         return
       }
 
-      if (step > 5) {
+      if (step >= 5) {
         this.onSubmit()
         return
       }
@@ -428,7 +437,7 @@ export default {
           })
         }
         // Only Step 4
-        if (this.step === 4) {
+        if (this.step === 5) {
           this.loadState.create = true
           await this.$axios.post(`/api/shops`, this.shop)
           // Update user in storage
@@ -441,6 +450,7 @@ export default {
         this.step++
       } catch (error) {
         this.loadState.create = false
+        this.haveError = true
         console.log(error)
       }
     },

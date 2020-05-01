@@ -7,7 +7,7 @@ export default {
   },
   processes: {
     intro:
-      'Aktuell befinden wir uns im Aufbau. <br />Du kannst nun deinen Shop mit Leben füllen, indem du erste Artikel einpflegst. Damit hilfst du bei der Weiterentwicklung unserer Plattform.',
+      'Aktuell befinden wir uns im Aufbau. Du kannst nun deinen Shop mit Leben füllen, indem du erste Artikel einpflegst. Damit hilfst du bei der Weiterentwicklung unserer Plattform.',
     add_article: 'Artikel hinzufügen',
     welcome: 'Herzlich Willkommen',
   },
@@ -29,7 +29,7 @@ export default {
     },
     no_of_employees: 'Anzahl Mitarbeiter',
     shop_created_confirmation:
-      'Du hast erfogreich einen Shop erstellt! <br />Du kannst jetzt loslegen.',
+      'Du hast erfogreich einen Shop erstellt! Du kannst jetzt loslegen.',
     shop_error_confirmation:
       'Schau noch einmal nach, ob du alle Felder korrekt ausgefüllt hast.',
   },

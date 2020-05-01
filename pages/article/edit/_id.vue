@@ -256,7 +256,7 @@ export default {
       await this.$axios.delete(`/api/articles/${this.article.id}`)
       this.loadState.delete = false
       this.$store.dispatch('toast/add', { message: `toast.deleted_article` })
-      await this.$router.push(`/category/${this.category._id}`)
+      await this.$router.push(this.localePath(`/category/${this.category._id}`))
     },
   },
 }

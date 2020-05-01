@@ -53,7 +53,7 @@ export default {
           this.$refs.category.reset()
         })
         this.$store.dispatch('toast/add', { message: `toast.created_category` })
-        await this.$router.push('/category')
+        await this.$router.push(this.localePath('/category'))
       } catch (error) {
         this.loadState.create = false
         console.log(error)

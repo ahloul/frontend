@@ -59,7 +59,7 @@ export default {
   },
   methods: {
     goToDetail({ _id }) {
-      this.$router.push(`/category/${_id}`)
+      this.$router.push(this.localePath(`/category/${_id}`))
     },
   },
 }

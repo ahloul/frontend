@@ -76,7 +76,7 @@ export default {
           this.$refs.category.reset()
         })
         this.$store.dispatch('toast/add', { message: `toast.updated_category` })
-        await this.$router.push('/category')
+        await this.$router.push(this.localePath('/category'))
       } catch (error) {
         this.loadState.update = false
         console.log(error)
@@ -90,7 +90,7 @@ export default {
       this.$store.dispatch('toast/add', {
         message: `Kategorie samt Inhalt gelöscht!`,
       })
-      await this.$router.push('/category')
+      await this.$router.push(this.localePath('/category'))
     },
   },
 }

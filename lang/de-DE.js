@@ -7,7 +7,7 @@ export default {
   },
   processes: {
     intro:
-      'Aktuell befinden wir uns im Aufbau. Du kannst nun deinen Shop mit Leben füllen, indem du erste Artikel einpflegst. Damit hilfst du bei der Weiterentwicklung unserer Plattform.',
+      'Aktuell befinden wir uns im Aufbau. Du kannst nun Deinen Shop mit Leben füllen, indem du erste Artikel einpflegst. Damit hilfst Du bei der Weiterentwicklung unserer Plattform.',
     add_article: 'Artikel hinzufügen',
     welcome: 'Herzlich Willkommen',
   },
@@ -116,7 +116,7 @@ export default {
   },
   signup: {
     successful_registration:
-      'Deine Registrierung war erfolgreich! Du kannst dich jetzt einloggen.',
+      'Deine Registrierung war erfolgreich! Du kannst Dich jetzt einloggen.',
     register: 'Neu Registrieren',
   },
   toast: {

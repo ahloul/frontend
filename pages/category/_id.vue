@@ -2,7 +2,7 @@
   <div>
     <div class="flex justify-end my-3">
       <n-link
-        :to="`/article/create?id=${category._id}`"
+        :to="localePath(`/article/create?id=${category._id}`)"
         class="button primary icon-r"
         ><icon name="plus" /> {{ $t('add') }}</n-link
       >

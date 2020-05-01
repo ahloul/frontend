@@ -8,7 +8,7 @@
       centered
       @confirm="goToLogin"
       >Deine Registrierung war erfolgreich! <br />
-      Du kannst dich jetzt einloggen.
+      Schau in deinem Posteingang nach um deine E-Mail Adresse zu verifizieren.
     </modal>
     <!-- Headline -->
     <div class="w-full max-w-sm mx-auto">

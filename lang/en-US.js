@@ -39,6 +39,9 @@ export default {
     phone_number: 'Phone Number',
     prefix_and_number: 'Prefix and Number',
     website: 'Website',
+    facebook: 'Facebook',
+    instagram: 'Instagram',
+    optional: 'Optional',
   },
   delivery_options: {
     section_name: 'Delivery Options',

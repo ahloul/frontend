@@ -203,17 +203,72 @@
             </ValidationProvider>
           </label>
 
+          <div class="relative my-4">
+            <div class="absolute inset-0 flex items-center">
+              <div class="w-full border-t"></div>
+            </div>
+            <div class="relative flex justify-center text-sm leading-5">
+              <span class="px-2 bg-grey text-light">
+                {{ $t('contact_data.optional') }}
+              </span>
+            </div>
+          </div>
+
           <!-- Website INPUT -->
-          <label class="form-label w-full" for="companyPhone">
-            <span>{{ $t('contact_data.website') }}</span>
+          <label class="block" for="companyWebsite">
+            <span>
+              {{ $t('contact_data.website') }}
+            </span>
             <ValidationProvider
               v-slot="{ errors }"
               rules="max:200|validUrl"
               name="Webseite"
             >
               <input
-                id="companyPhone"
+                id="companyWebsite"
                 v-model="shop.contact.website"
+                type="text"
+                class="form-input mt-1 block w-full"
+                placeholder="https://"
+              />
+              <span class="error">{{ errors[0] }}</span>
+            </ValidationProvider>
+          </label>
+
+          <!-- Facebook INPUT -->
+          <label class="block" for="companyFacebook">
+            <span>
+              {{ $t('contact_data.facebook') }}
+            </span>
+            <ValidationProvider
+              v-slot="{ errors }"
+              rules="max:200|validUrl"
+              name="Facebook"
+            >
+              <input
+                id="companyFacebook"
+                v-model="shop.contact.facebook"
+                type="text"
+                class="form-input mt-1 block w-full"
+                placeholder="https://"
+              />
+              <span class="error">{{ errors[0] }}</span>
+            </ValidationProvider>
+          </label>
+
+          <!-- Instagram INPUT -->
+          <label class="block" for="companyInstagram">
+            <span>
+              {{ $t('contact_data.instagram') }}
+            </span>
+            <ValidationProvider
+              v-slot="{ errors }"
+              rules="max:200|validUrl"
+              name="Facebook"
+            >
+              <input
+                id="companyFacebook"
+                v-model="shop.contact.instagram"
                 type="text"
                 class="form-input mt-1 block w-full"
                 placeholder="https://"

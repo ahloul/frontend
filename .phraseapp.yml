@@ -3,11 +3,11 @@ phraseapp:
   project_id: 5b4b6f3cad4f8ff0a4851d2fd77516f2
   push:
     sources:
-    - file: /lang/en-US.json
+    - file: ./lang/en-US.json
       params:
         file_format: simple_json
   pull:
     targets:
-    - file: /lang/en-US.json
+    - file: ./lang/en-US.json
       params:
         file_format: simple_json

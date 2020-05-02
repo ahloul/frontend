@@ -13,7 +13,6 @@ export default function ({ store, redirect, route }) {
     'profile___en',
   ]
 
-  console.log(route.name)
   if (
     !store.getters.haveShop &&
     !publicRoutes.some((name) => name === route.name)

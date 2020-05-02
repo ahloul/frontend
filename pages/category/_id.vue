@@ -83,7 +83,6 @@ export default {
   },
   methods: {
     goToDetail({ id }) {
-      console.log(id)
       this.$router.push(this.localePath(`/article/${id}`))
     },
   },

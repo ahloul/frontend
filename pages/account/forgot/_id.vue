@@ -99,8 +99,8 @@ export default {
       const { id } = params
       const user = await $axios.$get(`/api/password-resets/${id}`)
       return { user, token: id }
-    } catch (e) {
-      console.log(e)
+    } catch (error) {
+      console.log(error)
       redirect('/account/forgot')
     }
   },

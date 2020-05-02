@@ -24,7 +24,7 @@
         {{ $t('processes.intro') }}
       </p>
       <div class="w-auto max-w-xs mx-auto">
-        <n-link class="button primary mx-auto" :to="localePath('/category')">
+        <n-link class="button primary mx-auto" to="'/category'">
           {{ $t('processes.add_article') }}
         </n-link>
       </div>

@@ -61,7 +61,7 @@ button, .button {
       @apply p-0 text-tertiary text-base tracking-wider;
       
       &:hover {
-        @apply text-secondary bg-transparent;
+        @apply text-info bg-transparent;
       }
       
     }

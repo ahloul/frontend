@@ -9,7 +9,7 @@
       >{{ $t('article.delete_confirmation') }}
     </modal>
     <div class="flex justify-between my-4">
-      <n-link :to="localePath(`/article/${article.id}`)" class="button icon-r"
+      <n-link :to="`/article/${article.id}`" class="button icon-r"
         ><icon name="arrow-ios-back-outline" /> Zurück</n-link
       >
       <button
@@ -245,7 +245,7 @@ export default {
         )
         // send toast
         this.$store.dispatch('toast/add', { message: `toast.updated_profile` })
-        await this.$router.push(this.localePath(`/article/${this.article.id}`))
+        await this.$router.push(`/article/${this.article.id}`)
       } catch (error) {
         console.log(error)
       }
@@ -256,7 +256,7 @@ export default {
       await this.$axios.delete(`/api/articles/${this.article.id}`)
       this.loadState.delete = false
       this.$store.dispatch('toast/add', { message: `toast.deleted_article` })
-      await this.$router.push(this.localePath(`/category/${this.category._id}`))
+      await this.$router.push(`/category/${this.category._id}`)
     },
   },
 }

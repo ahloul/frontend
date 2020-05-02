@@ -6,6 +6,7 @@
           folder="user"
           placeholder="Profilbild"
           :image="user.picture"
+          rounded
           @target="selectImage"
         />
       </div>
@@ -117,7 +118,7 @@ export default {
         this.$store.dispatch('toast/add', { message: `toast.saved_profile` })
 
         // Back to user
-        this.$router.push(this.localePath('/profile'))
+        this.$router.push('/profile')
       } catch (error) {
         // Error handling
         this.pending = false

@@ -218,9 +218,7 @@ export default {
         await this.$axios.post(`/api/articles`, this.article)
         this.$store.dispatch('toast/add', { message: `toast.created_article` })
         // TODO: Back to right category
-        await this.$router.push(
-          this.localePath(`/category/${this.article.category}`)
-        )
+        await this.$router.push(`/category/${this.article.category}`)
       } catch (error) {
         console.log(error)
       }

@@ -1,9 +1,10 @@
 <template>
-  <div class="min-h-screen flex flex-col justify-center p-2">
+  <div class="flex flex-col content-center justify-center p-2">
     <div class="w-full max-w-sm mx-auto">
-      <h1 class="text-center font-bold text-secondary mb-5">
+      <img src="/img/logo.svg" width="90" class="mx-auto" alt="" />
+      <h2 class="text-center font-bold text-secondary">
         get it!
-      </h1>
+      </h2>
     </div>
     <div class="max-w-xs mx-auto">
       <img
@@ -75,7 +76,7 @@
               <button
                 type="button"
                 class="border w-full"
-                @click.prevent="$router.push(localePath('/'))"
+                @click.prevent="$router.push('/')"
               >
                 {{ $t('login.back_to_login') }}
               </button>
@@ -130,7 +131,7 @@ export default {
         this.pending = false
 
         // Redirect on successfull authentication
-        await this.$router.push(this.localePath('/'))
+        await this.$router.push('/')
       } catch ({ response: { data } }) {
         // TODO: Catch error
         this.pending = null

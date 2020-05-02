@@ -11,7 +11,7 @@
         <div class="">
           <button
             class="button icon-r my-3"
-            @click="$router.push(localePath('/shop/edit'))"
+            @click="$router.push('/shop/edit')"
           >
             <icon name="settings-outline" class="mx-1" fill="white" />
           </button>
@@ -59,20 +59,21 @@
         </button>
       </div>
     </div>
-    <div class="mt-2">
-      <div v-if="openTab === 1">
+    <div class="mt-3">
+      <div v-if="openTab === 1" class="card">
         <div v-if="shop.deliveryOptions" class="flex flex-wrap justify-start">
           <div
             v-for="(deliveryOption, index) in shop.deliveryOptions"
             :key="index"
+            class="mt-2"
           >
-            <span v-if="deliveryOption === 'LD'" class="tag m-1">
+            <span v-if="deliveryOption === 'LD'" class="tag mr-1">
               Lokale Lieferung
             </span>
-            <span v-if="deliveryOption === 'PU'" class="tag m-1">
+            <span v-if="deliveryOption === 'PU'" class="tag mr-1">
               Abholung
             </span>
-            <span v-if="deliveryOption === 'MU'" class="tag m-1">
+            <span v-if="deliveryOption === 'MU'" class="tag mr-1">
               Postversand
             </span>
           </div>
@@ -84,8 +85,10 @@
           route="/shop/edit"
           class="mt-5"
         />
-        <div v-else v-html="shop.description"></div>
-        <hr class="my-5" />
+        <div v-else>
+          <hr class="my-5" />
+          <div v-html="shop.description"></div>
+        </div>
         <div v-if="shop.contact" class="flex flex-col text-right">
           <div class="leading-tight">
             <a
@@ -98,10 +101,13 @@
           </div>
         </div>
       </div>
-      <div v-else-if="openTab === 2">
+      <div v-else-if="openTab === 2" class="card">
         <!-- Map -->
-        <div class="grid grid-cols-3 gap-3">
-          <div v-if="shop.address.locationId" class="flex flex-col">
+        <div class="flex">
+          <div
+            v-if="shop.address.locationId"
+            class="ml-auto text-right text-sm text-light flex flex-col mb-2"
+          >
             <div class="leading-tight">
               {{ shop.address.street }} {{ shop.address.houseNumber }}
             </div>
@@ -115,7 +121,6 @@
             </div>
           </div>
         </div>
-        <hr class="my-4" />
         <here-map
           :position="shop.displayPosition"
           :polygon="shop.polygonCoordinates"

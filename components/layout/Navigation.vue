@@ -3,36 +3,36 @@
     <div class="w-full">
       <nav class="navigation">
         <div class="brand">
-          <n-link :to="localePath('/')">get it!</n-link>
+          <n-link to="/">get it!</n-link>
         </div>
         <div class="ml-3">
           <ul v-if="!haveShop">
             <li>
-              <n-link :to="localePath('/shop/create')">
+              <n-link to="/shop/create">
                 {{ $t('navbar.create_shop') }}
               </n-link>
             </li>
           </ul>
           <ul v-if="haveShop">
             <li>
-              <n-link :to="localePath('/#1')">
+              <n-link to="/#1">
                 {{ $t('navbar.processes') }}
               </n-link>
             </li>
             <li>
-              <n-link :to="localePath('/category')">
+              <n-link to="/category">
                 {{ $t('navbar.stock') }}
               </n-link>
             </li>
             <li>
-              <n-link :to="localePath('/shop')">{{ $t('navbar.shop') }}</n-link>
+              <n-link to="/shop">{{ $t('navbar.shop') }}</n-link>
             </li>
           </ul>
         </div>
         <div class="ml-auto">
           <ul>
             <li>
-              <n-link :to="localePath('/profile')">
+              <n-link to="/profile">
                 <icon name="person-outline" />
               </n-link>
             </li>

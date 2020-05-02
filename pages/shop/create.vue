@@ -14,7 +14,7 @@
       :dismiss="null"
       :confirm="$t('go_to_shop')"
       centered
-      @confirm="$router.push(localePath('/'))"
+      @confirm="$router.push('/')"
     >
       {{ $t('information.shop_created_confirmation') }}
       <br />

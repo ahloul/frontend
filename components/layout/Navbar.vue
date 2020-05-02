@@ -1,31 +1,31 @@
 <template>
-  <div class="p-2 md:p-3">
+  <div class="p-2 md:p-3 z-50">
     <nav class="navbar">
       <ul>
         <li v-if="haveShop">
-          <n-link :to="localePath('/#1')" exact
+          <n-link to="/#1" exact
             ><icon name="layers-outline" width="20"
           /></n-link>
         </li>
         <li v-if="haveShop">
-          <n-link :to="localePath('/category')"
+          <n-link to="/category"
             ><icon name="cube-outline" width="20"
           /></n-link>
         </li>
         <li v-if="haveShop">
-          <n-link :to="localePath('/shop')">
+          <n-link to="/shop">
             <icon name="home-outline" width="20" />
           </n-link>
         </li>
         <li v-if="!haveShop" class="mr-auto">
-          <n-link :to="localePath('/shop/create')" class="font-bold"
+          <n-link to="/shop/create" class="font-bold"
             ><icon name="plus-outline" width="20" /><span class="text-xs">
               {{ $t('navbar.create_shop') }}
             </span></n-link
           >
         </li>
         <li>
-          <n-link :to="localePath('/profile')"
+          <n-link to="/profile"
             ><icon name="person-outline" width="20"
           /></n-link>
         </li>

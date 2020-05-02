@@ -7,7 +7,12 @@
   >
     <!-- articlePicture FILE -->
     <div v-if="imgLocal.url">
-      <img :src="imgLocal.url" alt="" class="rounded-lg mx-auto" />
+      <img
+        :src="imgLocal.url"
+        alt=""
+        class="rounded-lg mx-auto"
+        :class="{ 'rounded-full': rounded }"
+      />
       <button type="button" class="w-auto mx-auto" @click="removeImageAction">
         {{ $t('remove') }}
       </button>
@@ -46,6 +51,10 @@ export default {
       type: String,
       default: null,
       required: true,
+    },
+    rounded: {
+      type: Boolean,
+      default: false,
     },
     image: {
       type: Object,

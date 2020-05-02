@@ -116,6 +116,7 @@ export default {
    */
   plugins: [
     '~/plugins/modules/axios',
+    '~/plugins/modules/i18n',
     '~/plugins/mixins/components',
     // { src: '~/plugins/modules/localstorage', mode: 'client' },
     { src: '~/plugins/modules/timeago', mode: 'client' },
@@ -160,6 +161,7 @@ export default {
         },
       },
     ],
+    /*
     [
       'nuxt-i18n',
       {
@@ -177,6 +179,7 @@ export default {
             file: 'de-DE.js',
           },
         ],
+        parsePages: false,
         langDir: 'lang/',
         defaultLocale: 'en',
         detectBrowserLanguage: {
@@ -185,7 +188,14 @@ export default {
         lazy: true,
       },
     ],
+    */
   ],
+  /**
+   ** Global Middleware configuration
+   */
+  router: {
+    middleware: 'i18n',
+  },
 
   /**
    ** Server Middleware configuration

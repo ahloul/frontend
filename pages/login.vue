@@ -1,10 +1,11 @@
 <template>
-  <div class="min-h-screen flex flex-col justify-center p-2">
+  <div class="flex flex-col content-center justify-center p-2">
     <!-- Headline -->
     <div class="w-full max-w-sm mx-auto">
-      <h1 class="text-center font-bold text-secondary">
+      <img src="/img/logo.svg" width="90" class="mx-auto" alt="" />
+      <h2 class="text-center font-bold text-secondary">
         get it!
-      </h1>
+      </h2>
     </div>
 
     <!-- Form -->
@@ -50,7 +51,7 @@
 
           <div class="mt-5 flex items-center justify-end">
             <div class="leading-5">
-              <n-link :to="localePath('/account/forgot')">
+              <n-link :to="'/account/forgot'">
                 {{ $t('login.help') }}
               </n-link>
             </div>
@@ -72,7 +73,7 @@
               <button
                 type="button"
                 class="border w-full"
-                @click.prevent="$router.push(localePath('/account/signup'))"
+                @click.prevent="$router.push('/account/signup')"
               >
                 {{ $t('signup.register') }}
               </button>
@@ -124,12 +125,10 @@
 /* access_token comes from external service */
 
 import { mapActions } from 'vuex'
-
 export default {
   name: 'Login',
   layout: 'blank',
   middleware: 'notAuthenticated',
-
   data: () => ({
     pending: null,
     guest: {
@@ -159,7 +158,7 @@ export default {
         this.pending = null
 
         // Redirect on successfull authentication
-        await this.$router.push(this.localePath('/'))
+        await this.$router.push('/')
       } catch ({ response: { data } }) {
         // TODO: Catch error
         this.pending = null
@@ -195,7 +194,7 @@ export default {
         this.pending = null
 
         // Redirect on successfull authentication
-        await this.$router.push(this.localePath('/'))
+        await this.$router.push('/')
       } catch (error) {
         // Error handler
         // TODO: Catch error

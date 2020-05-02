@@ -1,16 +1,25 @@
-export const state = () => {
-  return {
-    accessToken: null,
-    user: {
-      name: null,
+export const state = () => ({
+  accessToken: null,
+  user: {
+    name: null,
+  },
+  pending: {
+    login: false,
+    signup: false,
+    logout: false,
+  },
+  locales: [
+    {
+      code: 'de',
+      name: 'Deutsch',
     },
-    pending: {
-      login: false,
-      signup: false,
-      logout: false,
+    {
+      code: 'en',
+      name: 'English',
     },
-  }
-}
+  ],
+  locale: 'en',
+})
 
 export const mutations = {
   setToken(state, token) {
@@ -24,6 +33,11 @@ export const mutations = {
       ...login,
       ...signup,
       ...logout,
+    }
+  },
+  setLang(state, locale) {
+    if (state.locales.find((el) => el.code === locale)) {
+      state.locale = locale
     }
   },
 }

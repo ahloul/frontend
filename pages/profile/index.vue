@@ -2,7 +2,7 @@
   <div class="container max-w-lg">
     <div
       class="animated bg-white shadow-xs hover:shadow-lg settings flex flex-col"
-      @click="$router.push(localePath('/profile/settings'))"
+      @click="$router.push('/profile/settings')"
     >
       <div class="animated-slow absolute settings-icon">
         <icon name="settings-outline" />
@@ -52,7 +52,7 @@ export default {
       try {
         await this.$axios.post(`/api/auth/logout`)
         await this.resetUser()
-        await this.$router.push(this.localePath('/'))
+        await this.$router.push('/')
         // Send toast
         this.$store.dispatch('toast/add', { message: `toast.logout` })
       } catch (error) {

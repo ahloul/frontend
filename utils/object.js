@@ -6,7 +6,7 @@ import { transform, isObject, isEqual, isArray } from 'lodash'
  * @param  {Object} base   Object to compare with
  * @return {Object}        Return a new object who represent the diff
  */
-const difference = (object, base) => {
+export const difference = (object, base) => {
   function changes(object, base) {
     return transform(object, function (result, value, key) {
       if (!isEqual(value, base[key])) {

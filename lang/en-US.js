@@ -28,6 +28,7 @@ export default {
     },
     no_of_employees: 'Number of Employees',
     shop_created_confirmation: 'You have successfully created a shop!',
+    go_to_shop: 'Go to shop!',
     ready_to_start: 'You are ready to start now.',
     shop_error_confirmation:
       'Check again that you have filled in all fields correctly.',

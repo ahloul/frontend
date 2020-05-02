@@ -60,7 +60,7 @@
     </div>
     <div class="grid md:grid-cols-4 gap-1 mt-3">
       <div class="col-span-1"><!-- Todo: Opening Times here --></div>
-      <div v-if="openTab === 1" class="card col-span-3">
+      <div v-if="openTab === 1" class="card col-span-4">
         <div v-if="shop.deliveryOptions" class="flex flex-wrap justify-start">
           <div
             v-for="(deliveryOption, index) in shop.deliveryOptions"

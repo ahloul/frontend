@@ -12,7 +12,7 @@
     <modal
       :show="showModal"
       :dismiss="null"
-      :confirm="$t('go_to_shop')"
+      :confirm="$t('information.go_to_shop')"
       centered
       @confirm="$router.push('/')"
     >

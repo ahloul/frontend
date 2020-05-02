@@ -20,7 +20,7 @@
       </p>
       <div class="my-4">
         <n-link
-          to="'/login'"
+          to="/login"
           class="button button-primary"
           :class="{ 'spinner-light': pending }"
           >Zum Login</n-link

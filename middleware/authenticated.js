@@ -4,8 +4,16 @@ export default function ({ store, redirect, route }) {
     return redirect('/login')
   }
 
-  const publicRoutes = ['profile', 'profile-settings']
+  const publicRoutes = [
+    'profile-settings',
+    'profile-settings___de',
+    'profile-settings___en',
+    'profile',
+    'profile___de',
+    'profile___en',
+  ]
 
+  console.log(route.name)
   if (
     !store.getters.haveShop &&
     !publicRoutes.some((name) => name === route.name)

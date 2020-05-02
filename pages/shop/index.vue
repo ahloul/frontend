@@ -59,16 +59,22 @@
         </button>
       </div>
     </div>
-    <div class="mt-5">
+    <div class="mt-2">
       <div v-if="openTab === 1">
-        <div v-if="shop.deliveryOptions" class="flex justify-start">
+        <div v-if="shop.deliveryOptions" class="flex flex-wrap justify-start">
           <div
             v-for="(deliveryOption, index) in shop.deliveryOptions"
             :key="index"
           >
-            <div v-if="deliveryOption === 'LD'">Lokale Lieferung</div>
-            <div v-if="deliveryOption === 'MD'">Postversand</div>
-            <div v-if="deliveryOption === 'PU'">Zum Abholen</div>
+            <span v-if="deliveryOption === 'LD'" class="tag m-1">
+              Lokale Lieferung
+            </span>
+            <span v-if="deliveryOption === 'PU'" class="tag m-1">
+              Abholung
+            </span>
+            <span v-if="deliveryOption === 'MU'" class="tag m-1">
+              Postversand
+            </span>
           </div>
         </div>
         <!-- Content -->
@@ -82,7 +88,11 @@
         <hr class="my-5" />
         <div v-if="shop.contact" class="flex flex-col text-right">
           <div class="leading-tight">
-            <a :href="shop.contact.website" target="_blank">
+            <a
+              v-if="shop.contact.website"
+              :href="shop.contact.website"
+              target="_blank"
+            >
               {{ $t('enter_website') }}
             </a>
           </div>

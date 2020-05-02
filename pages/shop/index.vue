@@ -30,7 +30,7 @@
     </div>
 
     <div class="flex mt-3 md:ml-10 justify-end">
-      <div class="flex flex-col">
+      <div class="flex flex-col mr-auto">
         <div class="w-full">
           <a :href="`tel:${shop.contact.phone}`" class="button primary icon-r"
             ><icon name="phone" /> {{ $t('call') }}</a

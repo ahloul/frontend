@@ -12179,6 +12179,11 @@ vue-timeago@^5.1.2:
   dependencies:
     date-fns "^1.29.0"
 
+vue2-timepicker@^1.0.8:
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/vue2-timepicker/-/vue2-timepicker-1.0.8.tgz#352b450f5d4b20ad5da5cef729f08b3b3ac89b9d"
+  integrity sha512-3wtodBBbW2comZYIpqUSvwKkNqAOkJn5TZaC+SypTE/vn001a/f+f1kj1FZdHPT43R4uiD3DLzkP2Y1VDKlNgg==
+
 vue@^2.6.11:
   version "2.6.11"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.11.tgz#76594d877d4b12234406e84e35275c6d514125c5"

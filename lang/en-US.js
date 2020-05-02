@@ -44,6 +44,17 @@ export default {
     optional: 'Optional',
   },
   delivery_options: {
+    opening_times: 'Opening Times',
+    days: {
+      mo: 'Mo',
+      tu: 'Tu',
+      we: 'We',
+      th: 'Th',
+      fr: 'Fr',
+      sa: 'Sa',
+      su: 'Su',
+    },
+    all_day: 'Open all day long',
     section_name: 'Delivery Options',
     offer_prefix: 'I offer',
     offer_suffix: '',

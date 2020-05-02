@@ -12,10 +12,13 @@
     <modal
       :show="showModal"
       :dismiss="null"
-      confirm="Zum shop"
+      :confirm="$t('go_to_shop')"
       centered
-      @confirm="$router.push('/')"
-      >{{ $t('information.shop_created_confirmation') }}
+      @confirm="$router.push(localePath('/'))"
+    >
+      {{ $t('information.shop_created_confirmation') }}
+      <br />
+      {{ $t('information.ready_to_start') }}
     </modal>
     <!-- Top Buttons -->
     <div class="flex mt-2 justify-between max-w-xs mx-auto">

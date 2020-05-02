@@ -178,7 +178,10 @@ export default {
           },
         ],
         langDir: 'lang/',
-        defaultLocale: 'de',
+        defaultLocale: 'en',
+        detectBrowserLanguage: {
+          useCookie: false,
+        },
         lazy: true,
       },
     ],

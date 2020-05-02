@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="flex justify-end my-3">
-      <n-link to="/category/create" class="button primary icon-r"
+      <n-link :to="localePath('/category/create')" class="button primary icon-r"
         ><icon name="plus" /> {{ $t('add') }}</n-link
       >
     </div>
@@ -59,7 +59,7 @@ export default {
   },
   methods: {
     goToDetail({ _id }) {
-      this.$router.push(`/category/${_id}`)
+      this.$router.push(this.localePath(`/category/${_id}`))
     },
   },
 }

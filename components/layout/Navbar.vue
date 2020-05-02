@@ -3,27 +3,29 @@
     <nav class="navbar">
       <ul>
         <li v-if="haveShop">
-          <n-link to="/#1" exact
+          <n-link :to="localePath('/#1')" exact
             ><icon name="layers-outline" width="20"
           /></n-link>
         </li>
         <li v-if="haveShop">
-          <n-link to="/category"
+          <n-link :to="localePath('/category')"
             ><icon name="cube-outline" width="20"
           /></n-link>
         </li>
         <li v-if="haveShop">
-          <n-link to="/shop"><icon name="home-outline" width="20" /></n-link>
+          <n-link :to="localePath('/shop')">
+            <icon name="home-outline" width="20" />
+          </n-link>
         </li>
         <li v-if="!haveShop" class="mr-auto">
-          <n-link to="/shop/create" class="font-bold"
+          <n-link :to="localePath('/shop/create')" class="font-bold"
             ><icon name="plus-outline" width="20" /><span class="text-xs">
               {{ $t('navbar.create_shop') }}
             </span></n-link
           >
         </li>
         <li>
-          <n-link to="/profile"
+          <n-link :to="localePath('/profile')"
             ><icon name="person-outline" width="20"
           /></n-link>
         </li>

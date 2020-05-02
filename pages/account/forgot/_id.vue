@@ -21,7 +21,7 @@
         <form @submit.prevent="handleSubmit(localNewPassword)">
           <!-- INPUT Password -->
           <label class="block">
-            <span>Passwort</span>
+            <span>{{ $t('login.password') }}</span>
             <validation-provider
               id="password"
               v-slot="{ errors }"
@@ -41,7 +41,7 @@
 
           <!-- INPUT Confirm password -->
           <label class="block">
-            <span>Passwort wiederholen</span>
+            <span>{{ $t('login.confirm_password') }}</span>
             <validation-provider
               v-slot="{ errors }"
               name="Password wiederholen"
@@ -66,7 +66,7 @@
                 :class="{ 'spinner-light': pending }"
                 type="submit"
               >
-                Neues Passwort speichern
+                {{ $t('login.save_new_password') }}
               </button>
             </span>
           </div>
@@ -75,9 +75,9 @@
               <button
                 type="button"
                 class="border w-full"
-                @click.prevent="$router.push('/')"
+                @click.prevent="$router.push(localePath('/'))"
               >
-                Zurück zum login
+                {{ $t('login.back_to_login') }}
               </button>
             </span>
           </div>
@@ -130,7 +130,7 @@ export default {
         this.pending = false
 
         // Redirect on successfull authentication
-        await this.$router.push('/')
+        await this.$router.push(this.localePath('/'))
       } catch ({ response: { data } }) {
         // TODO: Catch error
         this.pending = null

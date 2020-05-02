@@ -17,7 +17,7 @@
         <div class="mx-auto">
           <icon v-if="!isUploading" name="image-outline" class="inline-block" />
           <p :class="{ 'spinner-dark': isUploading }">
-            {{ placeholder }}
+            {{ $t(placeholder) }}
           </p>
         </div>
         <span class="error-message">{{ errors[0] }}</span>
@@ -53,7 +53,7 @@ export default {
     },
     placeholder: {
       type: String,
-      default: 'Bild auswählen',
+      default: 'select_image',
     },
   },
 

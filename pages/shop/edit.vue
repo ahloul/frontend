@@ -5,7 +5,7 @@
       centered
       dismiss="Schließen"
       @dismiss="showModal = false"
-      >Bitte kontaktiere uns, wenn du dein Account löschen möchtest <br />
+      >{{ $t('contact_to_delete') }} <br />
       <a href="mailto:support@getit.social">Support</a>
     </modal>
     <!-- Top Buttons -->
@@ -374,7 +374,7 @@ export default {
         // Todo: Get shop
         this.loadState.update = false
         this.$store.dispatch('toast/add', { message: `toast.updated_shop` })
-        this.$router.push('/shop')
+        this.$router.push(this.localePath('/shop'))
       } catch (error) {
         this.loadState.update = false
         console.log(error)

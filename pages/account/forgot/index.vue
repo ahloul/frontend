@@ -34,7 +34,7 @@
                 :class="{ 'spinner-light': pending }"
                 type="submit"
               >
-                Neues Passwort anfordern
+                {{ $t('login.request_new_password') }}
               </button>
             </span>
           </div>
@@ -43,9 +43,9 @@
               <button
                 type="button"
                 class="border w-full"
-                @click.prevent="$router.push('/')"
+                @click.prevent="$router.push(localePath('/'))"
               >
-                Zurück zum login
+                {{ $t('login.back_to_login') }}
               </button>
             </span>
           </div>
@@ -80,13 +80,13 @@ export default {
 
         // Send Notification
         this.$store.dispatch('toast/add', {
-          message: `Du hast Post bekommen ✉️!`,
+          message: `you_got_mail`,
         })
         // Unset Loading
         this.pending = false
 
         // Redirect on successfull authentication
-        await this.$router.push('/')
+        await this.$router.push(this.localePath('/'))
       } catch ({ response: { data } }) {
         // TODO: Catch error
         this.pending = null

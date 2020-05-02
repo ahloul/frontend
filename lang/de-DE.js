@@ -7,7 +7,7 @@ export default {
   },
   processes: {
     intro:
-      'Aktuell befinden wir uns im Aufbau. Du kannst nun deinen Shop mit Leben füllen, indem du erste Artikel einpflegst. Damit hilfst du bei der Weiterentwicklung unserer Plattform.',
+      'Aktuell befinden wir uns im Aufbau. Du kannst nun Deinen Shop mit Leben füllen, indem Du erste Artikel einpflegst. Damit hilfst Du bei der Weiterentwicklung unserer Plattform.',
     add_article: 'Artikel hinzufügen',
     welcome: 'Herzlich Willkommen',
   },
@@ -28,10 +28,10 @@ export default {
       stock_company: 'Aktiengesellschaft',
     },
     no_of_employees: 'Anzahl Mitarbeiter',
-    shop_created_confirmation:
-      'Du hast erfogreich einen Shop erstellt! Du kannst jetzt loslegen.',
+    shop_created_confirmation: 'Du hast erfogreich einen Shop erstellt!',
+    ready_to_start: 'Du kannst jetzt loslegen.',
     shop_error_confirmation:
-      'Schau noch einmal nach, ob du alle Felder korrekt ausgefüllt hast.',
+      'Schau noch einmal nach, ob Du alle Felder korrekt ausgefüllt hast.',
   },
   contact_data: {
     section_name: 'Kontaktdaten',
@@ -50,7 +50,7 @@ export default {
       local_delivery: {
         name: 'Lokale Lieferung',
         description:
-          'Wir sorgen dafür, dass unsere Kunden Ihre ware Zeitnah erhalten',
+          'Wir sorgen dafür, dass unsere Kunden Ihre Ware zeitnah erhalten',
       },
       parcel: {
         name: 'Post- und Paketversand',
@@ -79,6 +79,8 @@ export default {
     name: 'Name der Kategorie',
     create: 'Kategorie anlegen',
     hint: 'z.B. Getränke',
+    delete_confirmation:
+      'Bist Du sicher, dass Du die Kategorie löschen möchtest? Die darin enthaltenen Artikel werden ebenfalls unwideruflich gelöscht!',
   },
   article: {
     description: 'Artikelbeschreibung',
@@ -95,10 +97,27 @@ export default {
     public_suffix: 'geschaltet',
     public: 'öffentlich',
     non_public: 'nicht öffentlich',
+    delete_confirmation:
+      'Bist Du sicher, dass Du diesen Artikel unwideruflich löschen möchtest?',
   },
   profile: {
     description: 'Profilbeschreibung',
     city: 'Wohnort',
+  },
+  login: {
+    save_new_password: 'Neues Kennwort speichern',
+    confirm_password: 'Kennwort wiederholen',
+    password: 'Kennwort',
+    back_to_login: 'Zurück zum Login',
+    request_new_password: 'Neues Kennwort anfordern',
+    help: 'Hilfe bei der Anmeldung?',
+    login: 'Anmelden',
+    thirdparty: 'Oder melde Dich an mit',
+  },
+  signup: {
+    successful_registration:
+      'Deine Registrierung war erfolgreich! Du kannst Dich jetzt einloggen.',
+    register: 'Neu Registrieren',
   },
   toast: {
     updated_profile: 'Profile bearbeitet',
@@ -110,10 +129,17 @@ export default {
     updated_category: 'Kategorie geändert',
     logout: 'Ausgeloggt 👋',
     updated_shop: 'Shop aktualisiert',
+    you_got_mail: 'Du hast Post bekommen ✉️!',
   },
 
+  contact_to_delete:
+    'Bitte kontaktiere uns, wenn Du dein Account löschen möchtest',
+  select_image: 'Bild auswählen',
   back: 'Zurück',
+  back_to_start: 'Zurück auf Start',
   continue: 'Weiter',
+  confirm: 'Okay',
+  dismiss: 'Abbruch',
   no_items: 'Du hast noch keine Einträge',
   add: 'Hinzufügen',
   call: 'Anrufen',
@@ -121,4 +147,7 @@ export default {
   no_description: 'Keine Beschreibung vorhanden.',
   save: 'Speichern',
   remove: 'Entfernen',
+  edit: 'Editieren',
+  enter_shop: 'Zum Shop',
+  enter_login: 'Zum Login',
 }

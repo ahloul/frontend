@@ -11,7 +11,7 @@
         <div class="">
           <button
             class="button icon-r my-3"
-            @click="$router.push('/shop/edit')"
+            @click="$router.push(localePath('/shop/edit'))"
           >
             <icon name="settings-outline" class="mx-1" fill="white" />
           </button>

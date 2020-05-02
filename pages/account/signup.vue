@@ -4,11 +4,11 @@
     <modal
       :show="showModal"
       :dismiss="null"
-      confirm="Zum Login"
+      :confirm="$t('enter_login')"
       centered
       @confirm="goToLogin"
-      >Deine Registrierung war erfolgreich! <br />
-      Schau in deinem Posteingang nach um deine E-Mail Adresse zu verifizieren.
+    >
+      {{ $t('signup.successful_registration') }}
     </modal>
     <!-- Headline -->
     <div class="w-full max-w-sm mx-auto">
@@ -59,7 +59,7 @@
 
           <!-- INPUT Password -->
           <label class="block">
-            <span>Passwort</span>
+            <span>{{ $t('login.password') }}</span>
             <validation-provider
               id="password"
               v-slot="{ errors }"
@@ -79,7 +79,7 @@
 
           <!-- INPUT Confirm password -->
           <label class="block">
-            <span>Passwort wiederholen</span>
+            <span>{{ $t('login.confirm_password') }}</span>
             <validation-provider
               v-slot="{ errors }"
               name="Password wiederholen"
@@ -104,7 +104,7 @@
                 :class="{ 'spinner-light': pending }"
                 type="submit"
               >
-                Registrieren
+                {{ $t('signup.register') }}
               </button>
             </span>
           </div>
@@ -113,9 +113,9 @@
               <button
                 type="button"
                 class="border w-full"
-                @click.prevent="$router.push('/')"
+                @click.prevent="$router.push(localePath('/'))"
               >
-                Zurück zum login
+                {{ $t('login.back_to_login') }}
               </button>
             </span>
           </div>

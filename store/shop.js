@@ -34,7 +34,11 @@ export const actions = {
       commit('setShop', data)
     } catch (error) {
       console.log(error)
-      dispatch('toast/add', { message: 'toast.shop_not_found' }, { root: true })
+      commit(
+        'modal/showModal',
+        { message: 'toast.shop_not_found' },
+        { root: true }
+      )
       return { activeShop: undefined, shops: [] }
     }
   },

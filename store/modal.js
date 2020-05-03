@@ -20,6 +20,7 @@ export const mutations = {
   },
   hideModal(state, index) {
     state.showModal = false
+    state.message = ''
   },
 }
 

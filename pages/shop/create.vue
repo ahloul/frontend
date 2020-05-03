@@ -218,6 +218,7 @@
               <input
                 id="companyPhone"
                 v-model="shop.contact.phone"
+                autocomplete="__away"
                 type="text"
                 class="form-input mt-1 block w-full"
                 :placeholder="$t('contact_data.prefix_and_number')"

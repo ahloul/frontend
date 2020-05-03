@@ -43,7 +43,8 @@
   },
   "delivery_options":{
     "opening_times":"Öffnungszeiten",
-    "days":{"mo":"Mo","tu":"Di","we":"Mi","th":"Do","fr":"Fr","sa":"Sa","su":"So"},
+    "days_short":{"monday":"Mo","tuesday":"Di","wednesday":"Mi","thursday":"Do","friday":"Fr","saturday":"Sa","sunday":"So"},
+    "days_long":{"monday":"Montag","tuesday":"Dienstag","wednesday":"Mittwoch","thursday":"Donnerstag","friday":"Freitag","saturday":"Samstag","sunday":"Sonntag"},
     "all_day":"Ganztags geöffnet",
     "section_name":"Versandmöglichkeiten",
     "offer_prefix":"Ich biete",

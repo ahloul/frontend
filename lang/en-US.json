@@ -43,7 +43,8 @@
   },
   "delivery_options":{
     "opening_times":"Opening Times",
-    "days":{"mo":"Mo","tu":"Tu","we":"We","th":"Th","fr":"Fr","sa":"Sa","su":"Su"},
+    "days_short":{"monday":"Mo","tuesday":"Tu","wednesday":"We","thursday":"Th","friday":"Fr","saturday":"Sa","sunday":"Su"},
+    "days_long":{"monday":"Monday","tuesday":"Tuesday","wednesday":"Wednesday","thursday":"Thursday","friday":"Friday","saturday":"Saturday","sunday":"Sunday"},
     "all_day":"Open all day long",
     "section_name":"Delivery Options",
     "offer_prefix":"I offer",

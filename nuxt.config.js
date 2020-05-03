@@ -190,6 +190,7 @@ export default {
    ** Build configuration
    */
   build: {
+    vendor: ['~/utils/object.js', '~/lang/de-DE.json', '~/lang/en-US.json'],
     /*
      ** You can extend webpack config here
      */

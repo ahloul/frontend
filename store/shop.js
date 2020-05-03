@@ -34,6 +34,8 @@ export const actions = {
       commit('setShop', data)
     } catch (error) {
       console.log(error)
+      dispatch('toast/add', { message: 'error' }, { root: true })
+      return { activeShop: undefined, shops: [] }
     }
   },
 }

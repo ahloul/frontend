@@ -1,0 +1,74 @@
+
+          <button
+            class="border my-3 mx-auto"
+            type="button"
+            @click="addOpeningTime"
+          >
+            <icon name="plus" />
+          </button>
+          <div
+            v-for="(openingDays, dayIndex) in shop.openingHours"
+            :key="dayIndex"
+          >
+            <div
+              v-for="(openingTime, index) in openingDays"
+              :key="index"
+              class="flex flex-col border p-3 rounded-lg mt-3"
+            >
+              <div class="w-32 mx-auto" />
+              <div class="flex items-center">
+                <div class="w-32 mr-1">
+                  <select
+                    id="companyType"
+                    :value="dayIndex"
+                    class="form-select"
+                    @change="changeWeekDay(openingDays, $event, index)"
+                  >
+                    <option
+                      v-for="(day, x) in Object.keys(shop.openingHours)"
+                      :key="x"
+                      :value="day"
+                    >
+                      {{ $t(`delivery_options.days_short.${day}`) }}
+                    </option>
+                  </select>
+                </div>
+                <div>
+                  <vue-timepicker
+                    v-model="openingTime.open"
+                    input-width="100%"
+                    input-class="form-input"
+                    :disabled="openingTime.allDayOpen"
+                    hide-clear-button
+                  />
+                </div>
+                <div class="mx-1">-</div>
+                <div>
+                  <vue-timepicker
+                    v-model="openingTime.close"
+                    input-width="100%"
+                    input-class="form-input"
+                    :disabled="openingTime.allDayOpen"
+                    hide-clear-button
+                  />
+                </div>
+              </div>
+              <div class="flex justify-between">
+                <label class="flex items-center">
+                  <input
+                    v-model="openingTime.allDayOpen"
+                    type="checkbox"
+                    class="form-checkbox"
+                  />
+                  <span class="ml-2">{{ $t('delivery_options.all_day') }}</span>
+                </label>
+                <button
+                  type="button"
+                  class="mt-2"
+                  @click="removeOpeningTime(index)"
+                >
+                  <icon name="trash-2-outline" />
+                </button>
+              </div>
+            </div>
+          </div>

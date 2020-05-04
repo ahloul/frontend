@@ -86,6 +86,7 @@ export const actions = {
     await this.$cookies.remove('getit')
     commit('setToken', null)
   },
+
   /**
    * getMe Action
    * get User Information

@@ -12,10 +12,13 @@
     <modal
       :show="showModal"
       :dismiss="null"
-      confirm="Zum shop"
+      :confirm="$t('information.go_to_shop')"
       centered
       @confirm="$router.push('/')"
-      >{{ $t('information.shop_created_confirmation') }}
+    >
+      {{ $t('information.shop_created_confirmation') }}
+      <br />
+      {{ $t('information.ready_to_start') }}
     </modal>
     <!-- Top Buttons -->
     <div class="flex mt-2 justify-between max-w-xs mx-auto">
@@ -215,6 +218,7 @@
               <input
                 id="companyPhone"
                 v-model="shop.contact.phone"
+                autocomplete="__away"
                 type="text"
                 class="form-input mt-1 block w-full"
                 :placeholder="$t('contact_data.prefix_and_number')"
@@ -223,8 +227,19 @@
             </ValidationProvider>
           </label>
 
+          <div class="relative my-4">
+            <div class="absolute inset-0 flex items-center">
+              <div class="w-full border-t"></div>
+            </div>
+            <div class="relative flex justify-center text-sm leading-5">
+              <span class="px-2 bg-grey text-light">
+                {{ $t('contact_data.optional') }}
+              </span>
+            </div>
+          </div>
+
           <!-- Website INPUT -->
-          <label class="form-label w-full" for="companyPhone">
+          <label class="block" for="companyWebsite">
             <span>
               {{ $t('contact_data.website') }}
             </span>
@@ -234,8 +249,50 @@
               name="Webseite"
             >
               <input
-                id="companyPhone"
+                id="companyWebsite"
                 v-model="shop.contact.website"
+                type="text"
+                class="form-input mt-1 block w-full"
+                placeholder="https://"
+              />
+              <span class="error">{{ errors[0] }}</span>
+            </ValidationProvider>
+          </label>
+
+          <!-- Facebook INPUT -->
+          <label class="block" for="companyFacebook">
+            <span>
+              {{ $t('contact_data.facebook') }}
+            </span>
+            <ValidationProvider
+              v-slot="{ errors }"
+              rules="max:200|validUrl"
+              name="Facebook"
+            >
+              <input
+                id="companyFacebook"
+                v-model="shop.contact.facebook"
+                type="text"
+                class="form-input mt-1 block w-full"
+                placeholder="https://"
+              />
+              <span class="error">{{ errors[0] }}</span>
+            </ValidationProvider>
+          </label>
+
+          <!-- Instagram INPUT -->
+          <label class="block" for="companyInstagram">
+            <span>
+              {{ $t('contact_data.instagram') }}
+            </span>
+            <ValidationProvider
+              v-slot="{ errors }"
+              rules="max:200|validUrl"
+              name="Facebook"
+            >
+              <input
+                id="companyFacebook"
+                v-model="shop.contact.instagram"
                 type="text"
                 class="form-input mt-1 block w-full"
                 placeholder="https://"
@@ -265,6 +322,95 @@
               </span>
             </label>
           </div>
+          <div class="mt-4">
+            <div class="flex justify-center text-sm leading-5">
+              <span class="px-2 bg-grey text-light">
+                {{ $t('delivery_options.opening_times') }}
+              </span>
+            </div>
+          </div>
+          <!-- Opening Hour Component -->
+          <div
+            v-for="(openingTime, index) in shop.openingHours"
+            :key="index"
+            class="flex flex-col border p-3 rounded-lg mt-3"
+          >
+            <div class="w-32 mx-auto" />
+            <div class="flex items-center">
+              <div class="w-32 mr-1">
+                <select
+                  id="companyType"
+                  v-model="openingTime.day"
+                  class="form-select"
+                >
+                  <option value="MO">
+                    {{ $t('delivery_options.days.mo') }}
+                  </option>
+                  <option value="TU">
+                    {{ $t('delivery_options.days.tu') }}
+                  </option>
+                  <option value="WE">
+                    {{ $t('delivery_options.days.we') }}
+                  </option>
+                  <option value="TH">
+                    {{ $t('delivery_options.days.th') }}
+                  </option>
+                  <option value="FR">
+                    {{ $t('delivery_options.days.fr') }}
+                  </option>
+                  <option value="SA">
+                    {{ $t('delivery_options.days.sa') }}
+                  </option>
+                  <option value="SU">
+                    {{ $t('delivery_options.days.su') }}
+                  </option>
+                </select>
+              </div>
+              <div>
+                <vue-timepicker
+                  v-model="openingTime.open"
+                  input-width="100%"
+                  input-class="form-input"
+                  :disabled="openingTime.allDayOpen"
+                  hide-clear-button
+                />
+              </div>
+              <div class="mx-1">-</div>
+              <div>
+                <vue-timepicker
+                  v-model="openingTime.close"
+                  input-width="100%"
+                  input-class="form-input"
+                  :disabled="openingTime.allDayOpen"
+                  hide-clear-button
+                />
+              </div>
+            </div>
+            <div class="flex justify-between">
+              <label class="flex items-center">
+                <input
+                  v-model="openingTime.allDayOpen"
+                  type="checkbox"
+                  class="form-checkbox"
+                />
+                <span class="ml-2">{{ $t('delivery_options.all_day') }}</span>
+              </label>
+              <button
+                type="button"
+                class="mt-2"
+                @click="removeOpeningTime(index)"
+              >
+                <icon name="trash-2-outline" />
+              </button>
+            </div>
+          </div>
+          <button
+            class="border my-3 mx-auto"
+            type="button"
+            @click="addOpeningTime"
+          >
+            <icon name="plus" />
+          </button>
         </fieldset>
         <!-- Bilder -->
         <fieldset v-else-if="step === 4" class="tab-section">
@@ -328,6 +474,7 @@
 </template>
 
 <script>
+import VueTimepicker from 'vue2-timepicker'
 import { mapActions } from 'vuex'
 import Autocomplete from '~/components/elements/Autocomplete'
 import imageUpload from '~/components/utils/ImageUpload'
@@ -340,6 +487,7 @@ export default {
     Autocomplete,
     imageUpload,
     Wysiwyg,
+    VueTimepicker,
   },
   data: () => ({
     step: 1,
@@ -379,6 +527,7 @@ export default {
       logo: {},
       description: null,
       deliveryOptions: [],
+      openingHours: [],
     },
   }),
   computed: {
@@ -409,6 +558,17 @@ export default {
     },
     selectLocation({ address, locationId, label }) {
       this.shop.address = { ...address, label, locationId }
+    },
+    addOpeningTime() {
+      this.shop.openingHours.push({
+        day: 'MO',
+        open: '08:00',
+        close: '20:00',
+        allDayOpen: false,
+      })
+    },
+    removeOpeningTime(index) {
+      this.shop.openingHours.splice(index, 1)
     },
     async checkName() {
       try {

@@ -1,9 +1,10 @@
 <template>
-  <div class="min-h-screen flex flex-col justify-center p-2">
+  <div class="flex flex-col content-center justify-center p-2">
     <div class="w-full max-w-sm mx-auto">
-      <h1 class="text-center font-bold text-secondary mb-5">
+      <img src="/img/logo.svg" width="90" class="mx-auto" alt="" />
+      <h2 class="text-center font-bold text-secondary">
         get it!
-      </h1>
+      </h2>
     </div>
     <div class="max-w-xs mx-auto">
       <img
@@ -21,7 +22,7 @@
         <form @submit.prevent="handleSubmit(localNewPassword)">
           <!-- INPUT Password -->
           <label class="block">
-            <span>Passwort</span>
+            <span>{{ $t('login.password') }}</span>
             <validation-provider
               id="password"
               v-slot="{ errors }"
@@ -41,7 +42,7 @@
 
           <!-- INPUT Confirm password -->
           <label class="block">
-            <span>Passwort wiederholen</span>
+            <span>{{ $t('login.confirm_password') }}</span>
             <validation-provider
               v-slot="{ errors }"
               name="Password wiederholen"
@@ -66,7 +67,7 @@
                 :class="{ 'spinner-light': pending }"
                 type="submit"
               >
-                Neues Passwort speichern
+                {{ $t('login.save_new_password') }}
               </button>
             </span>
           </div>
@@ -77,7 +78,7 @@
                 class="border w-full"
                 @click.prevent="$router.push('/')"
               >
-                Zurück zum login
+                {{ $t('login.back_to_login') }}
               </button>
             </span>
           </div>
@@ -99,8 +100,8 @@ export default {
       const { id } = params
       const user = await $axios.$get(`/api/password-resets/${id}`)
       return { user, token: id }
-    } catch (e) {
-      console.log(e)
+    } catch (error) {
+      console.log(error)
       redirect('/account/forgot')
     }
   },

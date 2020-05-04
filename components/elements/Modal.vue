@@ -28,14 +28,14 @@
                 class="w-auto border"
                 @click="$emit('dismiss')"
               >
-                {{ dismiss }}
+                {{ $t(dismiss) }}
               </button>
               <button
                 v-if="confirm"
                 class="primary w-auto ml-4"
                 @click="$emit('confirm')"
               >
-                {{ confirm }}
+                {{ $t(confirm) }}
               </button>
             </div>
           </div>
@@ -59,11 +59,11 @@ export default {
     },
     confirm: {
       type: String,
-      default: 'Okay',
+      default: 'confirm',
     },
     dismiss: {
       type: String,
-      default: 'Abbruch',
+      default: 'dismiss',
     },
   },
   watch: {

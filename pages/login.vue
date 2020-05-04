@@ -1,10 +1,11 @@
 <template>
-  <div class="min-h-screen flex flex-col justify-center p-2">
+  <div class="flex flex-col content-center justify-center p-2">
     <!-- Headline -->
     <div class="w-full max-w-sm mx-auto">
-      <h1 class="text-center font-bold text-secondary">
+      <img src="/img/logo.svg" width="90" class="mx-auto" alt="" />
+      <h2 class="text-center font-bold text-secondary">
         get it!
-      </h1>
+      </h2>
     </div>
 
     <!-- Form -->
@@ -31,7 +32,7 @@
 
           <!-- INPUT Password -->
           <label class="block">
-            <span>Passwort</span>
+            <span>{{ $t('login.password') }}</span>
             <validation-provider
               v-slot="{ errors }"
               name="password"
@@ -51,7 +52,7 @@
           <div class="mt-5 flex items-center justify-end">
             <div class="leading-5">
               <n-link to="/account/forgot">
-                Hilfe bei der Anmeldung?
+                {{ $t('login.help') }}
               </n-link>
             </div>
           </div>
@@ -63,7 +64,7 @@
                 :class="{ 'spinner-light': pending === 'local' }"
                 type="submit"
               >
-                Anmelden
+                {{ $t('login.login') }}
               </button>
             </span>
           </div>
@@ -74,7 +75,7 @@
                 class="border w-full"
                 @click.prevent="$router.push('/account/signup')"
               >
-                Neu registrieren
+                {{ $t('signup.register') }}
               </button>
             </span>
           </div>
@@ -88,7 +89,7 @@
           </div>
           <div class="relative flex justify-center text-sm leading-5">
             <span class="px-2 bg-grey text-primary">
-              Oder melde dich an mit
+              {{ $t('login.thirdparty') }}
             </span>
           </div>
         </div>
@@ -124,12 +125,10 @@
 /* access_token comes from external service */
 
 import { mapActions } from 'vuex'
-
 export default {
   name: 'Login',
   layout: 'blank',
   middleware: 'notAuthenticated',
-
   data: () => ({
     pending: null,
     guest: {

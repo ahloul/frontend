@@ -1,5 +1,5 @@
 <template>
-  <div class="p-2 md:p-3">
+  <div class="p-2 md:p-3 z-50">
     <nav class="navbar">
       <ul>
         <li v-if="haveShop">
@@ -13,7 +13,9 @@
           /></n-link>
         </li>
         <li v-if="haveShop">
-          <n-link to="/shop"><icon name="home-outline" width="20" /></n-link>
+          <n-link to="/shop">
+            <icon name="home-outline" width="20" />
+          </n-link>
         </li>
         <li v-if="!haveShop" class="mr-auto">
           <n-link to="/shop/create" class="font-bold"

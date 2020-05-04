@@ -13,7 +13,6 @@ export const getters = {
 
 export const mutations = {
   addToast(state, { message }) {
-    console.log(uniqueId())
     state.toasts.push({ message, id: uniqueId() })
   },
   removeToast({ toasts }, index) {

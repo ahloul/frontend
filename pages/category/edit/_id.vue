@@ -6,12 +6,7 @@
       dismiss="Schließen"
       @dismiss="showModal = false"
       @confirm="deleteCategory"
-      >Bist du sicher, dass du die Kategorie löschen möchtest?
-      <br />
-      <b
-        >Die darin enthaltenen Artikel werden ebenfalls unwiederuflich
-        gelöscht!</b
-      ></modal
+      >{{ $t('category.delete_confirmation') }}</modal
     >
     <ValidationObserver ref="category" v-slot="{ handleSubmit }" slim>
       <form @submit.prevent="handleSubmit(submit)">

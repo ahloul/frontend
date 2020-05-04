@@ -1,20 +1,21 @@
 <template>
-  <div class="min-h-screen flex flex-col justify-center p-2">
+  <div class="flex flex-col content-center justify-center p-2">
     <!-- Modal -->
     <modal
       :show="showModal"
       :dismiss="null"
-      confirm="Zum Login"
+      :confirm="$t('enter_login')"
       centered
       @confirm="goToLogin"
-      >Deine Registrierung war erfolgreich! <br />
-      Schau in deinem Posteingang nach um deine E-Mail Adresse zu verifizieren.
+    >
+      {{ $t('signup.successful_registration') }}
     </modal>
     <!-- Headline -->
     <div class="w-full max-w-sm mx-auto">
-      <h1 class="text-center font-bold text-secondary">
+      <img src="/img/logo.svg" width="90" class="mx-auto" alt="" />
+      <h2 class="text-center font-bold text-secondary">
         get it!
-      </h1>
+      </h2>
     </div>
 
     <!-- Form -->
@@ -59,7 +60,7 @@
 
           <!-- INPUT Password -->
           <label class="block">
-            <span>Passwort</span>
+            <span>{{ $t('login.password') }}</span>
             <validation-provider
               id="password"
               v-slot="{ errors }"
@@ -79,7 +80,7 @@
 
           <!-- INPUT Confirm password -->
           <label class="block">
-            <span>Passwort wiederholen</span>
+            <span>{{ $t('login.confirm_password') }}</span>
             <validation-provider
               v-slot="{ errors }"
               name="Password wiederholen"
@@ -104,7 +105,7 @@
                 :class="{ 'spinner-light': pending }"
                 type="submit"
               >
-                Registrieren
+                {{ $t('signup.register') }}
               </button>
             </span>
           </div>
@@ -115,7 +116,7 @@
                 class="border w-full"
                 @click.prevent="$router.push('/')"
               >
-                Zurück zum login
+                {{ $t('login.back_to_login') }}
               </button>
             </span>
           </div>

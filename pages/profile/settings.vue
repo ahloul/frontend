@@ -6,6 +6,7 @@
           folder="user"
           placeholder="Profilbild"
           :image="user.picture"
+          rounded
           @target="selectImage"
         />
       </div>

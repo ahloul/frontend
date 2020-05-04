@@ -7,7 +7,12 @@
   >
     <!-- articlePicture FILE -->
     <div v-if="imgLocal.url">
-      <img :src="imgLocal.url" alt="" class="rounded-lg mx-auto" />
+      <img
+        :src="imgLocal.url"
+        alt=""
+        class="rounded-lg mx-auto"
+        :class="{ 'rounded-full': rounded }"
+      />
       <button type="button" class="w-auto mx-auto" @click="removeImageAction">
         {{ $t('remove') }}
       </button>
@@ -17,7 +22,7 @@
         <div class="mx-auto">
           <icon v-if="!isUploading" name="image-outline" class="inline-block" />
           <p :class="{ 'spinner-dark': isUploading }">
-            {{ placeholder }}
+            {{ $t(placeholder) }}
           </p>
         </div>
         <span class="error-message">{{ errors[0] }}</span>
@@ -47,13 +52,17 @@ export default {
       default: null,
       required: true,
     },
+    rounded: {
+      type: Boolean,
+      default: false,
+    },
     image: {
       type: Object,
       default: null,
     },
     placeholder: {
       type: String,
-      default: 'Bild auswählen',
+      default: 'select_image',
     },
   },
 
@@ -91,9 +100,14 @@ export default {
       }
     },
     async removeImageAction() {
-      if (this.imgLocal.id)
-        await this.$axios.$delete(`/api/media/${this.imgLocal.id}`)
-      this.$emit('target', {})
+      try {
+        if (this.imgLocal.id) {
+          await this.$axios.$delete(`/api/media/${this.imgLocal.id}`)
+        }
+      } catch (error) {
+      } finally {
+        this.$emit('target', {})
+      }
     },
   },
 }

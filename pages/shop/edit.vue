@@ -5,7 +5,7 @@
       centered
       dismiss="Schließen"
       @dismiss="showModal = false"
-      >Bitte kontaktiere uns, wenn du dein Account löschen möchtest <br />
+      >{{ $t('contact_to_delete') }} <br />
       <a href="mailto:support@getit.social">Support</a>
     </modal>
     <!-- Top Buttons -->
@@ -203,17 +203,72 @@
             </ValidationProvider>
           </label>
 
+          <div class="relative my-4">
+            <div class="absolute inset-0 flex items-center">
+              <div class="w-full border-t"></div>
+            </div>
+            <div class="relative flex justify-center text-sm leading-5">
+              <span class="px-2 bg-grey text-light">
+                {{ $t('contact_data.optional') }}
+              </span>
+            </div>
+          </div>
+
           <!-- Website INPUT -->
-          <label class="form-label w-full" for="companyPhone">
-            <span>{{ $t('contact_data.website') }}</span>
+          <label class="block" for="companyWebsite">
+            <span>
+              {{ $t('contact_data.website') }}
+            </span>
             <ValidationProvider
               v-slot="{ errors }"
               rules="max:200|validUrl"
               name="Webseite"
             >
               <input
-                id="companyPhone"
+                id="companyWebsite"
                 v-model="shop.contact.website"
+                type="text"
+                class="form-input mt-1 block w-full"
+                placeholder="https://"
+              />
+              <span class="error">{{ errors[0] }}</span>
+            </ValidationProvider>
+          </label>
+
+          <!-- Facebook INPUT -->
+          <label class="block" for="companyFacebook">
+            <span>
+              {{ $t('contact_data.facebook') }}
+            </span>
+            <ValidationProvider
+              v-slot="{ errors }"
+              rules="max:200|validUrl"
+              name="Facebook"
+            >
+              <input
+                id="companyFacebook"
+                v-model="shop.contact.facebook"
+                type="text"
+                class="form-input mt-1 block w-full"
+                placeholder="https://"
+              />
+              <span class="error">{{ errors[0] }}</span>
+            </ValidationProvider>
+          </label>
+
+          <!-- Instagram INPUT -->
+          <label class="block" for="companyInstagram">
+            <span>
+              {{ $t('contact_data.instagram') }}
+            </span>
+            <ValidationProvider
+              v-slot="{ errors }"
+              rules="max:200|validUrl"
+              name="Facebook"
+            >
+              <input
+                id="companyFacebook"
+                v-model="shop.contact.instagram"
                 type="text"
                 class="form-input mt-1 block w-full"
                 placeholder="https://"
@@ -242,6 +297,78 @@
                 {{ $t(deliveryOption.description) }}.
               </span>
             </label>
+          </div>
+          <div class="mt-5">
+            <div class="flex justify-center text-sm leading-5 select-none">
+              <span class="px-2 bg-grey text-light">
+                {{ $t('delivery_options.opening_times') }}
+              </span>
+            </div>
+          </div>
+          <!-- Opening Hour Component -->
+          <div v-if="shop.openingHours">
+            <div
+              v-for="(openingDay, dayIndex) in shop.openingHours"
+              :key="dayIndex"
+            >
+              <div class="flex flex-col select-none my-3">
+                <div class="flex flex-wrap content-center">
+                  <span class="my-auto font-bold text-primary">{{
+                    $t(`delivery_options.days_long.${dayIndex}`)
+                  }}</span>
+                  <button
+                    class="ml-auto"
+                    type="button"
+                    @click="addOpeningTime(dayIndex)"
+                  >
+                    <icon name="plus" />
+                  </button>
+                </div>
+                <label class="flex items-center my-auto">
+                  <input
+                    type="checkbox"
+                    class="form-checkbox"
+                    @change="allDayOpen(dayIndex, $event)"
+                  />
+                  <span class="ml-2 text-sm">{{
+                    $t('delivery_options.all_day')
+                  }}</span>
+                </label>
+                <div v-for="(day, index) in openingDay" :key="index">
+                  <div class="flex items-center my-1">
+                    <div>
+                      <vue-timepicker
+                        v-model="day.open"
+                        input-width="100%"
+                        input-class="form-input"
+                        hide-clear-button
+                        :disabled="day.allDayOpen"
+                      />
+                    </div>
+                    <div class="mx-1">-</div>
+                    <div>
+                      <vue-timepicker
+                        v-model="day.close"
+                        input-width="100%"
+                        input-class="form-input"
+                        hide-clear-button
+                        :disabled="day.allDayOpen"
+                      />
+                    </div>
+                    <button
+                      v-if="!day.allDayOpen"
+                      type="button"
+                      class=""
+                      @click="removeOpeningTime(dayIndex, index)"
+                    >
+                      <icon name="trash-2-outline" />
+                    </button>
+                  </div>
+                </div>
+
+                <hr class="w-full mt-2" />
+              </div>
+            </div>
           </div>
         </fieldset>
         <!-- Bilder -->
@@ -294,18 +421,21 @@
 </template>
 
 <script>
+import VueTimepicker from 'vue2-timepicker'
 import { mapActions } from 'vuex'
-import { clone } from 'lodash'
+import { clone, filter } from 'lodash'
 import imageUpload from '~/components/utils/ImageUpload'
 import Wysiwyg from '~/components/utils/Wysiwyg'
 import Autocomplete from '~/components/elements/Autocomplete'
 import { difference } from '~/utils/object'
+
 export default {
   name: 'EditShop',
   components: {
     Autocomplete,
     imageUpload,
     Wysiwyg,
+    VueTimepicker,
   },
   async asyncData({ $axios, store, query }) {
     const { user } = store.state
@@ -313,7 +443,7 @@ export default {
     return { shop: clone(coreShop), coreShop }
   },
   data: () => ({
-    step: 1,
+    step: 3,
     validationMode: 'lazy',
     showModal: false,
     deliverySelect: [
@@ -367,7 +497,7 @@ export default {
         this.loadState.update = true
         await this.$axios.patch(
           `/api/shops/${this.shop._id}`,
-          difference(this.shop, this.coreShop, true)
+          difference(this.shop, this.coreShop)
         )
         // Update user in storage
         await this.getMe()
@@ -398,6 +528,37 @@ export default {
     },
     selectLocation({ address, locationId, label }) {
       this.shop.address = { ...address, label, locationId }
+    },
+    addOpeningTime(day) {
+      const selectedDay = filter(
+        this.shop.openingHours[day],
+        (o) => o.allDayOpen
+      )
+      if (selectedDay.length) return
+      this.shop.openingHours[day].push({
+        open: '08:00',
+        close: '20:00',
+        allDayOpen: false,
+      })
+    },
+    allDayOpen(day, event) {
+      const selectedDay = filter(
+        this.shop.openingHours[day],
+        (o) => o.allDayOpen
+      )
+      if (!selectedDay.length) {
+        this.shop.openingHours[day] = []
+        this.shop.openingHours[day].push({
+          open: '00:00',
+          close: '00:00',
+          allDayOpen: true,
+        })
+      } else {
+        this.shop.openingHours[day] = []
+      }
+    },
+    removeOpeningTime(day, index) {
+      this.shop.openingHours[day].splice(index, 1)
     },
   },
 }

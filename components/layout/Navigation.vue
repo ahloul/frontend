@@ -8,15 +8,21 @@
         <div class="ml-3">
           <ul v-if="!haveShop">
             <li>
-              <n-link to="/shop/create">{{ $t('navbar.create_shop') }}</n-link>
+              <n-link to="/shop/create">
+                {{ $t('navbar.create_shop') }}
+              </n-link>
             </li>
           </ul>
           <ul v-if="haveShop">
             <li>
-              <n-link to="/#1">{{ $t('navbar.processes') }}</n-link>
+              <n-link to="/#1">
+                {{ $t('navbar.processes') }}
+              </n-link>
             </li>
             <li>
-              <n-link to="/category">{{ $t('navbar.stock') }}</n-link>
+              <n-link to="/category">
+                {{ $t('navbar.stock') }}
+              </n-link>
             </li>
             <li>
               <n-link to="/shop">{{ $t('navbar.shop') }}</n-link>
@@ -26,7 +32,9 @@
         <div class="ml-auto">
           <ul>
             <li>
-              <n-link to="/profile"><icon name="person-outline" /> </n-link>
+              <n-link to="/profile">
+                <icon name="person-outline" />
+              </n-link>
             </li>
           </ul>
         </div>

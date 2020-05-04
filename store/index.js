@@ -40,6 +40,9 @@ export const mutations = {
       state.locale = locale
     }
   },
+  updateUser(state, updates) {
+    Object.assign(state.user, updates)
+  },
 }
 
 export const actions = {
@@ -86,17 +89,20 @@ export const actions = {
     await this.$cookies.remove('getit')
     commit('setToken', null)
   },
+
   /**
    * getMe Action
    * get User Information
    */
-  async getMe({ commit, dispatch }) {
+  async getMe({ state, commit, dispatch }) {
     try {
       const { data } = await this.$axios.get('/api/users/me')
-      await dispatch('shop/getActiveShop', data)
+      const shopdata = await dispatch('shop/getActiveShop', data)
+      Object.assign(data, shopdata)
       commit('setUser', data)
     } catch (error) {
       await dispatch('resetUser')
+      console.log(error)
     }
   },
 }

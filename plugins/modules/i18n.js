@@ -1,9 +1,6 @@
 import Vue from 'vue'
 import VueI18n from 'vue-i18n'
 
-import de from '~/lang/de-DE.json'
-import en from '~/lang/en-US.json'
-
 Vue.use(VueI18n)
 
 export default ({ app, store }) => {

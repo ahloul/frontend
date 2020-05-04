@@ -14,7 +14,6 @@
     "start": "nuxt start",
     "generate": "nuxt generate",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
-    "lint:fix": "eslint --fix --ext .js,.vue --ignore-path .gitignore .",
     "test": "jest"
   },
   "lint-staged": {
@@ -34,7 +33,6 @@
     "@nuxtjs/proxy": "^1.3.3",
     "@nuxtjs/pwa": "^3.0.0-0",
     "cookie-universal-nuxt": "^2.1.3",
-    "deep-object-diff": "^1.1.0",
     "eva-icons": "^1.1.3",
     "hellojs": "^1.18.4",
     "here-js-api": "^1.0.11",

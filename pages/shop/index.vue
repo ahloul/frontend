@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-4xl mt-3">
+  <div class="container mt-3">
     <!-- CTA -->
     <div class="flex flex-col">
       <div class="flex">

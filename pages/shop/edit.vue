@@ -443,7 +443,7 @@ export default {
     return { shop: clone(coreShop), coreShop }
   },
   data: () => ({
-    step: 3,
+    step: 1,
     validationMode: 'lazy',
     showModal: false,
     deliverySelect: [
@@ -500,7 +500,7 @@ export default {
         this.loadState.update = true
         await this.$axios.patch(
           `/api/shops/${this.shop._id}`,
-          difference(this.shop, this.coreShop)
+          difference(this.shop, this.coreShop, 'openingHours')
         )
         // Update user in storage
         await this.getMe()

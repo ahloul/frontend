@@ -5,57 +5,63 @@
         <div class="menubar-wrapper">
           <ul class="menubar">
             <li>
-              <button
+              <div
+                class="button cursor-pointer"
                 :class="{ active: isActive.bold() }"
                 @click.prevent="commands.bold"
               >
                 <b>B</b>
-              </button>
+              </div>
             </li>
 
             <li>
-              <button
+              <div
+                class="button cursor-pointer"
                 :class="{ active: isActive.italic() }"
                 @click.prevent="commands.italic"
               >
                 <i>I</i>
-              </button>
+              </div>
             </li>
 
             <li>
-              <button
+              <div
+                class="button cursor-pointer"
                 :class="{ active: isActive.underline() }"
                 @click.prevent="commands.underline"
               >
                 <u>U</u>
-              </button>
+              </div>
             </li>
 
             <li>
-              <button
+              <div
+                class="button cursor-pointer"
                 :class="{ active: isActive.heading({ level: 1 }) }"
                 @click.prevent="commands.heading({ level: 1 })"
               >
                 H1
-              </button>
+              </div>
             </li>
 
             <li>
-              <button
+              <div
+                class="button cursor-pointer"
                 :class="{ active: isActive.heading({ level: 2 }) }"
                 @click.prevent="commands.heading({ level: 2 })"
               >
                 H2
-              </button>
+              </div>
             </li>
 
             <li>
-              <button
+              <div
+                class="button cursor-pointer"
                 :class="{ active: isActive.heading({ level: 3 }) }"
                 @click.prevent="commands.heading({ level: 3 })"
               >
                 H3
-              </button>
+              </div>
             </li>
           </ul>
         </div>

@@ -62,7 +62,7 @@
           </ValidationProvider>
         </label>
 
-        <div class="mt-10 mb-3 text-light">{{ $t(article.description) }}</div>
+        <div class="mt-10 mb-3 text-light">{{ $t('article.description') }}</div>
         <div
           v-if="article.description"
           class="w-full"

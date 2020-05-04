@@ -8,7 +8,6 @@ const _transform = transform.convert({
 
 const iteratee = (baseObj, ignoredKeys) => (result, value, key) => {
   if (!isEqual(value, baseObj[key]) || key === ignoredKeys) {
-    console.log(value)
     const valIsObj =
       isObject(value) && !isArray(value) && isObject(baseObj[key])
     result[key] = valIsObj === true ? difference(value, baseObj[key]) : value

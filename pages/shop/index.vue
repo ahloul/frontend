@@ -1,10 +1,11 @@
 <template>
-  <div class="container mt-3">
+  <div class="container max-w-4xl mt-3">
     <!-- CTA -->
     <div class="flex flex-col">
       <div class="flex">
         <div class="ml-auto text-primary">
           <button class="link icon-r" @click="$router.push('/shop/edit')">
+            {{ $t('shop.settings') }}
             <icon name="settings-outline" class="mx-1" />
           </button>
         </div>
@@ -58,7 +59,7 @@
         </button>
       </div>
     </div>
-    <div class="grid md:grid-cols-4 gap-1 mt-3">
+    <div class="mt-3">
       <div class="col-span-1"><!-- Todo: Opening Times here --></div>
       <div v-if="openTab === 1" class="card col-span-4">
         <div v-if="shop.deliveryOptions" class="flex flex-wrap justify-start">

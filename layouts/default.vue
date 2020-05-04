@@ -12,7 +12,7 @@
     >
 
     <navigation
-      class="hidden md:block sticky top-0 py-2 container mx-auto px-2"
+      class="hidden md:block sticky top-0 py-2 container mx-auto px-2 z-30"
     />
 
     <nuxt class="container flex-1 mx-auto px-2 mb-20 md:mb-10" />

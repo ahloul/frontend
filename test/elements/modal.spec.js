@@ -30,12 +30,7 @@ describe('Modal', () => {
   test('emitted confirm', async () => {
     wrapper = mount(Modal)
     wrapper.vm.$emit('confirm', 'okay')
-    //console.log(wrapper.emitted())
     await wrapper.vm.$nextTick()
     expect(wrapper.emitted().confirm[0]).toEqual(['okay'])
-  })
-  test('Button emitted confirm', () => {
-    wrapper = mount(Modal)
-    console.log(wrapper.find('button'))
   })
 })

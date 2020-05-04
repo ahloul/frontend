@@ -36,6 +36,9 @@ import { ValidationProvider } from "vee-validate"
 import { debounce, clone, isEmpty } from 'lodash'
 export default {
   name: 'Autocomplete',
+  components: {
+    ValidationProvider,
+  },
   props: {
     name: {
       type: String,

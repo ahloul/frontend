@@ -25,14 +25,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">25% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>1/4</span>
+                <span class='fraction'>2/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/0</span>
+                <span class='fraction'>0/4</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">25% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>1/4</span>
+                <span class='fraction'>2/8</span>
             </div>
         
             
@@ -139,7 +139,17 @@
 <a name='L80'></a><a href='#L80'>80</a>
 <a name='L81'></a><a href='#L81'>81</a>
 <a name='L82'></a><a href='#L82'>82</a>
-<a name='L83'></a><a href='#L83'>83</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a>
+<a name='L89'></a><a href='#L89'>89</a>
+<a name='L90'></a><a href='#L90'>90</a>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -183,7 +193,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -193,10 +203,20 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -225,18 +245,16 @@
   &lt;div&gt;
     &lt;div class="flex justify-end my-3"&gt;
       &lt;n-link to="/category/create" class="button primary icon-r"
-        &gt;&lt;icon name="plus" /&gt; Hinzufügen&lt;/n-link
+        &gt;&lt;icon name="plus" /&gt; {{ $t('add') }}&lt;/n-link
       &gt;
     &lt;/div&gt;
-    &lt;!--
-    &lt;empty-state /&gt;
-  --&gt;
+    &lt;empty-state v-if="showEmpty" /&gt;
     &lt;ul class="category-box"&gt;
       &lt;li
         v-for="category in categories"
         :key="category._id"
         class="animated category-item"
-        @click="goToDetail"
+        @click="goToDetail(category)"
       &gt;
         &lt;div class="flex items-center p-6"&gt;
           &lt;div class="min-w-0 flex-1 flex items-center"&gt;
@@ -245,17 +263,19 @@
                 &lt;div class="text-xl leading-5 font-bold truncate"&gt;
                   {{ category.name }}
                 &lt;/div&gt;
-                &lt;!--
                 &lt;div
                   class="mt-2 flex items-center text-sm leading-5 text-info inline-block align-middle"
                 &gt;
-                  &lt;icon name="cube-outline" width="15" /&gt;
-                  &lt;span class="ml-1"&gt;214 Artikel&lt;/span&gt;
+                  &lt;icon name="keypad-outline" width="15" /&gt;
+                  &lt;span v-if="category.article_count" class="ml-1"
+                    &gt;{{ category.article_count }} Artikel&lt;/span
+                  &gt;
+                  &lt;span v-else class="ml-1"&gt;{{ $t('article.empty') }}&lt;/span&gt;
                 &lt;/div&gt;
-              --&gt;&lt;/div&gt;
+              &lt;/div&gt;
             &lt;/div&gt;
           &lt;/div&gt;
-          &lt;div&gt;
+          &lt;div class="right-icon text-light"&gt;
             &lt;icon name="chevron-right" /&gt;
           &lt;/div&gt;
         &lt;/div&gt;
@@ -265,20 +285,24 @@
 &lt;/template&gt;
 &nbsp;
 &lt;script&gt;
-// import EmptyState from '~/components/elements/EmptyState'
+import EmptyState from '~/components/elements/EmptyState'
 export default {
   name: 'Categories',
   middleware: 'authenticated',
   components: {
-    // EmptyState,
+    EmptyState,
   },
 <span class="fstat-no" title="function not covered" >  async asyncData({ $axios }) {</span>
+<span class="cstat-no" title="statement not covered" >    let showEmpty = false</span>
 <span class="cstat-no" title="statement not covered" >    const categories = await $axios.$get('/api/categories')</span>
-<span class="cstat-no" title="statement not covered" >    return { categories }</span>
+<span class="cstat-no" title="statement not covered" >    if (!categories.length) {</span>
+<span class="cstat-no" title="statement not covered" >      showEmpty = true</span>
+    }
+<span class="cstat-no" title="statement not covered" >    return { categories, showEmpty }</span>
   },
   methods: {
-<span class="fstat-no" title="function not covered" >    goToDetail() {</span>
-<span class="cstat-no" title="statement not covered" >      this.$router.push('/category')</span>
+<span class="fstat-no" title="function not covered" >    goToDetail({ _id }) {</span>
+<span class="cstat-no" title="statement not covered" >      this.$router.push(`/category/${_id}`)</span>
     },
   },
 }
@@ -287,7 +311,7 @@ export default {
 &lt;style lang="scss" scoped&gt;
 .category {
   &amp;-box {
-    @apply max-w-md mx-auto;
+    @apply max-w-xl mx-auto;
   }
 &nbsp;
   &amp;-item {
@@ -295,6 +319,12 @@ export default {
 &nbsp;
     &amp;:hover {
       @apply shadow-lg;
+&nbsp;
+      .right-icon {
+        @apply transition ease-in-out duration-300;
+        @apply text-primary;
+        transform: translate(0.5em, 0);
+      }
     }
 &nbsp;
     &amp;:focus {
@@ -310,7 +340,7 @@ export default {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Fri May 01 2020 15:50:37 GMT+0200 (GMT+02:00)
+                at Fri May 01 2020 16:42:17 GMT+0200 (GMT+02:00)
             </div>
         </div>
         <script src="../../prettify.js"></script>

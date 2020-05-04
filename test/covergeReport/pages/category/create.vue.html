@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">10% </span>
+                <span class="strong">7.69% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>1/10</span>
+                <span class='fraction'>1/13</span>
             </div>
         
             
@@ -39,14 +39,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/3</span>
+                <span class='fraction'>0/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">10% </span>
+                <span class="strong">7.69% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>1/10</span>
+                <span class='fraction'>1/13</span>
             </div>
         
             
@@ -120,7 +120,10 @@
 <a name='L61'></a><a href='#L61'>61</a>
 <a name='L62'></a><a href='#L62'>62</a>
 <a name='L63'></a><a href='#L63'>63</a>
-<a name='L64'></a><a href='#L64'>64</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -171,7 +174,10 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -185,19 +191,19 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="fstat-no" title="function not covered" >&lt;template&gt;</span>
   &lt;div class="max-w-md mt-5"&gt;
-    &lt;ValidationObserver v-slot="{ handleSubmit }" slim&gt;
+    &lt;ValidationObserver ref="category" v-slot="{ handleSubmit }" slim&gt;
       &lt;form @submit.prevent="handleSubmit(submit)"&gt;
         &lt;!-- categoryName INPUT --&gt;
         &lt;label class="block"&gt;
           &lt;ValidationProvider v-slot="{ errors }" mode="lazy" rules="required"&gt;
-            &lt;span&gt;Name der Kategorie&lt;/span&gt;
+            &lt;span&gt;{{ $t('category.name') }}&lt;/span&gt;
             &lt;input
               id="categoryName"
               v-model="category.name"
               name="Kategorie"
               type="text"
               class="form-input"
-              placeholder="z.B. Getränke"
+              :placeholder="$t('category.hint')"
             /&gt;
             &lt;div class="error"&gt;{{ errors[0] }}&lt;/div&gt;
           &lt;/ValidationProvider&gt;
@@ -209,7 +215,7 @@
             :class="{ 'spinner-light': loadState.create }"
             type="submit"
           &gt;
-            Kategorie anlegen
+            {{ $t('category.create') }}
           &lt;/button&gt;
         &lt;/div&gt;
       &lt;/form&gt;
@@ -233,8 +239,11 @@ export default {
 <span class="cstat-no" title="statement not covered" >        this.loadState.create = true</span>
 <span class="cstat-no" title="statement not covered" >        await this.$axios.post(`/api/categories`, this.category)</span>
 <span class="cstat-no" title="statement not covered" >        this.loadState.create = false</span>
-<span class="cstat-no" title="statement not covered" >        this.category = {}</span>
-        // send toast
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >        this.$nextTick(() =&gt; {</span></span>
+<span class="cstat-no" title="statement not covered" >          this.category = {}</span>
+<span class="cstat-no" title="statement not covered" >          this.$refs.category.reset()</span>
+        })
+<span class="cstat-no" title="statement not covered" >        this.$store.dispatch('toast/add', { message: `toast.created_category` })</span>
 <span class="cstat-no" title="statement not covered" >        await this.$router.push('/category')</span>
       } catch (error) {
 <span class="cstat-no" title="statement not covered" >        this.loadState.create = false</span>
@@ -253,7 +262,7 @@ export default {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Fri May 01 2020 15:50:37 GMT+0200 (GMT+02:00)
+                at Fri May 01 2020 16:42:17 GMT+0200 (GMT+02:00)
             </div>
         </div>
         <script src="../../prettify.js"></script>

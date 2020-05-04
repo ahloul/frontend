@@ -53,6 +53,7 @@
     "vuex-persistedstate": "^3.0.1"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-optional-chaining": "^7.9.0",
     "@nuxtjs/eslint-config": "^2.0.2",
     "@nuxtjs/eslint-module": "^1.1.0",
     "@nuxtjs/stylelint-module": "^3.2.2",

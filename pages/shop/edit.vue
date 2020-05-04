@@ -298,95 +298,78 @@
               </span>
             </label>
           </div>
-          <div class="mt-4">
-            <div class="flex justify-center text-sm leading-5">
+          <div class="mt-5">
+            <div class="flex justify-center text-sm leading-5 select-none">
               <span class="px-2 bg-grey text-light">
                 {{ $t('delivery_options.opening_times') }}
               </span>
             </div>
           </div>
           <!-- Opening Hour Component -->
-          <div
-            v-for="(openingTime, index) in shop.openingHours"
-            :key="index"
-            class="flex flex-col border p-3 rounded-lg mt-3"
-          >
-            <div class="w-32 mx-auto" />
-            <div class="flex items-center">
-              <div class="w-32 mr-1">
-                <select
-                  id="companyType"
-                  v-model="openingTime.day"
-                  class="form-select"
-                >
-                  <option value="MO">
-                    {{ $t('delivery_options.days.mo') }}
-                  </option>
-                  <option value="TU">
-                    {{ $t('delivery_options.days.tu') }}
-                  </option>
-                  <option value="WE">
-                    {{ $t('delivery_options.days.we') }}
-                  </option>
-                  <option value="TH">
-                    {{ $t('delivery_options.days.th') }}
-                  </option>
-                  <option value="FR">
-                    {{ $t('delivery_options.days.fr') }}
-                  </option>
-                  <option value="SA">
-                    {{ $t('delivery_options.days.sa') }}
-                  </option>
-                  <option value="SU">
-                    {{ $t('delivery_options.days.su') }}
-                  </option>
-                </select>
+          <div v-if="shop.openingHours">
+            <div
+              v-for="(openingDay, dayIndex) in shop.openingHours"
+              :key="dayIndex"
+            >
+              <div class="flex flex-col select-none my-3">
+                <div class="flex flex-wrap content-center">
+                  <span class="my-auto font-bold text-primary">{{
+                    $t(`delivery_options.days_long.${dayIndex}`)
+                  }}</span>
+                  <button
+                    class="ml-auto"
+                    type="button"
+                    @click="addOpeningTime(dayIndex)"
+                  >
+                    <icon name="plus" />
+                  </button>
+                </div>
+                <label class="flex items-center my-auto">
+                  <input
+                    type="checkbox"
+                    class="form-checkbox"
+                    @change="allDayOpen(dayIndex, $event)"
+                  />
+                  <span class="ml-2 text-sm">{{
+                    $t('delivery_options.all_day')
+                  }}</span>
+                </label>
+                <div v-for="(day, index) in openingDay" :key="index">
+                  <div class="flex items-center my-1">
+                    <div>
+                      <vue-timepicker
+                        v-model="day.open"
+                        input-width="100%"
+                        input-class="form-input"
+                        hide-clear-button
+                        :disabled="day.allDayOpen"
+                      />
+                    </div>
+                    <div class="mx-1">-</div>
+                    <div>
+                      <vue-timepicker
+                        v-model="day.close"
+                        input-width="100%"
+                        input-class="form-input"
+                        hide-clear-button
+                        :disabled="day.allDayOpen"
+                      />
+                    </div>
+                    <button
+                      v-if="!day.allDayOpen"
+                      type="button"
+                      class=""
+                      @click="removeOpeningTime(dayIndex, index)"
+                    >
+                      <icon name="trash-2-outline" />
+                    </button>
+                  </div>
+                </div>
+
+                <hr class="w-full mt-2" />
               </div>
-              <div>
-                <vue-timepicker
-                  v-model="openingTime.open"
-                  input-width="100%"
-                  input-class="form-input"
-                  :disabled="openingTime.allDayOpen"
-                  hide-clear-button
-                />
-              </div>
-              <div class="mx-1">-</div>
-              <div>
-                <vue-timepicker
-                  v-model="openingTime.close"
-                  input-width="100%"
-                  input-class="form-input"
-                  :disabled="openingTime.allDayOpen"
-                  hide-clear-button
-                />
-              </div>
-            </div>
-            <div class="flex justify-between">
-              <label class="flex items-center">
-                <input
-                  v-model="openingTime.allDayOpen"
-                  type="checkbox"
-                  class="form-checkbox"
-                />
-                <span class="ml-2">{{ $t('delivery_options.all_day') }}</span>
-              </label>
-              <button
-                type="button"
-                class="mt-2"
-                @click="removeOpeningTime(index)"
-              >
-                <icon name="trash-2-outline" />
-              </button>
             </div>
           </div>
-          <button
-            class="border my-3 mx-auto"
-            type="button"
-            @click="addOpeningTime"
-          >
-            <icon name="plus" />
-          </button>
         </fieldset>
         <!-- Bilder -->
         <fieldset v-else-if="step === 4" class="tab-section">
@@ -439,12 +422,13 @@
 
 <script>
 import VueTimepicker from 'vue2-timepicker'
-import { mapActions } from 'vuex'
-import { clone } from 'lodash'
+import { mapActions, mapMutations } from 'vuex'
+import { clone, filter } from 'lodash'
 import imageUpload from '~/components/utils/ImageUpload'
 import Wysiwyg from '~/components/utils/Wysiwyg'
 import Autocomplete from '~/components/elements/Autocomplete'
 import { difference } from '~/utils/object'
+
 export default {
   name: 'EditShop',
   components: {
@@ -459,7 +443,7 @@ export default {
     return { shop: clone(coreShop), coreShop }
   },
   data: () => ({
-    step: 1,
+    step: 3,
     validationMode: 'lazy',
     showModal: false,
     deliverySelect: [
@@ -491,6 +475,9 @@ export default {
   },
   methods: {
     ...mapActions(['getMe']),
+    ...mapMutations('modal', {
+      showErrorModal: 'showModal',
+    }),
     async checkValidation() {
       // Check if name is valid on submit
       const isValid = await this.checkName()
@@ -513,7 +500,7 @@ export default {
         this.loadState.update = true
         await this.$axios.patch(
           `/api/shops/${this.shop._id}`,
-          difference(this.shop, this.coreShop, true)
+          difference(this.shop, this.coreShop)
         )
         // Update user in storage
         await this.getMe()
@@ -523,6 +510,7 @@ export default {
         this.$router.push('/shop')
       } catch (error) {
         this.loadState.update = false
+        this.showErrorModal({ message: 'information.shop_error_confirmation' })
         console.log(error)
       }
     },
@@ -545,16 +533,36 @@ export default {
     selectLocation({ address, locationId, label }) {
       this.shop.address = { ...address, label, locationId }
     },
-    addOpeningTime() {
-      this.shop.openingHours.push({
-        day: 'MO',
+    addOpeningTime(day) {
+      const selectedDay = filter(
+        this.shop.openingHours[day],
+        (o) => o.allDayOpen
+      )
+      if (selectedDay.length) return
+      this.shop.openingHours[day].push({
         open: '08:00',
         close: '20:00',
         allDayOpen: false,
       })
     },
-    removeOpeningTime(index) {
-      this.shop.openingHours.splice(index, 1)
+    allDayOpen(day, event) {
+      const selectedDay = filter(
+        this.shop.openingHours[day],
+        (o) => o.allDayOpen
+      )
+      if (!selectedDay.length) {
+        this.shop.openingHours[day] = []
+        this.shop.openingHours[day].push({
+          open: '00:00',
+          close: '00:00',
+          allDayOpen: true,
+        })
+      } else {
+        this.shop.openingHours[day] = []
+      }
+    },
+    removeOpeningTime(day, index) {
+      this.shop.openingHours[day].splice(index, 1)
     },
   },
 }

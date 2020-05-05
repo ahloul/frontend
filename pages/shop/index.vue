@@ -20,7 +20,12 @@
     ></div>
     <div class="flex items-end -mt-10 md:ml-10">
       <div class="p-2 bg-white rounded shadow-sm">
-        <img :src="shop.logo.url" alt="" width="100" />
+        <img
+          :src="shop.logo.url"
+          alt=""
+          width="100"
+          @error="(e) => (e.target.src = '/img/placeholder.png')"
+        />
       </div>
       <div class="ml-2">
         <h2 class="leading-snug">{{ shop.name }}</h2>

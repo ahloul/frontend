@@ -44,6 +44,8 @@ export default {
     VUE_APP_FACEBOOK_ID: process.env.VUE_APP_FACEBOOK_ID,
     VUE_APP_MASTER_KEY: process.env.VUE_APP_MASTER_KEY,
     VUE_APP_URL: process.env.VUE_APP_URL,
+    CTF_SPACE_ID: process.env.CTF_SPACE_ID,
+    CTF_CDA_ACCESS_TOKEN: process.env.CTF_CDA_ACCESS_TOKEN,
   },
 
   /**

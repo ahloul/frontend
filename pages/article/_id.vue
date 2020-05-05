@@ -8,7 +8,11 @@
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
       <div class="max-w-sm mx-auto">
-        <img :src="article.picture.url" :alt="article.name" />
+        <img
+          :src="article.picture.url"
+          :alt="article.name"
+          @error="(e) => (e.target.src = '/img/placeholder.png')"
+        />
       </div>
       <div class="w-full max-w-sm md:max-w-none mx-auto">
         <div class="card">
@@ -35,6 +39,7 @@
               :alt="article.author.name"
               class="rounded-full"
               width="30"
+              @error="(e) => (e.target.src = '/img/placeholder.png')"
             />
             <div class="my-auto ml-2">{{ article.author.name }}</div>
           </div>

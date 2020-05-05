@@ -19,7 +19,7 @@
         <!-- Bottom -->
       </div>
     </div>
-    <div class="card text-primary mt-5">
+    <div class="card text-primary mt-3">
       <p class="max-w-md mx-auto pb-3 text-center">
         {{ $t('processes.intro') }}
       </p>
@@ -29,14 +29,40 @@
         </n-link>
       </div>
     </div>
+    <div
+      v-for="entry in news"
+      :key="entry.id"
+      class="mt-3 grid grid-cols-1 md:grid-cols-2 gap-2"
+    >
+      <div class="card">
+        <img
+          v-if="entry.heroImage"
+          :src="`https:${entry.heroImage.fields.file.url}`"
+          alt=""
+        />
+        <h2 v-if="entry.title" class="mt-2">{{ entry.title }}</h2>
+        <timeago :datetime="entry.createdAt" class="text-light" />
+        <div v-if="entry.body" class="mt-2" v-html="entry.body" />
+      </div>
+    </div>
     <!-- {{ shop }} -->
   </div>
 </template>
 <script>
 import { mapGetters } from 'vuex'
+import { createClient } from '~/plugins/modules/contentful.js'
+const client = createClient()
 
 export default {
   middleware: 'authenticated',
+  async asyncData({ params }) {
+    const { items } = await client.getEntries({
+      content_type: 'dealerNews',
+      order: '-sys.createdAt',
+    })
+    const news = items.map((i) => i.fields)
+    return { news }
+  },
   computed: {
     ...mapGetters({
       shop: 'shop/shop',

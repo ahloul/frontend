@@ -3,9 +3,7 @@
     <div class="container flex flex-row">
       <ul class="bar text-left mx-auto sm:mx-0">
         <li>
-          <a href="https://getit.social/impressum/" target="_blank"
-            >Impressum</a
-          >
+          <n-link to="/imprint">Impressum</n-link>
         </li>
         <li>
           <a href="https://getit.social/datenschutz/" target="_blank"

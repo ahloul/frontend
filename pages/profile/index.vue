@@ -8,7 +8,11 @@
         <icon name="settings-outline" />
       </div>
       <div class="w-24 mx-auto">
-        <img class="rounded-full mx-auto" :src="user.picture.url" />
+        <img
+          class="rounded-full mx-auto"
+          :src="user.picture.url"
+          @error="(e) => (e.target.src = '/img/placeholder.png')"
+        />
       </div>
 
       <div class="text-center my-3">

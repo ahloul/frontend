@@ -43,7 +43,11 @@
 </template>
 
 <script>
+import icon from '../utils/icon'
 export default {
+  components: {
+    icon,
+  },
   name: 'Toggle',
   props: {
     booleanValue: {

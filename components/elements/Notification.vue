@@ -6,15 +6,20 @@
     <span
       v-if="pill"
       class="flex rounded-full bg-info uppercase px-2 py-1 text-xs font-bold"
-      >{{ pill }}</span
-    >
-    <span class="ml-2 text-left flex-auto"><slot /></span>
+    >{{ pill }}</span>
+    <span class="ml-2 text-left flex-auto">
+      <slot />
+    </span>
     <icon name="arrow-ios-forward-outline" class="ml-2" />
   </div>
 </template>
 
 <script>
+import icon from '../utils/icon'
 export default {
+   components: {
+    icon,
+  },
   name: 'Notification',
 
   props: {

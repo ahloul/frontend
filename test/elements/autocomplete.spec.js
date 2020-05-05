@@ -1,5 +1,6 @@
 import { mount, shallowMount } from '@vue/test-utils'
 import Autocomplete from '../../components/elements/Autocomplete.vue'
+import { jestPreset } from 'ts-jest'
 
 describe('Autocomplete', () => {
   let wrapper
@@ -25,6 +26,31 @@ describe('Autocomplete', () => {
     await wrapper.vm.$nextTick()
     expect(wrapper.emitted().selection[0]).toEqual(['start'])
   })
+  
+  test('change axios call ', () => {
+    jest.mock('axios',() => ({
+      get: Promise.resolve('rows')
+    }))
+    const wrapper = mount(Autocomplete)
+    wrapper.find('input').trigger('change')
+    wrapper.vm.$nextTick(() => {
+      expect(wrapper.$data.open).toBe(true)
+    }) 
+  })
+
+  // change: debounce(async function (e) {
+    // if (!this.open) this.open = true
+    // const rows = await this.$axios.$get(
+      // `/api/${this.endpoint}`,
+      // this.selection[this.displayName]
+        // ? { params: { [this.queryname]: this.selection[this.displayName] } }
+        // : null
+    // )
+    // this.list = rows
+  // }, 750),
+
+
+
   //  test('li emitted suggestion', () => {
   //    wrapper = shallowMount(Autocomplete)
   //    wrapper.find('input').trigger('input')

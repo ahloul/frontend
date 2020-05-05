@@ -17,6 +17,7 @@ module.exports = {
   plugins: [
     'prettier'
   ],
+  ignorePatterns: ['test/'],
   // add your custom rules here
   rules: {
     'no-console': 'off',

@@ -87,7 +87,7 @@
       <form @submit.prevent="handleSubmit(submit)">
         <!-- Informationen -->
         <fieldset v-if="step === 1" class="tab-section">
-          <p class="tab-heading">
+          <p v-if="!edit" class="tab-heading">
             {{ $t('information.intro') }}
           </p>
           <!-- shopName INPUT -->
@@ -455,7 +455,7 @@
           <button
             type="submit"
             class="primary my-10 ml-auto"
-            :class="{ 'spinner-light': loadState.create }"
+            :class="{ 'spinner-light': loadState.create || loadState.update }"
           >
             {{ $t(step === 5 || edit ? 'save' : 'continue') }}
           </button>
@@ -475,9 +475,7 @@ import Autocomplete from '~/components/elements/Autocomplete'
 import { difference } from '~/utils/object'
 
 export default {
-  name: 'CreateShop',
-  // ONLY EDIT name: 'EditShop',
-  middleware: ['haveShop'], // ONLY CREATE?
+  name: 'EditShopComponent',
   components: {
     Autocomplete,
     imageUpload,
@@ -541,33 +539,10 @@ export default {
       loadState: {
         create: false,
         pending: false,
+        update: false,
       },
       haveError: false,
       shop: clone(coreShop),
-      /*
-    shop: {
-      name: null,
-      size: null,
-      phone: null,
-      website: null,
-      companyType: null,
-      address: {},
-      picture: {},
-      contact: {},
-      logo: {},
-      description: null,
-      deliveryOptions: [],
-      openingHours: {
-        monday: [],
-        tuesday: [],
-        wednesday: [],
-        thursday: [],
-        friday: [],
-        saturday: [],
-        sunday: [],
-      },
-    },
-    */
     }
   },
   computed: {

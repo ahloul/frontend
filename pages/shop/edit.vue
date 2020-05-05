@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div>
     <EditShop :core-shop="coreShop" />
   </div>
 </template>
@@ -8,6 +8,7 @@
 import EditShop from '~/components/pageElements/shop/EditShop'
 
 export default {
+  // name: 'EditShop', TODO breaks when uncommented. why?
   components: {
     EditShop,
   },

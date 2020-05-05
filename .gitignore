@@ -91,3 +91,6 @@ sw.*
 
 # Custom
 notes.txt
+
+# Test
+coverage/

@@ -24,7 +24,9 @@
           :key="index"
           class="dropdown-item"
           @click="suggestionClick(suggestion)"
-        >{{ suggestion[displayName] }}</li>
+        >
+          {{ suggestion[displayName] }}
+        </li>
       </ul>
       <span class="error">{{ errors[0] }}</span>
     </ValidationProvider>
@@ -32,7 +34,7 @@
 </template>
 
 <script>
-import { ValidationProvider } from "vee-validate"
+import { ValidationProvider } from 'vee-validate'
 import { debounce, clone, isEmpty } from 'lodash'
 export default {
   name: 'Autocomplete',

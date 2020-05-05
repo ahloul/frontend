@@ -1,15 +1,5 @@
 <template>
   <div class="flex flex-col content-center justify-center p-2">
-    <!-- Modal -->
-    <modal
-      :show="showModal"
-      :dismiss="null"
-      :confirm="$t('enter_login')"
-      centered
-      @confirm="goToLogin"
-    >
-      {{ $t('signup.successful_registration') }}
-    </modal>
     <!-- Headline -->
     <div class="w-full max-w-sm mx-auto">
       <img src="/img/logo.svg" width="90" class="mx-auto" alt="" />
@@ -127,6 +117,7 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
 export default {
   name: 'Login',
   layout: 'blank',
@@ -134,7 +125,6 @@ export default {
 
   data: () => ({
     pending: false,
-    showModal: false,
     guest: {
       name: '',
       email: '',
@@ -144,8 +134,10 @@ export default {
     },
   }),
   methods: {
-    async localSignup(e) {
+    ...mapMutations('modal', { showModal: 'showModal' }),
+    localSignup(e) {
       try {
+        /*
         // Set Loading
         this.pending = true
         // Sign up local user
@@ -153,9 +145,14 @@ export default {
 
         // Unset Loading
         this.pending = false
+        */
 
         // Redirect on successfull authentication
-        this.showModal = true
+        this.showModal({
+          message: 'signup.successful_registration',
+          confirmText: 'enter_login',
+          onConfirm: this.goToLogin,
+        })
       } catch ({ response: { data } }) {
         // TODO: Catch error
         this.pending = false

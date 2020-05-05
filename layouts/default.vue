@@ -2,14 +2,7 @@
   <div class="flex flex-col min-h-screen">
     <toast />
 
-    <modal
-      :show="showModal"
-      :dismiss="null"
-      confirm="confirm"
-      centered
-      @confirm="hideModal"
-      >{{ $t(message) }}</modal
-    >
+    <modal :show="showModal" centered></modal>
 
     <navigation
       class="hidden md:block sticky top-0 py-2 container mx-auto px-2 z-30"
@@ -21,7 +14,7 @@
   </div>
 </template>
 <script>
-import { mapGetters, mapMutations } from 'vuex'
+import { mapGetters } from 'vuex'
 import Navigation from '~/components/layout/Navigation'
 import Navbar from '~/components/layout/Navbar'
 import FooterBar from '~/components/layout/FooterBar'
@@ -39,12 +32,6 @@ export default {
   computed: {
     ...mapGetters('modal', {
       showModal: 'showModal',
-      message: 'message',
-    }),
-  },
-  methods: {
-    ...mapMutations('modal', {
-      hideModal: 'hideModal',
     }),
   },
 }

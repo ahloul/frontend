@@ -1,22 +1,7 @@
 <template>
   <div class="flex flex-col">
     <!-- Modal -->
-    <modal
-      :show="showShopErrorModal"
-      centered
-      dismiss="Schließen"
-      @dismiss="showModal = false"
-      >{{ $t('contact_to_delete') }} <br />
-      <a href="mailto:support@getit.social">Support</a>
-    </modal>
-    <modal
-      :show="haveError"
-      :dismiss="null"
-      confirm="confirm"
-      centered
-      @confirm="haveError = false"
-      >{{ $t('information.shop_error_confirmation') }}
-    </modal>
+    <!--
     <modal
       :show="showModal"
       :dismiss="null"
@@ -28,6 +13,7 @@
       <br />
       {{ $t('information.ready_to_start') }}
     </modal>
+  -->
     <!-- Top Buttons -->
     <div class="flex mt-2 justify-between max-w-xs mx-auto">
       <button
@@ -467,7 +453,7 @@
 
 <script>
 import VueTimepicker from 'vue2-timepicker'
-import { mapActions, mapMutations } from 'vuex'
+import { mapMutations, mapActions } from 'vuex'
 import { clone, filter } from 'lodash'
 import imageUpload from '~/components/utils/ImageUpload'
 import Wysiwyg from '~/components/utils/Wysiwyg'
@@ -516,8 +502,6 @@ export default {
       edit,
       step: 1,
       validationMode: 'lazy',
-      showModal: false,
-      showShopErrorModal: false,
       deliverySelect: [
         {
           name: 'delivery_options.options.local_delivery.name',
@@ -541,7 +525,6 @@ export default {
         pending: false,
         update: false,
       },
-      haveError: false,
       shop: clone(coreShop),
     }
   },
@@ -554,7 +537,7 @@ export default {
   methods: {
     ...mapActions(['getMe']),
     ...mapMutations('modal', {
-      showErrorModal: 'showModal',
+      showModal: 'showModal',
     }),
     goToStep(step) {
       if (step < 1) {
@@ -592,11 +575,6 @@ export default {
     },
     async updateShop() {
       try {
-        if (this.showModal) {
-          this.showModalinStore('Hallo')
-          return
-        }
-
         await this.checkValidation()
         this.loadState.update = true
         await this.$axios.patch(
@@ -614,7 +592,7 @@ export default {
         this.$router.push('/shop')
       } catch (error) {
         this.loadState.update = false
-        this.showErrorModal({ message: 'information.shop_error_confirmation' })
+        this.showModal({ message: 'information.shop_error_confirmation' })
         console.log(error)
       }
     },
@@ -639,13 +617,19 @@ export default {
           await this.getMe()
           // Todo: Get shop
           this.loadState.create = false
-          this.showModal = true
+          this.showModal({
+            message: 'information.shop_created_confirmation',
+            confirmText: 'information.go_to_shop',
+            onConfirm: () => {
+              this.$router.push('/')
+            },
+          })
         }
         // Go to next step
         this.step++
       } catch (error) {
         this.loadState.create = false
-        this.haveError = true
+        this.showModal({ message: 'information.shop_error_confirmation' })
         console.log(error)
       }
     },

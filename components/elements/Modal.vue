@@ -17,25 +17,22 @@
               <slot name="header"></slot>
             </div>
             <div class="mb-6 mt-3">
+              {{ $t(message) }}
               <slot />
             </div>
             <div
               class="flex justify-end"
               :class="{ 'justify-center': centered }"
             >
-              <button
-                v-if="dismiss"
-                class="w-auto border"
-                @click="$emit('dismiss')"
-              >
-                {{ $t(dismiss) }}
+              <button v-if="dismissText" class="w-auto border" @click="dismiss">
+                {{ $t(dismissText) }}
               </button>
               <button
-                v-if="confirm"
+                v-if="confirmText"
                 class="primary w-auto ml-4"
-                @click="$emit('confirm')"
+                @click="confirm"
               >
-                {{ $t(confirm) }}
+                {{ $t(confirmText) }}
               </button>
             </div>
           </div>
@@ -46,6 +43,7 @@
 </template>
 
 <script>
+import { mapMutations, mapGetters } from 'vuex'
 export default {
   name: 'Modal',
   props: {
@@ -57,15 +55,16 @@ export default {
       type: Boolean,
       default: true,
     },
-    confirm: {
-      type: String,
-      default: 'confirm',
-    },
-    dismiss: {
-      type: String,
-      default: 'dismiss',
-    },
   },
+  computed: {
+    ...mapGetters('modal', {
+      showModal: 'showModal',
+      message: 'message',
+      confirmText: 'confirmText',
+      dismissText: 'dismissText',
+    }),
+  },
+
   watch: {
     show(newValue, oldValue) {
       const rootBody = document.getElementsByTagName('body')[0]
@@ -76,6 +75,12 @@ export default {
   beforeDestroy() {
     const rootBody = document.getElementsByTagName('body')[0]
     rootBody.classList.remove('overflow-hidden')
+  },
+  methods: {
+    ...mapMutations('modal', {
+      confirm: 'confirm',
+      dismiss: 'dismiss',
+    }),
   },
 }
 </script>

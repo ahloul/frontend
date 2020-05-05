@@ -241,7 +241,7 @@ export default {
       try {
         await this.$axios.patch(
           `/api/articles/${this.article.id}`,
-          difference(this.article, this.coreArticle)
+          difference(this.article, this.coreArticle, ['picture'])
         )
         // send toast
         this.$store.dispatch('toast/add', { message: `toast.updated_profile` })

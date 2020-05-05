@@ -19,7 +19,7 @@
         <!-- Bottom -->
       </div>
     </div>
-    <div class="card text-primary mt-3">
+    <div class="card text-primary mt-3 max-w-xl mx-auto">
       <p class="max-w-md mx-auto pb-3 text-center">
         {{ $t('processes.intro') }}
       </p>
@@ -29,12 +29,12 @@
         </n-link>
       </div>
     </div>
-    <div
-      v-for="entry in news"
-      :key="entry.id"
-      class="mt-3 grid grid-cols-1 md:grid-cols-2 gap-2"
-    >
-      <div class="card">
+    <div class="flex flex-col max-w-xl mx-auto">
+      <div
+        v-for="entry in news"
+        :key="entry.id"
+        class="card w-full mt-3 mx-auto"
+      >
         <img
           v-if="entry.heroImage"
           :src="`https:${entry.heroImage.fields.file.url}`"

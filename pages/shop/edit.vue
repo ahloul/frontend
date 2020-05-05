@@ -500,7 +500,10 @@ export default {
         this.loadState.update = true
         await this.$axios.patch(
           `/api/shops/${this.shop._id}`,
-          difference(this.shop, this.coreShop, 'openingHours')
+          difference(this.shop, this.coreShop, [
+            'openingHours',
+            'deliveryOptions',
+          ])
         )
         // Update user in storage
         await this.getMe()

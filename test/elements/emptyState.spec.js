@@ -1,15 +1,15 @@
+import { shallowMount, mount } from '@vue/test-utils'
+
 import EmptyState from '../../components/elements/EmptyState.vue'
-import { shallowMount } from '@vue/test-utils'
-import { mount } from '@vue/test-utils'
 
 describe('EmptyState ', () => {
   let wrapper
 
   test('is a Vue instance', () => {
     wrapper = mount(EmptyState, {
-      mocks:{
-        $t: () => {}
-      }
+      mocks: {
+        $t: () => {},
+      },
     })
     expect(wrapper.isVueInstance()).toBeTruthy()
   })
@@ -17,10 +17,10 @@ describe('EmptyState ', () => {
     const emptyText = 'Du hast noch keine Einträge'
     wrapper = mount(EmptyState, {
       propsData: {
-        emptyText: emptyText,
+        emptyText,
       },
     })
-    //console.log(wrapper.html())
+    // console.log(wrapper.html())
     expect(wrapper.find('h3').text()).toBe('Du hast noch keine Einträge')
   })
   /*  test('display content Empty State img', () => {

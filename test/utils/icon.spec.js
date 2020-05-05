@@ -1,6 +1,5 @@
-import { mount } from '@vue/test-utils'
+import { mount, shallowMount } from '@vue/test-utils'
 import Icon from '../../components/utils/icon.vue'
-import { shallowMount } from '@vue/test-utils'
 
 describe('Icon', () => {
   let props

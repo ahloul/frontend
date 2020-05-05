@@ -1,14 +1,14 @@
-import EmptyContent from '../../components/elements/EmptyContent.vue'
 import { mount, shallowMount, createLocalVue } from '@vue/test-utils'
 import VueRouter from 'vue-router'
+import EmptyContent from '../../components/elements/EmptyContent.vue'
 
-//const localvue = createLocalVue()
-//localVue.use(VueRouter)
-//const router = new VueRouter()
+// const localvue = createLocalVue()
+// localVue.use(VueRouter)
+// const router = new VueRouter()
 
-//shallowMount(EmptyContent, {
+// shallowMount(EmptyContent, {
 //  localVue
-//})
+// })
 
 describe('EmptyContent ', () => {
   let wrapper
@@ -33,10 +33,10 @@ describe('EmptyContent ', () => {
     const content = 'Kein Content vorhanden'
     wrapper = mount(EmptyContent, {
       propsData: {
-        content: content,
+        content,
       },
     })
-    //console.log(wrapper.html())
+    // console.log(wrapper.html())
     expect(wrapper.find('div').text()).toBe('Kein Content vorhanden')
   })
 })

@@ -1,6 +1,6 @@
+import { shallowMount, mount } from '@vue/test-utils'
+
 import index from '../../pages/profile/index.vue'
-import { shallowMount } from '@vue/test-utils'
-import { mount } from '@vue/test-utils'
 
 describe('Notification', () => {
   let wrapper

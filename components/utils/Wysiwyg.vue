@@ -5,42 +5,60 @@
         <div class="menubar-wrapper">
           <ul class="menubar">
             <li>
-              <button :class="{ active: isActive.bold() }" @click.prevent="commands.bold">
+              <div
+                class="button cursor-pointer"
+                :class="{ active: isActive.bold() }"
+                @click.prevent="commands.bold"
+              >
                 <b>B</b>
-              </button>
+              </div>
             </li>
-
             <li>
-              <button :class="{ active: isActive.italic() }" @click.prevent="commands.italic">
+              <div
+                class="button cursor-pointer"
+                :class="{ active: isActive.italic() }"
+                @click.prevent="commands.italic"
+              >
                 <i>I</i>
-              </button>
+              </div>
             </li>
-
             <li>
-              <button :class="{ active: isActive.underline() }" @click.prevent="commands.underline">
+              <div
+                class="button cursor-pointer"
+                :class="{ active: isActive.underline() }"
+                @click.prevent="commands.underline"
+              >
+
                 <u>U</u>
-              </button>
+              </div>
             </li>
 
             <li>
-              <button
+              <div
+                class="button cursor-pointer"
                 :class="{ active: isActive.heading({ level: 1 }) }"
                 @click.prevent="commands.heading({ level: 1 })"
-              >H1</button>
+              >
+                H1
+              </div>
             </li>
-
             <li>
-              <button
+              <div
+                class="button cursor-pointer"
                 :class="{ active: isActive.heading({ level: 2 }) }"
                 @click.prevent="commands.heading({ level: 2 })"
-              >H2</button>
+              >
+                H2
+              </div>
             </li>
-
             <li>
-              <button
+              <div
+                class="button cursor-pointer"
                 :class="{ active: isActive.heading({ level: 3 }) }"
                 @click.prevent="commands.heading({ level: 3 })"
-              >H3</button>
+              >
+                H3
+              </div>
             </li>
           </ul>
         </div>

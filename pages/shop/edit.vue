@@ -422,7 +422,7 @@
 
 <script>
 import VueTimepicker from 'vue2-timepicker'
-import { mapActions } from 'vuex'
+import { mapActions, mapMutations } from 'vuex'
 import { clone, filter } from 'lodash'
 import imageUpload from '~/components/utils/ImageUpload'
 import Wysiwyg from '~/components/utils/Wysiwyg'
@@ -443,7 +443,7 @@ export default {
     return { shop: clone(coreShop), coreShop }
   },
   data: () => ({
-    step: 3,
+    step: 1,
     validationMode: 'lazy',
     showModal: false,
     deliverySelect: [
@@ -475,6 +475,9 @@ export default {
   },
   methods: {
     ...mapActions(['getMe']),
+    ...mapMutations('modal', {
+      showErrorModal: 'showModal',
+    }),
     async checkValidation() {
       // Check if name is valid on submit
       const isValid = await this.checkName()
@@ -497,7 +500,7 @@ export default {
         this.loadState.update = true
         await this.$axios.patch(
           `/api/shops/${this.shop._id}`,
-          difference(this.shop, this.coreShop)
+          difference(this.shop, this.coreShop, 'openingHours')
         )
         // Update user in storage
         await this.getMe()
@@ -507,6 +510,7 @@ export default {
         this.$router.push('/shop')
       } catch (error) {
         this.loadState.update = false
+        this.showErrorModal({ message: 'information.shop_error_confirmation' })
         console.log(error)
       }
     },

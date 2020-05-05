@@ -7,6 +7,7 @@ import en from '~/lang/en-US.json'
 Vue.use(VueI18n)
 
 export default ({ app, store }) => {
+  // i18n
   // Set i18n instance on app
   // This way we can use it in middleware and pages asyncData/fetch
   app.i18n = new VueI18n({

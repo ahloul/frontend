@@ -109,9 +109,15 @@
     "login":"Login",
     "thirdparty":"Or sign up with"
   },
+  "account": {
+    "verify_content": "Welcome back! Thanks for your verification"
+  },
   "signup":{
     "successful_registration":"Your registration was successful! You can log in now.",
     "register":"Register"
+  },
+  "shop": {
+    "settings": "Settings"
   },
   "toast":{
     "updated_profile":"Updated Profile",

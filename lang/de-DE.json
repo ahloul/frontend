@@ -109,9 +109,15 @@
     "login":"Anmelden",
     "thirdparty":"Oder melde Dich an mit"
   },
+  "account": {
+    "verify_content": "Willkommen zurück! Danke für deine Verifizireung"
+  },
   "signup":{
     "successful_registration":"Deine Registrierung war erfolgreich! Du kannst Dich jetzt einloggen.",
     "register":"Neu Registrieren"
+  },
+  "shop": {
+    "settings": "Einstellungen"
   },
   "toast":{
     "updated_profile":"Profile bearbeitet",

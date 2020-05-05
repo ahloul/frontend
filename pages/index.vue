@@ -20,7 +20,7 @@
       </div>
     </div>
     <div class="card text-primary mt-5">
-      <p class="font-bold max-w-md mx-auto py-3 text-center">
+      <p class="max-w-md mx-auto pb-3 text-center">
         {{ $t('processes.intro') }}
       </p>
       <div class="w-auto max-w-xs mx-auto">

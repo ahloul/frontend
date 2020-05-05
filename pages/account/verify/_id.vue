@@ -16,14 +16,14 @@
         class="mx-auto"
       />
       <p class="my-5 font-bold">
-        Willkommen zurück! Danke für deine Verifizireung
+        {{ $t('account.verify_content') }}
       </p>
       <div class="my-4">
         <n-link
           to="/login"
           class="button button-primary"
           :class="{ 'spinner-light': pending }"
-          >Zum Login</n-link
+          >{{ $t('login.back_to_login') }}</n-link
         >
       </div>
     </div>

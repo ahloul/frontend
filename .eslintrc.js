@@ -12,7 +12,8 @@ module.exports = {
     'prettier',
     'prettier/vue',
     'plugin:prettier/recommended',
-    'plugin:nuxt/recommended'
+    'plugin:nuxt/recommended',
+    'plugin:vue-i18n/recommended'
   ],
   plugins: [
     'prettier'
@@ -22,5 +23,10 @@ module.exports = {
   rules: {
     'no-console': 'off',
     'vue/no-v-html': 'off',
+  },
+  settings: {
+    'vue-i18n': {
+      localeDir: './lang/*.json' // extention is glob formatting!
+    }
   }
 }

@@ -1,0 +1,174 @@
+{
+	"account": {
+		"verify_content": "¡Dar una buena acogida! Gracias por su verificación"
+	},
+	"add": "Añadir",
+	"article": {
+		"create_stock": "Crear inventario",
+		"delete_confirmation": "¿Seguro que quieres eliminar este artículo de forma permanente?",
+		"description": "Descripción del Artículo",
+		"empty": "No hay articulos",
+		"name": "Nombre del árticulo",
+		"name_hint": "es decir, bolígrafos",
+		"non_public": "no público",
+		"price_hint": "es decir, 12,00",
+		"public": "Público",
+		"public_prefix": "El artículo será",
+		"public_suffix": "",
+		"stock": "Inventario",
+		"tax_free": "Libre de impuestos",
+		"tax_rate": "Tasa de impuesto",
+		"unit_price": "Precio unitario"
+	},
+	"back": "atrás",
+	"back_to_start": "volver a empezar",
+	"call": "LLÁMANOS",
+	"category": {
+		"create": "Crear Categoría",
+		"delete_confirmation": "¿Seguro que quieres eliminar la categoría? ¡Los artículos contenidos en él también se eliminarán irremediablemente!",
+		"hint": "es decir, bebidas",
+		"name": "Nombre de categoría",
+		"title": "CATEGORÍA"
+	},
+	"confirm": "bueno",
+	"contact_data": {
+		"facebook": "Facebook",
+		"full_address": "Dirección completa",
+		"instagram": "Instagram",
+		"intro": "Ingrese la dirección de su tienda para que otros sepan dónde encontrarlo.",
+		"optional": "Opcional",
+		"phone_number": "Número de teléfono",
+		"prefix_and_number": "Prefijo y número",
+		"section_name": "Dato de contacto",
+		"website": "sitio web"
+	},
+	"contact_to_delete": "Por favor contáctenos si desea eliminar su cuenta",
+	"continue": "Continuar",
+	"delivery_options": {
+		"all_day": "Abierto todo el día",
+		"days_long": {
+			"friday": "viernes",
+			"monday": "lunes",
+			"saturday": "sábado",
+			"sunday": "domingo",
+			"thursday": "jueves",
+			"tuesday": "martes",
+			"wednesday": "miércoles"
+		},
+		"days_short": {
+			"friday": "fr",
+			"monday": "Mes",
+			"saturday": "sa",
+			"sunday": "SU",
+			"thursday": "th",
+			"tuesday": "tú",
+			"wednesday": "Nosotros"
+		},
+		"offer_prefix": "Yo ofrezco",
+		"offer_suffix": "",
+		"opening_times": "Los horarios de apertura",
+		"options": {
+			"local_delivery": {
+				"description": "Nos aseguramos de que nuestros clientes reciban sus productos rápidamente",
+				"name": "Entrega local"
+			},
+			"parcel": {
+				"description": "A petición también enviamos los paquetes por carta y correo",
+				"name": "Envio postal y paqueteria"
+			},
+			"pickup": {
+				"description": "Los clientes también pueden recoger nuestros productos en el sitio",
+				"name": "Recoger"
+			}
+		},
+		"section_name": "Opciones de entrega"
+	},
+	"description": {
+		"intro": "Si lo desea, describa su negocio en unas pocas oraciones. ¡Deja que tu creatividad corra libre!",
+		"section_name": "Descripción"
+	},
+	"dismiss": "abortar",
+	"edit": "Editar",
+	"enter_login": "Al inicio de sesión",
+	"enter_shop": "A la tienda",
+	"enter_website": "Al sitio web",
+	"information": {
+		"go_to_shop": "¡Ir a la tienda!",
+		"intro": "Gracias por tu registro! Con solo unos pocos pasos, lo ayudamos a crear su tienda. ¡Aquí vamos!",
+		"legal_form": "Forma jurídica",
+		"legal_form_options": {
+			"independent": "independiente",
+			"non_profit": "Sin fines de lucro / Asociación",
+			"partnership": "Asociación",
+			"private_partnership": "Empresa privada",
+			"sole": "Propietario único",
+			"stock_company": "Acciones de la compañía"
+		},
+		"name_of_shop": "Nombre de tu tienda",
+		"name_of_shop_example": "es decir. Sam y compañero",
+		"no_of_employees": "Número de empleados",
+		"ready_to_start": "Estás listo para comenzar ahora.",
+		"section_name": "información",
+		"shop_created_confirmation": "¡Has creado con éxito una tienda!",
+		"shop_error_confirmation": "Verifique nuevamente que haya completado todos los campos correctamente."
+	},
+	"lang_code": "ES",
+	"login": {
+		"back_to_login": "Atrás para iniciar sesión",
+		"confirm_password": "Confirmar contraseña",
+		"help": "Ayuda con el registro?",
+		"login": "Iniciar sesión",
+		"password": "Contraseña",
+		"request_new_password": "Pide nueva contraseña",
+		"save_new_password": "Guardar nueva contraseña",
+		"thirdparty": "O regístrate con"
+	},
+	"navbar": {
+		"create_shop": "Nueva tienda",
+		"imprint": "Imprimir",
+		"privacy_policy": "Política de privacidad",
+		"processes": "procesos",
+		"shop": "Tienda",
+		"stock": "Valores",
+		"terms": "Términos y condiciones"
+	},
+	"no_description": "No hay descripción disponible.",
+	"no_items": "Aún no tienes entradas",
+	"picture": {
+		"intro": "Muestra tu tienda con una foto y tu logotipo.",
+		"logo": "logo",
+		"section_name": "Imágenes",
+		"shop_picture": "Foto de la tienda"
+	},
+	"processes": {
+		"add_article": "AGREGAR ARTÍCULO",
+		"intro": "Actualmente estamos en construcción. Ahora puede llenar su tienda de vida agregando sus primeros artículos. Esto nos ayudará a desarrollar aún más nuestra plataforma.",
+		"welcome": "Una cálida bienvenida"
+	},
+	"profile": {
+		"city": "ciudad",
+		"description": "Descripción del perfil"
+	},
+	"remove": "retirar",
+	"save": "Salvar",
+	"select_image": "Seleccionar imagen",
+	"shop": {
+		"settings": "Ajustes"
+	},
+	"signup": {
+		"register": "Registro",
+		"successful_registration": "Su registro fue exitoso! Puedes iniciar sesión ahora."
+	},
+	"toast": {
+		"created_article": "Artículo creado",
+		"created_category": "Categoría creada",
+		"deleted_article": "Artículo eliminado",
+		"logout": "Desconectado 👋",
+		"saved_profile": "Perfil guardado",
+		"updated_category": "Categoría actualizada",
+		"updated_profile": "Perfil actualizado",
+		"updated_shop": "Tienda actualizada",
+		"updated_stock": "Stock actualizado",
+		"you_got_mail": "Tienes correo mail️!"
+	}
+}

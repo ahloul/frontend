@@ -3,8 +3,8 @@
     <div
       v-show="show"
       class="modal-bg"
-      @click="$emit('dismiss')"
-      @keyup.esc="$emit('dismiss')"
+      @click="dismiss"
+      @keyup.esc="dismiss"
     ></div>
     <transition name="modalAnimation">
       <div v-show="show" class="modal-wrapper">

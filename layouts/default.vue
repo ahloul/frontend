@@ -7,8 +7,8 @@
       v-if="haveToken"
       class="hidden md:block sticky top-0 py-2 container mx-auto px-2 z-30"
     />
-    <div v-if="!haveToken" class="container mx-auto my-10">
-      <n-link to="/">Zurück</n-link>
+    <div v-if="!haveToken" class="container mx-auto mt-10 px-2">
+      <n-link to="/">{{ $t('back') }}</n-link>
     </div>
     <nuxt class="container flex-1 mx-auto px-2 mb-20 md:mb-10" />
     <navbar v-if="haveToken" class="block md:hidden fixed bottom-0 w-full" />

@@ -40,7 +40,6 @@
 </template>
 
 <script>
-import { mapMutations } from 'vuex'
 export default {
   name: 'CreateCategory',
   middleware: 'authenticated',
@@ -55,7 +54,6 @@ export default {
     },
   }),
   methods: {
-    ...mapMutations('modal', { showModal: 'showModal' }),
     async submit() {
       try {
         this.loadState.update = true
@@ -76,7 +74,7 @@ export default {
       }
     },
     showDeleteModal() {
-      this.showModal({
+      this.$store.commit('modal/showModal', {
         message: 'category.delete_confirmation',
         dismissText: 'dismiss',
         onConfirm: this.deleteCategory,

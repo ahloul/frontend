@@ -3,8 +3,8 @@ export const state = () => ({
   showModal: false,
   confirmText: 'confirm',
   dismissText: null,
-  onConfirm: () => {},
-  onDismiss: () => {},
+  onConfirm: null,
+  onDismiss: null,
 })
 
 export const getters = {
@@ -42,11 +42,11 @@ export const mutations = {
     state.showModal = false
   },
   confirm(state) {
-    state.onConfirm()
+    if (state.onConfirm) state.onConfirm()
     state.showModal = false
   },
   dismiss(state) {
-    state.onDismiss()
+    if (state.onDismiss) state.onDismiss()
     state.showModal = false
   },
 }

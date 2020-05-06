@@ -1,7 +1,7 @@
 <template>
   <div class="bg-primary">
     <div class="container flex flex-row">
-      <ul class="bar text-left mx-auto sm:mx-0">
+      <ul class="bar text-left content-end mr-auto sm:mx-0">
         <li>
           <n-link to="/imprint">{{ $t('navbar.imprint') }}</n-link>
         </li>
@@ -9,13 +9,18 @@
           <n-link to="/privacy">{{ $t('navbar.privacy_policy') }}</n-link>
         </li>
       </ul>
-      <ul class="bar text-left mx-auto sm:ml-5">
+      <ul class="flex flex-col md:flex-row content-end sm:ml-auto opacity-50">
         <li
           v-for="el in locales"
           :key="el.code"
+          class="ml-2 mt-2"
           :class="{ active: el.code === locale }"
         >
-          <a href @click="switchLanguage(el.code)">
+          <a
+            href
+            class="text-info hover:text-dark"
+            @click="switchLanguage(el.code)"
+          >
             {{ el.name }}
           </a>
         </li>
@@ -45,6 +50,11 @@
           ></a>
         </li>
       </ul>
+    </div>
+    <div class="container">
+      <div class="mx-auto text-info select-none text-xs opacity-50 md:mt-5">
+        getit! © 2020
+      </div>
     </div>
   </div>
 </template>
@@ -78,7 +88,7 @@ export default {
   @apply flex flex-col;
 
   li {
-    @apply my-1;
+    @apply mt-2;
   }
 }
 </style>

@@ -17,6 +17,22 @@ export const state = () => ({
       code: 'en',
       name: 'English',
     },
+    {
+      code: 'es',
+      name: 'Spanish',
+    },
+    {
+      code: 'tr',
+      name: 'Turkish',
+    },
+    {
+      code: 'it',
+      name: 'Italian',
+    },
+    {
+      code: 'nl',
+      name: 'Dutch',
+    },
   ],
   locale: 'en',
 })

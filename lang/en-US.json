@@ -1,9 +1,13 @@
 {
+  "lang_code": "en",
   "navbar":{
     "create_shop":"New Shop",
     "processes":"Processes",
     "stock":"Stock",
-    "shop":"Shop"
+    "shop":"Shop",
+    "privacy_policy": "Privacy Policy",
+    "imprint": "Imprint",
+    "terms": "Terms and conditions"
   },
   "processes":{
     "intro":"We are currently under construction. You can now fill your shop with life by adding your first articles. This will help us to further develop our platform.",

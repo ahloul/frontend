@@ -41,7 +41,13 @@
           alt=""
         />
         <h2 v-if="entry.title" class="mt-2">{{ entry.title }}</h2>
-        <timeago :datetime="entry.createdAt" class="text-light" />
+        <client-only>
+          <timeago
+            v-if="entry.createdAt"
+            :datetime="entry.createdAt"
+            :locale="$t('lang_code')"
+            class="text-light"
+        /></client-only>
         <div v-if="entry.body" class="mt-2" v-html="entry.body" />
       </div>
     </div>

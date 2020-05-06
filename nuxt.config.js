@@ -160,6 +160,9 @@ export default {
       {
         config: {
           apiKey: process.env.BUGSNAG_API_KEY,
+          releaseStage: 'development',
+          notifyReleaseStages: ['production', 'staging'],
+          enabledReleaseStages: ['production', 'staging'],
         },
       },
     ],

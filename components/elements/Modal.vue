@@ -66,12 +66,14 @@ export default {
   },
 
   watch: {
+    // Show Browser Scrollbar
     show(newValue, oldValue) {
       const rootBody = document.getElementsByTagName('body')[0]
       if (newValue) rootBody.classList.add('overflow-hidden')
       else rootBody.classList.remove('overflow-hidden')
     },
   },
+  // Hide Browser Scrollbar
   beforeDestroy() {
     const rootBody = document.getElementsByTagName('body')[0]
     rootBody.classList.remove('overflow-hidden')

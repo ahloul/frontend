@@ -137,30 +137,52 @@
           </ul>
         </div>
       </div>
-      <div v-else-if="openTab === 2" class="card">
-        <!-- Map -->
-        <div class="flex">
-          <div
-            v-if="shop.address.locationId"
-            class="ml-auto text-right text-sm text-light flex flex-col mb-2"
-          >
-            <div class="leading-tight">
-              {{ shop.address.street }} {{ shop.address.houseNumber }}
+      <div v-else-if="openTab === 2">
+        <div class="grid md:grid-cols-3 gap-2">
+          <div class="card md:col-span-2">
+            <div class="flex flex-col">
+              <div
+                v-if="shop.address.locationId"
+                class="text-sm text-light flex flex-col mb-2"
+              >
+                <div class="leading-tight">
+                  {{ shop.address.street }} {{ shop.address.houseNumber }}
+                </div>
+                <div class="leading-tight">
+                  {{ shop.address.postalCode }} {{ shop.address.city }}
+                  {{
+                    shop.address.district === shop.address.city
+                      ? ''
+                      : shop.address.district
+                  }}
+                </div>
+              </div>
+              <!-- Map -->
+              <here-map
+                :position="shop.displayPosition"
+                :polygon="shop.polygonCoordinates"
+              />
             </div>
-            <div class="leading-tight">
-              {{ shop.address.postalCode }} {{ shop.address.city }}
-              {{
-                shop.address.district === shop.address.city
-                  ? ''
-                  : shop.address.district
-              }}
+          </div>
+          <div class="card text-center md:text-left select-none">
+            <div
+              v-for="(day, name) in shop.openingHours"
+              :key="day"
+              class="my-2"
+            >
+              <span class="font-bold text-primary"
+                >{{ $t(`delivery_options.days_long.${name}`) }}
+              </span>
+              <div class="text-light">
+                {{ day.length ? '' : 'Geschlossen' }}
+                <div v-for="(time, index) in day" :key="index">
+                  <span v-if="time.allDayOpen">Ganztätig geöffnet</span>
+                  <span v-else>{{ time.open }} - {{ time.close }}</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <here-map
-          :position="shop.displayPosition"
-          :polygon="shop.polygonCoordinates"
-        />
       </div>
     </div>
   </div>
@@ -178,7 +200,7 @@ export default {
   },
   data: () => ({
     iconSize: 22,
-    openTab: 1,
+    openTab: 2,
   }),
   computed: {
     ...mapGetters({

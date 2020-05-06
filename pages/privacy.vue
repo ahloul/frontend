@@ -9,9 +9,9 @@ import { createClient } from '~/plugins/modules/contentful.js'
 const client = createClient()
 
 export default {
-  name: 'Imprint',
+  name: 'Privacy',
   async asyncData({ params }) {
-    const { fields } = await client.getEntry('7a1SZ1ECcC0TnVozMRKRAt')
+    const { fields } = await client.getEntry('3QLBYuZtuw64ICL4xwppOE')
     return { content: fields }
   },
   data: () => ({}),

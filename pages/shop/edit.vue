@@ -1,16 +1,16 @@
 <template>
   <div>
-    <EditShop :core-shop="coreShop" />
+    <edit-shop :core-shop="coreShop" />
   </div>
 </template>
 
 <script>
-import EditShop from '~/components/pageElements/shop/EditShop'
+import editShop from '~/components/pageElements/shop/EditShop'
 
 export default {
   // name: 'EditShop', TODO breaks when uncommented. why?
   components: {
-    EditShop,
+    editShop,
   },
   async asyncData({ $axios, store, query, route }) {
     const { user } = store.state

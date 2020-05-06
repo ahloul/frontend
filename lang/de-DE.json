@@ -1,9 +1,13 @@
 {
+  "lang_code": "de",
   "navbar":{
     "create_shop":"New Shop",
     "processes":"Vorgänge",
     "stock":"Bestand",
-    "shop":"Shop"
+    "shop":"Shop",
+    "privacy_policy": "Datenschutz",
+    "imprint": "Impressum",
+    "terms": "Allgemeine Geschäftsbedingungen"
   },
   "processes":{
     "intro":"Aktuell befinden wir uns im Aufbau. Du kannst nun Deinen Shop mit Leben füllen, indem Du erste Artikel einpflegst. Damit hilfst Du bei der Weiterentwicklung unserer Plattform.",

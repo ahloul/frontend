@@ -3,12 +3,10 @@
     <div class="container flex flex-row">
       <ul class="bar text-left mx-auto sm:mx-0">
         <li>
-          <n-link to="/imprint">Impressum</n-link>
+          <n-link to="/imprint">{{ $t('navbar.imprint') }}</n-link>
         </li>
         <li>
-          <a href="https://getit.social/datenschutz/" target="_blank"
-            >Datenschutz</a
-          >
+          <n-link to="/privacy">{{ $t('navbar.privacy_policy') }}</n-link>
         </li>
       </ul>
       <ul class="bar text-left mx-auto sm:ml-5">

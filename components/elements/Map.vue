@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div ref="map" class="w-auto h-64"></div>
+    <div ref="map" class="map"></div>
   </div>
 </template>
 
@@ -52,4 +52,9 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.map {
+  @apply w-auto;
+  height: 20rem;
+}
+</style>

@@ -88,6 +88,12 @@
             </validation-provider>
           </label>
 
+          <div class="mt-5 text-light text-sm">
+            Indem du auf „Neu Registrieren“ klickst, stimmst du unseren
+            <n-link to="/terms">Geschäftsbedingungen</n-link> zu. In unserer
+            <n-link to="/privacy">Datenrichtlinie</n-link> erfährst du, wie wir
+            deine Daten erfassen.
+          </div>
           <div class="mt-5">
             <span class="block w-full">
               <button

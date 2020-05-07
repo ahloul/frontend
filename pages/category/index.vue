@@ -38,6 +38,14 @@
         </div>
       </li>
     </ul>
+    <div class="flex justify-center">
+      <n-link v-if="prevPage" :to="`?page=${prevPage}`" class="button mx-2"
+        >Previous</n-link
+      >
+      <n-link v-if="nextPage" :to="`?page=${nextPage}`" class="button mx-2"
+        >Next</n-link
+      >
+    </div>
   </div>
 </template>
 
@@ -49,17 +57,30 @@ export default {
   components: {
     EmptyState,
   },
-  async asyncData({ $axios }) {
+  async asyncData({ $axios, query }) {
     let showEmpty = false
-    const categories = await $axios.$get('/api/categories')
-    if (!categories.length) {
+    const { rows, count, nextPage, prevPage } = await $axios.$get(
+      '/api/categories',
+      {
+        params: query,
+      }
+    )
+    if (!count) {
       showEmpty = true
     }
-    return { categories, showEmpty }
+    return { categories: rows, showEmpty, nextPage, prevPage }
   },
+  watchQuery: ['page'],
+  scrollToTop: true,
   methods: {
     goToDetail({ _id }) {
       this.$router.push(`/category/${_id}`)
+    },
+    goToNextPage() {
+      this.$router.push({ query: { page: this.page++ } })
+    },
+    goToPreviousPage() {
+      this.$router.push({ query: { page: this.page-- } })
     },
   },
 }

@@ -157,7 +157,7 @@
 	},
 	"signup": {
 		"register": "Kayıt olmak",
-		"successful_registration": "Kaydınız başarılı oldu! Şimdi giriş yapabilirsiniz."
+		"successful_registration": "Kaydınız başarılı oldu! Gelen kutunuzu kontrol edin ve e-posta adresinizi onaylayın."
 	},
 	"toast": {
 		"created_article": "Makale Oluşturuldu",

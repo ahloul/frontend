@@ -157,7 +157,7 @@
 	},
 	"signup": {
 		"register": "Registrare",
-		"successful_registration": "La tua registrazione è andata a buon fine! Puoi accedere ora."
+		"successful_registration": "La tua registrazione è andata a buon fine! Controlla la tua casella di posta e conferma il tuo indirizzo e-mail."
 	},
 	"toast": {
 		"created_article": "Articolo creato",

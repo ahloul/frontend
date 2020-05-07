@@ -157,7 +157,7 @@
 	},
 	"signup": {
 		"register": "Register",
-		"successful_registration": "Your registration was successful! You can log in now."
+		"successful_registration": "Your registration was successful! Check your inbox and confirm your e-mail address."
 	},
 	"toast": {
 		"created_article": "Article Created",

@@ -157,7 +157,7 @@
 	},
 	"signup": {
 		"register": "REGISTREREN",
-		"successful_registration": "Uw registratie is geslaagd! Je kunt nu inloggen."
+		"successful_registration": "Uw registratie is geslaagd! Controleer je inbox en bevestig je e-mailadres."
 	},
 	"toast": {
 		"created_article": "Artikel gemaakt",

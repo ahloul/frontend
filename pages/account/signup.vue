@@ -143,7 +143,6 @@ export default {
     ...mapMutations('modal', { showModal: 'showModal' }),
     localSignup(e) {
       try {
-        /*
         // Set Loading
         this.pending = true
         // Sign up local user
@@ -151,8 +150,6 @@ export default {
 
         // Unset Loading
         this.pending = false
-        */
-
         // Redirect on successfull authentication
         this.showModal({
           message: 'signup.successful_registration',

@@ -1,13 +1,5 @@
 <template>
   <div class="max-w-md mt-5">
-    <modal
-      :show="showModal"
-      centered
-      dismiss="Schließen"
-      @dismiss="showModal = false"
-      @confirm="deleteCategory"
-      >{{ $t('category.delete_confirmation') }}</modal
-    >
     <ValidationObserver ref="category" v-slot="{ handleSubmit }" slim>
       <form @submit.prevent="handleSubmit(submit)">
         <!-- categoryName INPUT -->
@@ -30,7 +22,7 @@
           <button
             :class="{ 'spinner-dark': loadState.delete }"
             type="button"
-            @click="showModal = true"
+            @click.stop="showDeleteModal()"
           >
             <icon name="trash-outline" />
           </button>
@@ -56,7 +48,6 @@ export default {
     return { category }
   },
   data: () => ({
-    showModal: false,
     loadState: {
       update: false,
       delete: false,
@@ -82,15 +73,25 @@ export default {
         console.log(error)
       }
     },
-    async deleteCategory() {
-      this.showModal = false
-      this.loadState.delete = true
-      await this.$axios.delete(`/api/categories/${this.category._id}`)
-      this.loadState.delete = false
-      this.$store.dispatch('toast/add', {
-        message: `Kategorie samt Inhalt gelöscht!`,
+    showDeleteModal() {
+      this.$store.commit('modal/showModal', {
+        message: 'category.delete_confirmation',
+        dismissText: 'dismiss',
+        onConfirm: this.deleteCategory,
       })
-      await this.$router.push('/category')
+    },
+    async deleteCategory() {
+      try {
+        this.loadState.delete = true
+        await this.$axios.delete(`/api/categories/${this.category._id}`)
+        this.loadState.delete = false
+        this.$store.dispatch('toast/add', {
+          message: `Kategorie samt Inhalt gelöscht!`,
+        })
+        await this.$router.push('/category')
+      } catch (e) {
+        console.log(e)
+      }
     },
   },
 }

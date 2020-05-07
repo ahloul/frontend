@@ -1,13 +1,5 @@
 <template>
   <div>
-    <modal
-      :show="showModal"
-      centered
-      dismiss="Schließen"
-      @dismiss="showModal = false"
-      @confirm="deleteArticle"
-      >{{ $t('article.delete_confirmation') }}
-    </modal>
     <div class="flex justify-between my-4">
       <n-link :to="`/article/${article.id}`" class="button icon-r"
         ><icon name="arrow-ios-back-outline" /> Zurück</n-link
@@ -15,7 +7,7 @@
       <button
         :class="{ 'spinner-dark': loadState.delete }"
         type="button"
-        @click="showModal = true"
+        @click.stop="showDeleteModal"
       >
         <icon name="trash-outline" />
       </button>
@@ -201,7 +193,6 @@ export default {
     }
   },
   data: () => ({
-    showModal: false,
     article: {
       picture: {},
       category: null,
@@ -250,13 +241,23 @@ export default {
         console.log(error)
       }
     },
+    showDeleteModal() {
+      this.$store.commit('modal/showModal', {
+        message: 'article.delete_confirmation',
+        dismissText: 'dismiss',
+        onConfirm: this.deleteArticle,
+      })
+    },
     async deleteArticle() {
-      this.showModal = false
-      this.loadState.delete = true
-      await this.$axios.delete(`/api/articles/${this.article.id}`)
-      this.loadState.delete = false
-      this.$store.dispatch('toast/add', { message: `toast.deleted_article` })
-      await this.$router.push(`/category/${this.category._id}`)
+      try {
+        this.loadState.delete = true
+        await this.$axios.delete(`/api/articles/${this.article.id}`)
+        this.loadState.delete = false
+        this.$store.dispatch('toast/add', { message: `toast.deleted_article` })
+        await this.$router.push(`/category/${this.category._id}`)
+      } catch (e) {
+        console.log(e)
+      }
     },
   },
 }

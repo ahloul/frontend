@@ -30,7 +30,7 @@
               <button
                 v-if="confirmText"
                 class="primary w-auto ml-4"
-                @click="confirm"
+                @click="modalConfirmation"
               >
                 {{ $t(confirmText) }}
               </button>
@@ -83,6 +83,10 @@ export default {
       confirm: 'confirm',
       dismiss: 'dismiss',
     }),
+    modalConfirmation() {
+      this.confirm()
+      this.$emit('confirm')
+    },
   },
 }
 </script>

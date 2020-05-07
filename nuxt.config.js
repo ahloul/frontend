@@ -104,7 +104,7 @@ export default {
    */
   webfontloader: {
     google: {
-      families: ['Muli:300,400,500,600,700'],
+      families: ['Nunito:300,400,500,600,700'],
     },
   },
 

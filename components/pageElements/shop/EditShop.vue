@@ -343,17 +343,19 @@
                     <icon name="plus" />
                   </button>
                 </div>
-                <label class="flex items-center my-auto">
-                  <input
-                    type="checkbox"
-                    class="form-checkbox"
-                    @change="allDayOpen(dayIndex, $event)"
-                  />
-                  <span class="ml-2 text-sm">{{
-                    $t('delivery_options.all_day')
-                  }}</span>
-                </label>
+
                 <div v-for="(day, index) in openingDay" :key="index">
+                  <label v-if="index === 0" class="flex items-center my-auto">
+                    <input
+                      v-model="day.allDayOpen"
+                      type="checkbox"
+                      class="form-checkbox"
+                      @change="changeAllDayOpen(dayIndex, $event)"
+                    />
+                    <span class="ml-2 text-sm">{{
+                      $t('delivery_options.all_day')
+                    }}</span>
+                  </label>
                   <div class="flex items-center my-1">
                     <div>
                       <vue-timepicker
@@ -664,20 +666,18 @@ export default {
         allDayOpen: false,
       })
     },
-    allDayOpen(day, event) {
+    changeAllDayOpen(day, event) {
       const selectedDay = filter(
         this.shop.openingHours[day],
         (o) => o.allDayOpen
       )
-      if (!selectedDay.length) {
+      if (!selectedDay.length < 1) {
         this.shop.openingHours[day] = []
         this.shop.openingHours[day].push({
           open: '00:00',
           close: '00:00',
           allDayOpen: true,
         })
-      } else {
-        this.shop.openingHours[day] = []
       }
     },
     removeOpeningTime(day, index) {

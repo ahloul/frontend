@@ -9,7 +9,7 @@ const defaultTheme = require('tailwindcss/defaultTheme')
 module.exports = {
   theme: {
     fontFamily: {
-      sans: ['Muli', ...defaultTheme.fontFamily.sans],
+      sans: ['Nunito', ...defaultTheme.fontFamily.sans],
     },
     colors: {
       transparent: 'transparent',

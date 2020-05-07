@@ -141,7 +141,7 @@ export default {
   }),
   methods: {
     ...mapMutations('modal', { showModal: 'showModal' }),
-    localSignup(e) {
+    async localSignup(e) {
       try {
         // Set Loading
         this.pending = true

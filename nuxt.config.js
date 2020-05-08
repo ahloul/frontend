@@ -87,6 +87,7 @@ export default {
       /-(leave|enter|appear)(|-(to|from|active))$/,
       /^(?!(|.*?:)cursor-move).+-move$/,
       /^nuxt-link(|-exact)-active$/,
+      /^vue__time$/,
     ],
   },
 

@@ -166,16 +166,16 @@
           </div>
           <div class="card text-center md:text-left select-none">
             <div
-              v-for="(day, name) in shop.openingHours"
-              :key="day"
+              v-for="(weekDay, name) in shop.openingHours"
+              :key="name"
               class="my-2"
             >
               <span class="font-bold text-primary"
                 >{{ $t(`delivery_options.days_long.${name}`) }}
               </span>
               <div class="text-light">
-                {{ day.length ? '' : 'Geschlossen' }}
-                <div v-for="(time, index) in day" :key="index">
+                {{ weekDay.length ? '' : 'Geschlossen' }}
+                <div v-for="(time, index) in weekDay" :key="index">
                   <span v-if="time.allDayOpen">Ganztätig geöffnet</span>
                   <span v-else>{{ time.open }} - {{ time.close }}</span>
                 </div>

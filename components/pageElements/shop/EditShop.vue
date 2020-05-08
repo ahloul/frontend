@@ -241,7 +241,7 @@
             </span>
             <ValidationProvider
               v-slot="{ errors }"
-              rules="max:200|validUrl"
+              rules="max:200"
               name="Webseite"
             >
               <input
@@ -262,7 +262,7 @@
             </span>
             <ValidationProvider
               v-slot="{ errors }"
-              rules="max:200|validUrl"
+              rules="max:200"
               name="Facebook"
             >
               <input
@@ -283,7 +283,7 @@
             </span>
             <ValidationProvider
               v-slot="{ errors }"
-              rules="max:200|validUrl"
+              rules="max:200"
               name="Facebook"
             >
               <input
@@ -585,6 +585,7 @@ export default {
           difference(this.shop, this.coreShop, [
             'openingHours',
             'deliveryOptions',
+            'contact',
           ])
         )
         // Update user in storage

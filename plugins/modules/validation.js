@@ -84,7 +84,7 @@ extend('shopname', {
 })
 
 extend('validUrl', (value) => {
-  if (validUrl.isUri(value)) {
+  if (validUrl.isWebUri(value)) {
     return true
   }
 

@@ -62,12 +62,16 @@ const client = createClient()
 export default {
   middleware: 'authenticated',
   async asyncData({ params }) {
-    const { items } = await client.getEntries({
-      content_type: 'dealerNews',
-      order: '-sys.createdAt',
-    })
-    const news = items.map((i) => i.fields)
-    return { news }
+    try {
+      const { items } = await client.getEntries({
+        content_type: 'dealerNews',
+        order: '-sys.createdAt',
+      })
+      const news = items.map((i) => i.fields)
+      return { news }
+    } catch (e) {
+      console.log(e)
+    }
   },
   computed: {
     ...mapGetters({

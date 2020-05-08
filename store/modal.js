@@ -27,13 +27,12 @@ export const mutations = {
     state,
     { message, onConfirm, onDismiss, confirmText, dismissText }
   ) {
-    if (!message) return
-    state.message = message
-    state.showModal = true
-
     const empty = () => {}
     state.onConfirm = onConfirm || empty
     state.onDismiss = onDismiss || empty
+    if (!message) return
+    state.message = message
+    state.showModal = true
 
     state.confirmText = confirmText || 'confirm'
     state.dismissText = dismissText || null
@@ -42,11 +41,13 @@ export const mutations = {
     state.showModal = false
   },
   confirm(state) {
-    if (state.onConfirm) state.onConfirm()
+    if (state.onConfirm && typeof state.onConfirm === 'function')
+      state.onConfirm()
     state.showModal = false
   },
   dismiss(state) {
-    if (state.onDismiss) state.onDismiss()
+    if (state.onDismiss && typeof state.onConfirm === 'function')
+      state.onDismiss()
     state.showModal = false
   },
 }

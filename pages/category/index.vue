@@ -65,17 +65,22 @@ export default {
     EmptyState,
   },
   async asyncData({ $axios, query }) {
-    let showEmpty = false
-    const { rows, count, nextPage, prevPage } = await $axios.$get(
-      '/api/categories',
-      {
-        params: query,
+    try {
+      let showEmpty = false
+      const { rows, count, nextPage, prevPage } = await $axios.$get(
+        '/api/categories',
+        {
+          params: query,
+        }
+      )
+      if (!count) {
+        showEmpty = true
       }
-    )
-    if (!count) {
-      showEmpty = true
+      return { categories: rows, showEmpty, nextPage, prevPage }
+    } catch (e) {
+      console.log('fetch categories error')
+      console.log(e)
     }
-    return { categories: rows, showEmpty, nextPage, prevPage }
   },
   watchQuery: ['page'],
   scrollToTop: true,

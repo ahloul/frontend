@@ -36,7 +36,7 @@ export const actions = {
       console.log(error)
       commit(
         'modal/showModal',
-        { message: 'toast.shop_not_found' },
+        { message: 'information.shop_not_found' },
         { root: true }
       )
       return { activeShop: undefined, shops: [] }

@@ -64,7 +64,7 @@ export default {
   components: {
     EmptyState,
   },
-  async asyncData({ $axios, query }) {
+  async asyncData({ $axios, query, redirect, store }) {
     try {
       let showEmpty = false
       const { rows, count, nextPage, prevPage } = await $axios.$get(
@@ -78,8 +78,14 @@ export default {
       }
       return { categories: rows, showEmpty, nextPage, prevPage }
     } catch (e) {
-      console.log('fetch categories error')
-      console.log(e)
+      store.commit('modal/showModal', {
+        message: 'information.error_occurred',
+        confirmText: 'refresh_now',
+        onConfirm: () => {
+          if (process.browser) location.reload()
+        },
+      })
+      return { categories: [], showEmpty: true, nextPage: 0, prevPage: 0 }
     }
   },
   watchQuery: ['page'],

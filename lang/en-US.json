@@ -31,6 +31,7 @@
     "title": "Category"
   },
   "confirm": "Okay",
+  "refresh_now": "Refresh now",
   "contact_data": {
     "facebook": "Facebook",
     "full_address": "Full Address",
@@ -111,7 +112,8 @@
     "section_name": "Information",
     "shop_created_confirmation": "You have successfully created a shop!",
     "shop_error_confirmation": "Check again that you have filled in all fields correctly.",
-    "shop_not_found": "Your shop was not found. Create a new one."
+    "shop_not_found": "Your shop was not found. Create a new one.",
+    "error_occurred": "An error occurred. Please refresh the page."
   },
   "lang_code": "en",
   "login": {

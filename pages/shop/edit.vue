@@ -12,6 +12,7 @@ export default {
   components: {
     editShop,
   },
+  middleware: 'authenticated',
   async asyncData({ $axios, store, query, route }) {
     const { user } = store.state
     const coreShop = await $axios.$get(`/api/users/${user._id}/shops/active`)

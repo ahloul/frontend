@@ -1,6 +1,11 @@
 <template>
   <div>
-    <div class="flex justify-end my-3">
+    <div class="flex justify-end md:justify-between my-3">
+      <search-input
+        v-if="!showEmpty"
+        class="mx-3 w-full md:max-w-sm"
+        @search="applySearch"
+      />
       <n-link to="/category/create" class="button primary icon-r"
         ><icon name="plus" /> {{ $t('add') }}</n-link
       >
@@ -57,11 +62,13 @@
 </template>
 
 <script>
+import SearchInput from '~/components/elements/SearchInput'
 import EmptyState from '~/components/elements/EmptyState'
 export default {
   name: 'Categories',
   middleware: 'authenticated',
   components: {
+    SearchInput,
     EmptyState,
   },
   async asyncData({ $axios, query, redirect, store }) {
@@ -88,17 +95,19 @@ export default {
       return { categories: [], showEmpty: true, nextPage: 0, prevPage: 0 }
     }
   },
-  watchQuery: ['page'],
+  data: () => ({
+    search: null,
+  }),
+  watchQuery: ['page', 'search'],
   scrollToTop: true,
   methods: {
     goToDetail({ _id }) {
       this.$router.push(`/category/${_id}`)
     },
-    goToNextPage() {
-      this.$router.push({ query: { page: this.page++ } })
-    },
-    goToPreviousPage() {
-      this.$router.push({ query: { page: this.page-- } })
+    applySearch(val) {
+      this.$router.push({
+        query: { ...this.$route.query, search: val },
+      })
     },
   },
 }

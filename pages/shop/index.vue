@@ -27,8 +27,8 @@
           @error="(e) => (e.target.src = '/img/placeholder.png')"
         />
       </div>
-      <div class="ml-2">
-        <h2 class="leading-snug">{{ shop.name }}</h2>
+      <div class="ml-2 select-none">
+        <span class="leading-snug text-2xl">{{ shop.name }}</span>
         <div v-if="shop.address" class="leading-none text-light">
           {{ shop.address.city }}
         </div>
@@ -64,7 +64,7 @@
         </button>
       </div>
     </div>
-    <div class="mt-3">
+    <div class="mt-3 select-none">
       <div class="col-span-1"><!-- Todo: Opening Times here --></div>
       <div v-if="openTab === 1" class="card col-span-4">
         <div v-if="shop.deliveryOptions" class="flex flex-wrap justify-start">
@@ -194,6 +194,7 @@ import EmptyContent from '~/components/elements/EmptyContent'
 import HereMap from '~/components/elements/Map'
 export default {
   name: 'Shop',
+  middleware: 'authenticated',
   components: {
     EmptyContent,
     HereMap,

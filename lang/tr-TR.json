@@ -143,6 +143,8 @@
 	"processes": {
 		"add_article": "Makale Ekle",
 		"intro": "Şu anda yapım aşamasındayız. Artık ilk makalelerinizi ekleyerek mağazanıza hayat verebilirsiniz. Bu, platformumuzu daha da geliştirmemize yardımcı olacaktır.",
+		"next": "Sonraki",
+		"previous": "Önceki",
 		"welcome": "Sıcak bir karşılama"
 	},
 	"profile": {

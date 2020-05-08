@@ -143,6 +143,8 @@
 	"processes": {
 		"add_article": "Aggiungi articolo",
 		"intro": "Siamo attualmente in costruzione. Ora puoi riempire il tuo negozio di vita aggiungendo i tuoi primi articoli. Questo ci aiuterà a sviluppare ulteriormente la nostra piattaforma.",
+		"next": "Il prossimo",
+		"previous": "Precedente",
 		"welcome": "Un caldo benvenuto"
 	},
 	"profile": {

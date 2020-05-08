@@ -143,6 +143,8 @@
 	"processes": {
 		"add_article": "Artikel toevoegen",
 		"intro": "We zijn momenteel in aanbouw. U kunt uw winkel nu tot leven brengen door uw eerste artikelen toe te voegen. Dit zal ons helpen om ons platform verder te ontwikkelen.",
+		"next": "volgende",
+		"previous": "voorgaand",
 		"welcome": "Hartelijk welkom"
 	},
 	"profile": {

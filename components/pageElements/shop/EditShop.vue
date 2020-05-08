@@ -95,6 +95,7 @@
                 type="text"
                 class="form-input"
                 :placeholder="$t('information.name_of_shop_example')"
+                autocomplete="__away"
               />
               <div class="error">{{ errors[0] }}</div>
             </ValidationProvider>

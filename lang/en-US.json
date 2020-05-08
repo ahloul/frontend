@@ -143,6 +143,8 @@
 	"processes": {
 		"add_article": "Add Article",
 		"intro": "We are currently under construction. You can now fill your shop with life by adding your first articles. This will help us to further develop our platform.",
+		"next": "Next",
+		"previous": "Previous",
 		"welcome": "A warm welcome"
 	},
 	"profile": {

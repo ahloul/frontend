@@ -39,12 +39,19 @@
       </li>
     </ul>
     <div class="flex justify-center">
-      <n-link v-if="prevPage" :to="`?page=${prevPage}`" class="button mx-2"
-        >Previous</n-link
+      <n-link
+        v-if="prevPage"
+        :to="`?page=${prevPage}`"
+        class="button icon-l mx-2"
+        ><icon name="chevron-left-outline" />
+        {{ $t('processes.previous') }}</n-link
       >
-      <n-link v-if="nextPage" :to="`?page=${nextPage}`" class="button mx-2"
-        >Next</n-link
-      >
+      <n-link
+        v-if="nextPage"
+        :to="`?page=${nextPage}`"
+        class="button icon-r mx-2"
+        >{{ $t('processes.next') }}<icon name="chevron-right-outline"
+      /></n-link>
     </div>
   </div>
 </template>

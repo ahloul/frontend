@@ -143,6 +143,8 @@
 	"processes": {
 		"add_article": "Artikel hinzufügen",
 		"intro": "Aktuell befinden wir uns im Aufbau. Du kannst nun Deinen Shop mit Leben füllen, indem Du erste Artikel einpflegst. Damit hilfst Du bei der Weiterentwicklung unserer Plattform.",
+		"next": "Weiter",
+		"previous": "Zurück",
 		"welcome": "Herzlich Willkommen"
 	},
 	"profile": {

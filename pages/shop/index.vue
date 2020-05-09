@@ -201,7 +201,7 @@ export default {
   },
   data: () => ({
     iconSize: 22,
-    openTab: 2,
+    openTab: 1,
   }),
   computed: {
     ...mapGetters({

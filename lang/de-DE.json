@@ -1,0 +1,179 @@
+{
+	"account": {
+		"verify_content": "Willkommen zurück! Danke für deine Verifizireung"
+	},
+	"add": "Hinzufügen",
+	"article": {
+		"create_stock": "Lagerbestand anlegen",
+		"delete_confirmation": "Bist Du sicher, dass Du diesen Artikel unwideruflich löschen möchtest?",
+		"description": "Artikelbeschreibung",
+		"empty": "Keine Artikel",
+		"name": "Name des Artikels",
+		"name_hint": "z.B. Kugelschreiber",
+		"non_public": "nicht öffentlich",
+		"price_hint": "z.B. 12,00",
+		"public": "öffentlich",
+		"public_prefix": "Artikel wird",
+		"public_suffix": "geschaltet",
+		"stock": "Lagerbestand",
+		"tax_free": "Steuerfrei",
+		"tax_rate": "Steuersatz",
+		"unit_price": "Einzelpreis"
+	},
+	"back": "Zurück",
+	"back_to_start": "Zurück auf Start",
+	"call": "Anrufen",
+	"category": {
+		"create": "Kategorie anlegen",
+		"delete_confirmation": "Bist Du sicher, dass Du die Kategorie löschen möchtest? Die darin enthaltenen Artikel werden ebenfalls unwideruflich gelöscht!",
+		"hint": "z.B. Getränke",
+		"name": "Name der Kategorie",
+		"title": "Kategorie"
+	},
+	"confirm": "Okay",
+	"contact_data": {
+		"facebook": "Facebook",
+		"full_address": "Vollständige Adresse",
+		"instagram": "Instagram",
+		"intro": "Gib die Adresse Deines Shops an damit andere wissen, wo sie Dich finden können.",
+		"optional": "Optional",
+		"phone_number": "Telefonnummer",
+		"prefix_and_number": "Vorwahl und Nummer",
+		"section_name": "Kontaktdaten",
+		"website": "Webseite"
+	},
+	"contact_to_delete": "Bitte kontaktiere uns, wenn Du dein Account löschen möchtest",
+	"continue": "Weiter",
+	"delivery_options": {
+		"all_day": "Ganztags geöffnet",
+		"days_long": {
+			"friday": "Freitag",
+			"monday": "Montag",
+			"saturday": "Samstag",
+			"sunday": "Sonntag",
+			"thursday": "Donnerstag",
+			"tuesday": "Dienstag",
+			"wednesday": "Mittwoch"
+		},
+		"days_short": {
+			"friday": "Fr",
+			"monday": "Mo",
+			"saturday": "Sa",
+			"sunday": "So",
+			"thursday": "Do",
+			"tuesday": "Di",
+			"wednesday": "Mi"
+		},
+		"offer_prefix": "Ich biete",
+		"offer_suffix": "an",
+		"opening_times": "Öffnungszeiten",
+		"options": {
+			"local_delivery": {
+				"description": "Wir sorgen dafür, dass unsere Kunden Ihre Ware zeitnah erhalten",
+				"name": "Lokale Lieferung"
+			},
+			"parcel": {
+				"description": "Auf Wunsch versenden wir die Pakete auch per Brief und Post",
+				"name": "Post- und Paketversand"
+			},
+			"pickup": {
+				"description": "Kunden können unsere Waren auch vorort abholen",
+				"name": "Abholung"
+			}
+		},
+		"section_name": "Versandmöglichkeiten"
+	},
+	"description": {
+		"intro": "Wenn Du möchtest, beschreibe Dein Geschäft mit ein paar Sätzen. Lass Deiner Kreativität freien Lauf!",
+		"section_name": "Beschreibung"
+	},
+	"dismiss": "Abbruch",
+	"edit": "Editieren",
+	"enter_login": "Zum Login",
+	"enter_shop": "Zum Shop",
+	"enter_website": "Zur Webseite",
+	"information": {
+		"go_to_shop": "Zu deinem Shop!",
+		"intro": "Vielen Dank für Deine Anmeldung! Mit ein paar wenigen Schritten helfen wir Dir, deinen Shop anzulegen. Los gehts!",
+		"legal_form": "Rechtsform",
+		"legal_form_options": {
+			"independent": "Selbstständig",
+			"non_profit": "Gemeinnützig / Verein",
+			"partnership": "Personengesellschaft (z. B. GdbR, OHG, KG)",
+			"private_partnership": "Gesellschaft in privater Hand (z. B. GmbH, UG, Ltd.)",
+			"sole": "Einzelunternehmer",
+			"stock_company": "Aktiengesellschaft"
+		},
+		"name_of_shop": "Name Deines Shops",
+		"name_of_shop_example": "Sam u. Partner GmbH",
+		"no_of_employees": "Anzahl Mitarbeiter",
+		"ready_to_start": "Du kannst jetzt loslegen.",
+		"section_name": "Infos",
+		"shop_created_confirmation": "Du hast erfogreich einen Shop erstellt!",
+		"shop_error_confirmation": "Schau noch einmal nach, ob Du alle Felder korrekt ausgefüllt hast."
+	},
+	"lang_code": "de",
+	"login": {
+		"back_to_login": "Zurück zum Login",
+		"confirm_password": "Kennwort wiederholen",
+		"help": "Hilfe bei der Anmeldung?",
+		"login": "Anmelden",
+		"password": "Kennwort",
+		"request_new_password": "Neues Kennwort anfordern",
+		"save_new_password": "Neues Kennwort speichern",
+		"thirdparty": "Oder melde Dich an mit"
+	},
+	"navbar": {
+		"create_shop": "Shop anlegen",
+		"imprint": "Impressum",
+		"privacy_policy": "Datenschutz",
+		"processes": "Vorgänge",
+		"shop": "Shop",
+		"stock": "Bestand",
+		"terms": "Allgemeine Geschäftsbedingungen"
+	},
+	"no_description": "Keine Beschreibung vorhanden.",
+	"no_items": "Du hast noch keine Einträge",
+	"picture": {
+		"intro": "Zeige Deinen Shop mit einem Foto und Deinem Logo.",
+		"logo": "Logo",
+		"section_name": "Bilder",
+		"shop_picture": "Bild vom Shop"
+	},
+	"processes": {
+		"add_article": "Artikel hinzufügen",
+		"intro": "Aktuell befinden wir uns im Aufbau. Du kannst nun Deinen Shop mit Leben füllen, indem Du erste Artikel einpflegst. Damit hilfst Du bei der Weiterentwicklung unserer Plattform.",
+		"next": "Weiter",
+		"previous": "Zurück",
+		"welcome": "Herzlich Willkommen"
+	},
+	"profile": {
+		"city": "Wohnort",
+		"description": "Profilbeschreibung"
+	},
+	"remove": "Entfernen",
+	"save": "Speichern",
+	"select_image": "Bild auswählen",
+	"shop": {
+		"settings": "Einstellungen"
+	},
+	"signup": {
+		"register": "Neu Registrieren",
+		"successful_registration": "Deine Registrierung war erfolgreich! Schau in dein Posteingang und bestätige deine E-Mail Adresse."
+	},
+	"toast": {
+		"created_article": "Artikel erstellt",
+		"created_category": "Kategorie erstellt",
+		"deleted_article": "Artikel gelöscht",
+		"logout": "Ausgeloggt 👋",
+		"saved_profile": "Profil gespeichert",
+		"updated_category": "Kategorie geändert",
+		"updated_profile": "Profile bearbeitet",
+		"updated_shop": "Shop aktualisiert",
+		"updated_stock": "Bestand aktualisiert",
+		"you_got_mail": "Du hast Post bekommen ✉️!"
+	},
+	"error": {
+		"connection": "You probably have problems with your internet"
+	}
+}

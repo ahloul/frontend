@@ -1,0 +1,132 @@
+<template>
+  <div class="editor">
+    <client-only>
+      <editor-menu-bar v-slot="{ commands, isActive }" :editor="editor">
+        <div class="menubar-wrapper">
+          <ul class="menubar">
+            <li>
+              <div
+                class="button cursor-pointer"
+                :class="{ active: isActive.bold() }"
+                @click.prevent="commands.bold"
+              >
+                <b>B</b>
+              </div>
+            </li>
+
+            <li>
+              <div
+                class="button cursor-pointer"
+                :class="{ active: isActive.italic() }"
+                @click.prevent="commands.italic"
+              >
+                <i>I</i>
+              </div>
+            </li>
+
+            <li>
+              <div
+                class="button cursor-pointer"
+                :class="{ active: isActive.underline() }"
+                @click.prevent="commands.underline"
+              >
+                <u>U</u>
+              </div>
+            </li>
+
+            <li>
+              <div
+                class="button cursor-pointer"
+                :class="{ active: isActive.heading({ level: 1 }) }"
+                @click.prevent="commands.heading({ level: 1 })"
+              >
+                H1
+              </div>
+            </li>
+
+            <li>
+              <div
+                class="button cursor-pointer"
+                :class="{ active: isActive.heading({ level: 2 }) }"
+                @click.prevent="commands.heading({ level: 2 })"
+              >
+                H2
+              </div>
+            </li>
+
+            <li>
+              <div
+                class="button cursor-pointer"
+                :class="{ active: isActive.heading({ level: 3 }) }"
+                @click.prevent="commands.heading({ level: 3 })"
+              >
+                H3
+              </div>
+            </li>
+          </ul>
+        </div>
+      </editor-menu-bar>
+
+      <editor-content class="editor-content" :editor="editor" />
+    </client-only>
+  </div>
+</template>
+
+<script>
+import { Editor, EditorContent, EditorMenuBar } from 'tiptap'
+import { Heading, Bold, Italic, Link, Underline } from 'tiptap-extensions'
+export default {
+  components: {
+    EditorContent,
+    EditorMenuBar,
+  },
+  props: {
+    initialContent: {
+      type: String,
+      default: null,
+    },
+  },
+  data: () => ({
+    editor: null,
+  }),
+  mounted() {
+    this.editor = new Editor({
+      extensions: [
+        new Heading({ levels: [1, 2, 3] }),
+        new Link(),
+        new Bold(),
+        new Italic(),
+        new Underline(),
+      ],
+      content: this.initialContent,
+      onUpdate: ({ getHTML }) => {
+        this.$emit('content', getHTML())
+      },
+    })
+  },
+  beforeDestroy() {
+    if (!this.editor) return
+    this.editor.destroy()
+  },
+}
+</script>
+<style lang="scss">
+.menubar {
+  &-wrapper {
+    @apply;
+  }
+  @apply flex flex-wrap justify-start;
+  &li {
+    @apply flex-auto;
+  }
+}
+
+.editor {
+  &-content {
+    @apply text-base border p-3 rounded-md bg-white;
+    &:focus {
+      @apply shadow-none border-primary;
+    }
+  }
+}
+</style>

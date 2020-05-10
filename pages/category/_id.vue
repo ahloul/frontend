@@ -15,7 +15,7 @@
     </n-link>
 
     <ul
-      v-if="articles.length"
+      v-if="!showEmpty"
       class="category-box grid grid-cols-1 md:grid-cols-2 gap-4"
     >
       <li
@@ -59,6 +59,21 @@
       </li>
     </ul>
     <empty-state v-else />
+    <div class="flex justify-center">
+      <n-link
+        v-if="prevPage"
+        :to="`?page=${prevPage}`"
+        class="button icon-l mx-2"
+        ><icon name="chevron-left-outline" />
+        {{ $t('processes.previous') }}</n-link
+      >
+      <n-link
+        v-if="nextPage"
+        :to="`?page=${nextPage}`"
+        class="button icon-r mx-2"
+        >{{ $t('processes.next') }}<icon name="chevron-right-outline"
+      /></n-link>
+    </div>
   </div>
 </template>
 
@@ -70,17 +85,44 @@ export default {
   components: {
     EmptyState,
   },
-  async asyncData({ $axios, params }) {
+  async asyncData({ $axios, params, query }) {
     try {
+      // TODO replace with comment below when pagination is merged on server
       const category = await $axios.$get(`/api/categories/${params.id}`)
       const articles = await $axios.$get(
         `/api/articles?categoryId=${category._id}`
       )
-      return { category, articles }
+      return {
+        category,
+        articles,
+        showEmpty: false,
+        nextPage: null,
+        prevPage: null,
+      }
+
+      // TODO uncomment when pagination is merged on server
+      /*
+      const category = await $axios.$get(`/api/categories/${params.id}`)
+      const { count, nextPage, prevPage, rows } = await $axios.$get(
+        `/api/articles?categoryId=${category._id}`,
+        {
+          params: query,
+        }
+      )
+      return { category, articles: rows, showEmpty: !count, nextPage, prevPage }
+      */
     } catch (error) {
       console.log(error)
+      return {
+        category: {},
+        articles: [],
+        showEmpty: true,
+        nextPage: 0,
+        prevPage: 0,
+      }
     }
   },
+  watchQuery: ['page'],
   methods: {
     goToDetail({ id }) {
       this.$router.push(`/article/${id}`)

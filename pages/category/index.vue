@@ -73,17 +73,13 @@ export default {
   },
   async asyncData({ $axios, query, redirect, store }) {
     try {
-      let showEmpty = false
       const { rows, count, nextPage, prevPage } = await $axios.$get(
         '/api/categories',
         {
           params: query,
         }
       )
-      if (!count) {
-        showEmpty = true
-      }
-      return { categories: rows, showEmpty, nextPage, prevPage }
+      return { categories: rows, showEmpty: !count, nextPage, prevPage }
     } catch (e) {
       store.commit('modal/showModal', {
         message: 'information.error_occurred',

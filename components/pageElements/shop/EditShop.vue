@@ -83,7 +83,7 @@
               vid="shopName"
               :rules="{
                 required: true,
-                max: 20,
+                max: 40,
                 shopname: { name: shop.name, check: checkName },
               }"
               :mode="validationMode"

@@ -24,7 +24,7 @@
               <input
                 v-model="guest.name"
                 class="form-input"
-                placeholder="Thorsten Jankowski"
+                placeholder="Max Mustermann"
                 autocomplete="__away"
               />
               <span class="error">{{ errors[0] }}</span>

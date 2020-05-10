@@ -145,6 +145,8 @@ export default {
    ** Nuxt.js modules
    */
   modules: [
+    // Doc: https://github.com/nuxt-community/modules/tree/master/packages/markdownit
+    '@nuxtjs/markdownit',
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
@@ -169,6 +171,13 @@ export default {
       },
     ],
   ],
+
+  /**
+   ** Markdown configuration
+   */
+  markdownit: {
+    injected: true,
+  },
   /**
    ** Global Middleware configuration
    */

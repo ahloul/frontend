@@ -14,10 +14,12 @@ export default ({ store, $axios, redirect }) => {
         conrifmText: 'okay',
       })
     }
-
+  })
+  /*
     if (error.response.status === 401) {
       store.dispatch('resetUser')
       redirect('/login')
     }
-  })
+
+  */
 }

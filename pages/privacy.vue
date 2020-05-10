@@ -1,6 +1,6 @@
 <template>
   <div class="container my-5">
-    <div class="max-w-3xl mx-auto" v-html="content.content" />
+    <div class="max-w-3xl mx-auto" v-html="$md.render(content.content)" />
   </div>
 </template>
 

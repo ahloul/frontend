@@ -15,7 +15,7 @@
           </ul>
           <ul v-if="haveShop">
             <li>
-              <n-link to="/#1">
+              <n-link to="/">
                 {{ $t('navbar.processes') }}
               </n-link>
             </li>

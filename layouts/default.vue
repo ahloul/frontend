@@ -1,7 +1,6 @@
 <template>
   <div class="flex flex-col min-h-screen">
     <toast />
-
     <modal :show="showModal" centered></modal>
     <navigation
       v-if="haveToken"

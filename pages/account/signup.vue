@@ -11,7 +11,7 @@
     <!-- Form -->
     <div class="w-full max-w-sm mx-auto">
       <ValidationObserver ref="signup" v-slot="{ handleSubmit }" slim>
-        <form @submit.prevent="handleSubmit(localSignup)">
+        <form autocomplete="__away" @submit.prevent="handleSubmit(localSignup)">
           <!-- INPUT Name -->
           <label class="block">
             <span>Name</span>
@@ -25,6 +25,7 @@
                 v-model="guest.name"
                 class="form-input"
                 placeholder="Thorsten Jankowski"
+                autocomplete="__away"
               />
               <span class="error">{{ errors[0] }}</span>
             </validation-provider>
@@ -43,6 +44,7 @@
                 v-model="guest.email"
                 class="form-input"
                 placeholder="lothar@mustermail.com"
+                autocomplete="__away"
               />
               <span class="error">{{ errors[0] }}</span>
             </validation-provider>
@@ -63,6 +65,7 @@
                 class="form-input"
                 type="password"
                 placeholder="******************"
+                autocomplete="__away"
               />
               <span class="error">{{ errors[0] }}</span>
             </validation-provider>
@@ -83,6 +86,7 @@
                 class="form-input"
                 type="password"
                 placeholder="******************"
+                autocomplete="__away"
               />
               <span class="error">{{ errors[0] }}</span>
             </validation-provider>

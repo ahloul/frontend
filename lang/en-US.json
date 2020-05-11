@@ -3,6 +3,7 @@
     "verify_content": "Welcome back! Thanks for your verification"
   },
   "add": "Add",
+  "skip": "Skip",
   "article": {
     "create_stock": "Create Inventory",
     "delete_confirmation": "Are you sure you want to delete this article permanently?",

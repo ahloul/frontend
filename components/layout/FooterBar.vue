@@ -1,15 +1,19 @@
 <template>
-  <div class="bg-primary">
+  <div class="bg-white">
     <div class="container flex flex-row">
       <ul class="bar text-left content-end mr-auto sm:mx-0">
         <li>
-          <n-link to="/imprint">{{ $t('navbar.imprint') }}</n-link>
+          <n-link class="text-primary hover:text-info" to="/imprint">{{
+            $t('navbar.imprint')
+          }}</n-link>
         </li>
         <li>
-          <n-link to="/privacy">{{ $t('navbar.privacy_policy') }}</n-link>
+          <n-link class="text-primary hover:text-info" to="/privacy">{{
+            $t('navbar.privacy_policy')
+          }}</n-link>
         </li>
       </ul>
-      <ul class="flex flex-col md:flex-row content-end sm:ml-auto opacity-50">
+      <ul class="flex flex-col md:flex-row content-end sm:ml-auto opacity-75">
         <li
           v-for="el in locales"
           :key="el.code"
@@ -18,7 +22,7 @@
         >
           <a
             href
-            class="text-info hover:text-dark"
+            class="text-primary hover:text-info"
             @click="switchLanguage(el.code)"
           >
             {{ el.name }}

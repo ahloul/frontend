@@ -3,7 +3,7 @@
     <div class="w-full">
       <nav class="navigation">
         <div class="brand">
-          <n-link to="/">get it!</n-link>
+          <n-link to="/" exact>get it!</n-link>
         </div>
         <div class="ml-3">
           <ul v-if="!haveShop">
@@ -15,7 +15,7 @@
           </ul>
           <ul v-if="haveShop">
             <li>
-              <n-link to="/">
+              <n-link to="/" exact>
                 {{ $t('navbar.processes') }}
               </n-link>
             </li>

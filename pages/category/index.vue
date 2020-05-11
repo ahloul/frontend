@@ -1,9 +1,9 @@
 <template>
   <div>
-    <div class="flex justify-end md:justify-between my-3">
+    <div class="flex my-3 justify-end">
       <search-input
-        v-if="!showEmpty"
-        class="mx-3 w-full md:max-w-sm"
+        v-if="showEmpty"
+        class="block w-full ml-auto md:max-w-sm mr-2"
         @search="applySearch"
       />
       <n-link to="/category/create" class="button primary icon-r"

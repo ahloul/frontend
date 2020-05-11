@@ -63,16 +63,16 @@ export default {
   li {
     a {
       @apply flex items-center;
-      @apply p-3 mx-0 rounded-lg;
+      @apply p-3 mx-0;
       color: #7e7577;
       @apply transition duration-300 ease-in-out;
 
       &:hover {
-        @apply bg-secondary text-white no-underline;
+        @apply text-primary no-underline;
       }
     }
     .nuxt-link-active {
-      @apply bg-secondary text-white no-underline;
+      @apply text-primary no-underline;
     }
   }
 }

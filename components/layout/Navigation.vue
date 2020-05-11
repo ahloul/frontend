@@ -3,7 +3,9 @@
     <div class="w-full">
       <nav class="navigation">
         <div class="brand">
-          <n-link to="/">get it!</n-link>
+          <n-link to="/" exact>
+            <img src="/img/logo.svg" alt="" width="32" height="32" />
+          </n-link>
         </div>
         <div class="ml-3">
           <ul v-if="!haveShop">
@@ -15,7 +17,7 @@
           </ul>
           <ul v-if="haveShop">
             <li>
-              <n-link to="/">
+              <n-link to="/" exact>
                 {{ $t('navbar.processes') }}
               </n-link>
             </li>
@@ -63,7 +65,7 @@ export default {
 </script>
 <style lang="scss">
 .navigation {
-  @apply relative flex items-center bg-primary rounded-lg text-grey antialiased shadow px-2 py-2;
+  @apply relative flex items-center bg-white rounded-lg text-black antialiased shadow px-2 py-2;
 
   @screen sm {
     @apply px-3;
@@ -77,10 +79,10 @@ export default {
     }
 
     a {
-      @apply text-grey no-underline;
+      @apply text-primary no-underline;
 
       &:hover {
-        @apply text-white;
+        @apply text-info;
       }
     }
 
@@ -98,11 +100,11 @@ export default {
 
     a {
       @apply flex items-center;
-      @apply text-grey px-3 py-2 mx-0 rounded-lg uppercase text-xs font-bold tracking-wider no-underline;
-      @apply transition duration-300 ease-in-out;
+      @apply text-primary px-3 py-2 mx-0 rounded-md uppercase text-xs font-bold tracking-wider no-underline;
+      @apply transition duration-200 ease-in-out;
 
       &:hover {
-        @apply bg-secondary text-white;
+        @apply text-info;
       }
 
       @screen sm {
@@ -110,7 +112,7 @@ export default {
       }
     }
     .nuxt-link-active {
-      @apply bg-info text-white no-underline;
+      @apply text-primary no-underline;
     }
   }
 }

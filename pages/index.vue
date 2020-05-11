@@ -1,24 +1,5 @@
 <template>
   <div class="container">
-    <!-- CTA -->
-    <div
-      class="hero flex items-stretch flex-col h-48 md:h-64 bg-cover bg-center rounded-lg mt-2 text-white"
-      style="background-image: url('/img/shop.jpg');"
-    >
-      <div class="flex-1 text-right py-2 m-2">
-        <!-- <button class="link ml-auto">
-          <icon name="close" fill="white" />
-        </button>
-      --></div>
-      <div class="self-center flex-1 text-center py-2 m-2">
-        <h1 class="antialiased text-white font-semibold">
-          {{ $t('processes.welcome') }}
-        </h1>
-      </div>
-      <div class="flex-1 text-center py-2 m-2">
-        <!-- Bottom -->
-      </div>
-    </div>
     <div class="card text-primary mt-3 max-w-xl mx-auto">
       <p class="max-w-md mx-auto pb-3 text-center">
         {{ $t('processes.intro') }}

@@ -1,7 +1,7 @@
 <template>
   <div class="flex items-center justify-center mt-8">
     <div class="text-center w-auto">
-      <img :src="`/img/${image}.svg`" alt="" width="300" class="mx-auto" />
+      <img :src="`/img/${image}`" alt="" width="400" class="mx-auto" />
       <h3 class="text-tertiary mt-4 mb-2">{{ $t(emptyText) }}</h3>
       <slot />
     </div>
@@ -14,7 +14,7 @@ export default {
   props: {
     image: {
       type: String,
-      default: 'coffee',
+      default: 'computer.svg',
     },
     emptyText: {
       type: String,

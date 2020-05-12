@@ -74,7 +74,7 @@ button, .button {
       @apply p-0 text-warning text-base tracking-wider;
 
       &:hover {
-        @apply text-info bg-transparent;
+        @apply text-secondary bg-transparent;
       }
 
     }

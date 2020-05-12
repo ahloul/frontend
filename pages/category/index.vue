@@ -1,9 +1,9 @@
 <template>
   <div>
-    <div class="flex justify-end md:justify-between my-3">
+    <div class="flex my-3 justify-end">
       <search-input
         v-if="!showEmpty"
-        class="mx-3 w-full md:max-w-sm"
+        class="block w-full ml-auto md:max-w-sm mr-2"
         @search="applySearch"
       />
       <n-link to="/category/create" class="button primary icon-r"
@@ -26,7 +26,7 @@
                   {{ category.name }}
                 </div>
                 <div
-                  class="mt-2 flex items-center text-sm leading-5 text-info inline-block align-middle"
+                  class="mt-2 flex items-center text-sm leading-5 text-primary inline-block align-middle"
                 >
                   <icon name="keypad-outline" width="15" />
                   <span v-if="category.article_count" class="ml-1"
@@ -116,7 +116,7 @@ export default {
   }
 
   &-item {
-    @apply text-primary my-2 block bg-white shadow rounded cursor-pointer select-none;
+    @apply text-light my-2 block bg-white shadow rounded cursor-pointer select-none;
 
     &:hover {
       @apply shadow-lg;

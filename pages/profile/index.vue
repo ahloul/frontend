@@ -1,7 +1,7 @@
 <template>
   <div class="container max-w-lg">
     <div
-      class="animated bg-white shadow-xs hover:shadow-lg settings flex flex-col"
+      class="animated card hover:shadow-lg settings flex flex-col"
       @click="$router.push('/profile/settings')"
     >
       <div class="animated-slow absolute settings-icon">
@@ -16,9 +16,7 @@
       </div>
 
       <div class="text-center my-3">
-        <h2
-          class="text-lg font-semibold leading-none text-secondary mt-4 md:mt-0"
-        >
+        <h2 class="text-lg font-semibold leading-none text-light mt-4 md:mt-0">
           {{ user.name }}
         </h2>
         <div v-if="user.location" class="text-info leading-snug text-sm">

@@ -3,13 +3,17 @@
     <div class="container flex flex-row">
       <ul class="bar text-left content-end mr-auto sm:mx-0">
         <li>
-          <n-link to="/imprint">{{ $t('navbar.imprint') }}</n-link>
+          <n-link class="text-white hover:text-tertiary" to="/imprint">{{
+            $t('navbar.imprint')
+          }}</n-link>
         </li>
         <li>
-          <n-link to="/privacy">{{ $t('navbar.privacy_policy') }}</n-link>
+          <n-link class="text-white hover:text-tertiary" to="/privacy">{{
+            $t('navbar.privacy_policy')
+          }}</n-link>
         </li>
       </ul>
-      <ul class="flex flex-col md:flex-row content-end sm:ml-auto opacity-50">
+      <ul class="flex flex-col md:flex-row content-end sm:ml-auto opacity-75">
         <li
           v-for="el in locales"
           :key="el.code"
@@ -18,7 +22,7 @@
         >
           <a
             href
-            class="text-info hover:text-dark"
+            class="text-white hover:text-tertiary"
             @click="switchLanguage(el.code)"
           >
             {{ el.name }}
@@ -30,6 +34,7 @@
           <a
             href="https://www.facebook.com/Get-It-103751584615828/"
             target="_blank"
+            class="text-white hover:text-tertiary"
             ><icon name="facebook-outline"
           /></a>
         </li>
@@ -37,6 +42,7 @@
           <a
             href="https://www.facebook.com/getit.habenbrauchenbringen/"
             target="_blank"
+            class="text-white hover:text-tertiary"
             ><svg
               fill="currentColor"
               xmlns="http://www.w3.org/2000/svg"

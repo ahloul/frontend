@@ -15,25 +15,21 @@ module.exports = {
       transparent: 'transparent',
       black: '#000000',
       white: '#ffffff',
-      primary: '#42224b',
-      secondary: '#4e215a',
-      tertiary: '#ff8460',
-      dark: '#cbd5e0',
+      primary: '#2F615E',
+      secondary: '#00A96D',
+      tertiary: '#FFE55F',
+      dark: '#EFEFEF',
       grey: '#f9f9f9',
-      light: '#666C7C',
-      danger: '#f8444f',
-      warning: '#D8AA00',
-      success: '#5ed16a',
-      info: '#9e78a9',
+      light: '#3C3C3C',
+      danger: '#ed4835',
+      warning: '#FFC700',
+      success: '#00A96D',
+      info: '#E6F6F1 ',
     },
     container: {
       center: true,
     },
     extend: {
-      borderRadius: {
-        md: '0.5rem',
-        lg: '0.75rem',
-      },
       borderColor: (theme) => ({
         default: theme('colors.dark', 'currentColor'),
       }),
@@ -41,8 +37,9 @@ module.exports = {
     customForms: (theme) => ({
       default: {
         'input, textarea, multiselect, select': {
-          borderRadius: theme('borderRadius.md'),
+          borderRadius: theme('borderRadius.lg'),
           borderColor: theme('colors.dark'),
+          backgroundColor: theme('colors.dark'),
           '&:focus': {
             boxShadow: undefined,
             borderColor: theme('colors.primary'),

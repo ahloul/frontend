@@ -1,127 +1,129 @@
 <template>
-  <div class="flex flex-col content-center justify-center p-2">
-    <!-- Headline -->
-    <div class="w-full max-w-sm mx-auto">
-      <img src="/img/logo.svg" width="90" class="mx-auto" alt="" />
-      <h2 class="text-center font-bold text-secondary">
-        get it!
-      </h2>
-    </div>
+  <div class="flex flex-col content-center justify-center p-2 my-5">
+    <div class="card max-w-lg mx-auto">
+      <!-- Headline -->
+      <div class="w-full max-w-sm mx-auto">
+        <img src="/img/logo.svg" width="150" class="mx-auto" alt="" />
+      </div>
 
-    <!-- Form -->
-    <div class="w-full max-w-sm mx-auto">
-      <ValidationObserver ref="signup" v-slot="{ handleSubmit }" slim>
-        <form autocomplete="__away" @submit.prevent="handleSubmit(localSignup)">
-          <!-- INPUT Name -->
-          <label class="block">
-            <span>Name</span>
-            <validation-provider
-              v-slot="{ errors }"
-              mode="lazy"
-              name="Name"
-              rules="min:2|required"
-            >
-              <input
-                v-model="guest.name"
-                class="form-input"
-                placeholder="Max Mustermann"
-                autocomplete="__away"
-              />
-              <span class="error">{{ errors[0] }}</span>
-            </validation-provider>
-          </label>
-
-          <!-- INPUT E-Mail -->
-          <label class="block">
-            <span>E-Mail</span>
-            <validation-provider
-              v-slot="{ errors }"
-              mode="lazy"
-              name="Email"
-              rules="email|required"
-            >
-              <input
-                v-model="guest.email"
-                class="form-input"
-                placeholder="lothar@mustermail.com"
-                autocomplete="__away"
-              />
-              <span class="error">{{ errors[0] }}</span>
-            </validation-provider>
-          </label>
-
-          <!-- INPUT Password -->
-          <label class="block">
-            <span>{{ $t('login.password') }}</span>
-            <validation-provider
-              id="password"
-              v-slot="{ errors }"
-              name="Passwort"
-              mode="lazy"
-              rules="required|verify_password"
-            >
-              <input
-                v-model="guest.password"
-                class="form-input"
-                type="password"
-                placeholder="******************"
-                autocomplete="__away"
-              />
-              <span class="error">{{ errors[0] }}</span>
-            </validation-provider>
-          </label>
-
-          <!-- INPUT Confirm password -->
-          <label class="block">
-            <span>{{ $t('login.confirm_password') }}</span>
-            <validation-provider
-              v-slot="{ errors }"
-              name="Password wiederholen"
-              mode="lazy"
-              rules="required|password:@Passwort"
-            >
-              <input
-                id="confirmPassword"
-                v-model="guest.confirmPassword"
-                class="form-input"
-                type="password"
-                placeholder="******************"
-                autocomplete="__away"
-              />
-              <span class="error">{{ errors[0] }}</span>
-            </validation-provider>
-          </label>
-
-          <div class="mt-5 text-light text-sm">
-            Indem du auf „Neu Registrieren“ klickst, stimmst du unseren
-            <n-link to="/terms">Geschäftsbedingungen</n-link> zu. In unserer
-            <n-link to="/privacy">Datenrichtlinie</n-link> erfährst du, wie wir
-            deine Daten erfassen.
-          </div>
-          <div class="mt-5">
-            <span class="block w-full">
-              <button
-                class="primary w-full"
-                :class="{ 'spinner-light': pending }"
-                type="submit"
+      <!-- Form -->
+      <div class="w-full max-w-sm mx-auto">
+        <ValidationObserver ref="signup" v-slot="{ handleSubmit }" slim>
+          <form
+            autocomplete="__away"
+            @submit.prevent="handleSubmit(localSignup)"
+          >
+            <!-- INPUT Name -->
+            <label class="block">
+              <span>Name</span>
+              <validation-provider
+                v-slot="{ errors }"
+                mode="lazy"
+                name="Name"
+                rules="min:2|required"
               >
-                {{ $t('signup.register') }}
-              </button>
-            </span>
-          </div>
-          <div class="mt-3">
-            <span class="block w-full">
-              <button
-                type="button"
-                class="border w-full"
-                @click.prevent="$router.push('/')"
+                <input
+                  v-model="guest.name"
+                  class="form-input"
+                  placeholder="Max Mustermann"
+                  autocomplete="__away"
+                />
+                <span class="error">{{ errors[0] }}</span>
+              </validation-provider>
+            </label>
+
+            <!-- INPUT E-Mail -->
+            <label class="block">
+              <span>E-Mail</span>
+              <validation-provider
+                v-slot="{ errors }"
+                mode="lazy"
+                name="Email"
+                rules="email|required"
               >
-                {{ $t('login.back_to_login') }}
-              </button>
-            </span>
-          </div>
-        </form>
-      </ValidationObserver>
+                <input
+                  v-model="guest.email"
+                  class="form-input"
+                  placeholder="lothar@mustermail.com"
+                  autocomplete="__away"
+                />
+                <span class="error">{{ errors[0] }}</span>
+              </validation-provider>
+            </label>
+
+            <!-- INPUT Password -->
+            <label class="block">
+              <span>{{ $t('login.password') }}</span>
+              <validation-provider
+                id="password"
+                v-slot="{ errors }"
+                name="Passwort"
+                mode="lazy"
+                rules="required|verify_password"
+              >
+                <input
+                  v-model="guest.password"
+                  class="form-input"
+                  type="password"
+                  placeholder="******************"
+                  autocomplete="__away"
+                />
+                <span class="error">{{ errors[0] }}</span>
+              </validation-provider>
+            </label>
+
+            <!-- INPUT Confirm password -->
+            <label class="block">
+              <span>{{ $t('login.confirm_password') }}</span>
+              <validation-provider
+                v-slot="{ errors }"
+                name="Password wiederholen"
+                mode="lazy"
+                rules="required|password:@Passwort"
+              >
+                <input
+                  id="confirmPassword"
+                  v-model="guest.confirmPassword"
+                  class="form-input"
+                  type="password"
+                  placeholder="******************"
+                  autocomplete="__away"
+                />
+                <span class="error">{{ errors[0] }}</span>
+              </validation-provider>
+            </label>
+
+            <div class="mt-5 text-light text-sm">
+              Indem du auf „Neu Registrieren“ klickst, stimmst du unseren
+              <n-link to="/terms">Geschäftsbedingungen</n-link> zu. In unserer
+              <n-link to="/privacy">Datenrichtlinie</n-link> erfährst du, wie
+              wir deine Daten erfassen.
+            </div>
+            <div class="mt-5">
+              <span class="block w-full">
+                <button
+                  class="cta bg-tertiary w-full"
+                  :class="{ 'spinner-light': pending }"
+                  type="submit"
+                >
+                  {{ $t('signup.register') }}
+                </button>
+              </span>
+            </div>
+            <div class="mt-3">
+              <span class="block w-full">
+                <button
+                  type="button"
+                  class="cta w-full"
+                  @click.prevent="$router.push('/')"
+                >
+                  {{ $t('login.back_to_login') }}
+                </button>
+              </span>
+            </div>
+          </form>
+        </ValidationObserver>
+      </div>
     </div>
   </div>
 </template>

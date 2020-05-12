@@ -1,89 +1,88 @@
 <template>
   <div class="flex flex-col content-center justify-center p-2">
-    <div class="w-full max-w-sm mx-auto">
-      <img src="/img/logo.svg" width="90" class="mx-auto" alt="" />
-      <h2 class="text-center font-bold text-secondary">
-        get it!
-      </h2>
-    </div>
-    <div class="max-w-xs mx-auto">
-      <img
-        :src="user.picture.url"
-        width="100"
-        class="rounded-full mx-auto"
-        :alt="user.name"
-      />
-      <p class="text-center text-lg text-primary mt-3 select-none">
-        {{ user.name }}
-      </p>
-    </div>
-    <div class="w-full max-w-sm mx-auto">
-      <ValidationObserver ref="newPassword" v-slot="{ handleSubmit }" slim>
-        <form @submit.prevent="handleSubmit(localNewPassword)">
-          <!-- INPUT Password -->
-          <label class="block">
-            <span>{{ $t('login.password') }}</span>
-            <validation-provider
-              id="password"
-              v-slot="{ errors }"
-              name="Passwort"
-              mode="lazy"
-              rules="required|verify_password"
-            >
-              <input
-                v-model="password"
-                class="form-input"
-                type="password"
-                placeholder="******************"
-              />
-              <span class="error">{{ errors[0] }}</span>
-            </validation-provider>
-          </label>
-
-          <!-- INPUT Confirm password -->
-          <label class="block">
-            <span>{{ $t('login.confirm_password') }}</span>
-            <validation-provider
-              v-slot="{ errors }"
-              name="Password wiederholen"
-              mode="lazy"
-              rules="required|password:@Passwort"
-            >
-              <input
-                id="confirmPassword"
-                v-model="confirmPassword"
-                class="form-input"
-                type="password"
-                placeholder="******************"
-              />
-              <span class="error">{{ errors[0] }}</span>
-            </validation-provider>
-          </label>
-
-          <div class="mt-5">
-            <span class="block w-full">
-              <button
-                class="primary w-full"
-                :class="{ 'spinner-light': pending }"
-                type="submit"
+    <div class="card max-w-lg mx-auto">
+      <div class="w-full max-w-sm mx-auto">
+        <img src="/img/logo.svg" width="150" class="mx-auto" alt="" />
+      </div>
+      <div class="max-w-xs mx-auto">
+        <img
+          :src="user.picture.url"
+          width="100"
+          class="rounded-full mx-auto"
+          :alt="user.name"
+        />
+        <p class="text-center text-lg text-primary mt-3 select-none">
+          {{ user.name }}
+        </p>
+      </div>
+      <div class="w-full max-w-sm mx-auto">
+        <ValidationObserver ref="newPassword" v-slot="{ handleSubmit }" slim>
+          <form @submit.prevent="handleSubmit(localNewPassword)">
+            <!-- INPUT Password -->
+            <label class="block">
+              <span>{{ $t('login.password') }}</span>
+              <validation-provider
+                id="password"
+                v-slot="{ errors }"
+                name="Passwort"
+                mode="lazy"
+                rules="required|verify_password"
               >
-                {{ $t('login.save_new_password') }}
-              </button>
-            </span>
-          </div>
-          <div class="mt-3">
-            <span class="block w-full">
-              <button
-                type="button"
-                class="border w-full"
-                @click.prevent="$router.push('/')"
+                <input
+                  v-model="password"
+                  class="form-input"
+                  type="password"
+                  placeholder="******************"
+                />
+                <span class="error">{{ errors[0] }}</span>
+              </validation-provider>
+            </label>
+
+            <!-- INPUT Confirm password -->
+            <label class="block">
+              <span>{{ $t('login.confirm_password') }}</span>
+              <validation-provider
+                v-slot="{ errors }"
+                name="Password wiederholen"
+                mode="lazy"
+                rules="required|password:@Passwort"
               >
-                {{ $t('login.back_to_login') }}
-              </button>
-            </span>
-          </div>
-        </form>
-      </ValidationObserver>
+                <input
+                  id="confirmPassword"
+                  v-model="confirmPassword"
+                  class="form-input"
+                  type="password"
+                  placeholder="******************"
+                />
+                <span class="error">{{ errors[0] }}</span>
+              </validation-provider>
+            </label>
+
+            <div class="mt-5">
+              <span class="block w-full">
+                <button
+                  class="cta bg-tertiary w-full"
+                  :class="{ 'spinner-light': pending }"
+                  type="submit"
+                >
+                  {{ $t('login.save_new_password') }}
+                </button>
+              </span>
+            </div>
+            <div class="mt-3">
+              <span class="block w-full">
+                <button
+                  type="button"
+                  class="cta w-full"
+                  @click.prevent="$router.push('/')"
+                >
+                  {{ $t('login.back_to_login') }}
+                </button>
+              </span>
+            </div>
+          </form>
+        </ValidationObserver>
+      </div>
     </div>
   </div>
 </template>

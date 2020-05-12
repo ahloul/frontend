@@ -24,12 +24,12 @@
               class="flex justify-end"
               :class="{ 'justify-center': centered }"
             >
-              <button v-if="dismissText" class="w-auto border" @click="dismiss">
+              <button v-if="dismissText" class="cta w-auto" @click="dismiss">
                 {{ $t(dismissText) }}
               </button>
               <button
                 v-if="confirmText"
-                class="primary w-auto ml-4"
+                class="cta bg-tertiary w-auto ml-4"
                 @click="modalConfirmation"
               >
                 {{ $t(confirmText) }}
@@ -119,7 +119,7 @@ export default {
     @apply z-50 fixed top-0 left-0 h-screen w-full bg-light opacity-75;
   }
   &-body {
-    @apply bg-white m-3 max-h-full text-secondary rounded-lg;
+    @apply bg-white m-3 max-h-full text-light rounded-lg;
   }
 }
 </style>

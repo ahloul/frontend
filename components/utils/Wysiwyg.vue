@@ -123,7 +123,7 @@ export default {
 
 .editor {
   &-content {
-    @apply text-base border p-3 rounded-md bg-white;
+    @apply text-base border p-3 rounded-md bg-dark;
     &:focus {
       @apply shadow-none border-primary;
     }

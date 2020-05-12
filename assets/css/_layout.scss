@@ -44,7 +44,7 @@ a {
     }
 
     &:focus {
-        @apply text-info outline-none no-underline;
+        @apply text-secondary outline-none no-underline;
     }
 }
 

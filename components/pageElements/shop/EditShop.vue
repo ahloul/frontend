@@ -542,7 +542,7 @@ export default {
 
       // delivery options and opening times
       if (this.step === 3 && this.shop?.deliveryOptions.length === 0) {
-        for (const openingHour of Object.entries(this.shop?.openingHours)) {
+        for (const openingHour of Object.entries(this.shop.openingHours)) {
           if (openingHour[1].length !== 0) return 'continue'
         }
         return 'skip'
@@ -551,8 +551,8 @@ export default {
       // logo and shop picture
       if (
         this.step === 4 &&
-        Object.keys(this.shop?.logo).length === 0 &&
-        Object.keys(this.shop?.picture).length === 0
+        Object.keys(this.shop.logo).length === 0 &&
+        Object.keys(this.shop.picture).length === 0
       ) {
         return 'skip'
       }

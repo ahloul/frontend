@@ -87,21 +87,6 @@ export default {
   },
   async asyncData({ $axios, params, query }) {
     try {
-      // TODO replace with comment below when pagination is merged on server
-      const category = await $axios.$get(`/api/categories/${params.id}`)
-      const articles = await $axios.$get(
-        `/api/articles?categoryId=${category._id}`
-      )
-      return {
-        category,
-        articles,
-        showEmpty: false,
-        nextPage: null,
-        prevPage: null,
-      }
-
-      // TODO uncomment when pagination is merged on server
-      /*
       const category = await $axios.$get(`/api/categories/${params.id}`)
       const { count, nextPage, prevPage, rows } = await $axios.$get(
         `/api/articles?categoryId=${category._id}`,
@@ -110,7 +95,6 @@ export default {
         }
       )
       return { category, articles: rows, showEmpty: !count, nextPage, prevPage }
-      */
     } catch (error) {
       console.log(error)
       return {

@@ -139,7 +139,7 @@
 
         <div class="flex justify-end my-5">
           <button
-            class="primary"
+            class="cta bg-tertiary"
             :class="{ 'spinner-light': loadState.create }"
             type="submit"
           >

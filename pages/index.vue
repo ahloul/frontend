@@ -1,11 +1,11 @@
 <template>
   <div class="container">
-    <div class="card text-primary mt-3 max-w-xl mx-auto">
+    <div class="card text-light mt-3 max-w-xl mx-auto">
       <p class="max-w-md mx-auto pb-3 text-center">
         {{ $t('processes.intro') }}
       </p>
       <div class="w-auto max-w-xs mx-auto">
-        <n-link class="button primary mx-auto" to="/category">
+        <n-link class="button cta bg-tertiary mx-auto" to="/category">
           {{ $t('processes.add_article') }}
         </n-link>
       </div>

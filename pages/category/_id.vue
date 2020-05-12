@@ -38,13 +38,13 @@
                 <div class="flex">
                   <div
                     v-if="article.haveStock"
-                    class="mt-2 mr-2 flex items-center text-sm leading-5 text-info inline-block align-middle"
+                    class="mt-2 mr-2 flex items-center text-sm leading-5 text-primary inline-block align-middle"
                   >
                     <icon name="cube-outline" width="15" />
                     <span class="ml-1">{{ article.stock }}</span>
                   </div>
                   <div
-                    class="mt-2 flex items-center text-sm leading-5 text-info inline-block align-middle"
+                    class="mt-2 flex items-center text-sm leading-5 text-primary inline-block align-middle"
                   >
                     <span class="ml-1">€ {{ article.price }}</span>
                   </div>
@@ -134,12 +134,12 @@ export default {
 <style lang="scss" scoped>
 .headline {
   @apply transition duration-300 ease-in-out;
-  @apply font-bold text-primary;
+  @apply font-bold text-light;
   i {
     @apply hidden;
   }
   &:hover {
-    @apply text-info;
+    @apply text-primary;
     i {
       @apply inline-block;
     }
@@ -151,7 +151,7 @@ export default {
   }
 
   &-item {
-    @apply text-primary block bg-white shadow rounded cursor-pointer select-none;
+    @apply text-light block bg-white shadow rounded cursor-pointer select-none;
 
     &:hover {
       @apply shadow-lg;

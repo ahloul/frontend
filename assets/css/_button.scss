@@ -3,13 +3,13 @@
  */
 
 button, .button {
-    @apply flex justify-center py-2 px-4 text-sm font-medium rounded-md text-primary tracking-widest select-none;
-    
+    @apply flex justify-center py-2 px-4 text-sm font-medium rounded-full text-light tracking-widest select-none;
+
     // Add animation on hover
     @extend .animated;
 
     &:hover {
-        @apply text-info no-underline;
+        @apply text-secondary no-underline;
     }
 
     &:focus {
@@ -18,16 +18,16 @@ button, .button {
 
     &.bordered {
         @apply border;
-        
+
         &:hover {
-          @apply border-info text-info;  
+          @apply border-info text-info;
         }
     }
 
     // Icon helper - center text
     &.icon {
         @apply inline-flex items-center;
-        
+
         &-r {
             @extend .icon;
             i {
@@ -46,24 +46,37 @@ button, .button {
     // Primary
     &.primary {
         @apply bg-primary text-white;
-        
+
         &:hover {
             @apply bg-secondary text-white;
         }
-        
+
         &:active {
             @apply bg-info text-white;
         }
     }
 
+    // Primary
+    &.cta {
+        @apply border border-2 border-tertiary text-light;
+
+        &:hover {
+            @apply border border-2 border-warning bg-warning;
+        }
+
+        &:active {
+            @apply bg-warning text-light
+        }
+    }
+
     // Link
     &.link {
-      @apply p-0 text-tertiary text-base tracking-wider;
-      
+      @apply p-0 text-warning text-base tracking-wider;
+
       &:hover {
         @apply text-info bg-transparent;
       }
-      
+
     }
 
 }

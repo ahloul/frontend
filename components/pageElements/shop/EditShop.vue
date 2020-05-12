@@ -183,7 +183,7 @@
             />
             <div
               v-if="shop.address.locationId"
-              class="flex flex-col bg-white text-info rounded-lg border p-3 mt-3"
+              class="flex flex-col bg-white text-primary rounded-lg border p-3 mt-3"
             >
               <div class="font-bold">{{ shop.name }}</div>
               <div class="leading-tight text-light">
@@ -714,7 +714,7 @@ export default {
 <style lang="scss" scoped>
 .tab {
   &-heading {
-    @apply text-center font-bold text-secondary;
+    @apply text-center font-bold text-light;
   }
   &-section {
     @apply w-full max-w-md mt-10 mx-auto text-light;

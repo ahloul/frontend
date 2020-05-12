@@ -3,5 +3,9 @@
  */
 
 .card {
-    @apply shadow rounded bg-white p-3;
+    @apply shadow rounded-lg bg-white p-6;
+
+    @screen sm {
+      @apply p-10
+    }
 }

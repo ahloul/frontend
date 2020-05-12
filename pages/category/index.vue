@@ -2,7 +2,7 @@
   <div>
     <div class="flex my-3 justify-end">
       <search-input
-        v-if="showEmpty"
+        v-if="!showEmpty"
         class="block w-full ml-auto md:max-w-sm mr-2"
         @search="applySearch"
       />

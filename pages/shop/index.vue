@@ -1,5 +1,13 @@
 <template>
   <div class="container max-w-4xl mt-0 px-2 mb-5 mb-12">
+    <div class="my-3 flex justify-end">
+      <n-link
+        class="primary icon-l inline-block flex items-center"
+        to="/shop/edit"
+      >
+        <icon name="settings-outline" class="mr-1" /> {{ $t('shop.settings') }}
+      </n-link>
+    </div>
     <div
       class="hero-wrap h-48 my-3"
       :style="{

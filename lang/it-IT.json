@@ -1,176 +1,189 @@
 {
-  "account": {
-    "verify_content": "Ben tornato! Grazie per la tua verifica"
-  },
-  "add": "Inserisci",
-  "article": {
-    "create_stock": "Crea inventario",
-    "delete_confirmation": "Sei sicuro di voler eliminare definitivamente questo articolo?",
-    "description": "Descrizione dell'articolo",
-    "empty": "Nessun articolo",
-    "name": "Nome dell'articolo",
-    "name_hint": "cioè penne a sfera",
-    "non_public": "non pubblico",
-    "price_hint": "cioè 12,00",
-    "public": "Pubblico",
-    "public_prefix": "L'articolo sarà",
-    "public_suffix": "",
-    "stock": "inventario",
-    "tax_free": "Senza tasse",
-    "tax_rate": "Aliquota fiscale",
-    "unit_price": "prezzo unitario"
-  },
-  "back": "indietro",
-  "back_to_start": "Torna all'inizio",
-  "call": "CHIAMACI",
-  "category": {
-    "create": "Crea categoria",
-    "delete_confirmation": "Sei sicuro di voler eliminare la categoria? Anche gli articoli in esso contenuti verranno cancellati irrimediabilmente!",
-    "hint": "cioè bevande",
-    "name": "Nome della categoria",
-    "title": "CATEGORIA"
-  },
-  "confirm": "va bene",
-  "contact_data": {
-    "facebook": "FACEBOOK",
-    "full_address": "Indirizzo completo",
-    "instagram": "Instagram",
-    "intro": "Inserisci l'indirizzo del tuo negozio in modo che gli altri sappiano dove trovarti.",
-    "optional": "opzionale",
-    "phone_number": "Numero di telefono",
-    "prefix_and_number": "Prefisso e numero",
-    "section_name": "informazioni di contatto",
-    "website": "sito web"
-  },
-  "contact_to_delete": "Vi preghiamo di contattarci se si desidera eliminare il proprio account",
-  "continue": "CONTINUA",
-  "delivery_options": {
-    "all_day": "Aperto tutto il giorno",
-    "days_long": {
-      "friday": "Venerdì",
-      "monday": "Lunedì",
-      "saturday": "Sabato",
-      "sunday": "Domenica",
-      "thursday": "Giovedì",
-      "tuesday": "Martedì",
-      "wednesday": "Mercoledì"
-    },
-    "days_short": {
-      "friday": "fr",
-      "monday": "MO",
-      "saturday": "Sa",
-      "sunday": "su",
-      "thursday": "th",
-      "tuesday": "tu",
-      "wednesday": "NOI"
-    },
-    "offer_prefix": "io offro",
-    "offer_suffix": "",
-    "opening_times": "Orari di apertura",
-    "options": {
-      "local_delivery": {
-        "description": "Garantiamo che i nostri clienti ricevano prontamente le loro merci",
-        "name": "Consegna locale"
-      },
-      "parcel": {
-        "description": "Su richiesta inviamo anche i pacchi per lettera e posta",
-        "name": "Consegna postale e pacchi"
-      },
-      "pickup": {
-        "description": "I clienti possono anche ritirare la nostra merce in loco",
-        "name": "Raccogliere"
-      }
-    },
-    "section_name": "Opzioni di consegna"
-  },
-  "description": {
-    "intro": "Se ti piace, descrivi la tua attività in poche frasi. Libera la tua creatività!",
-    "section_name": "Descrizione"
-  },
-  "dismiss": "abortire",
-  "edit": "Modificare",
-  "enter_login": "All'accesso",
-  "enter_shop": "Al negozio",
-  "enter_website": "Al sito web",
-  "information": {
-    "go_to_shop": "Vai a fare la spesa!",
-    "intro": "Con pochi passaggi ti aiutiamo a creare il tuo negozio. Eccoci qui!",
-    "legal_form": "Forma legale",
-    "legal_form_options": {
-      "independent": "indipendente",
-      "non_profit": "Non profit / Associazione",
-      "partnership": "Associazione",
-      "private_partnership": "Compagnia privata",
-      "sole": "Unico proprietario",
-      "stock_company": "Società per azioni"
-    },
-    "name_of_shop": "Nome del tuo negozio",
-    "name_of_shop_example": "cioè Sam e Partner",
-    "no_of_employees": "Numero di dipendenti",
-    "ready_to_start": "Sei pronto per iniziare ora.",
-    "section_name": "Informazione",
-    "shop_created_confirmation": "Hai creato con successo un negozio!",
-    "shop_error_confirmation": "Controlla di nuovo di aver compilato tutti i campi correttamente."
-  },
-  "lang_code": "IT",
-  "login": {
-    "back_to_login": "Torna al login",
-    "confirm_password": "Conferma password",
-    "help": "Aiuto con la registrazione?",
-    "login": "Accesso",
-    "password": "Parola d'ordine",
-    "request_new_password": "Richiedi una nuova password",
-    "save_new_password": "Salva nuova password",
-    "thirdparty": "O registrati con"
-  },
-  "navbar": {
-    "create_shop": "Nuovo negozio",
-    "imprint": "impronta",
-    "privacy_policy": "POLITICA SULLA RISERVATEZZA",
-    "processes": "Processi",
-    "shop": "negozio",
-    "stock": "Azione",
-    "terms": "Termini e Condizioni"
-  },
-  "no_description": "Nessuna descrizione disponibile.",
-  "no_items": "Non hai ancora voci",
-  "picture": {
-    "intro": "Mostra al tuo negozio una foto e il tuo logo.",
-    "logo": "Logo",
-    "section_name": "Immagini",
-    "shop_picture": "Foto del negozio"
-  },
-  "processes": {
-    "add_article": "Aggiungi articolo",
-    "intro": "Siamo attualmente in costruzione. Ora puoi riempire il tuo negozio di vita aggiungendo i tuoi primi articoli. Questo ci aiuterà a sviluppare ulteriormente la nostra piattaforma.",
-    "next": "Il prossimo",
-    "previous": "Precedente",
-    "welcome": "Un caldo benvenuto"
-  },
-  "profile": {
-    "city": "città",
-    "description": "Descrizione del profilo"
-  },
-  "remove": "Rimuovere",
-  "save": "Salvare",
-  "select_image": "Seleziona immagine",
-  "shop": {
-    "settings": "impostazioni"
-  },
-  "signup": {
-    "register": "Registrare",
-    "successful_registration": "La tua registrazione è andata a buon fine! Controlla la tua casella di posta e conferma il tuo indirizzo e-mail."
-  },
-  "toast": {
-    "created_article": "Articolo creato",
-    "created_category": "Categoria creata",
-    "deleted_article": "Articolo eliminato",
-    "logout": "Disconnesso 👋",
-    "saved_profile": "Profilo salvato",
-    "updated_category": "Categoria aggiornata",
-    "updated_profile": "profilo aggiornato",
-    "updated_shop": "Negozio aggiornato",
-    "updated_stock": "Stock aggiornato",
-    "you_got_mail": "Hai posta ✉️!"
-  }
+	"account": {
+		"verify_content": "Ben tornato! Grazie per la tua verifica"
+	},
+	"add": "Inserisci",
+	"article": {
+		"create_stock": "Crea inventario",
+		"delete_confirmation": "Sei sicuro di voler eliminare definitivamente questo articolo?",
+		"description": "Descrizione dell'articolo",
+		"empty": "Nessun articolo",
+		"name": "Nome dell'articolo",
+		"name_hint": "cioè penne a sfera",
+		"non_public": "non pubblico",
+		"price_hint": "cioè 12,00",
+		"public": "Pubblico",
+		"public_prefix": "L'articolo sarà",
+		"public_suffix": "",
+		"stock": "inventario",
+		"tax_free": "Senza tasse",
+		"tax_rate": "Aliquota fiscale",
+		"unit_price": "prezzo unitario"
+	},
+	"back": "indietro",
+	"back_to_start": "Torna all'inizio",
+	"call": "CHIAMACI",
+	"category": {
+		"create": "Crea categoria",
+		"delete_confirmation": "Sei sicuro di voler eliminare la categoria? Anche gli articoli in esso contenuti verranno cancellati irrimediabilmente!",
+		"hint": "cioè bevande",
+		"name": "Nome della categoria",
+		"title": "CATEGORIA"
+	},
+	"confirm": "va bene",
+	"contact_data": {
+		"facebook": "FACEBOOK",
+		"full_address": "Indirizzo completo",
+		"instagram": "Instagram",
+		"intro": "Inserisci l'indirizzo del tuo negozio in modo che gli altri sappiano dove trovarti.",
+		"optional": "opzionale",
+		"phone_number": "Numero di telefono",
+		"prefix_and_number": "Prefisso e numero",
+		"section_name": "informazioni di contatto",
+		"website": "sito web"
+	},
+	"contact_to_delete": "Vi preghiamo di contattarci se si desidera eliminare il proprio account",
+	"continue": "CONTINUA",
+	"delivery_options": {
+		"all_day": "Aperto tutto il giorno",
+		"days_long": {
+			"friday": "Venerdì",
+			"monday": "Lunedì",
+			"saturday": "Sabato",
+			"sunday": "Domenica",
+			"thursday": "Giovedì",
+			"tuesday": "Martedì",
+			"wednesday": "Mercoledì"
+		},
+		"days_short": {
+			"friday": "fr",
+			"monday": "MO",
+			"saturday": "Sa",
+			"sunday": "su",
+			"thursday": "th",
+			"tuesday": "tu",
+			"wednesday": "NOI"
+		},
+		"non_public": "non pubblico e non visibile a nessuno",
+		"offer_prefix": "io offro",
+		"offer_suffix": "",
+		"opening_times": "Orari di apertura",
+		"options": {
+			"local_delivery": {
+				"description": "Garantiamo che i nostri clienti ricevano prontamente le loro merci",
+				"name": "Consegna locale"
+			},
+			"parcel": {
+				"description": "Su richiesta inviamo anche i pacchi per lettera e posta",
+				"name": "Consegna postale e pacchi"
+			},
+			"pickup": {
+				"description": "I clienti possono anche ritirare la nostra merce in loco",
+				"name": "Raccogliere"
+			}
+		},
+		"public": "pubblico e visibile a tutti",
+		"public_prefix": "Lo sarà il negozio",
+		"section_name": "Opzioni di consegna"
+	},
+	"description": {
+		"intro": "Se ti piace, descrivi la tua attività in poche frasi. Libera la tua creatività!",
+		"section_name": "Descrizione"
+	},
+	"dismiss": "abortire",
+	"edit": "Modificare",
+	"enter_login": "All'accesso",
+	"enter_shop": "Al negozio",
+	"enter_website": "Al sito web",
+	"error": {
+		"connection": ""
+	},
+	"information": {
+		"error_occurred": "Si è verificato un errore. Si prega di aggiornare la pagina.",
+		"go_to_shop": "Vai a fare la spesa!",
+		"intro": "Con pochi passaggi ti aiutiamo a creare il tuo negozio. Eccoci qui!",
+		"legal_form": "Forma legale",
+		"legal_form_options": {
+			"independent": "indipendente",
+			"non_profit": "Non profit / Associazione",
+			"partnership": "Associazione",
+			"private_partnership": "Compagnia privata",
+			"sole": "Unico proprietario",
+			"stock_company": "Società per azioni"
+		},
+		"name_of_shop": "Nome del tuo negozio",
+		"name_of_shop_example": "cioè Sam e Partner",
+		"no_of_employees": "Numero di dipendenti",
+		"ready_to_start": "Sei pronto per iniziare ora.",
+		"section_name": "Informazione",
+		"shop_created_confirmation": "Hai creato con successo un negozio!",
+		"shop_error_confirmation": "Controlla di nuovo di aver compilato tutti i campi correttamente.",
+		"shop_not_found": "Il tuo negozio non è stato trovato. Creane uno nuovo."
+	},
+	"lang_code": "IT",
+	"login": {
+		"back_to_login": "Torna al login",
+		"confirm_password": "Conferma password",
+		"help": "Aiuto con la registrazione?",
+		"login": "Accesso",
+		"password": "Parola d'ordine",
+		"request_new_password": "Richiedi una nuova password",
+		"save_new_password": "Salva nuova password",
+		"thirdparty": "O registrati con"
+	},
+	"navbar": {
+		"create_shop": "Nuovo negozio",
+		"imprint": "impronta",
+		"privacy_policy": "POLITICA SULLA RISERVATEZZA",
+		"processes": "Processi",
+		"shop": "negozio",
+		"stock": "Azione",
+		"terms": "Termini e Condizioni"
+	},
+	"no_description": "Nessuna descrizione disponibile.",
+	"no_items": "Non hai ancora voci",
+	"picture": {
+		"intro": "Mostra al tuo negozio una foto e il tuo logo.",
+		"logo": "Logo",
+		"section_name": "Immagini",
+		"shop_picture": "Foto del negozio"
+	},
+	"processes": {
+		"add_article": "Aggiungi articolo",
+		"intro": "Siamo attualmente in costruzione. Ora puoi riempire il tuo negozio di vita aggiungendo i tuoi primi articoli. Questo ci aiuterà a sviluppare ulteriormente la nostra piattaforma.",
+		"next": "Il prossimo",
+		"previous": "Precedente",
+		"welcome": "Un caldo benvenuto"
+	},
+	"profile": {
+		"add_shop": "Crea un altro negozio",
+		"city": "città",
+		"description": "Descrizione del profilo"
+	},
+	"refresh_now": "Aggiorna ora",
+	"remove": "Rimuovere",
+	"save": "Salvare",
+	"select_image": "Seleziona immagine",
+	"shop": {
+		"settings": "impostazioni"
+	},
+	"signup": {
+		"register": "Registrare",
+		"successful_registration": "La tua registrazione è andata a buon fine! Controlla la tua casella di posta e conferma il tuo indirizzo e-mail."
+	},
+	"skip": "Salta",
+	"toast": {
+		"created_article": "Articolo creato",
+		"created_category": "Categoria creata",
+		"deleted_article": "Articolo eliminato",
+		"logout": "Disconnesso 👋",
+		"saved_profile": "Profilo salvato",
+		"shop_changed": "Il negozio è cambiato!",
+		"something_wrong": "Qualcosa è andato storto 👎",
+		"updated_category": "Categoria aggiornata",
+		"updated_profile": "profilo aggiornato",
+		"updated_shop": "Negozio aggiornato",
+		"updated_stock": "Stock aggiornato",
+		"you_got_mail": "Hai posta ✉️!"
+	}
 }

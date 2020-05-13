@@ -479,6 +479,7 @@ export default {
     coreShop: {
       type: Object,
       default: () => ({
+        published: true,
         name: null,
         size: null,
         phone: null,

@@ -2,6 +2,14 @@
   <div class="bg-primary">
     <div class="container flex flex-row">
       <ul class="bar text-left content-end mr-auto sm:mx-0">
+        <li v-if="isAdmin">
+          <n-link
+            to="/admin"
+            class="text-warning hover:text-tertiary items-center flex"
+          >
+            <icon name="shield-outline" /> <span class="ml-1">Admin</span>
+          </n-link>
+        </li>
         <li>
           <n-link class="text-white hover:text-tertiary" to="/imprint">{{
             $t('navbar.imprint')
@@ -66,6 +74,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   name: 'FooterBar',
 
@@ -79,6 +89,7 @@ export default {
     locale() {
       return this.$store.state.locale
     },
+    ...mapGetters(['isAdmin']),
   },
   methods: {
     switchLanguage(localeCode) {

@@ -102,7 +102,7 @@ export default {
     },
     applySearch(val) {
       this.$router.push({
-        query: { ...this.$route.query, search: val },
+        query: { ...this.$route.query, search: val, page: 1 },
       })
     },
   },

@@ -19,8 +19,14 @@
         <h2 class="text-lg font-semibold leading-none text-light mt-4 md:mt-0">
           {{ user.name }}
         </h2>
-        <div v-if="user.location" class="text-info leading-snug text-sm">
+        <div v-if="user.location" class="text-primary leading-snug text-sm">
           {{ user.location.label }}
+        </div>
+        <div
+          v-if="user.role === 'admin'"
+          class="text-primary leading-snug text-sm"
+        >
+          Administrator
         </div>
         <hr v-if="user.description" class="my-5 w-32 mx-auto" />
         <div
@@ -103,7 +109,7 @@ export default {
       } catch (error) {
         console.log(error)
         this.pending = null
-        this.$store.dispatch('toast/add', { message: `toast.shop_changed` })
+        this.$store.dispatch('toast/add', { message: `toast.something_wrong` })
       }
     },
   },

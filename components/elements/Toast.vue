@@ -22,9 +22,7 @@
               />
             </div>
             <div class="w-0 flex-1 flex justify-between">
-              <p>
-                {{ $t(t.message) }}
-              </p>
+              <p>{{ $t(t.message) }} {{ t.text }}</p>
             </div>
             <div class="ml-4 flex-shrink-0 flex">
               <button>

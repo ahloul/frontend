@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="">
     <div class="card text-light mt-3 max-w-3xl mx-auto">
       <p class="max-w-md mx-auto pb-3 text-center">
         {{ $t('processes.intro') }}

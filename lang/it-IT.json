@@ -14,7 +14,7 @@
 		"price_hint": "cioè 12,00",
 		"public": "Pubblico",
 		"public_prefix": "L'articolo sarà",
-		"public_suffix": "",
+		"public_suffix": "pubblicato",
 		"stock": "inventario",
 		"tax_free": "Senza tasse",
 		"tax_rate": "Aliquota fiscale",
@@ -96,7 +96,7 @@
 	"enter_shop": "Al negozio",
 	"enter_website": "Al sito web",
 	"error": {
-		"connection": ""
+		"connection": "Probabilmente hai problemi con Internet"
 	},
 	"information": {
 		"error_occurred": "Si è verificato un errore. Si prega di aggiornare la pagina.",
@@ -134,6 +134,7 @@
 	"navbar": {
 		"create_shop": "Nuovo negozio",
 		"imprint": "impronta",
+		"news": "notizia",
 		"privacy_policy": "POLITICA SULLA RISERVATEZZA",
 		"processes": "Processi",
 		"shop": "negozio",
@@ -150,6 +151,7 @@
 	},
 	"processes": {
 		"add_article": "Aggiungi articolo",
+		"add_product": "Aggiungi prodotto",
 		"intro": "Siamo attualmente in costruzione. Ora puoi riempire il tuo negozio di vita aggiungendo i tuoi primi articoli. Questo ci aiuterà a sviluppare ulteriormente la nostra piattaforma.",
 		"next": "Il prossimo",
 		"previous": "Precedente",
@@ -177,6 +179,7 @@
 		"created_category": "Categoria creata",
 		"deleted_article": "Articolo eliminato",
 		"logout": "Disconnesso 👋",
+		"not_authorized": "non sei autorizzato",
 		"saved_profile": "Profilo salvato",
 		"shop_changed": "Il negozio è cambiato!",
 		"something_wrong": "Qualcosa è andato storto 👎",

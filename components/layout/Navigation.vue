@@ -19,7 +19,7 @@
             <ul v-if="haveShop">
               <li>
                 <n-link to="/" exact>
-                  {{ $t('navbar.processes') }}
+                  {{ $t('navbar.news') }}
                 </n-link>
               </li>
               <li>

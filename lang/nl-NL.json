@@ -14,7 +14,7 @@
 		"price_hint": "d.w.z. 12,00",
 		"public": "Openbaar",
 		"public_prefix": "Artikel zal zijn",
-		"public_suffix": "",
+		"public_suffix": "Gepubliceerd",
 		"stock": "Inventaris",
 		"tax_free": "Belasting vrij",
 		"tax_rate": "Belastingtarief",
@@ -96,7 +96,7 @@
 	"enter_shop": "Naar de winkel",
 	"enter_website": "Naar de website",
 	"error": {
-		"connection": ""
+		"connection": "U heeft waarschijnlijk problemen met uw internet"
 	},
 	"information": {
 		"error_occurred": "Er is een fout opgetreden. Gelieve de pagina te vernieuwen.",
@@ -134,6 +134,7 @@
 	"navbar": {
 		"create_shop": "Nieuwe winkel",
 		"imprint": "afdruk",
+		"news": "Nieuws",
 		"privacy_policy": "Privacybeleid",
 		"processes": "Processen",
 		"shop": "Winkel",
@@ -150,6 +151,7 @@
 	},
 	"processes": {
 		"add_article": "Artikel toevoegen",
+		"add_product": "Voeg product toe",
 		"intro": "We zijn momenteel in aanbouw. U kunt uw winkel nu tot leven brengen door uw eerste artikelen toe te voegen. Dit zal ons helpen om ons platform verder te ontwikkelen.",
 		"next": "volgende",
 		"previous": "voorgaand",
@@ -177,6 +179,7 @@
 		"created_category": "Categorie gemaakt",
 		"deleted_article": "Artikel verwijderd",
 		"logout": "Afgemeld 👋",
+		"not_authorized": "JIJ BENT NIET GEAUTORISEERD",
 		"saved_profile": "Opgeslagen profiel",
 		"shop_changed": "Winkel veranderd!",
 		"something_wrong": "Er is iets misgegaan 👎",

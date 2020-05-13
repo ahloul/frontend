@@ -14,7 +14,7 @@
 		"price_hint": "yani 12,00",
 		"public": "Halk, umumi, kamu",
 		"public_prefix": "Makale olacak",
-		"public_suffix": "",
+		"public_suffix": "Yayınlanan",
 		"stock": "Envanter",
 		"tax_free": "Vergisiz",
 		"tax_rate": "Vergi oranı",
@@ -96,7 +96,7 @@
 	"enter_shop": "Mağazaya",
 	"enter_website": "Web sitesine",
 	"error": {
-		"connection": ""
+		"connection": "Muhtemelen internetinizle ilgili sorunlarınız"
 	},
 	"information": {
 		"error_occurred": "Bir hata oluştu. Lütfen sayfayı yenileyin.",
@@ -134,6 +134,7 @@
 	"navbar": {
 		"create_shop": "Yeni Mağaza",
 		"imprint": "damga",
+		"news": "HABERLER",
 		"privacy_policy": "Gizlilik Politikası",
 		"processes": "Süreçler",
 		"shop": "Dükkan",
@@ -150,6 +151,7 @@
 	},
 	"processes": {
 		"add_article": "Makale Ekle",
+		"add_product": "Ürün ekle",
 		"intro": "Şu anda yapım aşamasındayız. Artık ilk makalelerinizi ekleyerek mağazanıza hayat verebilirsiniz. Bu, platformumuzu daha da geliştirmemize yardımcı olacaktır.",
 		"next": "Sonraki",
 		"previous": "Önceki",
@@ -177,6 +179,7 @@
 		"created_category": "Kategori Oluşturuldu",
 		"deleted_article": "Silinmiş Makale",
 		"logout": "Oturumu kapatıldı 👋",
+		"not_authorized": "yetkili değilsin",
 		"saved_profile": "Kayıtlı Profil",
 		"shop_changed": "Mağaza değişti!",
 		"something_wrong": "Bir şeyler ters gitti 👎",

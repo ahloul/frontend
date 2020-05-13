@@ -96,7 +96,7 @@
   "enter_website": "To the website",
   "information": {
     "go_to_shop": "Go to shop!",
-    "intro": "Thanks for your registration! With just a few steps we help you to create your shop. Here we go!",
+    "intro": "With just a few steps we help you to create your shop. Here we go!",
     "legal_form": "Legal Form",
     "legal_form_options": {
       "independent": "Independent",
@@ -153,7 +153,8 @@
   },
   "profile": {
     "city": "City",
-    "description": "Profile Description"
+    "description": "Profile Description",
+    "add_shop": "Create another shop"
   },
   "remove": "Remove",
   "save": "Save",
@@ -175,6 +176,8 @@
     "updated_profile": "Updated Profile",
     "updated_shop": "Updated Shop",
     "updated_stock": "Updated Stock",
-    "you_got_mail": "You got mail ✉️!"
+    "you_got_mail": "You got mail ✉️!",
+    "shop_changed": "Shop changed!",
+    "something_wrong": "Something has gone wrong 👎"
   }
 }

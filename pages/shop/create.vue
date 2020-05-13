@@ -8,7 +8,6 @@
 import EditShop from '~/components/pageElements/shop/EditShop'
 export default {
   name: 'CreateShop',
-  middleware: ['haveShop'],
   components: {
     EditShop,
   },

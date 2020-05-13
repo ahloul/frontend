@@ -443,8 +443,8 @@
           </button>
           <button
             type="submit"
-            class="primary my-10 ml-auto"
-            :class="{ 'spinner-light': loadState.create || loadState.update }"
+            class="cta bg-tertiary my-10 ml-auto"
+            :class="{ 'spinner-dark': loadState.create || loadState.update }"
           >
             {{ submitButtonText }}
           </button>

@@ -5,13 +5,7 @@
       class="block w-full ml-auto md:max-w-sm mx-auto mt-5"
       @search="applySearch"
     />
-    <list-all-shops
-      :shops.sync="shops"
-      :user="user"
-      :pending="pending"
-      :count="count"
-      @changeShop="changeShop"
-    />
+    <list-all-users :users.sync="users" :user="user" :count="count" />
     <div class="flex justify-center my-5">
       <n-link
         v-if="prevPage"
@@ -33,25 +27,25 @@
 <script>
 import { mapActions, mapGetters } from 'vuex'
 import SearchInput from '~/components/elements/SearchInput'
-import ListAllShops from '~/components/pageElements/admin/ListAllShops'
+import ListAllUsers from '~/components/pageElements/admin/ListAllUsers'
 import AdminBar from '~/components/pageElements/admin/AdminBar'
 export default {
-  name: 'Admin',
+  name: 'AdminUsers',
   middleware: ['admin'],
   components: {
     SearchInput,
-    ListAllShops,
+    ListAllUsers,
     AdminBar,
   },
   async asyncData({ $axios, query, redirect, store }) {
     try {
       const { rows, count, nextPage, prevPage } = await $axios.$get(
-        '/api/shops',
+        '/api/users',
         {
           params: query,
         }
       )
-      return { shops: rows, nextPage, prevPage, count }
+      return { users: rows, nextPage, prevPage, count }
     } catch (error) {
       console.log(error)
       return { categories: [], showEmpty: true, nextPage: 0, prevPage: 0 }
@@ -66,31 +60,6 @@ export default {
   },
   methods: {
     ...mapActions(['getMe']),
-    async changeShop({ _id, name }) {
-      try {
-        // Set pending
-        this.pending = _id
-
-        // Set new Shop
-        await this.$axios.patch(`/api/users/me/shops/active`, { _id })
-
-        // Update user in storage
-        await this.getMe()
-
-        // Set pending
-        this.pending = null
-
-        // Send toast
-        this.$store.dispatch('toast/add', {
-          message: `toast.shop_changed`,
-          text: name,
-        })
-      } catch (error) {
-        console.log(error)
-        this.pending = null
-        this.$store.dispatch('toast/add', { message: `toast.something_wrong` })
-      }
-    },
     applySearch(val) {
       this.$router.push({
         query: { ...this.$route.query, search: val, page: 1 },

@@ -83,7 +83,10 @@
         "name": "Pickup"
       }
     },
-    "section_name": "Delivery Options"
+    "section_name": "Delivery Options",
+    "non_public": "not public and not visible for anyone",
+    "public": "public and visible for everyone",
+    "public_prefix": "Shop will be"
   },
   "description": {
     "intro": "If you like, describe your business in a few sentences. Let your creativity run free!",

@@ -47,7 +47,10 @@
         :class="{ 'spinner-dark': pending == shop.shopId }"
         @click="changeShop(shop)"
       >
-        {{ shop.name }}
+        <div class="flex items-center">
+          <span class="mr-1">{{ shop.name }}</span>
+          <icon v-if="user.activeShop === shop._id" name="checkmark-outline" />
+        </div>
       </div>
     </div>
   </div>

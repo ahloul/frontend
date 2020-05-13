@@ -1,19 +1,5 @@
 <template>
   <div class="flex flex-col">
-    <!-- Modal -->
-    <!--
-    <modal
-      :show="showModal"
-      :dismiss="null"
-      :confirm="$t('information.go_to_shop')"
-      centered
-      @confirm="$router.push('/')"
-    >
-      {{ $t('information.shop_created_confirmation') }}
-      <br />
-      {{ $t('information.ready_to_start') }}
-    </modal>
-  -->
     <!-- Top Buttons -->
     <div class="flex mt-2 justify-between max-w-xs mx-auto">
       <button
@@ -391,6 +377,24 @@
                 <hr class="w-full mt-2" />
               </div>
             </div>
+          </div>
+
+          <div class="flex justify-between max-w-md mx-auto my-5">
+            <label class="inline-block my-3">
+              <input
+                v-model="shop.published"
+                type="checkbox"
+                class="form-checkbox"
+              />
+              <span class="ml-2"
+                >{{ $t('delivery_options.public_prefix') }}
+                <span class="font-bold">{{
+                  shop.published
+                    ? $t('delivery_options.public')
+                    : $t('delivery_options.non_public')
+                }}</span>
+              </span>
+            </label>
           </div>
         </fieldset>
         <!-- Bilder -->

@@ -33,36 +33,6 @@
                 <u>U</u>
               </div>
             </li>
-
-            <li>
-              <div
-                class="button cursor-pointer"
-                :class="{ active: isActive.heading({ level: 1 }) }"
-                @click.prevent="commands.heading({ level: 1 })"
-              >
-                H1
-              </div>
-            </li>
-
-            <li>
-              <div
-                class="button cursor-pointer"
-                :class="{ active: isActive.heading({ level: 2 }) }"
-                @click.prevent="commands.heading({ level: 2 })"
-              >
-                H2
-              </div>
-            </li>
-
-            <li>
-              <div
-                class="button cursor-pointer"
-                :class="{ active: isActive.heading({ level: 3 }) }"
-                @click.prevent="commands.heading({ level: 3 })"
-              >
-                H3
-              </div>
-            </li>
           </ul>
         </div>
       </editor-menu-bar>
@@ -74,7 +44,7 @@
 
 <script>
 import { Editor, EditorContent, EditorMenuBar } from 'tiptap'
-import { Heading, Bold, Italic, Link, Underline } from 'tiptap-extensions'
+import { Bold, Italic, Link, Underline } from 'tiptap-extensions'
 export default {
   components: {
     EditorContent,
@@ -91,13 +61,7 @@ export default {
   }),
   mounted() {
     this.editor = new Editor({
-      extensions: [
-        new Heading({ levels: [1, 2, 3] }),
-        new Link(),
-        new Bold(),
-        new Italic(),
-        new Underline(),
-      ],
+      extensions: [new Link(), new Bold(), new Italic(), new Underline()],
       content: this.initialContent,
       onUpdate: ({ getHTML }) => {
         this.$emit('content', getHTML())

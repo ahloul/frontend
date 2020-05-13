@@ -149,7 +149,8 @@
   },
   "profile": {
     "city": "Wohnort",
-    "description": "Profilbeschreibung"
+    "description": "Profilbeschreibung",
+    "name": "Name"
   },
   "remove": "Entfernen",
   "save": "Speichern",

@@ -59,7 +59,7 @@
     </div>
     <div class="container">
       <div class="mx-auto text-info select-none text-xs opacity-50 md:mt-5">
-        getit! © 2020
+        {{ $t('footer_bar.copyright') }}
       </div>
     </div>
   </div>

@@ -12,7 +12,7 @@
           <form @submit.prevent="handleSubmit(localLogin)">
             <!-- INPUT E-Mail -->
             <label class="block">
-              <span>E-Mail</span>
+              <span>{{ $t('login.email') }}</span>
               <validation-provider
                 v-slot="{ errors }"
                 mode="lazy"
@@ -99,7 +99,7 @@
                 :class="{ 'spinner-dark': pending === 'facebook' }"
                 @click="socialLogin('facebook')"
               >
-                <icon name="facebook" /> Facebook
+                <icon name="facebook" /> {{ $t('login.facebook') }}
               </button>
             </div>
 
@@ -109,7 +109,7 @@
                 :class="{ 'spinner-dark': pending === 'google' }"
                 @click="socialLogin('google')"
               >
-                <icon name="google" /> Google
+                <icon name="google" /> {{ $t('login.google') }}
               </button>
             </div>
           </div>

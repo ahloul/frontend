@@ -32,7 +32,7 @@
     </div>
     <div class="flex justify-end">
       <button class="icon" @click="logoutUser">
-        Logout <icon name="log-out-outline" />
+        {{ $t('profile.logout') }} <icon name="log-out-outline" />
       </button>
     </div>
   </div>

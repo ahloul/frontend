@@ -128,7 +128,10 @@
     "password": "Password",
     "request_new_password": "Request new password",
     "save_new_password": "Save new password",
-    "thirdparty": "Or sign up with"
+    "thirdparty": "Or sign up with",
+    "email": "Email",
+    "facebook": "Facebook",
+    "google": "Google"
   },
   "navbar": {
     "create_shop": "New Shop",
@@ -156,13 +159,17 @@
   },
   "profile": {
     "city": "City",
-    "description": "Profile Description"
+    "description": "Profile Description",
+    "name": "Name",
+    "logout": "Logout"
   },
   "remove": "Remove",
   "save": "Save",
   "select_image": "Select Image",
   "shop": {
-    "settings": "Settings"
+    "settings": "Settings",
+    "open_all_day": "Open all day",
+    "closed": "Closed"
   },
   "signup": {
     "register": "Register",
@@ -179,5 +186,9 @@
     "updated_shop": "Updated Shop",
     "updated_stock": "Updated Stock",
     "you_got_mail": "You got mail ✉️!"
+  },
+  "empty": "",
+  "footer_bar": {
+    "copyright": "getit! © 2020"
   }
 }

@@ -46,7 +46,9 @@
                   <div
                     class="mt-2 flex items-center text-sm leading-5 text-primary inline-block align-middle"
                   >
-                    <span class="ml-1">€ {{ article.price }}</span>
+                    <span class="ml-1"
+                      >{{ $t('category.euro') }} {{ article.price }}</span
+                    >
                   </div>
                 </div>
               </div>

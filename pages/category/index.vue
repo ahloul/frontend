@@ -30,7 +30,8 @@
                 >
                   <icon name="keypad-outline" width="15" />
                   <span v-if="category.article_count" class="ml-1"
-                    >{{ category.article_count }} Artikel</span
+                    >{{ category.article_count }}
+                    {{ $t('category.article') }}</span
                   >
                   <span v-else class="ml-1">{{ $t('article.empty') }}</span>
                 </div>

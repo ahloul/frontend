@@ -29,7 +29,12 @@
     "delete_confirmation": "Are you sure you want to delete the category? The articles contained in it will also be irretrievably deleted!",
     "hint": "i.e. drinks",
     "name": "Name of Category",
-    "title": "Category"
+    "title": "Category",
+    "article": "Article",
+    "euro": "€"
+  },
+  "callback": {
+    "logging_in": "You will be logged in ..."
   },
   "confirm": "Okay",
   "refresh_now": "Refresh now",

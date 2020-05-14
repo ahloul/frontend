@@ -16,6 +16,16 @@
           <div class="flex flex-col w-full">
             <h3 class="leading-none">{{ shop.name }}</h3>
             <div class="text-light">{{ shop.address.county }}</div>
+            <div v-if="shop.author" class="flex items-center mt-1">
+              <div class="w-5 mr-2">
+                <img
+                  class="rounded-full"
+                  :src="shop.author.picture.url"
+                  @error="(e) => (e.target.src = '/img/placeholder.png')"
+                />
+              </div>
+              {{ shop.author.name }}
+            </div>
             <hr class="mt-2 mb-1" />
             <div class="text-light flex flex-wrap text-xs">
               <div class="mr-2">

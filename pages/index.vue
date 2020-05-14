@@ -52,6 +52,7 @@ export default {
       return { news }
     } catch (e) {
       console.log(e)
+      return { news: [] }
     }
   },
   computed: {

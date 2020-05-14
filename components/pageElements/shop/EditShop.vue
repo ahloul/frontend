@@ -450,7 +450,7 @@
             class="primary my-10 ml-auto"
             :class="{ 'spinner-light': loadState.create || loadState.update }"
           >
-            {{ submitButtonText }}
+            {{ $t(submitButtonText) }}
           </button>
         </div>
       </form>

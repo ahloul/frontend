@@ -42,11 +42,6 @@
             ><icon name="phone" /> {{ $t('action.call') }}</a
           >
         </div>
-        <div v-if="$device.isMobileOrTablet" class="ml-3">
-          <button class="link" @click="shareWith">
-            <icon name="share-outline" width="28" height="28" />
-          </button>
-        </div>
       </div>
       <div>
         <button class="icon" @click="openTab = 1">

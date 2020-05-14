@@ -1,47 +1,45 @@
 <template>
-  <div class="container max-w-4xl mt-3">
-    <!-- CTA -->
-    <div class="flex flex-col">
-      <div class="flex">
-        <div class="ml-auto text-primary">
-          <button class="link icon-r" @click="$router.push('/shop/edit')">
-            {{ $t('shop.settings') }}
-            <icon name="settings-outline" class="mx-1" />
-          </button>
-        </div>
-      </div>
+  <div class="container max-w-4xl mt-0 px-2 mb-5 mb-12">
+    <div class="my-3 flex justify-end">
+      <n-link
+        class="primary icon-l inline-block flex items-center"
+        to="/shop/edit"
+      >
+        <icon name="settings-outline" class="mr-1" /> {{ $t('shop.settings') }}
+      </n-link>
     </div>
-
     <div
       class="hero-wrap h-48 my-3"
       :style="{
         backgroundImage: `url('${shop.picture.url}')`,
       }"
     ></div>
-    <div class="flex items-end -mt-10 md:ml-10">
+    <div class="flex items-center md:ml-10 mb-2">
       <div class="p-2 bg-white rounded shadow-sm">
         <img
           :src="shop.logo.url"
           alt=""
-          width="100"
+          class="object-center w-24"
           @error="(e) => (e.target.src = '/img/placeholder.png')"
         />
       </div>
-      <div class="ml-2 select-none">
-        <span class="leading-snug text-2xl">{{ shop.name }}</span>
-        <div v-if="shop.address" class="leading-none text-light">
+      <div class="ml-2 select-none truncate">
+        <span class="text-2xl">{{ shop.name }}</span>
+        <div v-if="shop.address" class="text-light">
           {{ shop.address.city }}
+        </div>
+        <div class="hidden md:block mt-2">
+          <a :href="`tel:${shop.contact.phone}`">{{ shop.contact.phone }}</a>
         </div>
       </div>
     </div>
-
-    <div class="flex mt-3 md:ml-10 justify-end">
-      <div class="flex flex-col mr-auto">
-        <div class="w-full">
+    <div class="flex md:ml-10 justify-end">
+      <div class="flex items-center mr-auto">
+        <div class="md:hidden inline-block w-full">
           <a
             :href="`tel:${shop.contact.phone}`"
             class="button cta bg-tertiary icon-r"
-            ><icon name="phone" /> {{ $t('call') }}</a
+            ><icon name="phone" /> {{ $t('action.call') }}</a
           >
         </div>
       </div>
@@ -66,7 +64,7 @@
         </button>
       </div>
     </div>
-    <div class="mt-3 select-none">
+    <div class="mt-2 select-none">
       <div class="col-span-1"><!-- Todo: Opening Times here --></div>
       <div v-if="openTab === 1" class="card col-span-4">
         <div v-if="shop.deliveryOptions" class="flex flex-wrap justify-start">
@@ -76,16 +74,17 @@
             class="mt-2"
           >
             <span v-if="deliveryOption === 'LD'" class="tag mr-1">
-              {{ $t('delivery_options.options.local_delivery.name') }}
+              Lokale Lieferung
             </span>
             <span v-if="deliveryOption === 'PU'" class="tag mr-1">
-              {{ $t('delivery_options.options.parcel.name') }}
+              Abholung
             </span>
             <span v-if="deliveryOption === 'MU'" class="tag mr-1">
-              {{ $t('delivery_options.options.parcel.name') }}
+              Postversand
             </span>
           </div>
         </div>
+        <!-- Content -->
         <!-- Content -->
         <empty-content
           v-if="!shop.description"
@@ -98,7 +97,7 @@
           <div v-html="shop.description"></div>
         </div>
         <div v-if="shop.contact" class="flex justify-end">
-          <ul class="flex items-center">
+          <ul class="flex items-end">
             <li class="mx-2">
               <a
                 v-if="shop.contact.instagram"
@@ -141,6 +140,25 @@
       </div>
       <div v-else-if="openTab === 2">
         <div class="grid md:grid-cols-3 gap-2">
+          <div class="card text-center md:text-left select-none">
+            <div
+              v-for="(weekDay, name) in shop.openingHours"
+              :key="name"
+              class="my-2"
+            >
+              <span class="font-bold text-primary"
+                >{{ $t(`delivery_options.days_long.${name}`) }}
+              </span>
+              <div class="text-light">
+                {{ weekDay.length ? '' : 'Geschlossen' }}
+                <div v-for="(time, index) in weekDay" :key="index">
+                  <span v-if="time.allDayOpen">Ganztätig geöffnet</span>
+                  <span v-else>{{ time.open }} - {{ time.close }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <div class="card md:col-span-2">
             <div class="flex flex-col">
               <div
@@ -154,7 +172,7 @@
                   {{ shop.address.postalCode }} {{ shop.address.city }}
                   {{
                     shop.address.district === shop.address.city
-                      ? $t('empty')
+                      ? ''
                       : shop.address.district
                   }}
                 </div>
@@ -164,26 +182,6 @@
                 :position="shop.displayPosition"
                 :polygon="shop.polygonCoordinates"
               />
-            </div>
-          </div>
-          <div class="card text-center md:text-left select-none">
-            <div
-              v-for="(weekDay, name) in shop.openingHours"
-              :key="name"
-              class="my-2"
-            >
-              <span class="font-bold text-primary"
-                >{{ $t(`delivery_options.days_long.${name}`) }}
-              </span>
-              <div class="text-light">
-                {{ weekDay.length ? $t('empty') : $t('shop.closed') }}
-                <div v-for="(time, index) in weekDay" :key="index">
-                  <span v-if="time.allDayOpen">{{
-                    $t('shop.open_all_day')
-                  }}</span>
-                  <span v-else>{{ time.open }} - {{ time.close }}</span>
-                </div>
-              </div>
             </div>
           </div>
         </div>

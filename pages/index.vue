@@ -1,33 +1,29 @@
 <template>
-  <div class="container">
-    <div class="card text-light mt-3 max-w-xl mx-auto">
+  <div class="">
+    <div class="card text-light mt-3 max-w-3xl mx-auto">
       <p class="max-w-md mx-auto pb-3 text-center">
         {{ $t('processes.intro') }}
       </p>
       <div class="w-auto max-w-xs mx-auto">
         <n-link class="button cta bg-tertiary mx-auto" to="/category">
-          {{ $t('processes.add_article') }}
+          {{ $t('processes.add_product') }}
         </n-link>
       </div>
     </div>
-    <div class="flex flex-col max-w-xl mx-auto">
-      <div
-        v-for="entry in news"
-        :key="entry.id"
-        class="card w-full mt-3 mx-auto"
-      >
+    <div class="news-grid">
+      <div v-for="entry in news" :key="entry.id" class="card news-item">
         <img
           v-if="entry.heroImage"
           :src="`https:${entry.heroImage.fields.file.url}`"
           alt=""
         />
-        <h2 v-if="entry.title" class="mt-2">{{ entry.title }}</h2>
+        <h2 v-if="entry.title" class="mt-2 leading-snug">{{ entry.title }}</h2>
         <client-only>
           <timeago
             v-if="entry.createdAt"
             :datetime="entry.createdAt"
             :locale="$t('lang_code')"
-            class="text-light"
+            class="text-light text-sm"
         /></client-only>
         <div v-if="entry.body" class="mt-2" v-html="entry.body" />
       </div>
@@ -65,5 +61,18 @@ export default {
 <style lang="scss" scoped>
 .hero {
   box-shadow: inset 0 0 0 100vw rgba(78, 33, 90, 0.3);
+}
+
+.news {
+  &-grid {
+    @apply gap-2 mx-auto max-w-3xl;
+    columns: 1;
+    @screen sm {
+      columns: 2;
+    }
+  }
+  &-item {
+    @apply mt-2 w-full inline-block;
+  }
 }
 </style>

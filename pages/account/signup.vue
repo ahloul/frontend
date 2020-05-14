@@ -93,11 +93,33 @@
               </validation-provider>
             </label>
 
-            <div class="mt-5 text-light text-sm">
-              Indem du auf „Neu Registrieren“ klickst, stimmst du unseren
-              <n-link to="/terms">Geschäftsbedingungen</n-link> zu. In unserer
-              <n-link to="/privacy">Datenrichtlinie</n-link> erfährst du, wie
-              wir deine Daten erfassen.
+            <div class="text-sm">
+              <label class="flex items-start">
+                <div class="flex-initial mr-2">
+                  <validation-provider
+                    v-slot="{ errors }"
+                    name="agb"
+                    mode="lazy"
+                    :rules="{ required: { allowFalse: false } }"
+                  >
+                    <input
+                      v-model="legalCheck"
+                      type="checkbox"
+                      class="form-checkbox mt-2 border"
+                      :class="[errors[0] ? 'border-danger' : '']"
+                    />
+                  </validation-provider>
+                </div>
+                <div>
+                  <span class=""
+                    >Indem du auf „Neu Registrieren“ klickst, stimmst du unseren
+                    <n-link to="/terms">Geschäftsbedingungen</n-link> zu. In
+                    unserer
+                    <n-link to="/privacy">Datenrichtlinie</n-link> erfährst du,
+                    wie wir deine Daten erfassen.</span
+                  >
+                </div>
+              </label>
             </div>
             <div class="mt-5">
               <span class="block w-full">
@@ -115,6 +137,7 @@
                 <button
                   type="button"
                   class="cta w-full"
+                  :disable="legalCheck"
                   @click.prevent="$router.push('/')"
                 >
                   {{ $t('login.back_to_login') }}
@@ -136,6 +159,7 @@ export default {
   middleware: 'notAuthenticated',
 
   data: () => ({
+    legalCheck: false,
     pending: false,
     guest: {
       name: '',

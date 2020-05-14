@@ -14,7 +14,7 @@
 		"price_hint": "cioè 12,00",
 		"public": "Pubblico",
 		"public_prefix": "L'articolo sarà",
-		"public_suffix": "",
+		"public_suffix": "pubblicato",
 		"stock": "inventario",
 		"tax_free": "Senza tasse",
 		"tax_rate": "Aliquota fiscale",
@@ -64,6 +64,7 @@
 			"tuesday": "tu",
 			"wednesday": "NOI"
 		},
+		"non_public": "non pubblico e non visibile a nessuno",
 		"offer_prefix": "io offro",
 		"offer_suffix": "",
 		"opening_times": "Orari di apertura",
@@ -81,6 +82,8 @@
 				"name": "Raccogliere"
 			}
 		},
+		"public": "pubblico e visibile a tutti",
+		"public_prefix": "Lo sarà il negozio",
 		"section_name": "Opzioni di consegna"
 	},
 	"description": {
@@ -92,9 +95,13 @@
 	"enter_login": "All'accesso",
 	"enter_shop": "Al negozio",
 	"enter_website": "Al sito web",
+	"error": {
+		"connection": "Probabilmente hai problemi con Internet"
+	},
 	"information": {
+		"error_occurred": "Si è verificato un errore. Si prega di aggiornare la pagina.",
 		"go_to_shop": "Vai a fare la spesa!",
-		"intro": "Grazie per la tua registrazione! Con pochi passaggi ti aiutiamo a creare il tuo negozio. Eccoci qui!",
+		"intro": "Con pochi passaggi ti aiutiamo a creare il tuo negozio. Eccoci qui!",
 		"legal_form": "Forma legale",
 		"legal_form_options": {
 			"independent": "indipendente",
@@ -110,7 +117,8 @@
 		"ready_to_start": "Sei pronto per iniziare ora.",
 		"section_name": "Informazione",
 		"shop_created_confirmation": "Hai creato con successo un negozio!",
-		"shop_error_confirmation": "Controlla di nuovo di aver compilato tutti i campi correttamente."
+		"shop_error_confirmation": "Controlla di nuovo di aver compilato tutti i campi correttamente.",
+		"shop_not_found": "Il tuo negozio non è stato trovato. Creane uno nuovo."
 	},
 	"lang_code": "IT",
 	"login": {
@@ -126,6 +134,7 @@
 	"navbar": {
 		"create_shop": "Nuovo negozio",
 		"imprint": "impronta",
+		"news": "notizia",
 		"privacy_policy": "POLITICA SULLA RISERVATEZZA",
 		"processes": "Processi",
 		"shop": "negozio",
@@ -142,15 +151,18 @@
 	},
 	"processes": {
 		"add_article": "Aggiungi articolo",
+		"add_product": "Aggiungi prodotto",
 		"intro": "Siamo attualmente in costruzione. Ora puoi riempire il tuo negozio di vita aggiungendo i tuoi primi articoli. Questo ci aiuterà a sviluppare ulteriormente la nostra piattaforma.",
 		"next": "Il prossimo",
 		"previous": "Precedente",
 		"welcome": "Un caldo benvenuto"
 	},
 	"profile": {
+		"add_shop": "Crea un altro negozio",
 		"city": "città",
 		"description": "Descrizione del profilo"
 	},
+	"refresh_now": "Aggiorna ora",
 	"remove": "Rimuovere",
 	"save": "Salvare",
 	"select_image": "Seleziona immagine",
@@ -161,12 +173,16 @@
 		"register": "Registrare",
 		"successful_registration": "La tua registrazione è andata a buon fine! Controlla la tua casella di posta e conferma il tuo indirizzo e-mail."
 	},
+	"skip": "Salta",
 	"toast": {
 		"created_article": "Articolo creato",
 		"created_category": "Categoria creata",
 		"deleted_article": "Articolo eliminato",
 		"logout": "Disconnesso 👋",
+		"not_authorized": "non sei autorizzato",
 		"saved_profile": "Profilo salvato",
+		"shop_changed": "Il negozio è cambiato!",
+		"something_wrong": "Qualcosa è andato storto 👎",
 		"updated_category": "Categoria aggiornata",
 		"updated_profile": "profilo aggiornato",
 		"updated_shop": "Negozio aggiornato",

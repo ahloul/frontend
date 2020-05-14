@@ -1,5 +1,5 @@
 <template>
-  <div class="p-2 md:p-3 z-50">
+  <div class="z-50">
     <nav class="navbar">
       <ul>
         <li v-if="haveShop">
@@ -54,7 +54,7 @@ export default {
 </script>
 <style lang="scss">
 .navbar {
-  @apply bg-white rounded-lg antialiased shadow p-2;
+  @apply bg-white antialiased shadow-lg p-2;
 
   ul {
     @apply list-none overflow-hidden flex justify-between w-full max-w-sm mx-auto;

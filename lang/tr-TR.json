@@ -14,7 +14,7 @@
 		"price_hint": "yani 12,00",
 		"public": "Halk, umumi, kamu",
 		"public_prefix": "Makale olacak",
-		"public_suffix": "",
+		"public_suffix": "Yayınlanan",
 		"stock": "Envanter",
 		"tax_free": "Vergisiz",
 		"tax_rate": "Vergi oranı",
@@ -64,6 +64,7 @@
 			"tuesday": "Tu",
 			"wednesday": "Biz"
 		},
+		"non_public": "herkese açık değil ve herkes tarafından görülemiyor",
 		"offer_prefix": "teklif ediyorum",
 		"offer_suffix": "",
 		"opening_times": "Açılış saatleri",
@@ -81,6 +82,8 @@
 				"name": "Almak"
 			}
 		},
+		"public": "herkese açık ve herkes tarafından görülebilir",
+		"public_prefix": "Dükkan olacak",
 		"section_name": "Teslim seçenekleri"
 	},
 	"description": {
@@ -92,9 +95,13 @@
 	"enter_login": "Giriş için",
 	"enter_shop": "Mağazaya",
 	"enter_website": "Web sitesine",
+	"error": {
+		"connection": "Muhtemelen internetinizle ilgili sorunlarınız"
+	},
 	"information": {
+		"error_occurred": "Bir hata oluştu. Lütfen sayfayı yenileyin.",
 		"go_to_shop": "Dükkana git!",
-		"intro": "Kaydınız için teşekkürler! Sadece birkaç adımda mağazanızı oluşturmanıza yardımcı oluyoruz. İşte başlıyoruz!",
+		"intro": "Sadece birkaç adımda mağazanızı oluşturmanıza yardımcı oluyoruz. İşte başlıyoruz!",
 		"legal_form": "Yasal şekli",
 		"legal_form_options": {
 			"independent": "Bağımsız",
@@ -110,7 +117,8 @@
 		"ready_to_start": "Şimdi başlamaya hazırsınız.",
 		"section_name": "bilgi",
 		"shop_created_confirmation": "Başarıyla bir dükkan yarattınız!",
-		"shop_error_confirmation": "Tüm alanları doğru doldurup doldurmadığınızı tekrar kontrol edin."
+		"shop_error_confirmation": "Tüm alanları doğru doldurup doldurmadığınızı tekrar kontrol edin.",
+		"shop_not_found": "Dükkan bulunamadı. Yeni bir tane oluşturun."
 	},
 	"lang_code": "TR",
 	"login": {
@@ -126,6 +134,7 @@
 	"navbar": {
 		"create_shop": "Yeni Mağaza",
 		"imprint": "damga",
+		"news": "HABERLER",
 		"privacy_policy": "Gizlilik Politikası",
 		"processes": "Süreçler",
 		"shop": "Dükkan",
@@ -142,15 +151,18 @@
 	},
 	"processes": {
 		"add_article": "Makale Ekle",
+		"add_product": "Ürün ekle",
 		"intro": "Şu anda yapım aşamasındayız. Artık ilk makalelerinizi ekleyerek mağazanıza hayat verebilirsiniz. Bu, platformumuzu daha da geliştirmemize yardımcı olacaktır.",
 		"next": "Sonraki",
 		"previous": "Önceki",
 		"welcome": "Sıcak bir karşılama"
 	},
 	"profile": {
+		"add_shop": "Başka bir mağaza oluştur",
 		"city": "Kent",
 		"description": "profil açıklaması"
 	},
+	"refresh_now": "Şimdi yenile",
 	"remove": "Kaldır",
 	"save": "Kayıt etmek",
 	"select_image": "Fotoğraf seç",
@@ -161,12 +173,16 @@
 		"register": "Kayıt olmak",
 		"successful_registration": "Kaydınız başarılı oldu! Gelen kutunuzu kontrol edin ve e-posta adresinizi onaylayın."
 	},
+	"skip": "atlamak",
 	"toast": {
 		"created_article": "Makale Oluşturuldu",
 		"created_category": "Kategori Oluşturuldu",
 		"deleted_article": "Silinmiş Makale",
 		"logout": "Oturumu kapatıldı 👋",
+		"not_authorized": "yetkili değilsin",
 		"saved_profile": "Kayıtlı Profil",
+		"shop_changed": "Mağaza değişti!",
+		"something_wrong": "Bir şeyler ters gitti 👎",
 		"updated_category": "Güncellenmiş Kategori",
 		"updated_profile": "Güncellenmiş Profil",
 		"updated_shop": "Güncellenmiş Mağaza",

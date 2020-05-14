@@ -447,8 +447,8 @@
           </button>
           <button
             type="submit"
-            class="primary my-10 ml-auto"
-            :class="{ 'spinner-light': loadState.create || loadState.update }"
+            class="cta bg-tertiary my-10 ml-auto"
+            :class="{ 'spinner-dark': loadState.create || loadState.update }"
           >
             {{ $t(submitButtonText) }}
           </button>
@@ -479,6 +479,7 @@ export default {
     coreShop: {
       type: Object,
       default: () => ({
+        published: true,
         name: null,
         size: null,
         phone: null,

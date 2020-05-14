@@ -1,18 +1,20 @@
 <template>
   <div class="container my-5">
-    <div class="max-w-3xl mx-auto" v-html="$md.render(content.content)" />
+    <div v-html="$md.render(content)" />
   </div>
 </template>
 
 <script>
 import { createClient } from '~/plugins/modules/contentful.js'
+
 const client = createClient()
 
 export default {
   name: 'Imprint',
   async asyncData({ params }) {
-    const { fields } = await client.getEntry('7a1SZ1ECcC0TnVozMRKRAt')
-    return { content: fields }
+    const { fields } = await client.getEntry('383HaOpwTeaZpMV4nvJVTp')
+    console.log(fields.content)
+    return { content: fields.content }
   },
   data: () => ({}),
   head() {

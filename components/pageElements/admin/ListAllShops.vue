@@ -14,7 +14,7 @@
       <div>
         <div class="flex items-start">
           <div class="flex flex-col w-full">
-            <h3 class="leading-none">{{ shop.name }}</h3>
+            <h3 class="leading-none break-all">{{ shop.name }}</h3>
             <div class="text-light">{{ shop.address.county }}</div>
             <div v-if="shop.author" class="flex items-center mt-1">
               <div class="w-5 mr-2">

@@ -11,7 +11,7 @@ const client = createClient()
 export default {
   name: 'Privacy',
   async asyncData({ params }) {
-    const { fields } = await client.getEntry('3QLBYuZtuw64ICL4xwppOE')
+    const { fields } = await client.getEntry('49J54qlvRwgiHzdXm0qlKU')
     return { content: fields }
   },
   data: () => ({}),

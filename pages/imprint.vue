@@ -1,6 +1,6 @@
 <template>
-  <div class="container my-5">
-    <div v-html="$md.render(content)" />
+  <div class="container my-5 markdown-body">
+    <div class="card w-full" v-html="$md.render(content)" />
   </div>
 </template>
 
@@ -24,5 +24,3 @@ export default {
   },
 }
 </script>
-
-<style lang="css" scoped></style>

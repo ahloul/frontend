@@ -2,6 +2,11 @@
 	"account": {
 		"verify_content": "¡Dar una buena acogida! Gracias por su verificación"
 	},
+	"action": {
+		"call": "Llamada",
+		"close": "Cerrar",
+		"detail": "Detalle"
+	},
 	"add": "Añadir",
 	"article": {
 		"create_stock": "Crear inventario",
@@ -23,12 +28,27 @@
 	"back": "atrás",
 	"back_to_start": "volver a empezar",
 	"call": "LLÁMANOS",
+	"callback": {
+		"logging_in": "Iniciará sesión ..."
+	},
 	"category": {
+		"article": "Artículo",
 		"create": "Crear Categoría",
 		"delete_confirmation": "¿Seguro que quieres eliminar la categoría? ¡Los artículos contenidos en él también se eliminarán irremediablemente!",
+		"euro": "€",
 		"hint": "es decir, bebidas",
 		"name": "Nombre de categoría",
 		"title": "CATEGORÍA"
+	},
+	"components": {
+		"menu": {
+			"create": "Crear menú",
+			"name": "menú"
+		},
+		"shop": {
+			"create": "Crear tienda",
+			"name": "Tienda"
+		}
 	},
 	"confirm": "bueno",
 	"contact_data": {
@@ -92,11 +112,15 @@
 	},
 	"dismiss": "abortar",
 	"edit": "Editar",
+	"empty": "",
 	"enter_login": "Al inicio de sesión",
 	"enter_shop": "A la tienda",
 	"enter_website": "Al sitio web",
 	"error": {
 		"connection": "Probablemente tengas problemas con tu internet"
+	},
+	"footer_bar": {
+		"copyright": "¡Consíguelo! © 2020"
 	},
 	"information": {
 		"error_occurred": "Ocurrió un error. Por favor actualiza la página.",
@@ -124,6 +148,9 @@
 	"login": {
 		"back_to_login": "Atrás para iniciar sesión",
 		"confirm_password": "Confirmar contraseña",
+		"email": "Email",
+		"facebook": "Facebook",
+		"google": "GOOGLE",
 		"help": "Ayuda con el registro?",
 		"login": "Iniciar sesión",
 		"password": "Contraseña",
@@ -160,13 +187,17 @@
 	"profile": {
 		"add_shop": "Crea otra tienda",
 		"city": "ciudad",
-		"description": "Descripción del perfil"
+		"description": "Descripción del perfil",
+		"logout": "Cerrar sesión",
+		"name": "Nombre"
 	},
 	"refresh_now": "Refresca ahora",
 	"remove": "retirar",
 	"save": "Salvar",
 	"select_image": "Seleccionar imagen",
 	"shop": {
+		"closed": "Cerrado",
+		"open_all_day": "Abierto todo el día",
 		"settings": "Ajustes"
 	},
 	"signup": {
@@ -177,6 +208,7 @@
 	"toast": {
 		"created_article": "Artículo creado",
 		"created_category": "Categoría creada",
+		"created_menu": "Menú creado",
 		"deleted_article": "Artículo eliminado",
 		"logout": "Desconectado 👋",
 		"not_authorized": "usted no está autorizado",

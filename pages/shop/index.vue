@@ -1,5 +1,16 @@
 <template>
   <div class="container max-w-4xl mt-0 px-2 mb-5 mb-12">
+    <static-modal
+      :show="showComponent"
+      :dismiss="$t('dismiss')"
+      @dismiss="showComponent = false"
+    >
+      <div class="flex flex-col justify-center">
+        <button class="primary mx-auto" @click="createComponent(['menu'])">
+          {{ $t('components.menu.create') }}
+        </button>
+      </div>
+    </static-modal>
     <div class="my-3 flex justify-end">
       <n-link
         class="primary icon-l inline-block flex items-center"
@@ -84,8 +95,7 @@
             </span>
           </div>
         </div>
-        <!-- Content -->
-        <!-- Content -->
+        <!-- Description -->
         <empty-content
           v-if="!shop.description"
           :content="$t('no_description')"
@@ -95,6 +105,19 @@
         <div v-else>
           <hr class="my-5" />
           <div v-html="shop.description"></div>
+        </div>
+
+        <!-- Description -->
+        <empty-content
+          v-if="!shop.components.includes('menu')"
+          class="mt-5"
+          emit
+          @action="showComponent = true"
+          ><icon name="plus"
+        /></empty-content>
+        <div v-else>
+          <hr class="my-5" />
+          <menu-component :shop="shop" />
         </div>
         <div v-if="shop.contact" class="flex justify-end">
           <ul class="flex items-end">
@@ -191,24 +214,41 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { merge } from 'lodash'
+import { mapGetters, mapActions } from 'vuex'
 import EmptyContent from '~/components/elements/EmptyContent'
 import HereMap from '~/components/elements/Map'
+import StaticModal from '~/components/elements/StaticModal'
+import MenuComponent from '~/components/pageElements/shop/Menu'
 export default {
   name: 'Shop',
   middleware: 'authenticated',
   components: {
     EmptyContent,
     HereMap,
+    MenuComponent,
+    StaticModal,
   },
   data: () => ({
     iconSize: 22,
     openTab: 1,
+    showComponent: false,
   }),
   computed: {
     ...mapGetters({
       shop: 'shop/shop',
     }),
+  },
+  methods: {
+    ...mapActions(['getMe']),
+    async createComponent(name) {
+      const components = merge(this.shop.components, name)
+      await this.$axios.patch(`/api/shops/${this.shop._id}`, { components })
+      await this.getMe()
+      this.$router.push('/category')
+      this.$store.dispatch('toast/add', { message: `toast.created_menu` })
+      this.showComponent = false
+    },
   },
 }
 </script>

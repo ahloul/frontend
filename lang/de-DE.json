@@ -2,6 +2,11 @@
 	"account": {
 		"verify_content": "Willkommen zurück! Danke für deine Verifizireung"
 	},
+	"action": {
+		"call": "Anruf",
+		"close": "Schließen",
+		"detail": "Detail"
+	},
 	"add": "Hinzufügen",
 	"article": {
 		"create_stock": "Lagerbestand anlegen",
@@ -23,12 +28,27 @@
 	"back": "Zurück",
 	"back_to_start": "Zurück auf Start",
 	"call": "Anrufen",
+	"callback": {
+		"logging_in": "Sie werden angemeldet ..."
+	},
 	"category": {
+		"article": "Artikel",
 		"create": "Kategorie anlegen",
 		"delete_confirmation": "Bist Du sicher, dass Du die Kategorie löschen möchtest? Die darin enthaltenen Artikel werden ebenfalls unwideruflich gelöscht!",
+		"euro": "€",
 		"hint": "z.B. Getränke",
 		"name": "Name der Kategorie",
 		"title": "Kategorie"
+	},
+	"components": {
+		"menu": {
+			"create": "Speisekarte erstellen",
+			"name": "Speisekarte"
+		},
+		"shop": {
+			"create": "Shop erstellen",
+			"name": "Geschäft"
+		}
 	},
 	"confirm": "Okay",
 	"contact_data": {
@@ -92,11 +112,15 @@
 	},
 	"dismiss": "Abbruch",
 	"edit": "Editieren",
+	"empty": "",
 	"enter_login": "Zum Login",
 	"enter_shop": "Zum Shop",
 	"enter_website": "Zur Webseite",
 	"error": {
 		"connection": "Sie haben wahrscheinlich Probleme mit Ihrem Internet"
+	},
+	"footer_bar": {
+		"copyright": "Kapiert! © 2020"
 	},
 	"information": {
 		"error_occurred": "Ein Fehler ist aufgetreten. Bitte aktualisieren Sie die Seite.",
@@ -124,6 +148,9 @@
 	"login": {
 		"back_to_login": "Zurück zum Login",
 		"confirm_password": "Kennwort wiederholen",
+		"email": "Email",
+		"facebook": "Facebook",
+		"google": "GOOGLE",
 		"help": "Hilfe bei der Anmeldung?",
 		"login": "Anmelden",
 		"password": "Kennwort",
@@ -160,13 +187,17 @@
 	"profile": {
 		"add_shop": "Erstellen Sie einen anderen Shop",
 		"city": "Wohnort",
-		"description": "Profilbeschreibung"
+		"description": "Profilbeschreibung",
+		"logout": "Ausloggen",
+		"name": "Name"
 	},
 	"refresh_now": "Jetzt aktualisieren",
 	"remove": "Entfernen",
 	"save": "Speichern",
 	"select_image": "Bild auswählen",
 	"shop": {
+		"closed": "Geschlossen",
+		"open_all_day": "Ganztags geöffnet",
 		"settings": "Einstellungen"
 	},
 	"signup": {
@@ -177,6 +208,7 @@
 	"toast": {
 		"created_article": "Artikel erstellt",
 		"created_category": "Kategorie erstellt",
+		"created_menu": "Speisekarte erstellt",
 		"deleted_article": "Artikel gelöscht",
 		"logout": "Ausgeloggt 👋",
 		"not_authorized": "Sie sind nicht berechtigt",

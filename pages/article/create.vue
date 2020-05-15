@@ -5,14 +5,13 @@
       :image="article.picture"
       @target="selectImage"
     />
-
     <ValidationObserver v-slot="{ handleSubmit }" slim>
       <form @submit.prevent="handleSubmit(submit)">
         <!-- userLocation INPUT -->
         <label class="block">
           <span>{{ $t('category.title') }}</span>
           <autocomplete
-            endpoint="categories"
+            :endpoint="`categories`"
             :value="articleCategory"
             @selection="selectCategory"
           />

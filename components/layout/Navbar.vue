@@ -7,7 +7,7 @@
             ><icon name="layers-outline" width="20"
           /></n-link>
         </li>
-        <li v-if="haveShop">
+        <li v-if="haveShop && shop.components.includes('menu')">
           <n-link to="/category"
             ><icon name="cube-outline" width="20"
           /></n-link>
@@ -38,12 +38,16 @@
 /**
  * Default top navigation for mobile view.
  */
-import { mapGetters } from 'vuex'
+import { mapGetters, mapState } from 'vuex'
 
 export default {
   name: 'Navbar',
   computed: {
     ...mapGetters(['haveShop']),
+    ...mapState({
+      // arrow functions can make the code very succinct!
+      shop: (state) => state.shop.shop,
+    }),
   },
   methods: {
     toggleNavbar() {

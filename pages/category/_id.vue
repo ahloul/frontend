@@ -7,7 +7,6 @@
         ><icon name="plus" /> {{ $t('add') }}</n-link
       >
     </div>
-
     <n-link
       :to="`/category/edit/${category._id}`"
       class="headline text-3xl inline-flex"
@@ -90,6 +89,8 @@ export default {
   async asyncData({ $axios, params, query }) {
     try {
       const category = await $axios.$get(`/api/categories/${params.id}`)
+      console.log('category')
+      console.log(category)
       const { count, nextPage, prevPage, rows } = await $axios.$get(
         `/api/articles?categoryId=${category._id}`,
         {
@@ -101,7 +102,6 @@ export default {
       console.log(error)
       return {
         category: {},
-        articles: [],
         showEmpty: true,
         nextPage: 0,
         prevPage: 0,

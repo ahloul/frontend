@@ -2,6 +2,11 @@
 	"account": {
 		"verify_content": "Tekrar hoşgeldiniz! Doğrulamanız için teşekkürler"
 	},
+	"action": {
+		"call": "Telefon etmek",
+		"close": "Kapat",
+		"detail": "Detay"
+	},
 	"add": "Eklemek",
 	"article": {
 		"create_stock": "Envanter Oluştur",
@@ -23,12 +28,27 @@
 	"back": "Geri",
 	"back_to_start": "Başlangıca geri dön",
 	"call": "Bizi arayın",
+	"callback": {
+		"logging_in": "Giriş yapacaksınız ..."
+	},
 	"category": {
+		"article": "makale",
 		"create": "Kategori Oluştur",
 		"delete_confirmation": "Kategoriyi silmek istediğinizden emin misiniz? İçindeki makaleler de geri alınamayacak şekilde silinecek!",
+		"euro": "€",
 		"hint": "yani içecekler",
 		"name": "Kategorinin Adı",
 		"title": "Kategori"
+	},
+	"components": {
+		"menu": {
+			"create": "Oluştur menüsü",
+			"name": "Menü"
+		},
+		"shop": {
+			"create": "Mağaza Oluştur",
+			"name": "Dükkan"
+		}
 	},
 	"confirm": "tamam",
 	"contact_data": {
@@ -92,11 +112,15 @@
 	},
 	"dismiss": "İptal",
 	"edit": "Düzenle",
+	"empty": "",
 	"enter_login": "Giriş için",
 	"enter_shop": "Mağazaya",
 	"enter_website": "Web sitesine",
 	"error": {
 		"connection": "Muhtemelen internetinizle ilgili sorunlarınız"
+	},
+	"footer_bar": {
+		"copyright": "anla! © 2020"
 	},
 	"information": {
 		"error_occurred": "Bir hata oluştu. Lütfen sayfayı yenileyin.",
@@ -124,6 +148,9 @@
 	"login": {
 		"back_to_login": "Giriş sayfasına geri dön",
 		"confirm_password": "Şifreyi Onayla",
+		"email": "E-posta",
+		"facebook": "Facebook",
+		"google": "Google",
 		"help": "Kayıt ile ilgili yardım?",
 		"login": "Oturum aç",
 		"password": "Parola",
@@ -160,13 +187,17 @@
 	"profile": {
 		"add_shop": "Başka bir mağaza oluştur",
 		"city": "Kent",
-		"description": "profil açıklaması"
+		"description": "profil açıklaması",
+		"logout": "Çıkış Yap",
+		"name": "isim"
 	},
 	"refresh_now": "Şimdi yenile",
 	"remove": "Kaldır",
 	"save": "Kayıt etmek",
 	"select_image": "Fotoğraf seç",
 	"shop": {
+		"closed": "kapalı",
+		"open_all_day": "Tüm gün açık",
 		"settings": "ayarlar"
 	},
 	"signup": {
@@ -177,6 +208,7 @@
 	"toast": {
 		"created_article": "Makale Oluşturuldu",
 		"created_category": "Kategori Oluşturuldu",
+		"created_menu": "Menü Oluşturuldu",
 		"deleted_article": "Silinmiş Makale",
 		"logout": "Oturumu kapatıldı 👋",
 		"not_authorized": "yetkili değilsin",

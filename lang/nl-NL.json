@@ -2,6 +2,11 @@
 	"account": {
 		"verify_content": "Welkom terug! Bedankt voor je verificatie"
 	},
+	"action": {
+		"call": "telefoontje",
+		"close": "Dichtbij",
+		"detail": "Detail"
+	},
 	"add": "Toevoegen",
 	"article": {
 		"create_stock": "Inventaris aanmaken",
@@ -23,12 +28,27 @@
 	"back": "terug",
 	"back_to_start": "Terug naar start",
 	"call": "BEL ONS",
+	"callback": {
+		"logging_in": "U wordt ingelogd ..."
+	},
 	"category": {
+		"article": "Artikel",
 		"create": "Categorie maken",
 		"delete_confirmation": "Weet u zeker dat u de categorie wilt verwijderen? De artikelen in het artikel worden ook onherroepelijk verwijderd!",
+		"euro": "€",
 		"hint": "d.w.z. drankjes",
 		"name": "Naam van categorie",
 		"title": "Categorie"
+	},
+	"components": {
+		"menu": {
+			"create": "Menu maken",
+			"name": "Menu"
+		},
+		"shop": {
+			"create": "Maak een winkel",
+			"name": "Winkel"
+		}
 	},
 	"confirm": "oke",
 	"contact_data": {
@@ -92,11 +112,15 @@
 	},
 	"dismiss": "afbreken",
 	"edit": "BEWERK",
+	"empty": "",
 	"enter_login": "Naar de login",
 	"enter_shop": "Naar de winkel",
 	"enter_website": "Naar de website",
 	"error": {
 		"connection": "U heeft waarschijnlijk problemen met uw internet"
+	},
+	"footer_bar": {
+		"copyright": "snap je! © 2020"
 	},
 	"information": {
 		"error_occurred": "Er is een fout opgetreden. Gelieve de pagina te vernieuwen.",
@@ -124,6 +148,9 @@
 	"login": {
 		"back_to_login": "Terug naar Inloggen",
 		"confirm_password": "Bevestig wachtwoord",
+		"email": "E-mail",
+		"facebook": "facebook",
+		"google": "Google",
 		"help": "Hulp bij de inschrijving?",
 		"login": "log in",
 		"password": "Wachtwoord",
@@ -160,13 +187,17 @@
 	"profile": {
 		"add_shop": "Maak een andere winkel",
 		"city": "stad",
-		"description": "profiel omschrijving"
+		"description": "profiel omschrijving",
+		"logout": "Uitloggen",
+		"name": "Naam"
 	},
 	"refresh_now": "Ververs nu",
 	"remove": "Verwijderen",
 	"save": "Opslaan",
 	"select_image": "Selecteer foto",
 	"shop": {
+		"closed": "Gesloten",
+		"open_all_day": "De hele dag geopend",
 		"settings": "instellingen"
 	},
 	"signup": {
@@ -177,6 +208,7 @@
 	"toast": {
 		"created_article": "Artikel gemaakt",
 		"created_category": "Categorie gemaakt",
+		"created_menu": "Menu gemaakt",
 		"deleted_article": "Artikel verwijderd",
 		"logout": "Afgemeld 👋",
 		"not_authorized": "JIJ BENT NIET GEAUTORISEERD",

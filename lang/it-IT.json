@@ -2,6 +2,11 @@
 	"account": {
 		"verify_content": "Ben tornato! Grazie per la tua verifica"
 	},
+	"action": {
+		"call": "chiamata",
+		"close": "Vicino",
+		"detail": "dettaglio"
+	},
 	"add": "Inserisci",
 	"article": {
 		"create_stock": "Crea inventario",
@@ -23,12 +28,27 @@
 	"back": "indietro",
 	"back_to_start": "Torna all'inizio",
 	"call": "CHIAMACI",
+	"callback": {
+		"logging_in": "Verrai loggato ..."
+	},
 	"category": {
+		"article": "articolo",
 		"create": "Crea categoria",
 		"delete_confirmation": "Sei sicuro di voler eliminare la categoria? Anche gli articoli in esso contenuti verranno cancellati irrimediabilmente!",
+		"euro": "€",
 		"hint": "cioè bevande",
 		"name": "Nome della categoria",
 		"title": "CATEGORIA"
+	},
+	"components": {
+		"menu": {
+			"create": "Crea menu",
+			"name": "Menu"
+		},
+		"shop": {
+			"create": "Crea un negozio",
+			"name": "negozio"
+		}
 	},
 	"confirm": "va bene",
 	"contact_data": {
@@ -92,11 +112,15 @@
 	},
 	"dismiss": "abortire",
 	"edit": "Modificare",
+	"empty": "",
 	"enter_login": "All'accesso",
 	"enter_shop": "Al negozio",
 	"enter_website": "Al sito web",
 	"error": {
 		"connection": "Probabilmente hai problemi con Internet"
+	},
+	"footer_bar": {
+		"copyright": "prendilo! © 2020"
 	},
 	"information": {
 		"error_occurred": "Si è verificato un errore. Si prega di aggiornare la pagina.",
@@ -124,6 +148,9 @@
 	"login": {
 		"back_to_login": "Torna al login",
 		"confirm_password": "Conferma password",
+		"email": "E-mail",
+		"facebook": "FACEBOOK",
+		"google": "GOOGLE",
 		"help": "Aiuto con la registrazione?",
 		"login": "Accesso",
 		"password": "Parola d'ordine",
@@ -160,13 +187,17 @@
 	"profile": {
 		"add_shop": "Crea un altro negozio",
 		"city": "città",
-		"description": "Descrizione del profilo"
+		"description": "Descrizione del profilo",
+		"logout": "Disconnettersi",
+		"name": "Nome"
 	},
 	"refresh_now": "Aggiorna ora",
 	"remove": "Rimuovere",
 	"save": "Salvare",
 	"select_image": "Seleziona immagine",
 	"shop": {
+		"closed": "Chiuso",
+		"open_all_day": "Aperto tutto il giorno",
 		"settings": "impostazioni"
 	},
 	"signup": {
@@ -177,6 +208,7 @@
 	"toast": {
 		"created_article": "Articolo creato",
 		"created_category": "Categoria creata",
+		"created_menu": "Menu creato",
 		"deleted_article": "Articolo eliminato",
 		"logout": "Disconnesso 👋",
 		"not_authorized": "non sei autorizzato",

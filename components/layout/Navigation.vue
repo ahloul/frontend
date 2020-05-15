@@ -22,7 +22,7 @@
                   {{ $t('navbar.news') }}
                 </n-link>
               </li>
-              <li>
+              <li v-if="shop.components.includes('menu')">
                 <n-link to="/category">
                   {{ $t('navbar.stock') }}
                 </n-link>
@@ -51,7 +51,7 @@
 /**
  * Default top navigation for desktop view.
  */
-import { mapGetters } from 'vuex'
+import { mapGetters, mapState } from 'vuex'
 
 export default {
   name: 'Navigation',
@@ -62,6 +62,10 @@ export default {
   },
   computed: {
     ...mapGetters(['haveShop']),
+    ...mapState({
+      // arrow functions can make the code very succinct!
+      shop: (state) => state.shop.shop,
+    }),
   },
 }
 </script>

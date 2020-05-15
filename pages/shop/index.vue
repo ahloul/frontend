@@ -24,7 +24,7 @@
         />
       </div>
       <div class="ml-2 select-none truncate">
-        <span class="text-2xl">{{ shop.name }}</span>
+        <h3>{{ shop.name }}</h3>
         <div v-if="shop.address" class="text-light">
           {{ shop.address.city }}
         </div>

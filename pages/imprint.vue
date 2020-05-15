@@ -13,7 +13,6 @@ export default {
   name: 'Imprint',
   async asyncData({ params }) {
     const { fields } = await client.getEntry('383HaOpwTeaZpMV4nvJVTp')
-    console.log(fields.content)
     return { content: fields.content }
   },
   data: () => ({}),

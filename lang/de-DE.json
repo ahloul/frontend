@@ -5,6 +5,7 @@
 	"action": {
 		"call": "Anruf",
 		"close": "Schließen",
+		"created": "Erstellt",
 		"detail": "Detail"
 	},
 	"add": "Hinzufügen",
@@ -45,9 +46,13 @@
 			"create": "Speisekarte erstellen",
 			"name": "Speisekarte"
 		},
-		"shop": {
-			"create": "Shop erstellen",
-			"name": "Geschäft"
+		"productlist": {
+			"create": "Produktliste erstellen",
+			"name": "Produktliste"
+		},
+		"type": {
+			"menu": "Speisekarte",
+			"products": "Produkte"
 		}
 	},
 	"confirm": "Okay",

@@ -7,7 +7,7 @@
             ><icon name="layers-outline" width="20"
           /></n-link>
         </li>
-        <li v-if="haveShop && shop.components.includes('menu')">
+        <li v-if="haveShop">
           <n-link to="/category"
             ><icon name="cube-outline" width="20"
           /></n-link>

@@ -1,9 +1,14 @@
 <template>
   <div>
-    <h1>{{ $t('components.menu.name') }}</h1>
+    <h1 class="flex">
+      {{ $t(`components.type.${componentName}`) }}
+      <button type="button" name="button" @click="$emit('edit')">
+        <icon name="edit-outline" />
+      </button>
+    </h1>
     <!-- Categories -->
     <div class="flex flex-wrap my-3">
-      <div v-for="category in categories.rows" :key="category">
+      <div v-for="category in categories.rows" :key="category._id" class="mt-1">
         <button
           class="border mr-3"
           :class="[
@@ -15,30 +20,55 @@
         </button>
       </div>
     </div>
+
+    <empty-content
+      v-if="categories.count === 0"
+      :content="$t('no_items')"
+      route="/category"
+      class="mt-5"
+    />
+
     <!-- Articles -->
-    <div class="flex flex-wrap">
+    <div class="mensory-grid">
       <div
         v-for="article in articles.rows"
-        :key="article"
-        class="mt-2 flex flex-col min-h-full"
+        :key="article._id"
+        class="mensory-item border-b py-2"
       >
         <img
           :src="article.picture.url"
           :alt="article.name"
-          height="200"
-          class="my-auto bg-dark"
+          class="block mx-auto"
           @error="(e) => (e.target.src = '/img/placeholder.png')"
         />
-        <h2>{{ article.name }}</h2>
-        <p>{{ article.price }} €</p>
+        <div class="flex items-center">
+          <h3 class="mt-2 leading-snug">{{ article.name }}</h3>
+          <div class="text-light text-sm ml-auto mt-2">
+            {{ article.price }} €
+          </div>
+        </div>
+        <div
+          v-if="article.description"
+          class="text-light text-sm break-all"
+          v-html="article.description"
+        />
       </div>
     </div>
   </div>
 </template>
 <script>
+import EmptyContent from '~/components/elements/EmptyContent'
+
 export default {
   name: 'MenuComponent',
+  components: {
+    EmptyContent,
+  },
   props: {
+    componentName: {
+      type: String,
+      required: true,
+    },
     shop: {
       type: Object,
       default: () => ({}),
@@ -54,6 +84,7 @@ export default {
     articles: {},
     articlesQuery: {
       page: 1,
+      limit: 100,
     },
   }),
   async mounted() {
@@ -64,6 +95,10 @@ export default {
           ...this.categoriesQuery,
         },
       })
+      // Active first Category
+      if (this.categories.rows.length) {
+        this.loadArticles(this.categories.rows[0]._id)
+      }
     } catch (e) {
       this.categories = []
     }

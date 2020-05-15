@@ -30,6 +30,20 @@ img {
   color: #343434;
 }
 
+
+.mensory {
+  &-grid {
+    @apply gap-2 mx-auto max-w-3xl;
+    columns: 1;
+    @screen sm {
+      columns: 2;
+    }
+  }
+  &-item {
+    @apply mt-2 w-full inline-block;
+  }
+}
+
 body {
   @apply bg-grey;
 }

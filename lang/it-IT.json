@@ -5,6 +5,7 @@
 	"action": {
 		"call": "chiamata",
 		"close": "Vicino",
+		"created": "Creato",
 		"detail": "dettaglio"
 	},
 	"add": "Inserisci",
@@ -45,9 +46,13 @@
 			"create": "Crea menu",
 			"name": "Menu"
 		},
-		"shop": {
-			"create": "Crea un negozio",
-			"name": "negozio"
+		"productlist": {
+			"create": "Crea un elenco di prodotti",
+			"name": "lista prodotti"
+		},
+		"type": {
+			"menu": "Menu",
+			"products": "Prodotto"
 		}
 	},
 	"confirm": "va bene",

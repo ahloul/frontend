@@ -5,6 +5,7 @@
 	"action": {
 		"call": "Call",
 		"close": "Close",
+		"created": "Created",
 		"detail": "Detail"
 	},
 	"add": "Add",
@@ -45,9 +46,13 @@
 			"create": "Create menu",
 			"name": "Menu"
 		},
-		"shop": {
-			"create": "Create shop",
-			"name": "Shop"
+		"productlist": {
+			"create": "Create productlist",
+			"name": "Productlist"
+		},
+		"type": {
+			"menu": "Menu",
+			"products": "Products"
 		}
 	},
 	"confirm": "Okay",

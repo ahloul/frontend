@@ -7,7 +7,20 @@
     >
       <div class="flex flex-col justify-center">
         <button class="primary mx-auto" @click="createComponent(['menu'])">
-          {{ $t('components.menu.create') }}
+          {{ $t('components.menu.name') }}
+        </button>
+        <button
+          class="primary mx-auto mt-5"
+          @click="createComponent(['products'])"
+        >
+          {{ $t('components.productlist.name') }}
+        </button>
+        <button
+          v-if="shop.components.length"
+          class="border mx-auto mt-5"
+          @click="createComponent([])"
+        >
+          {{ $t('remove') }}
         </button>
       </div>
     </static-modal>
@@ -107,9 +120,9 @@
           <div v-html="shop.description"></div>
         </div>
 
-        <!-- Description -->
+        <!-- Products -->
         <empty-content
-          v-if="!shop.components.includes('menu')"
+          v-if="!shop.components.length"
           class="mt-5"
           emit
           @action="showComponent = true"
@@ -117,48 +130,11 @@
         /></empty-content>
         <div v-else>
           <hr class="my-5" />
-          <menu-component :shop="shop" />
-        </div>
-        <div v-if="shop.contact" class="flex justify-end">
-          <ul class="flex items-end">
-            <li class="mx-2">
-              <a
-                v-if="shop.contact.instagram"
-                :href="shop.contact.instagram"
-                target="_blank"
-              >
-                <svg
-                  fill="currentColor"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
-                  />
-                </svg>
-              </a>
-            </li>
-            <li class="mx-2">
-              <a
-                v-if="shop.contact.facebook"
-                :href="shop.contact.facebook"
-                target="_blank"
-              >
-                <icon name="facebook-outline" />
-              </a>
-            </li>
-            <li class="mx-2">
-              <a
-                v-if="shop.contact.website"
-                :href="shop.contact.website"
-                target="_blank"
-              >
-                {{ $t('enter_website') }}
-              </a>
-            </li>
-          </ul>
+          <products-component
+            :shop="shop"
+            :component-name="shop.components[0]"
+            @edit="showComponent = true"
+          />
         </div>
       </div>
       <div v-else-if="openTab === 2">
@@ -214,25 +190,26 @@
 </template>
 
 <script>
-import { merge } from 'lodash'
+import { merge, includes } from 'lodash'
 import { mapGetters, mapActions } from 'vuex'
 import EmptyContent from '~/components/elements/EmptyContent'
 import HereMap from '~/components/elements/Map'
 import StaticModal from '~/components/elements/StaticModal'
-import MenuComponent from '~/components/pageElements/shop/Menu'
+import ProductsComponent from '~/components/pageElements/shop/Products'
 export default {
   name: 'Shop',
   middleware: 'authenticated',
   components: {
     EmptyContent,
     HereMap,
-    MenuComponent,
+    ProductsComponent,
     StaticModal,
   },
   data: () => ({
     iconSize: 22,
     openTab: 1,
     showComponent: false,
+    includes,
   }),
   computed: {
     ...mapGetters({
@@ -242,11 +219,13 @@ export default {
   methods: {
     ...mapActions(['getMe']),
     async createComponent(name) {
-      const components = merge(this.shop.components, name)
+      let components = merge(this.shop.components, name)
+      if (!name.length) {
+        components = name
+      }
       await this.$axios.patch(`/api/shops/${this.shop._id}`, { components })
       await this.getMe()
-      this.$router.push('/category')
-      this.$store.dispatch('toast/add', { message: `toast.created_menu` })
+      this.$store.dispatch('toast/add', { message: `action.created` })
       this.showComponent = false
     },
   },

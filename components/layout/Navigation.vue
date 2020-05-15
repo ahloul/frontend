@@ -22,7 +22,7 @@
                   {{ $t('navbar.news') }}
                 </n-link>
               </li>
-              <li v-if="shop.components.includes('menu')">
+              <li>
                 <n-link to="/category">
                   {{ $t('navbar.stock') }}
                 </n-link>

@@ -5,6 +5,7 @@
 	"action": {
 		"call": "Telefon etmek",
 		"close": "Kapat",
+		"created": "düzenlendi",
 		"detail": "Detay"
 	},
 	"add": "Eklemek",
@@ -45,9 +46,13 @@
 			"create": "Oluştur menüsü",
 			"name": "Menü"
 		},
-		"shop": {
-			"create": "Mağaza Oluştur",
-			"name": "Dükkan"
+		"productlist": {
+			"create": "Ürün listesi oluştur",
+			"name": "Ürün Listesi"
+		},
+		"type": {
+			"menu": "Menü",
+			"products": "Ürün"
 		}
 	},
 	"confirm": "tamam",

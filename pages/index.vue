@@ -10,8 +10,8 @@
         </n-link>
       </div>
     </div>
-    <div class="news-grid">
-      <div v-for="entry in news" :key="entry.id" class="card news-item">
+    <div class="mensory-grid">
+      <div v-for="entry in news" :key="entry.id" class="card mensory-item">
         <img
           v-if="entry.heroImage"
           :src="`https:${entry.heroImage.fields.file.url}`"
@@ -61,18 +61,5 @@ export default {
 <style lang="scss" scoped>
 .hero {
   box-shadow: inset 0 0 0 100vw rgba(78, 33, 90, 0.3);
-}
-
-.news {
-  &-grid {
-    @apply gap-2 mx-auto max-w-3xl;
-    columns: 1;
-    @screen sm {
-      columns: 2;
-    }
-  }
-  &-item {
-    @apply mt-2 w-full inline-block;
-  }
 }
 </style>

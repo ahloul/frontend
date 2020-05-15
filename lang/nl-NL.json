@@ -5,6 +5,7 @@
 	"action": {
 		"call": "telefoontje",
 		"close": "Dichtbij",
+		"created": "aangemaakt",
 		"detail": "Detail"
 	},
 	"add": "Toevoegen",
@@ -45,9 +46,13 @@
 			"create": "Menu maken",
 			"name": "Menu"
 		},
-		"shop": {
-			"create": "Maak een winkel",
-			"name": "Winkel"
+		"productlist": {
+			"create": "Maak een productlijst",
+			"name": "product lijst"
+		},
+		"type": {
+			"menu": "Menu",
+			"products": "Artikel"
 		}
 	},
 	"confirm": "oke",

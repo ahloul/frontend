@@ -34,7 +34,7 @@
 
             <!-- INPUT E-Mail -->
             <label class="block">
-              <span>{{ $('signup.email') }}</span>
+              <span>{{ $t('signup.email') }}</span>
               <validation-provider
                 v-slot="{ errors }"
                 mode="lazy"

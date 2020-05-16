@@ -130,7 +130,8 @@
     "connection": "You probably have problems with your internet"
   },
   "footer_bar": {
-    "copyright": "getit! © 2020"
+    "copyright": "getit! © 2020",
+    "admin": "Admin"
   },
   "information": {
     "error_occurred": "An error occurred. Please refresh the page.",

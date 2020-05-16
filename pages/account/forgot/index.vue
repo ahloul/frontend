@@ -10,7 +10,7 @@
           <form @submit.prevent="handleSubmit(localForgot)">
             <!-- INPUT E-Mail -->
             <label class="block">
-              <span>E-Mail</span>
+              <span>{{ $t('signup.Email') }}</span>
               <validation-provider
                 v-slot="{ errors }"
                 mode="lazy"

@@ -25,7 +25,7 @@
           @search="applySearch"
         />
         <div>
-          <n-link to="/category/create" class="button primary icon-r"
+          <n-link to="/category/create" class="ml-auto button primary icon-r"
             ><icon name="plus" /> {{ $t('add') }}</n-link
           >
         </div>

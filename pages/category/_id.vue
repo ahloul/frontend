@@ -1,20 +1,21 @@
 <template>
   <div>
-    <div class="flex items-center my-3">
+    <div class="flex items-center mt-3">
       <h1
-        class="headline flex cursor-pointer"
+        class="headline flex cursor-pointer truncate"
         @click="$router.push(`/category/edit/${category._id}`)"
       >
         {{ category.name }}
         <icon name="edit-outline" />
       </h1>
+    </div>
+    <div class="flex mb-3">
       <n-link
         :to="`/article/create?id=${category._id}`"
         class="button primary icon-r ml-auto"
         ><icon name="plus" /> {{ $t('add') }}</n-link
       >
     </div>
-
     <ul
       v-if="!showEmpty"
       class="category-box grid grid-cols-1 md:grid-cols-2 gap-4"

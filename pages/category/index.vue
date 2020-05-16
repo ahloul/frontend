@@ -4,7 +4,7 @@
       <change-type @changed="showComponent = false" />
     </div>
     <div v-if="shop.components.length">
-      <div class="flex items-center my-3">
+      <div class="flex flex-wrap items-center my-3">
         <static-modal
           :show="showComponent"
           :dismiss="$t('dismiss')"
@@ -13,7 +13,7 @@
           <change-type @changed="showComponent = false" />
         </static-modal>
         <h1
-          class="headline flex block cursor-pointer"
+          class="headline flex block cursor-pointer truncate"
           @click="showComponent = true"
         >
           {{ $t(`components.type.${shop.components[0]}`) }}
@@ -24,11 +24,11 @@
           class="block w-full ml-auto md:max-w-sm mr-2"
           @search="applySearch"
         />
-        <div>
-          <n-link to="/category/create" class="ml-auto button primary icon-r"
-            ><icon name="plus" /> {{ $t('add') }}</n-link
-          >
-        </div>
+      </div>
+      <div class="flex">
+        <n-link to="/category/create" class="ml-auto button primary icon-r"
+          ><icon name="plus" /> {{ $t('add') }}</n-link
+        >
       </div>
       <empty-state v-if="showEmpty" />
       <ul class="category-box">

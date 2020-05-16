@@ -2,7 +2,7 @@
   <div>
     <div class="flex justify-between my-4">
       <n-link :to="`/article/${article.id}`" class="button icon-r"
-        ><icon name="arrow-ios-back-outline" /> Zurück</n-link
+        ><icon name="arrow-ios-back-outline" /> {{ $t('back') }}</n-link
       >
       <button
         :class="{ 'spinner-dark': loadState.delete }"
@@ -145,7 +145,9 @@
             <span class="ml-2"
               >{{ $t('article.public_prefix') }}
               <span class="font-bold">{{
-                article.published ? 'öffentlich' : 'nicht öffentlich'
+                article.published
+                  ? $t('article.public')
+                  : $t('article.non_public')
               }}</span>
               {{ $t('article.public_suffix') }}.</span
             >

@@ -26,7 +26,7 @@
           v-if="user.role === 'admin'"
           class="text-primary leading-snug text-sm"
         >
-          Administrator
+          {{ $t('profile.admin') }}
         </div>
         <hr v-if="user.description" class="my-5 w-32 mx-auto" />
         <div
@@ -45,7 +45,7 @@
       </button>
     </div>
     <div v-if="user.shops.length > 1" class="card mt-3">
-      <h3 class="mb-1">Deine Shops</h3>
+      <h3 class="mb-1">{{ $t('profile.your_shops') }}</h3>
       <div
         v-for="shop in user.shops"
         :key="shop.shopId"

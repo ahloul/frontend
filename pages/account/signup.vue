@@ -15,7 +15,7 @@
           >
             <!-- INPUT Name -->
             <label class="block">
-              <span>Name</span>
+              <span>{{ $t('signup.name') }}</span>
               <validation-provider
                 v-slot="{ errors }"
                 mode="lazy"
@@ -34,7 +34,7 @@
 
             <!-- INPUT E-Mail -->
             <label class="block">
-              <span>E-Mail</span>
+              <span>{{ $('signup.email') }}</span>
               <validation-provider
                 v-slot="{ errors }"
                 mode="lazy"
@@ -112,12 +112,15 @@
                 </div>
                 <div>
                   <span class=""
-                    >Indem du auf „Neu Registrieren“ klickst, stimmst du unseren
-                    <n-link to="/terms">Geschäftsbedingungen</n-link> zu. In
-                    unserer
-                    <n-link to="/privacy">Datenrichtlinie</n-link> erfährst du,
-                    wie wir deine Daten erfassen.</span
-                  >
+                    >{{ $t('signup.registration_info') }}
+                    <n-link to="/terms">{{ $t('signup.terms_of_use') }}</n-link>
+                    .
+                    {{ $t('signup.privacy_policy_info') }}
+                    <n-link to="/privacy">{{
+                      $t('signup.privacy_policy')
+                    }}</n-link>
+                    .
+                  </span>
                 </div>
               </label>
             </div>

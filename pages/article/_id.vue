@@ -28,7 +28,9 @@
                 class="font-bold"
                 :class="[article.published ? 'text-success' : 'text-light']"
                 >{{
-                  article.published ? 'Veröffentlicht' : 'nicht öffentlich'
+                  article.published
+                    ? $('article.published')
+                    : $('article.non_public')
                 }}</span
               >
             </div>

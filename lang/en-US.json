@@ -25,11 +25,7 @@
     "stock": "Inventory",
     "tax_free": "Tax Free",
     "tax_rate": "Tax Rate",
-    "unit_price": "Unit Price",
-    "tax_options": {
-      "19": "19 %",
-      "7": "7 %"
-    }
+    "unit_price": "Unit Price"
   },
   "back": "Back",
   "back_to_start": "Back to start",
@@ -98,6 +94,7 @@
     "offer_prefix": "I offer",
     "offer_suffix": "",
     "opening_times": "Opening Times",
+
     "options": {
       "local_delivery": {
         "description": "We ensure that our customers receive their goods promptly",

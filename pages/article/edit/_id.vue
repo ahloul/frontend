@@ -109,9 +109,11 @@
               name="Steuersatz"
             >
               <select v-model="article.tax" class="form-select w-full">
+                <!-- eslint-disable vue-i18n/no-raw-text -->
                 <option :value="19">
                   19 %
                 </option>
+                <!-- eslint-disable vue-i18n/no-raw-text -->
                 <option :value="7">
                   7 %
                 </option>

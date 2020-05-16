@@ -154,6 +154,7 @@
                   <span v-if="time.allDayOpen">{{
                     $t('shop.open_all_day')
                   }}</span>
+                  <!-- eslint-disable vue-i18n/no-raw-text -->
                   <span v-else>{{ time.open }} - {{ time.close }}</span>
                 </div>
               </div>

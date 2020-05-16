@@ -133,6 +133,7 @@
               name="Mitarbeiterzahl"
               :mode="validationMode"
             >
+              <!-- eslint-disable vue-i18n/no-raw-text -->
               <select id="companySize" v-model="shop.size" class="form-select">
                 <option value="1">1-5</option>
                 <option value="5">5-20</option>

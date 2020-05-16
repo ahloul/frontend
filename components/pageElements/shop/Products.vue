@@ -43,6 +43,7 @@
         />
         <div class="flex items-center">
           <h3 class="mt-2 leading-snug">{{ article.name }}</h3>
+          <!-- eslint-disable vue-i18n/no-raw-text -->
           <div class="text-light text-sm ml-auto mt-2">
             {{ article.price }} €
           </div>

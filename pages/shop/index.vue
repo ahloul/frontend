@@ -44,7 +44,7 @@
         </div>
       </div>
       <div>
-        <button class="icon" @click="openTab = 1">
+        <button class="text-primary icon" @click="openTab = 1">
           <icon
             :name="openTab === 1 ? 'info' : 'info-outline'"
             class="mx-1"
@@ -54,7 +54,7 @@
         </button>
       </div>
       <div>
-        <button class="icon pr-0" @click="openTab = 2">
+        <button class="text-primary icon pr-0" @click="openTab = 2">
           <icon
             :name="openTab === 2 ? 'pin' : 'pin-outline'"
             class="mx-1"

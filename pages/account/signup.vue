@@ -110,8 +110,8 @@
                     />
                   </validation-provider>
                 </div>
-                <div>
-                  <span class=""
+                <div class="mt-1">
+                  <span
                     >{{ $t('signup.registration_info') }}
                     <n-link to="/terms">{{ $t('signup.terms_of_use') }}</n-link>
                     .

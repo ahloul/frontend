@@ -4,8 +4,10 @@
 	},
 	"action": {
 		"call": "Anruf",
+		"changed": "Geändert",
 		"close": "Schließen",
 		"created": "Erstellt",
+		"deactivate": "Deaktivieren",
 		"detail": "Detail"
 	},
 	"add": "Hinzufügen",
@@ -155,7 +157,7 @@
 		"confirm_password": "Kennwort wiederholen",
 		"email": "Email",
 		"facebook": "Facebook",
-		"google": "GOOGLE",
+		"google": "Google",
 		"help": "Hilfe bei der Anmeldung?",
 		"login": "Anmelden",
 		"password": "Kennwort",

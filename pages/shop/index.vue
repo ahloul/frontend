@@ -1,29 +1,5 @@
 <template>
   <div class="container max-w-4xl mt-0 px-2 mb-5 mb-12">
-    <static-modal
-      :show="showComponent"
-      :dismiss="$t('dismiss')"
-      @dismiss="showComponent = false"
-    >
-      <div class="flex flex-col justify-center">
-        <button class="primary mx-auto" @click="createComponent(['menu'])">
-          {{ $t('components.menu.name') }}
-        </button>
-        <button
-          class="primary mx-auto mt-5"
-          @click="createComponent(['products'])"
-        >
-          {{ $t('components.productlist.name') }}
-        </button>
-        <button
-          v-if="shop.components.length"
-          class="border mx-auto mt-5"
-          @click="createComponent([])"
-        >
-          {{ $t('remove') }}
-        </button>
-      </div>
-    </static-modal>
     <div class="my-3 flex justify-end">
       <n-link
         class="primary icon-l inline-block flex items-center"
@@ -119,23 +95,6 @@
           <hr class="my-5" />
           <div v-html="shop.description"></div>
         </div>
-
-        <!-- Products -->
-        <empty-content
-          v-if="!shop.components.length"
-          class="mt-5"
-          emit
-          @action="showComponent = true"
-          ><icon name="plus"
-        /></empty-content>
-        <div v-else>
-          <hr class="my-5" />
-          <products-component
-            :shop="shop"
-            :component-name="shop.components[0]"
-            @edit="showComponent = true"
-          />
-        </div>
       </div>
       <div v-else-if="openTab === 2">
         <div class="grid md:grid-cols-3 gap-2">
@@ -190,44 +149,24 @@
 </template>
 
 <script>
-import { merge, includes } from 'lodash'
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters } from 'vuex'
 import EmptyContent from '~/components/elements/EmptyContent'
 import HereMap from '~/components/elements/Map'
-import StaticModal from '~/components/elements/StaticModal'
-import ProductsComponent from '~/components/pageElements/shop/Products'
 export default {
   name: 'Shop',
   middleware: 'authenticated',
   components: {
     EmptyContent,
     HereMap,
-    ProductsComponent,
-    StaticModal,
   },
   data: () => ({
     iconSize: 22,
     openTab: 1,
-    showComponent: false,
-    includes,
   }),
   computed: {
     ...mapGetters({
       shop: 'shop/shop',
     }),
-  },
-  methods: {
-    ...mapActions(['getMe']),
-    async createComponent(name) {
-      let components = merge(this.shop.components, name)
-      if (!name.length) {
-        components = name
-      }
-      await this.$axios.patch(`/api/shops/${this.shop._id}`, { components })
-      await this.getMe()
-      this.$store.dispatch('toast/add', { message: `action.created` })
-      this.showComponent = false
-    },
   },
 }
 </script>

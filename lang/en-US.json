@@ -4,8 +4,10 @@
 	},
 	"action": {
 		"call": "Call",
+		"changed": "Changed",
 		"close": "Close",
 		"created": "Created",
+		"deactivate": "Deactivate",
 		"detail": "Detail"
 	},
 	"add": "Add",

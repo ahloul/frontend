@@ -4,8 +4,10 @@
 	},
 	"action": {
 		"call": "chiamata",
+		"changed": "Cambiato",
 		"close": "Vicino",
 		"created": "Creato",
+		"deactivate": "disattivare",
 		"detail": "dettaglio"
 	},
 	"add": "Inserisci",

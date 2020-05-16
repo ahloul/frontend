@@ -4,8 +4,10 @@
 	},
 	"action": {
 		"call": "Telefon etmek",
+		"changed": "değişmiş",
 		"close": "Kapat",
 		"created": "düzenlendi",
+		"deactivate": "Devre dışı bırakmak",
 		"detail": "Detay"
 	},
 	"add": "Eklemek",

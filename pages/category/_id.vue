@@ -1,17 +1,19 @@
 <template>
   <div>
-    <div class="flex justify-end my-3">
+    <div class="flex items-center my-3">
+      <h1
+        class="headline flex cursor-pointer"
+        @click="$router.push(`/category/edit/${category._id}`)"
+      >
+        {{ category.name }}
+        <icon name="edit-outline" />
+      </h1>
       <n-link
         :to="`/article/create?id=${category._id}`"
-        class="button primary icon-r"
+        class="button primary icon-r ml-auto"
         ><icon name="plus" /> {{ $t('add') }}</n-link
       >
     </div>
-    <n-link
-      :to="`/category/edit/${category._id}`"
-      class="headline text-3xl inline-flex"
-      >{{ category.name }} <icon name="edit-outline" />
-    </n-link>
 
     <ul
       v-if="!showEmpty"
@@ -118,7 +120,7 @@ export default {
 <style lang="scss" scoped>
 .headline {
   @apply transition duration-300 ease-in-out;
-  @apply font-bold text-light;
+  @apply text-light;
   i {
     @apply hidden;
   }

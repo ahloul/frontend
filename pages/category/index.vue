@@ -1,76 +1,103 @@
 <template>
   <div>
-    <div class="flex my-3 justify-end">
-      <search-input
-        v-if="!showEmpty"
-        class="block w-full ml-auto md:max-w-sm mr-2"
-        @search="applySearch"
-      />
-      <n-link to="/category/create" class="button primary icon-r"
-        ><icon name="plus" /> {{ $t('add') }}</n-link
-      >
+    <div v-show="!shop.components.length" class="mt-10">
+      <change-type @changed="showComponent = false" />
     </div>
-    <empty-state v-if="showEmpty" />
-    <ul class="category-box">
-      <li
-        v-for="category in categories"
-        :key="category._id"
-        class="animated category-item"
-        @click="goToDetail(category)"
-      >
-        <div class="flex items-center p-6">
-          <div class="min-w-0 flex-1 flex items-center">
-            <div class="min-w-0 flex-1 px-4 md:grid md:grid-cols-2 md:gap-4">
-              <div>
-                <div class="text-xl leading-5 font-bold truncate">
-                  {{ category.name }}
-                </div>
-                <div
-                  class="mt-2 flex items-center text-sm leading-5 text-primary inline-block align-middle"
-                >
-                  <icon name="keypad-outline" width="15" />
-                  <span v-if="category.article_count" class="ml-1"
-                    >{{ category.article_count }}
-                    {{ $t('category.article') }}</span
+    <div v-if="shop.components.length">
+      <div class="flex items-center my-3">
+        <static-modal
+          :show="showComponent"
+          :dismiss="$t('dismiss')"
+          @dismiss="showComponent = false"
+        >
+          <change-type @changed="showComponent = false" />
+        </static-modal>
+        <h1
+          class="headline flex block cursor-pointer"
+          @click="showComponent = true"
+        >
+          {{ $t(`components.type.${shop.components[0]}`) }}
+          <icon name="edit-outline" />
+        </h1>
+        <search-input
+          v-if="!showEmpty"
+          class="block w-full ml-auto md:max-w-sm mr-2"
+          @search="applySearch"
+        />
+        <div>
+          <n-link to="/category/create" class="button primary icon-r"
+            ><icon name="plus" /> {{ $t('add') }}</n-link
+          >
+        </div>
+      </div>
+      <empty-state v-if="showEmpty" />
+      <ul class="category-box">
+        <li
+          v-for="category in categories"
+          :key="category._id"
+          class="animated category-item"
+          @click="goToDetail(category)"
+        >
+          <div class="flex items-center p-6">
+            <div class="min-w-0 flex-1 flex items-center">
+              <div class="min-w-0 flex-1 px-4 md:grid md:grid-cols-2 md:gap-4">
+                <div>
+                  <div class="text-xl leading-5 font-bold truncate">
+                    {{ category.name }}
+                  </div>
+                  <div
+                    class="mt-2 flex items-center text-sm leading-5 text-primary inline-block align-middle"
                   >
-                  <span v-else class="ml-1">{{ $t('article.empty') }}</span>
+                    <icon name="keypad-outline" width="15" />
+                    <span v-if="category.article_count" class="ml-1"
+                      >{{ category.article_count }}
+                      {{ $t('category.article') }}</span
+                    >
+                    <span v-else class="ml-1">{{ $t('article.empty') }}</span>
+                  </div>
                 </div>
               </div>
             </div>
+            <div class="right-icon text-light">
+              <icon name="chevron-right" />
+            </div>
           </div>
-          <div class="right-icon text-light">
-            <icon name="chevron-right" />
-          </div>
-        </div>
-      </li>
-    </ul>
-    <div class="flex justify-center">
-      <n-link
-        v-if="prevPage"
-        :to="`?page=${prevPage}`"
-        class="button icon-l mx-2"
-        ><icon name="chevron-left-outline" />
-        {{ $t('processes.previous') }}</n-link
-      >
-      <n-link
-        v-if="nextPage"
-        :to="`?page=${nextPage}`"
-        class="button icon-r mx-2"
-        >{{ $t('processes.next') }}<icon name="chevron-right-outline"
-      /></n-link>
+        </li>
+      </ul>
+      <div class="flex justify-center">
+        <n-link
+          v-if="prevPage"
+          :to="`?page=${prevPage}`"
+          class="button icon-l mx-2"
+          ><icon name="chevron-left-outline" />
+          {{ $t('processes.previous') }}</n-link
+        >
+        <n-link
+          v-if="nextPage"
+          :to="`?page=${nextPage}`"
+          class="button icon-r mx-2"
+          >{{ $t('processes.next') }}<icon name="chevron-right-outline"
+        /></n-link>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 import SearchInput from '~/components/elements/SearchInput'
+import StaticModal from '~/components/elements/StaticModal'
 import EmptyState from '~/components/elements/EmptyState'
+import ChangeType from '~/components/pageElements/category/ChangeType'
 export default {
   name: 'Categories',
   middleware: 'authenticated',
   components: {
     SearchInput,
     EmptyState,
+    StaticModal,
+    ChangeType,
   },
   async asyncData({ $axios, query, redirect, store }) {
     try {
@@ -94,9 +121,15 @@ export default {
   },
   data: () => ({
     search: null,
+    showComponent: false,
   }),
   watchQuery: ['page', 'search'],
   scrollToTop: true,
+  computed: {
+    ...mapGetters({
+      shop: 'shop/shop',
+    }),
+  },
   methods: {
     goToDetail({ _id }) {
       this.$router.push(`/category/${_id}`)
@@ -111,6 +144,20 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.headline {
+  @apply transition duration-300 ease-in-out;
+  @apply text-light;
+  i {
+    @apply hidden;
+  }
+  &:hover {
+    @apply text-primary;
+    i {
+      @apply inline-block;
+    }
+  }
+}
+
 .category {
   &-box {
     @apply max-w-xl mx-auto;

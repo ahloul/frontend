@@ -4,8 +4,10 @@
 	},
 	"action": {
 		"call": "telefoontje",
+		"changed": "Changed",
 		"close": "Dichtbij",
 		"created": "aangemaakt",
+		"deactivate": "Deactiveren",
 		"detail": "Detail"
 	},
 	"add": "Toevoegen",

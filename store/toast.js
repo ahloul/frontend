@@ -29,10 +29,9 @@ export const mutations = {
 
 export const actions = {
   async add({ commit }, data) {
-    if (!data.message || !data.text) {
-      return
+    if (data.message || data.text) {
+      commit('addToast', data)
     }
-    commit('addToast', data)
     if (!data.dontHide) {
       await setTimeout(
         () => commit('removeToastById', data.id),

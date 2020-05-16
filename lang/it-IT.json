@@ -23,6 +23,7 @@
 		"public": "Pubblico",
 		"public_prefix": "L'articolo sarà",
 		"public_suffix": "pubblicato",
+		"published": "pubblicato",
 		"stock": "inventario",
 		"tax_free": "Senza tasse",
 		"tax_rate": "Aliquota fiscale",
@@ -127,6 +128,7 @@
 		"connection": "Probabilmente hai problemi con Internet"
 	},
 	"footer_bar": {
+		"admin": "",
 		"copyright": "prendilo! © 2020"
 	},
 	"information": {
@@ -193,10 +195,12 @@
 	},
 	"profile": {
 		"add_shop": "Crea un altro negozio",
+		"admin": "",
 		"city": "città",
 		"description": "Descrizione del profilo",
 		"logout": "Disconnettersi",
-		"name": "Nome"
+		"name": "Nome",
+		"your_shops": "I tuoi negozi"
 	},
 	"refresh_now": "Aggiorna ora",
 	"remove": "Rimuovere",
@@ -208,8 +212,14 @@
 		"settings": "impostazioni"
 	},
 	"signup": {
+		"email": "E-mail",
+		"name": "Nome",
+		"privacy_policy": "POLITICA SULLA RISERVATEZZA",
+		"privacy_policy_info": "Puoi trovare ulteriori informazioni su come utilizziamo i tuoi dati personali nei nostri",
 		"register": "Registrare",
-		"successful_registration": "La tua registrazione è andata a buon fine! Controlla la tua casella di posta e conferma il tuo indirizzo e-mail."
+		"registration_info": "Facendo clic su \"Registrati\" accetti le nostre",
+		"successful_registration": "La tua registrazione è andata a buon fine! Controlla la tua casella di posta e conferma il tuo indirizzo e-mail.",
+		"terms_of_use": "Condizioni d'uso"
 	},
 	"skip": "Salta",
 	"toast": {

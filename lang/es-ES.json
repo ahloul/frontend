@@ -23,6 +23,7 @@
 		"public": "Público",
 		"public_prefix": "El artículo será",
 		"public_suffix": "Publicado",
+		"published": "Publicado",
 		"stock": "Inventario",
 		"tax_free": "Libre de impuestos",
 		"tax_rate": "Tasa de impuesto",
@@ -127,6 +128,7 @@
 		"connection": "Probablemente tengas problemas con tu internet"
 	},
 	"footer_bar": {
+		"admin": "",
 		"copyright": "¡Consíguelo! © 2020"
 	},
 	"information": {
@@ -193,10 +195,12 @@
 	},
 	"profile": {
 		"add_shop": "Crea otra tienda",
+		"admin": "",
 		"city": "ciudad",
 		"description": "Descripción del perfil",
 		"logout": "Cerrar sesión",
-		"name": "Nombre"
+		"name": "Nombre",
+		"your_shops": "Sus tiendas"
 	},
 	"refresh_now": "Refresca ahora",
 	"remove": "retirar",
@@ -208,8 +212,14 @@
 		"settings": "Ajustes"
 	},
 	"signup": {
+		"email": "Email",
+		"name": "Nombre",
+		"privacy_policy": "Política de privacidad",
+		"privacy_policy_info": "Puede encontrar más información sobre cómo usamos sus datos personales en nuestro",
 		"register": "Registro",
-		"successful_registration": "Su registro fue exitoso! Revise su bandeja de entrada y confirme su dirección de correo electrónico."
+		"registration_info": "Al hacer clic en 'Registrarse', acepta nuestro",
+		"successful_registration": "Su registro fue exitoso! Revise su bandeja de entrada y confirme su dirección de correo electrónico.",
+		"terms_of_use": "Terminos de uso"
 	},
 	"skip": "Omitir",
 	"toast": {

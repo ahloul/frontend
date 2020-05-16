@@ -23,6 +23,7 @@
 		"public": "Halk, umumi, kamu",
 		"public_prefix": "Makale olacak",
 		"public_suffix": "Yayınlanan",
+		"published": "Yayınlanan",
 		"stock": "Envanter",
 		"tax_free": "Vergisiz",
 		"tax_rate": "Vergi oranı",
@@ -127,6 +128,7 @@
 		"connection": "Muhtemelen internetinizle ilgili sorunlarınız"
 	},
 	"footer_bar": {
+		"admin": "",
 		"copyright": "anla! © 2020"
 	},
 	"information": {
@@ -193,10 +195,12 @@
 	},
 	"profile": {
 		"add_shop": "Başka bir mağaza oluştur",
+		"admin": "",
 		"city": "Kent",
 		"description": "profil açıklaması",
 		"logout": "Çıkış Yap",
-		"name": "isim"
+		"name": "isim",
+		"your_shops": "Mağazalarınız"
 	},
 	"refresh_now": "Şimdi yenile",
 	"remove": "Kaldır",
@@ -208,8 +212,14 @@
 		"settings": "ayarlar"
 	},
 	"signup": {
+		"email": "E-posta",
+		"name": "isim",
+		"privacy_policy": "Gizlilik Politikası",
+		"privacy_policy_info": "Kişisel verilerinizi nasıl kullandığımız hakkında daha fazla bilgiyi",
 		"register": "Kayıt olmak",
-		"successful_registration": "Kaydınız başarılı oldu! Gelen kutunuzu kontrol edin ve e-posta adresinizi onaylayın."
+		"registration_info": "'Kaydol' düğmesini tıklayarak,",
+		"successful_registration": "Kaydınız başarılı oldu! Gelen kutunuzu kontrol edin ve e-posta adresinizi onaylayın.",
+		"terms_of_use": "Kullanım Şartları"
 	},
 	"skip": "atlamak",
 	"toast": {

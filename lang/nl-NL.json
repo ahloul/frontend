@@ -23,6 +23,7 @@
 		"public": "Openbaar",
 		"public_prefix": "Artikel zal zijn",
 		"public_suffix": "Gepubliceerd",
+		"published": "Gepubliceerd",
 		"stock": "Inventaris",
 		"tax_free": "Belasting vrij",
 		"tax_rate": "Belastingtarief",
@@ -127,6 +128,7 @@
 		"connection": "U heeft waarschijnlijk problemen met uw internet"
 	},
 	"footer_bar": {
+		"admin": "",
 		"copyright": "snap je! © 2020"
 	},
 	"information": {
@@ -193,10 +195,12 @@
 	},
 	"profile": {
 		"add_shop": "Maak een andere winkel",
+		"admin": "",
 		"city": "stad",
 		"description": "profiel omschrijving",
 		"logout": "Uitloggen",
-		"name": "Naam"
+		"name": "Naam",
+		"your_shops": "Uw winkels"
 	},
 	"refresh_now": "Ververs nu",
 	"remove": "Verwijderen",
@@ -208,8 +212,14 @@
 		"settings": "instellingen"
 	},
 	"signup": {
+		"email": "E-mail",
+		"name": "Naam",
+		"privacy_policy": "Privacybeleid",
+		"privacy_policy_info": "Meer over hoe wij uw persoonsgegevens gebruiken, vindt u in onze",
 		"register": "REGISTREREN",
-		"successful_registration": "Uw registratie is geslaagd! Controleer je inbox en bevestig je e-mailadres."
+		"registration_info": "Door op 'Registreren' te klikken, gaat u akkoord met onze",
+		"successful_registration": "Uw registratie is geslaagd! Controleer je inbox en bevestig je e-mailadres.",
+		"terms_of_use": "Gebruiksvoorwaarden"
 	},
 	"skip": "overspringen",
 	"toast": {

@@ -74,13 +74,13 @@
             class="mt-2"
           >
             <span v-if="deliveryOption === 'LD'" class="tag mr-1">
-              Lokale Lieferung
+              {{ $t('delivery_options.options.local_delivery.name') }}
             </span>
             <span v-if="deliveryOption === 'PU'" class="tag mr-1">
-              Abholung
+              {{ $t('delivery_options.options.pickup.name') }}
             </span>
             <span v-if="deliveryOption === 'MU'" class="tag mr-1">
-              Postversand
+              {{ $t('delivery_options.options.parcel.name') }}
             </span>
           </div>
         </div>
@@ -108,9 +108,12 @@
                 >{{ $t(`delivery_options.days_long.${name}`) }}
               </span>
               <div class="text-light">
-                {{ weekDay.length ? '' : 'Geschlossen' }}
+                {{ weekDay.length ? $t('empty') : $t('shop.closed') }}
                 <div v-for="(time, index) in weekDay" :key="index">
-                  <span v-if="time.allDayOpen">Ganztätig geöffnet</span>
+                  <span v-if="time.allDayOpen">{{
+                    $t('shop.open_all_day')
+                  }}</span>
+                  <!-- eslint-disable vue-i18n/no-raw-text -->
                   <span v-else>{{ time.open }} - {{ time.close }}</span>
                 </div>
               </div>
@@ -130,7 +133,7 @@
                   {{ shop.address.postalCode }} {{ shop.address.city }}
                   {{
                     shop.address.district === shop.address.city
-                      ? ''
+                      ? $t('empty')
                       : shop.address.district
                   }}
                 </div>

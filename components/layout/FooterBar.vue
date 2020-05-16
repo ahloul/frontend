@@ -7,7 +7,8 @@
             to="/admin"
             class="text-warning hover:text-tertiary items-center flex"
           >
-            <icon name="shield-outline" /> <span class="ml-1">Admin</span>
+            <icon name="shield-outline" />
+            <span class="ml-1">{{ $t('footer_bar.admin') }}</span>
           </n-link>
         </li>
         <li>

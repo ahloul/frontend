@@ -19,6 +19,7 @@
           <div>
             <h2 class="leading-none text-secondary">{{ article.name }}</h2>
             <span class="text-light">{{ article.category.name }}</span>
+            <!-- eslint-disable vue-i18n/no-raw-text -->
             <div class="bg-grey p-3 rounded text-sm mt-3">
               {{ article.price }} €
               <span class="mx-2 inline" aria-hidden="true">
@@ -28,7 +29,9 @@
                 class="font-bold"
                 :class="[article.published ? 'text-success' : 'text-light']"
                 >{{
-                  article.published ? 'Veröffentlicht' : 'nicht öffentlich'
+                  article.published
+                    ? $('article.published')
+                    : $('article.non_public')
                 }}</span
               >
             </div>

@@ -1,231 +1,240 @@
 {
-	"account": {
-		"verify_content": "Welcome back! Thanks for your verification"
-	},
-	"action": {
-		"call": "Call",
-		"changed": "Changed",
-		"close": "Close",
-		"created": "Created",
-		"deactivate": "Deactivate",
-		"detail": "Detail"
-	},
-	"add": "Add",
-	"article": {
-		"create_stock": "Create Inventory",
-		"delete_confirmation": "Are you sure you want to delete this article permanently?",
-		"description": "Article Description",
-		"empty": "No Articles",
-		"name": "Name of Article",
-		"name_hint": "i.e. ball pens",
-		"non_public": "non-public",
-		"price_hint": "i.e. 12,00",
-		"public": "public",
-		"public_prefix": "Article will be",
-		"public_suffix": "published",
-		"stock": "Inventory",
-		"tax_free": "Tax Free",
-		"tax_rate": "Tax Rate",
-		"unit_price": "Unit Price"
-	},
-	"back": "Back",
-	"back_to_start": "Back to start",
-	"call": "Give us a Call",
-	"callback": {
-		"logging_in": "You will be logged in ..."
-	},
-	"category": {
-		"article": "Article",
-		"create": "Create Category",
-		"delete_confirmation": "Are you sure you want to delete the category? The articles contained in it will also be irretrievably deleted!",
-		"euro": "€",
-		"hint": "i.e. drinks",
-		"name": "Name of Category",
-		"title": "Category"
-	},
-	"components": {
-		"menu": {
-			"create": "Create menu",
-			"name": "Menu"
-		},
-		"productlist": {
-			"create": "Create productlist",
-			"name": "Productlist"
-		},
-		"type": {
-			"menu": "Menu",
-			"products": "Products"
-		}
-	},
-	"confirm": "Okay",
-	"contact_data": {
-		"facebook": "Facebook",
-		"full_address": "Full Address",
-		"instagram": "Instagram",
-		"intro": "Enter the address of your shop so others know where to find you.",
-		"optional": "Optional",
-		"phone_number": "Phone Number",
-		"prefix_and_number": "Prefix and Number",
-		"section_name": "Contact Data",
-		"website": "Website"
-	},
-	"contact_to_delete": "Please contact us if you wish to delete your account",
-	"continue": "Continue",
-	"delivery_options": {
-		"all_day": "Open all day long",
-		"days_long": {
-			"friday": "Friday",
-			"monday": "Monday",
-			"saturday": "Saturday",
-			"sunday": "Sunday",
-			"thursday": "Thursday",
-			"tuesday": "Tuesday",
-			"wednesday": "Wednesday"
-		},
-		"days_short": {
-			"friday": "Fr",
-			"monday": "Mo",
-			"saturday": "Sa",
-			"sunday": "Su",
-			"thursday": "Th",
-			"tuesday": "Tu",
-			"wednesday": "We"
-		},
-		"non_public": "not public and not visible for anyone",
-		"offer_prefix": "I offer",
-		"offer_suffix": "",
-		"opening_times": "Opening Times",
-		"options": {
-			"local_delivery": {
-				"description": "We ensure that our customers receive their goods promptly",
-				"name": "Local Delivery"
-			},
-			"parcel": {
-				"description": "On request we also send the packages by letter and post",
-				"name": "Postal and parcel delivery"
-			},
-			"pickup": {
-				"description": "Customers can also pick up our goods on site",
-				"name": "Pickup"
-			}
-		},
-		"public": "public and visible for everyone",
-		"public_prefix": "Shop will be",
-		"section_name": "Delivery Options"
-	},
-	"description": {
-		"intro": "If you like, describe your business in a few sentences. Let your creativity run free!",
-		"section_name": "Description"
-	},
-	"dismiss": "Abort",
-	"edit": "Edit",
-	"empty": "",
-	"enter_login": "To the Login",
-	"enter_shop": "To the Shop",
-	"enter_website": "To the website",
-	"error": {
-		"connection": "You probably have problems with your internet"
-	},
-	"footer_bar": {
-		"copyright": "getit! © 2020"
-	},
-	"information": {
-		"error_occurred": "An error occurred. Please refresh the page.",
-		"go_to_shop": "Go to shop!",
-		"intro": "With just a few steps we help you to create your shop. Here we go!",
-		"legal_form": "Legal Form",
-		"legal_form_options": {
-			"independent": "Independent",
-			"non_profit": "Non-profit / Association",
-			"partnership": "Partnership",
-			"private_partnership": "Private company",
-			"sole": "Sole proprietor",
-			"stock_company": "Stock Company"
-		},
-		"name_of_shop": "Name of your Shop",
-		"name_of_shop_example": "i.E. Sam and Partner",
-		"no_of_employees": "Number of Employees",
-		"ready_to_start": "You are ready to start now.",
-		"section_name": "Information",
-		"shop_created_confirmation": "You have successfully created a shop!",
-		"shop_error_confirmation": "Check again that you have filled in all fields correctly.",
-		"shop_not_found": "Your shop was not found. Create a new one."
-	},
-	"lang_code": "en",
-	"login": {
-		"back_to_login": "Back to login",
-		"confirm_password": "Confirm Password",
-		"email": "Email",
-		"facebook": "Facebook",
-		"google": "Google",
-		"help": "Help with the registration?",
-		"login": "Login",
-		"password": "Password",
-		"request_new_password": "Request new password",
-		"save_new_password": "Save new password",
-		"thirdparty": "Or sign up with"
-	},
-	"navbar": {
-		"create_shop": "New Shop",
-		"imprint": "Imprint",
-		"news": "News",
-		"privacy_policy": "Privacy Policy",
-		"processes": "Processes",
-		"shop": "Shop",
-		"stock": "Stock",
-		"terms": "Terms and conditions"
-	},
-	"no_description": "No description available.",
-	"no_items": "You have no entries yet",
-	"picture": {
-		"intro": "Show your shop with a photo and your logo.",
-		"logo": "Logo",
-		"section_name": "Pictures",
-		"shop_picture": "Picture of the shop"
-	},
-	"processes": {
-		"add_article": "Add Article",
-		"add_product": "Add Product",
-		"intro": "We are currently under construction. You can now fill your shop with life by adding your first articles. This will help us to further develop our platform.",
-		"next": "Next",
-		"previous": "Previous",
-		"welcome": "A warm welcome"
-	},
-	"profile": {
-		"add_shop": "Create another shop",
-		"city": "City",
-		"description": "Profile Description",
-		"logout": "Logout",
-		"name": "Name"
-	},
-	"refresh_now": "Refresh now",
-	"remove": "Remove",
-	"save": "Save",
-	"select_image": "Select Image",
-	"shop": {
-		"closed": "Closed",
-		"open_all_day": "Open all day",
-		"settings": "Settings"
-	},
-	"signup": {
-		"register": "Register",
-		"successful_registration": "Your registration was successful! Check your inbox and confirm your e-mail address."
-	},
-	"skip": "Skip",
-	"toast": {
-		"created_article": "Article Created",
-		"created_category": "Category Created",
-		"created_menu": "Menu Created",
-		"deleted_article": "Deleted Article",
-		"logout": "Logged out 👋",
-		"not_authorized": "you are not authorized",
-		"saved_profile": "Saved Profile",
-		"shop_changed": "Shop changed!",
-		"something_wrong": "Something has gone wrong 👎",
-		"updated_category": "Updated Category",
-		"updated_profile": "Updated Profile",
-		"updated_shop": "Updated Shop",
-		"updated_stock": "Updated Stock",
-		"you_got_mail": "You got mail ✉️!"
-	}
+  "account": {
+    "verify_content": "Welcome back! Thanks for your verification"
+  },
+  "action": {
+    "call": "Call",
+    "close": "Close",
+    "created": "Created",
+    "detail": "Detail"
+  },
+  "add": "Add",
+  "article": {
+    "create_stock": "Create Inventory",
+    "delete_confirmation": "Are you sure you want to delete this article permanently?",
+    "description": "Article Description",
+    "empty": "No Articles",
+    "name": "Name of Article",
+    "name_hint": "i.e. ball pens",
+    "non_public": "non-public",
+    "price_hint": "i.e. 12,00",
+    "public": "public",
+    "published": "published",
+    "public_prefix": "Article will be",
+    "public_suffix": "published",
+    "stock": "Inventory",
+    "tax_free": "Tax Free",
+    "tax_rate": "Tax Rate",
+    "unit_price": "Unit Price"
+  },
+  "back": "Back",
+  "back_to_start": "Back to start",
+  "call": "Give us a Call",
+  "callback": {
+    "logging_in": "You will be logged in ..."
+  },
+  "category": {
+    "article": "Article",
+    "create": "Create Category",
+    "delete_confirmation": "Are you sure you want to delete the category? The articles contained in it will also be irretrievably deleted!",
+    "euro": "€",
+    "hint": "i.e. drinks",
+    "name": "Name of Category",
+    "title": "Category"
+  },
+  "components": {
+    "menu": {
+      "create": "Create menu",
+      "name": "Menu"
+    },
+    "productlist": {
+      "create": "Create productlist",
+      "name": "Productlist"
+    },
+    "type": {
+      "menu": "Menu",
+      "products": "Products"
+    }
+  },
+  "confirm": "Okay",
+  "contact_data": {
+    "facebook": "Facebook",
+    "full_address": "Full Address",
+    "instagram": "Instagram",
+    "intro": "Enter the address of your shop so others know where to find you.",
+    "optional": "Optional",
+    "phone_number": "Phone Number",
+    "prefix_and_number": "Prefix and Number",
+    "section_name": "Contact Data",
+    "website": "Website"
+  },
+  "contact_to_delete": "Please contact us if you wish to delete your account",
+  "continue": "Continue",
+  "delivery_options": {
+    "all_day": "Open all day long",
+    "days_long": {
+      "friday": "Friday",
+      "monday": "Monday",
+      "saturday": "Saturday",
+      "sunday": "Sunday",
+      "thursday": "Thursday",
+      "tuesday": "Tuesday",
+      "wednesday": "Wednesday"
+    },
+    "days_short": {
+      "friday": "Fr",
+      "monday": "Mo",
+      "saturday": "Sa",
+      "sunday": "Su",
+      "thursday": "Th",
+      "tuesday": "Tu",
+      "wednesday": "We"
+    },
+    "non_public": "not public and not visible for anyone",
+    "offer_prefix": "I offer",
+    "offer_suffix": "",
+    "opening_times": "Opening Times",
+
+    "options": {
+      "local_delivery": {
+        "description": "We ensure that our customers receive their goods promptly",
+        "name": "Local Delivery"
+      },
+      "parcel": {
+        "description": "On request we also send the packages by letter and post",
+        "name": "Postal and parcel delivery"
+      },
+      "pickup": {
+        "description": "Customers can also pick up our goods on site",
+        "name": "Pickup"
+      }
+    },
+    "public": "public and visible for everyone",
+    "public_prefix": "Shop will be",
+    "section_name": "Delivery Options"
+  },
+  "description": {
+    "intro": "If you like, describe your business in a few sentences. Let your creativity run free!",
+    "section_name": "Description"
+  },
+  "dismiss": "Abort",
+  "edit": "Edit",
+  "empty": "",
+  "enter_login": "To the Login",
+  "enter_shop": "To the Shop",
+  "enter_website": "To the website",
+  "error": {
+    "connection": "You probably have problems with your internet"
+  },
+  "footer_bar": {
+    "copyright": "getit! © 2020",
+    "admin": "Admin"
+  },
+  "information": {
+    "error_occurred": "An error occurred. Please refresh the page.",
+    "go_to_shop": "Go to shop!",
+    "intro": "With just a few steps we help you to create your shop. Here we go!",
+    "legal_form": "Legal Form",
+    "legal_form_options": {
+      "independent": "Independent",
+      "non_profit": "Non-profit / Association",
+      "partnership": "Partnership",
+      "private_partnership": "Private company",
+      "sole": "Sole proprietor",
+      "stock_company": "Stock Company"
+    },
+    "name_of_shop": "Name of your Shop",
+    "name_of_shop_example": "i.E. Sam and Partner",
+    "no_of_employees": "Number of Employees",
+    "ready_to_start": "You are ready to start now.",
+    "section_name": "Information",
+    "shop_created_confirmation": "You have successfully created a shop!",
+    "shop_error_confirmation": "Check again that you have filled in all fields correctly.",
+    "shop_not_found": "Your shop was not found. Create a new one."
+  },
+  "lang_code": "en",
+  "login": {
+    "back_to_login": "Back to login",
+    "confirm_password": "Confirm Password",
+    "email": "Email",
+    "facebook": "Facebook",
+    "google": "Google",
+    "help": "Help with the registration?",
+    "login": "Login",
+    "password": "Password",
+    "request_new_password": "Request new password",
+    "save_new_password": "Save new password",
+    "thirdparty": "Or sign up with"
+  },
+  "navbar": {
+    "create_shop": "New Shop",
+    "imprint": "Imprint",
+    "news": "News",
+    "privacy_policy": "Privacy Policy",
+    "processes": "Processes",
+    "shop": "Shop",
+    "stock": "Stock",
+    "terms": "Terms and conditions"
+  },
+  "no_description": "No description available.",
+  "no_items": "You have no entries yet",
+  "picture": {
+    "intro": "Show your shop with a photo and your logo.",
+    "logo": "Logo",
+    "section_name": "Pictures",
+    "shop_picture": "Picture of the shop"
+  },
+  "processes": {
+    "add_article": "Add Article",
+    "add_product": "Add Product",
+    "intro": "We are currently under construction. You can now fill your shop with life by adding your first articles. This will help us to further develop our platform.",
+    "next": "Next",
+    "previous": "Previous",
+    "welcome": "A warm welcome"
+  },
+  "profile": {
+    "add_shop": "Create another shop",
+    "city": "City",
+    "description": "Profile Description",
+    "logout": "Logout",
+    "name": "Name",
+    "admin": "Admin",
+    "your_shops": "Your shops"
+  },
+  "refresh_now": "Refresh now",
+  "remove": "Remove",
+  "save": "Save",
+  "select_image": "Select Image",
+  "shop": {
+    "closed": "Closed",
+    "open_all_day": "Open all day",
+    "settings": "Settings"
+  },
+  "signup": {
+    "name": "Name",
+    "email": "Email",
+    "register": "Register",
+    "registration_info": "By clicking 'Register' you agree to our",
+    "terms_of_use": "Terms of use",
+    "privacy_policy_info": "You can find more about how we use your personal data in our",
+    "privacy_policy": "Privacy policy",
+    "successful_registration": "Your registration was successful! Check your inbox and confirm your e-mail address."
+  },
+  "skip": "Skip",
+  "toast": {
+    "created_article": "Article Created",
+    "created_category": "Category Created",
+    "created_menu": "Menu Created",
+    "deleted_article": "Deleted Article",
+    "logout": "Logged out 👋",
+    "not_authorized": "you are not authorized",
+    "saved_profile": "Saved Profile",
+    "shop_changed": "Shop changed!",
+    "something_wrong": "Something has gone wrong 👎",
+    "updated_category": "Updated Category",
+    "updated_profile": "Updated Profile",
+    "updated_shop": "Updated Shop",
+    "updated_stock": "Updated Stock",
+    "you_got_mail": "You got mail ✉️!"
+  }
 }

@@ -128,8 +128,8 @@
     "connection": "Du hast wahrscheinlich Probleme mit deinem Internet"
   },
   "footer_bar": {
-    "admin": "",
-    "copyright": "Kapiert! © 2020"
+    "admin": "Admin",
+    "copyright": "Copyright getit! © 2020"
   },
   "information": {
     "error_occurred": "Ein Fehler ist aufgetreten. Bitte aktualisieren die Seite.",

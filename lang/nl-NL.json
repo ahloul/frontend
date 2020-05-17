@@ -1,241 +1,241 @@
 {
-	"account": {
-		"verify_content": "Welkom terug! Bedankt voor je verificatie"
-	},
-	"action": {
-		"call": "telefoontje",
-		"changed": "Changed",
-		"close": "Dichtbij",
-		"created": "aangemaakt",
-		"deactivate": "Deactiveren",
-		"detail": "Detail"
-	},
-	"add": "Toevoegen",
-	"article": {
-		"create_stock": "Inventaris aanmaken",
-		"delete_confirmation": "Weet u zeker dat u dit artikel definitief wilt verwijderen?",
-		"description": "Artikelomschrijving",
-		"empty": "Geen artikelen",
-		"name": "Naam van artikel",
-		"name_hint": "d.w.z. balpennen",
-		"non_public": "niet openbaar",
-		"price_hint": "d.w.z. 12,00",
-		"public": "Openbaar",
-		"public_prefix": "Artikel zal zijn",
-		"public_suffix": "Gepubliceerd",
-		"published": "Gepubliceerd",
-		"stock": "Inventaris",
-		"tax_free": "Belasting vrij",
-		"tax_rate": "Belastingtarief",
-		"unit_price": "eenheid prijs"
-	},
-	"back": "terug",
-	"back_to_start": "Terug naar start",
-	"call": "BEL ONS",
-	"callback": {
-		"logging_in": "U wordt ingelogd ..."
-	},
-	"category": {
-		"article": "Artikel",
-		"create": "Categorie maken",
-		"delete_confirmation": "Weet u zeker dat u de categorie wilt verwijderen? De artikelen in het artikel worden ook onherroepelijk verwijderd!",
-		"euro": "€",
-		"hint": "d.w.z. drankjes",
-		"name": "Naam van categorie",
-		"title": "Categorie"
-	},
-	"components": {
-		"menu": {
-			"create": "Menu maken",
-			"name": "Menu"
-		},
-		"productlist": {
-			"create": "Maak een productlijst",
-			"name": "product lijst"
-		},
-		"type": {
-			"menu": "Menu",
-			"products": "Artikel"
-		}
-	},
-	"confirm": "oke",
-	"contact_data": {
-		"facebook": "facebook",
-		"full_address": "Volledig adres",
-		"instagram": "instagram",
-		"intro": "Voer het adres van je winkel in zodat anderen weten waar ze je kunnen vinden.",
-		"optional": "facultatief",
-		"phone_number": "Telefoonnummer",
-		"prefix_and_number": "Voorvoegsel en nummer",
-		"section_name": "Contactgegevens",
-		"website": "website"
-	},
-	"contact_to_delete": "Neem contact met ons op als u uw account wilt verwijderen",
-	"continue": "Doorgaan met",
-	"delivery_options": {
-		"all_day": "De hele dag open",
-		"days_long": {
-			"friday": "vrijdag",
-			"monday": "maandag",
-			"saturday": "zaterdag",
-			"sunday": "zondag",
-			"thursday": "donderdag",
-			"tuesday": "dinsdag",
-			"wednesday": "woensdag"
-		},
-		"days_short": {
-			"friday": "FR",
-			"monday": "mo",
-			"saturday": "SA",
-			"sunday": "SU",
-			"thursday": "TH",
-			"tuesday": "TU",
-			"wednesday": "WIJ"
-		},
-		"non_public": "niet openbaar en voor niemand zichtbaar",
-		"offer_prefix": "ik bied",
-		"offer_suffix": "",
-		"opening_times": "Openingstijden",
-		"options": {
-			"local_delivery": {
-				"description": "We zorgen ervoor dat onze klanten hun goederen snel ontvangen",
-				"name": "Lokale bezorging"
-			},
-			"parcel": {
-				"description": "Op verzoek versturen wij de pakketten ook per brief en post",
-				"name": "Post- en pakketbezorging"
-			},
-			"pickup": {
-				"description": "Klanten kunnen onze goederen ook ter plaatse ophalen",
-				"name": "Oppakken"
-			}
-		},
-		"public": "openbaar en zichtbaar voor iedereen",
-		"public_prefix": "Winkel zal zijn",
-		"section_name": "Bezorgopties"
-	},
-	"description": {
-		"intro": "Beschrijf desgewenst uw bedrijf in een paar zinnen. Laat uw creativiteit de vrije loop!",
-		"section_name": "Omschrijving"
-	},
-	"dismiss": "afbreken",
-	"edit": "BEWERK",
-	"empty": "",
-	"enter_login": "Naar de login",
-	"enter_shop": "Naar de winkel",
-	"enter_website": "Naar de website",
-	"error": {
-		"connection": "U heeft waarschijnlijk problemen met uw internet"
-	},
-	"footer_bar": {
-		"admin": "",
-		"copyright": "snap je! © 2020"
-	},
-	"information": {
-		"error_occurred": "Er is een fout opgetreden. Gelieve de pagina te vernieuwen.",
-		"go_to_shop": "Ga naar winkel!",
-		"intro": "Met slechts een paar stappen helpen wij u om uw winkel te creëren. Daar gaan we!",
-		"legal_form": "Wettelijk document",
-		"legal_form_options": {
-			"independent": "Onafhankelijk",
-			"non_profit": "Vereniging zonder winstoogmerk",
-			"partnership": "vennootschap",
-			"private_partnership": "Particulier bedrijf",
-			"sole": "Enige eigenaar",
-			"stock_company": "Beursgenoteerd bedrijf"
-		},
-		"name_of_shop": "Naam van uw winkel",
-		"name_of_shop_example": "d.w.z. Sam en partner",
-		"no_of_employees": "Aantal werknemers",
-		"ready_to_start": "Je bent nu klaar om te beginnen.",
-		"section_name": "Informatie",
-		"shop_created_confirmation": "Je hebt met succes een winkel gemaakt!",
-		"shop_error_confirmation": "Controleer nogmaals of u alle velden correct heeft ingevuld.",
-		"shop_not_found": "Uw winkel is niet gevonden. Maak een nieuwe aan."
-	},
-	"lang_code": "en",
-	"login": {
-		"back_to_login": "Terug naar Inloggen",
-		"confirm_password": "Bevestig wachtwoord",
-		"email": "E-mail",
-		"facebook": "facebook",
-		"google": "Google",
-		"help": "Hulp bij de inschrijving?",
-		"login": "log in",
-		"password": "Wachtwoord",
-		"request_new_password": "Vraag nieuw wachtwoord aan",
-		"save_new_password": "Bewaar nieuw wachtwoord",
-		"thirdparty": "Of meld je aan met"
-	},
-	"navbar": {
-		"create_shop": "Nieuwe winkel",
-		"imprint": "afdruk",
-		"news": "Nieuws",
-		"privacy_policy": "Privacybeleid",
-		"processes": "Processen",
-		"shop": "Winkel",
-		"stock": "Voorraad",
-		"terms": "voorwaarden"
-	},
-	"no_description": "Geen beschrijving beschikbaar.",
-	"no_items": "U heeft nog geen inzendingen",
-	"picture": {
-		"intro": "Laat je winkel zien met een foto en je logo.",
-		"logo": "LOGO",
-		"section_name": "Afbeeldingen",
-		"shop_picture": "Foto van de winkel"
-	},
-	"processes": {
-		"add_article": "Artikel toevoegen",
-		"add_product": "Voeg product toe",
-		"intro": "We zijn momenteel in aanbouw. U kunt uw winkel nu tot leven brengen door uw eerste artikelen toe te voegen. Dit zal ons helpen om ons platform verder te ontwikkelen.",
-		"next": "volgende",
-		"previous": "voorgaand",
-		"welcome": "Hartelijk welkom"
-	},
-	"profile": {
-		"add_shop": "Maak een andere winkel",
-		"admin": "",
-		"city": "stad",
-		"description": "profiel omschrijving",
-		"logout": "Uitloggen",
-		"name": "Naam",
-		"your_shops": "Uw winkels"
-	},
-	"refresh_now": "Ververs nu",
-	"remove": "Verwijderen",
-	"save": "Opslaan",
-	"select_image": "Selecteer foto",
-	"shop": {
-		"closed": "Gesloten",
-		"open_all_day": "De hele dag geopend",
-		"settings": "instellingen"
-	},
-	"signup": {
-		"email": "E-mail",
-		"name": "Naam",
-		"privacy_policy": "Privacybeleid",
-		"privacy_policy_info": "Meer over hoe wij uw persoonsgegevens gebruiken, vindt u in onze",
-		"register": "REGISTREREN",
-		"registration_info": "Door op 'Registreren' te klikken, gaat u akkoord met onze",
-		"successful_registration": "Uw registratie is geslaagd! Controleer je inbox en bevestig je e-mailadres.",
-		"terms_of_use": "Gebruiksvoorwaarden"
-	},
-	"skip": "overspringen",
-	"toast": {
-		"created_article": "Artikel gemaakt",
-		"created_category": "Categorie gemaakt",
-		"created_menu": "Menu gemaakt",
-		"deleted_article": "Artikel verwijderd",
-		"logout": "Afgemeld 👋",
-		"not_authorized": "JIJ BENT NIET GEAUTORISEERD",
-		"saved_profile": "Opgeslagen profiel",
-		"shop_changed": "Winkel veranderd!",
-		"something_wrong": "Er is iets misgegaan 👎",
-		"updated_category": "Bijgewerkte categorie",
-		"updated_profile": "Bijgewerkt profiel",
-		"updated_shop": "Bijgewerkte winkel",
-		"updated_stock": "Bijgewerkte voorraad",
-		"you_got_mail": "Je hebt mail ✉️!"
-	}
+  "account": {
+    "verify_content": "Welkom terug! Bedankt voor je verificatie"
+  },
+  "action": {
+    "call": "telefoontje",
+    "changed": "Changed",
+    "close": "Dichtbij",
+    "created": "aangemaakt",
+    "deactivate": "Deactiveren",
+    "detail": "Detail"
+  },
+  "add": "Toevoegen",
+  "article": {
+    "create_stock": "Inventaris aanmaken",
+    "delete_confirmation": "Weet u zeker dat u dit artikel definitief wilt verwijderen?",
+    "description": "Artikelomschrijving",
+    "empty": "Geen artikelen",
+    "name": "Naam van artikel",
+    "name_hint": "d.w.z. balpennen",
+    "non_public": "niet openbaar",
+    "price_hint": "d.w.z. 12,00",
+    "public": "Openbaar",
+    "public_prefix": "Artikel zal zijn",
+    "public_suffix": "Gepubliceerd",
+    "published": "Gepubliceerd",
+    "stock": "Inventaris",
+    "tax_free": "Belasting vrij",
+    "tax_rate": "Belastingtarief",
+    "unit_price": "eenheid prijs"
+  },
+  "back": "terug",
+  "back_to_start": "Terug naar start",
+  "call": "BEL ONS",
+  "callback": {
+    "logging_in": "U wordt ingelogd ..."
+  },
+  "category": {
+    "article": "Artikel",
+    "create": "Categorie maken",
+    "delete_confirmation": "Weet u zeker dat u de categorie wilt verwijderen? De artikelen in het artikel worden ook onherroepelijk verwijderd!",
+    "euro": "€",
+    "hint": "d.w.z. drankjes",
+    "name": "Naam van categorie",
+    "title": "Categorie"
+  },
+  "components": {
+    "menu": {
+      "create": "Menu maken",
+      "name": "Menu"
+    },
+    "productlist": {
+      "create": "Maak een productlijst",
+      "name": "product lijst"
+    },
+    "type": {
+      "menu": "Menu",
+      "products": "Artikel"
+    }
+  },
+  "confirm": "oke",
+  "contact_data": {
+    "facebook": "facebook",
+    "full_address": "Volledig adres",
+    "instagram": "instagram",
+    "intro": "Voer het adres van je winkel in zodat anderen weten waar ze je kunnen vinden.",
+    "optional": "facultatief",
+    "phone_number": "Telefoonnummer",
+    "prefix_and_number": "Voorvoegsel en nummer",
+    "section_name": "Contactgegevens",
+    "website": "website"
+  },
+  "contact_to_delete": "Neem contact met ons op als u uw account wilt verwijderen",
+  "continue": "Doorgaan met",
+  "delivery_options": {
+    "all_day": "De hele dag open",
+    "days_long": {
+      "friday": "vrijdag",
+      "monday": "maandag",
+      "saturday": "zaterdag",
+      "sunday": "zondag",
+      "thursday": "donderdag",
+      "tuesday": "dinsdag",
+      "wednesday": "woensdag"
+    },
+    "days_short": {
+      "friday": "FR",
+      "monday": "mo",
+      "saturday": "SA",
+      "sunday": "SU",
+      "thursday": "TH",
+      "tuesday": "TU",
+      "wednesday": "WIJ"
+    },
+    "non_public": "niet openbaar en voor niemand zichtbaar",
+    "offer_prefix": "ik bied",
+    "offer_suffix": "",
+    "opening_times": "Openingstijden",
+    "options": {
+      "local_delivery": {
+        "description": "We zorgen ervoor dat onze klanten hun goederen snel ontvangen",
+        "name": "Lokale bezorging"
+      },
+      "parcel": {
+        "description": "Op verzoek versturen wij de pakketten ook per brief en post",
+        "name": "Post- en pakketbezorging"
+      },
+      "pickup": {
+        "description": "Klanten kunnen onze goederen ook ter plaatse ophalen",
+        "name": "Oppakken"
+      }
+    },
+    "public": "openbaar en zichtbaar voor iedereen",
+    "public_prefix": "Winkel zal zijn",
+    "section_name": "Bezorgopties"
+  },
+  "description": {
+    "intro": "Beschrijf desgewenst uw bedrijf in een paar zinnen. Laat uw creativiteit de vrije loop!",
+    "section_name": "Omschrijving"
+  },
+  "dismiss": "afbreken",
+  "edit": "BEWERK",
+  "empty": "",
+  "enter_login": "Naar de login",
+  "enter_shop": "Naar de winkel",
+  "enter_website": "Naar de website",
+  "error": {
+    "connection": "U heeft waarschijnlijk problemen met uw internet"
+  },
+  "footer_bar": {
+    "admin": "admin",
+    "copyright": "Copyright getit! © 2020"
+  },
+  "information": {
+    "error_occurred": "Er is een fout opgetreden. Gelieve de pagina te vernieuwen.",
+    "go_to_shop": "Ga naar winkel!",
+    "intro": "Met slechts een paar stappen helpen wij u om uw winkel te creëren. Daar gaan we!",
+    "legal_form": "Wettelijk document",
+    "legal_form_options": {
+      "independent": "Onafhankelijk",
+      "non_profit": "Vereniging zonder winstoogmerk",
+      "partnership": "vennootschap",
+      "private_partnership": "Particulier bedrijf",
+      "sole": "Enige eigenaar",
+      "stock_company": "Beursgenoteerd bedrijf"
+    },
+    "name_of_shop": "Naam van uw winkel",
+    "name_of_shop_example": "d.w.z. Sam en partner",
+    "no_of_employees": "Aantal werknemers",
+    "ready_to_start": "Je bent nu klaar om te beginnen.",
+    "section_name": "Informatie",
+    "shop_created_confirmation": "Je hebt met succes een winkel gemaakt!",
+    "shop_error_confirmation": "Controleer nogmaals of u alle velden correct heeft ingevuld.",
+    "shop_not_found": "Uw winkel is niet gevonden. Maak een nieuwe aan."
+  },
+  "lang_code": "en",
+  "login": {
+    "back_to_login": "Terug naar Inloggen",
+    "confirm_password": "Bevestig wachtwoord",
+    "email": "E-mail",
+    "facebook": "facebook",
+    "google": "Google",
+    "help": "Hulp bij de inschrijving?",
+    "login": "log in",
+    "password": "Wachtwoord",
+    "request_new_password": "Vraag nieuw wachtwoord aan",
+    "save_new_password": "Bewaar nieuw wachtwoord",
+    "thirdparty": "Of meld je aan met"
+  },
+  "navbar": {
+    "create_shop": "Nieuwe winkel",
+    "imprint": "afdruk",
+    "news": "Nieuws",
+    "privacy_policy": "Privacybeleid",
+    "processes": "Processen",
+    "shop": "Winkel",
+    "stock": "Voorraad",
+    "terms": "voorwaarden"
+  },
+  "no_description": "Geen beschrijving beschikbaar.",
+  "no_items": "U heeft nog geen inzendingen",
+  "picture": {
+    "intro": "Laat je winkel zien met een foto en je logo.",
+    "logo": "LOGO",
+    "section_name": "Afbeeldingen",
+    "shop_picture": "Foto van de winkel"
+  },
+  "processes": {
+    "add_article": "Artikel toevoegen",
+    "add_product": "Voeg product toe",
+    "intro": "We zijn momenteel in aanbouw. U kunt uw winkel nu tot leven brengen door uw eerste artikelen toe te voegen. Dit zal ons helpen om ons platform verder te ontwikkelen.",
+    "next": "volgende",
+    "previous": "voorgaand",
+    "welcome": "Hartelijk welkom"
+  },
+  "profile": {
+    "add_shop": "Maak een andere winkel",
+    "admin": "",
+    "city": "stad",
+    "description": "profiel omschrijving",
+    "logout": "Uitloggen",
+    "name": "Naam",
+    "your_shops": "Uw winkels"
+  },
+  "refresh_now": "Ververs nu",
+  "remove": "Verwijderen",
+  "save": "Opslaan",
+  "select_image": "Selecteer foto",
+  "shop": {
+    "closed": "Gesloten",
+    "open_all_day": "De hele dag geopend",
+    "settings": "instellingen"
+  },
+  "signup": {
+    "email": "E-mail",
+    "name": "Naam",
+    "privacy_policy": "Privacybeleid",
+    "privacy_policy_info": "Meer over hoe wij uw persoonsgegevens gebruiken, vindt u in onze",
+    "register": "REGISTREREN",
+    "registration_info": "Door op 'Registreren' te klikken, gaat u akkoord met onze",
+    "successful_registration": "Uw registratie is geslaagd! Controleer je inbox en bevestig je e-mailadres.",
+    "terms_of_use": "Gebruiksvoorwaarden"
+  },
+  "skip": "overspringen",
+  "toast": {
+    "created_article": "Artikel gemaakt",
+    "created_category": "Categorie gemaakt",
+    "created_menu": "Menu gemaakt",
+    "deleted_article": "Artikel verwijderd",
+    "logout": "Afgemeld 👋",
+    "not_authorized": "JIJ BENT NIET GEAUTORISEERD",
+    "saved_profile": "Opgeslagen profiel",
+    "shop_changed": "Winkel veranderd!",
+    "something_wrong": "Er is iets misgegaan 👎",
+    "updated_category": "Bijgewerkte categorie",
+    "updated_profile": "Bijgewerkt profiel",
+    "updated_shop": "Bijgewerkte winkel",
+    "updated_stock": "Bijgewerkte voorraad",
+    "you_got_mail": "Je hebt mail ✉️!"
+  }
 }

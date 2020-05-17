@@ -42,7 +42,7 @@
             <div class="min-w-0 flex-1 flex items-center">
               <div class="min-w-0 flex-1 px-4 md:grid md:grid-cols-2 md:gap-4">
                 <div>
-                  <div class="text-xl leading-5 font-bold truncate">
+                  <div class="text-xl leading-snug font-bold truncate">
                     {{ category.name }}
                   </div>
                   <div

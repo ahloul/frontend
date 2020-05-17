@@ -22,7 +22,7 @@
           <timeago
             v-if="entry.createdAt"
             :datetime="entry.createdAt"
-            :locale="$t('lang_code')"
+            :locale="$store.state.locale"
             class="text-light text-sm"
         /></client-only>
         <div v-if="entry.body" class="mt-2" v-html="entry.body" />

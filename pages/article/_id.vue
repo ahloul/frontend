@@ -30,8 +30,8 @@
                 :class="[article.published ? 'text-success' : 'text-light']"
                 >{{
                   article.published
-                    ? $('article.published')
-                    : $('article.non_public')
+                    ? $t('article.published')
+                    : $t('article.non_public')
                 }}</span
               >
             </div>

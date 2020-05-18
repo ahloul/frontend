@@ -112,9 +112,7 @@
                 </div>
                 <div class="mt-1">
                   <span
-                    >{{ $t('signup.registration_info') }}
-                    <n-link to="/terms">{{ $t('signup.terms_of_use') }}</n-link>
-                    .
+                    >{{ $t('signup.registration_info') }} .
                     {{ $t('signup.privacy_policy_info') }}
                     <n-link to="/privacy">{{
                       $t('signup.privacy_policy')

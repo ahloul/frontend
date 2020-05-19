@@ -5,7 +5,8 @@
       <div
         v-for="user in users"
         :key="user._id"
-        class="bg-white p-4 shadow rounded-lg mt-3 w-full"
+        class="animated bg-white p-4 shadow rounded-lg mt-3 w-full hover:shadow-lg cursor-pointer"
+        @click="$router.push(`/admin/users/${user._id}`)"
       >
         <div>
           <div class="flex items-start">
@@ -23,16 +24,6 @@
               <div class="text-light flex flex-wrap text-xs">
                 <div class="mr-2">
                   Created:
-                  <client-only>
-                    <timeago
-                      v-if="user.createdAt"
-                      :datetime="user.createdAt"
-                      :locale="$t('lang_code')"
-                      class="text-light"
-                  /></client-only>
-                </div>
-                <div>
-                  Updated:
                   <client-only>
                     <timeago
                       v-if="user.createdAt"

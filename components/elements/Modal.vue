@@ -24,15 +24,15 @@
               class="flex justify-end"
               :class="{ 'justify-center': centered }"
             >
-              <button v-if="dismissText" class="cta w-auto" @click="dismiss">
-                {{ $t(dismissText) }}
-              </button>
               <button
                 v-if="confirmText"
-                class="cta bg-tertiary w-auto ml-4"
+                class="cta bg-tertiary w-auto mr-4"
                 @click="modalConfirmation"
               >
                 {{ $t(confirmText) }}
+              </button>
+              <button v-if="dismissText" class="cta w-auto" @click="dismiss">
+                {{ $t(dismissText) }}
               </button>
             </div>
           </div>

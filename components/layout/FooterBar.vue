@@ -12,14 +12,18 @@
           </n-link>
         </li>
         <li>
-          <n-link class="text-white hover:text-tertiary" to="/imprint">{{
-            $t('navbar.imprint')
-          }}</n-link>
+          <a
+            href="https://getit.market/imprint"
+            class="text-white hover:text-tertiary"
+            >{{ $t('navbar.imprint') }}</a
+          >
         </li>
         <li>
-          <n-link class="text-white hover:text-tertiary" to="/privacy">{{
-            $t('navbar.privacy_policy')
-          }}</n-link>
+          <a
+            href="https://getit.market/privacy"
+            class="text-white hover:text-tertiary"
+            >{{ $t('navbar.privacy_policy') }}</a
+          >
         </li>
       </ul>
       <ul class="flex flex-col md:flex-row content-end sm:ml-auto opacity-75">

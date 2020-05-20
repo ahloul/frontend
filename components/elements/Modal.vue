@@ -84,6 +84,7 @@ export default {
       dismiss: 'dismiss',
     }),
     modalConfirmation() {
+      console.log('confirm')
       this.confirm()
       this.$emit('confirm')
     },

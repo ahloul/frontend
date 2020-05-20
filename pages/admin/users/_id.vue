@@ -1,6 +1,19 @@
 <template>
   <div>
     <admin-bar />
+    <static-modal
+      v-if="showModal"
+      :dismiss="$t('dismiss')"
+      @dismiss="showModal = false"
+    >
+      <autocomplete
+        value=""
+        :endpoint="`shops`"
+        name="shopId"
+        display-name="shopId"
+        placeholder="Shop ID"
+        @selection="assignShop"
+    /></static-modal>
     <div class="card mt-3">
       <div class="flex items-center">
         <div class="mr-2">
@@ -22,7 +35,7 @@
           </div>
           <div>
             <button @click="showDeleteModal">
-              <icon name="trash-outline" />
+              <icon name="trash-outline" display-name="shopId" />
             </button>
           </div>
         </div>
@@ -164,6 +177,11 @@
                   </div>
                 </li>
               </ul>
+              <div class="flex mt-5">
+                <button class="mx-auto" @click="showModal = true">
+                  <icon name="plus" />
+                </button>
+              </div>
             </dd>
           </div>
         </dl>
@@ -175,11 +193,15 @@
 <script>
 import { reject } from 'lodash'
 import AdminBar from '~/components/pageElements/admin/AdminBar'
+import StaticModal from '~/components/elements/StaticModal'
+import Autocomplete from '~/components/elements/Autocomplete'
 export default {
   name: 'AdminUser',
   middleware: ['admin'],
   components: {
     AdminBar,
+    StaticModal,
+    Autocomplete,
   },
   async asyncData({ $axios, query, redirect, store, params }) {
     try {
@@ -191,6 +213,7 @@ export default {
     }
   },
   data: () => ({
+    showModal: false,
     pending: {
       getActiveShop: false,
       getUserShops: false,
@@ -198,6 +221,11 @@ export default {
     activeShop: null,
     userShops: null,
   }),
+  computed: {
+    selectedShop(e) {
+      return 'asd'
+    },
+  },
   methods: {
     showDeleteModal() {
       this.$store.commit('modal/showModal', {
@@ -258,12 +286,27 @@ export default {
         this.$store.dispatch('toast/add', { text: `Shop revoked!` })
       } catch (error) {
         this.$store.dispatch('toast/add', { message: `toast.something_wrong` })
-        console.log(error)
       }
     },
     async getUser() {
       // Get User
       this.user = await this.$axios.$get(`/api/users/${this.$route.params.id}`)
+    },
+    async assignShop(shop) {
+      this.user.shops.push(shop)
+      try {
+        await this.$axios.patch(`/api/users/${this.user._id}`, {
+          shops: this.user.shops,
+        })
+        await this.getUser()
+        this.showModal = false
+        this.$store.dispatch('toast/add', { message: `Shop Added!` })
+      } catch (error) {
+        console.log(error)
+        console.log('error')
+        this.showModal = false
+        this.$store.dispatch('toast/add', { message: `toast.something_wrong` })
+      }
     },
   },
 }

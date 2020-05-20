@@ -11,6 +11,7 @@
       :pending="pending"
       :count="count"
       @changeShop="changeShop"
+      @reload="getShops"
     />
     <div class="flex justify-center my-5">
       <n-link
@@ -95,6 +96,23 @@ export default {
       this.$router.push({
         query: { ...this.$route.query, search: val, page: 1 },
       })
+    },
+    async getShops() {
+      try {
+        const { rows, count, nextPage, prevPage } = await this.$axios.$get(
+          '/api/shops',
+          {
+            params: this.$route.query,
+          }
+        )
+        this.shops = rows
+        this.nextPage = nextPage
+        this.prevPage = prevPage
+        this.count = count
+      } catch (error) {
+        this.$store.dispatch('toast/add', { message: `toast.something_wrong` })
+        console.log(error)
+      }
     },
   },
 }

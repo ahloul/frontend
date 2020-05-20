@@ -106,10 +106,15 @@ export default {
     //
     change: debounce(async function (e) {
       if (!this.open) this.open = true
-      const rows = await this.$axios.$get(
+      const { rows } = await this.$axios.$get(
         `/api/${this.endpoint}`,
         this.selection[this.displayName]
-          ? { params: { [this.queryname]: this.selection[this.displayName] } }
+          ? {
+              params: {
+                [this.queryname]: this.selection[this.displayName],
+                limit: 5,
+              },
+            }
           : null
       )
       this.list = rows

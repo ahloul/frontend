@@ -34,8 +34,9 @@
 </template>
 
 <script>
-import { ValidationProvider } from 'vee-validate'
 import { debounce, clone, isEmpty } from 'lodash'
+import { ValidationProvider } from 'vee-validate'
+
 export default {
   name: 'Autocomplete',
   components: {
@@ -106,7 +107,7 @@ export default {
     //
     change: debounce(async function (e) {
       if (!this.open) this.open = true
-      const { rows } = await this.$axios.$get(
+      const data = await this.$axios.$get(
         `/api/${this.endpoint}`,
         this.selection[this.displayName]
           ? {
@@ -117,7 +118,7 @@ export default {
             }
           : null
       )
-      this.list = rows
+      this.list = data?.rows || data
     }, 750),
 
     // When one of the suggestion is clicked

@@ -72,7 +72,7 @@
                 max: 40,
                 shopname: { name: shop.name, check: checkName },
               }"
-              :mode="validationMode"
+              mode="eager"
             >
               <span>{{ $t('information.name_of_shop') }}</span>
               <input

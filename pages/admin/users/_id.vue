@@ -16,8 +16,9 @@
     /></static-modal>
     <div class="card mt-3">
       <div class="flex items-center">
-        <div class="mr-2">
+        <div v-if="user.picture" class="mr-2">
           <img
+            v-if="user.picture.url"
             class="rounded-full mx-auto"
             :src="user.picture.url"
             width="50"

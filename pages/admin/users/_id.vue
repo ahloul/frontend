@@ -147,8 +147,9 @@
                   class="mb-3 flex flex-wrap justify-between"
                 >
                   <div class="flex items-center">
-                    <div>
+                    <div v-if="shop.logo">
                       <img
+                        v-if="shop.logo.url"
                         class="mr-2"
                         :src="shop.logo.url"
                         width="50"

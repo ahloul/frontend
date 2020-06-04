@@ -12,8 +12,8 @@ export const getters = {
 }
 
 export const mutations = {
-  addToast(state, { message }) {
-    state.toasts.push({ message, id: uniqueId() })
+  addToast(state, { message, text }) {
+    state.toasts.push({ message, text, id: uniqueId() })
   },
   removeToast({ toasts }, index) {
     toasts.splice(index, 1)
@@ -29,10 +29,9 @@ export const mutations = {
 
 export const actions = {
   async add({ commit }, data) {
-    if (!data.message) {
-      return
+    if (data.message || data.text) {
+      commit('addToast', data)
     }
-    commit('addToast', data)
     if (!data.dontHide) {
       await setTimeout(
         () => commit('removeToastById', data.id),

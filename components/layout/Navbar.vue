@@ -1,5 +1,5 @@
 <template>
-  <div class="p-2 md:p-3 z-50">
+  <div class="z-50">
     <nav class="navbar">
       <ul>
         <li v-if="haveShop">
@@ -38,12 +38,16 @@
 /**
  * Default top navigation for mobile view.
  */
-import { mapGetters } from 'vuex'
+import { mapGetters, mapState } from 'vuex'
 
 export default {
   name: 'Navbar',
   computed: {
     ...mapGetters(['haveShop']),
+    ...mapState({
+      // arrow functions can make the code very succinct!
+      shop: (state) => state.shop.shop,
+    }),
   },
   methods: {
     toggleNavbar() {
@@ -54,7 +58,7 @@ export default {
 </script>
 <style lang="scss">
 .navbar {
-  @apply bg-white rounded-lg antialiased shadow p-2;
+  @apply bg-white antialiased shadow-lg p-2;
 
   ul {
     @apply list-none overflow-hidden flex justify-between w-full max-w-sm mx-auto;
@@ -63,16 +67,16 @@ export default {
   li {
     a {
       @apply flex items-center;
-      @apply p-3 mx-0 rounded-lg;
+      @apply p-3 mx-0;
       color: #7e7577;
       @apply transition duration-300 ease-in-out;
 
       &:hover {
-        @apply bg-secondary text-white no-underline;
+        @apply text-primary no-underline;
       }
     }
     .nuxt-link-active {
-      @apply bg-secondary text-white no-underline;
+      @apply text-primary no-underline;
     }
   }
 }

@@ -44,6 +44,11 @@ export default {
     VUE_APP_FACEBOOK_ID: process.env.VUE_APP_FACEBOOK_ID,
     VUE_APP_MASTER_KEY: process.env.VUE_APP_MASTER_KEY,
     VUE_APP_URL: process.env.VUE_APP_URL,
+    CTF_SPACE_ID: process.env.CTF_SPACE_ID,
+    CTF_CDA_ACCESS_TOKEN: process.env.CTF_CDA_ACCESS_TOKEN,
+    VUE_APP_HERE_ID: process.env.VUE_APP_HERE_ID,
+    VUE_APP_HERE_CODE: process.env.VUE_APP_HERE_CODE,
+    VUE_APP_ENV: process.env.VUE_APP_ENV,
   },
 
   /**
@@ -102,7 +107,7 @@ export default {
    */
   webfontloader: {
     google: {
-      families: ['Nunito:300,400,500,600,700'],
+      families: ['Muli:300,400,500,600,700,800,900&display=swap'],
     },
   },
 
@@ -141,6 +146,10 @@ export default {
    ** Nuxt.js modules
    */
   modules: [
+    // Doc: https://github.com/Developmint/nuxt-webfontloader#readme
+    'nuxt-webfontloader',
+    // Doc: https://github.com/nuxt-community/modules/tree/master/packages/markdownit
+    '@nuxtjs/markdownit',
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
@@ -158,10 +167,21 @@ export default {
       {
         config: {
           apiKey: process.env.BUGSNAG_API_KEY,
+          releaseStage: 'development',
+          logger: null,
+          notifyReleaseStages: ['production', 'staging'],
+          enabledReleaseStages: ['production', 'staging'],
         },
       },
     ],
   ],
+
+  /**
+   ** Markdown configuration
+   */
+  markdownit: {
+    injected: true,
+  },
   /**
    ** Global Middleware configuration
    */

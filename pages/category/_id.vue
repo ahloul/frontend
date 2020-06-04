@@ -1,21 +1,23 @@
 <template>
   <div>
-    <div class="flex justify-end my-3">
+    <div class="flex items-center mt-3">
+      <h1
+        class="headline flex cursor-pointer truncate"
+        @click="$router.push(`/category/edit/${category._id}`)"
+      >
+        {{ category.name }}
+        <icon name="edit-outline" />
+      </h1>
+    </div>
+    <div class="flex mb-3">
       <n-link
         :to="`/article/create?id=${category._id}`"
-        class="button primary icon-r"
+        class="button primary icon-r ml-auto"
         ><icon name="plus" /> {{ $t('add') }}</n-link
       >
     </div>
-
-    <n-link
-      :to="`/category/edit/${category._id}`"
-      class="headline text-3xl inline-flex"
-      >{{ category.name }} <icon name="edit-outline" />
-    </n-link>
-
     <ul
-      v-if="articles.length"
+      v-if="!showEmpty"
       class="category-box grid grid-cols-1 md:grid-cols-2 gap-4"
     >
       <li
@@ -38,15 +40,17 @@
                 <div class="flex">
                   <div
                     v-if="article.haveStock"
-                    class="mt-2 mr-2 flex items-center text-sm leading-5 text-info inline-block align-middle"
+                    class="mt-2 mr-2 flex items-center text-sm leading-5 text-primary inline-block align-middle"
                   >
                     <icon name="cube-outline" width="15" />
                     <span class="ml-1">{{ article.stock }}</span>
                   </div>
                   <div
-                    class="mt-2 flex items-center text-sm leading-5 text-info inline-block align-middle"
+                    class="mt-2 flex items-center text-sm leading-5 text-primary inline-block align-middle"
                   >
-                    <span class="ml-1">€ {{ article.price }}</span>
+                    <span class="ml-1"
+                      >{{ $t('category.euro') }} {{ article.price }}</span
+                    >
                   </div>
                 </div>
               </div>
@@ -59,6 +63,21 @@
       </li>
     </ul>
     <empty-state v-else />
+    <div class="flex justify-center">
+      <n-link
+        v-if="prevPage"
+        :to="`?page=${prevPage}`"
+        class="button icon-l mx-2"
+        ><icon name="chevron-left-outline" />
+        {{ $t('processes.previous') }}</n-link
+      >
+      <n-link
+        v-if="nextPage"
+        :to="`?page=${nextPage}`"
+        class="button icon-r mx-2"
+        >{{ $t('processes.next') }}<icon name="chevron-right-outline"
+      /></n-link>
+    </div>
   </div>
 </template>
 
@@ -70,17 +89,27 @@ export default {
   components: {
     EmptyState,
   },
-  async asyncData({ $axios, params }) {
+  async asyncData({ $axios, params, query }) {
     try {
       const category = await $axios.$get(`/api/categories/${params.id}`)
-      const articles = await $axios.$get(
-        `/api/articles?categoryId=${category._id}`
+      const { count, nextPage, prevPage, rows } = await $axios.$get(
+        `/api/articles?categoryId=${category._id}`,
+        {
+          params: query,
+        }
       )
-      return { category, articles }
+      return { category, articles: rows, showEmpty: !count, nextPage, prevPage }
     } catch (error) {
       console.log(error)
+      return {
+        category: {},
+        showEmpty: true,
+        nextPage: 0,
+        prevPage: 0,
+      }
     }
   },
+  watchQuery: ['page'],
   methods: {
     goToDetail({ id }) {
       this.$router.push(`/article/${id}`)
@@ -92,12 +121,12 @@ export default {
 <style lang="scss" scoped>
 .headline {
   @apply transition duration-300 ease-in-out;
-  @apply font-bold text-primary;
+  @apply text-light;
   i {
     @apply hidden;
   }
   &:hover {
-    @apply text-info;
+    @apply text-primary;
     i {
       @apply inline-block;
     }
@@ -109,7 +138,7 @@ export default {
   }
 
   &-item {
-    @apply text-primary block bg-white shadow rounded cursor-pointer select-none;
+    @apply text-light block bg-white shadow rounded cursor-pointer select-none;
 
     &:hover {
       @apply shadow-lg;

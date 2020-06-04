@@ -3,6 +3,10 @@ import VueI18n from 'vue-i18n'
 
 import de from '~/lang/de-DE.json'
 import en from '~/lang/en-US.json'
+import es from '~/lang/es-ES.json'
+import it from '~/lang/it-IT.json'
+import nl from '~/lang/nl-NL.json'
+import tr from '~/lang/tr-TR.json'
 
 Vue.use(VueI18n)
 
@@ -16,6 +20,10 @@ export default ({ app, store }) => {
     messages: {
       de,
       en,
+      es,
+      it,
+      nl,
+      tr,
     },
   })
 

@@ -1,5 +1,5 @@
-import { mount } from '@vue/test-utils'
-import { shallowMount } from '@vue/test-utils'
+import { mount, shallowMount } from '@vue/test-utils'
+
 import Wysiwyg from '../../components/utils/Wysiwyg.vue'
 
 describe('Wysiwyg props', () => {

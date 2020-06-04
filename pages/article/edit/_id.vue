@@ -1,21 +1,13 @@
 <template>
   <div>
-    <modal
-      :show="showModal"
-      centered
-      dismiss="Schließen"
-      @dismiss="showModal = false"
-      @confirm="deleteArticle"
-      >{{ $t('article.delete_confirmation') }}
-    </modal>
     <div class="flex justify-between my-4">
       <n-link :to="`/article/${article.id}`" class="button icon-r"
-        ><icon name="arrow-ios-back-outline" /> Zurück</n-link
+        ><icon name="arrow-ios-back-outline" /> {{ $t('back') }}</n-link
       >
       <button
         :class="{ 'spinner-dark': loadState.delete }"
         type="button"
-        @click="showModal = true"
+        @click.stop="showDeleteModal"
       >
         <icon name="trash-outline" />
       </button>
@@ -117,9 +109,11 @@
               name="Steuersatz"
             >
               <select v-model="article.tax" class="form-select w-full">
+                <!-- eslint-disable vue-i18n/no-raw-text -->
                 <option :value="19">
                   19 %
                 </option>
+                <!-- eslint-disable vue-i18n/no-raw-text -->
                 <option :value="7">
                   7 %
                 </option>
@@ -153,7 +147,9 @@
             <span class="ml-2"
               >{{ $t('article.public_prefix') }}
               <span class="font-bold">{{
-                article.published ? 'öffentlich' : 'nicht öffentlich'
+                article.published
+                  ? $t('article.public')
+                  : $t('article.non_public')
               }}</span>
               {{ $t('article.public_suffix') }}.</span
             >
@@ -201,7 +197,6 @@ export default {
     }
   },
   data: () => ({
-    showModal: false,
     article: {
       picture: {},
       category: null,
@@ -241,7 +236,7 @@ export default {
       try {
         await this.$axios.patch(
           `/api/articles/${this.article.id}`,
-          difference(this.article, this.coreArticle)
+          difference(this.article, this.coreArticle, ['picture'])
         )
         // send toast
         this.$store.dispatch('toast/add', { message: `toast.updated_profile` })
@@ -250,13 +245,23 @@ export default {
         console.log(error)
       }
     },
+    showDeleteModal() {
+      this.$store.commit('modal/showModal', {
+        message: 'article.delete_confirmation',
+        dismissText: 'dismiss',
+        onConfirm: this.deleteArticle,
+      })
+    },
     async deleteArticle() {
-      this.showModal = false
-      this.loadState.delete = true
-      await this.$axios.delete(`/api/articles/${this.article.id}`)
-      this.loadState.delete = false
-      this.$store.dispatch('toast/add', { message: `toast.deleted_article` })
-      await this.$router.push(`/category/${this.category._id}`)
+      try {
+        this.loadState.delete = true
+        await this.$axios.delete(`/api/articles/${this.article.id}`)
+        this.loadState.delete = false
+        this.$store.dispatch('toast/add', { message: `toast.deleted_article` })
+        await this.$router.push(`/category/${this.category._id}`)
+      } catch (e) {
+        console.log(e)
+      }
     },
   },
 }

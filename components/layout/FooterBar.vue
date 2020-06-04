@@ -1,25 +1,43 @@
 <template>
   <div class="bg-primary">
     <div class="container flex flex-row">
-      <ul class="bar text-left mx-auto sm:mx-0">
+      <ul class="bar text-left content-end mr-auto sm:mx-0">
+        <li v-if="isAdmin">
+          <n-link
+            to="/admin"
+            class="text-warning hover:text-tertiary items-center flex"
+          >
+            <icon name="shield-outline" />
+            <span class="ml-1">{{ $t('footer_bar.admin') }}</span>
+          </n-link>
+        </li>
         <li>
-          <a href="https://getit.social/impressum/" target="_blank"
-            >Impressum</a
+          <a
+            href="https://getit.market/imprint"
+            class="text-white hover:text-tertiary"
+            >{{ $t('navbar.imprint') }}</a
           >
         </li>
         <li>
-          <a href="https://getit.social/datenschutz/" target="_blank"
-            >Datenschutz</a
+          <a
+            href="https://getit.market/privacy"
+            class="text-white hover:text-tertiary"
+            >{{ $t('navbar.privacy_policy') }}</a
           >
         </li>
       </ul>
-      <ul class="bar text-left mx-auto sm:ml-5">
+      <ul class="flex flex-col md:flex-row content-end sm:ml-auto opacity-75">
         <li
           v-for="el in locales"
           :key="el.code"
+          class="ml-2 mt-2"
           :class="{ active: el.code === locale }"
         >
-          <a href @click="switchLanguage(el.code)">
+          <a
+            href
+            class="text-white hover:text-tertiary"
+            @click="switchLanguage(el.code)"
+          >
             {{ el.name }}
           </a>
         </li>
@@ -29,6 +47,7 @@
           <a
             href="https://www.facebook.com/Get-It-103751584615828/"
             target="_blank"
+            class="text-white hover:text-tertiary"
             ><icon name="facebook-outline"
           /></a>
         </li>
@@ -36,6 +55,7 @@
           <a
             href="https://www.facebook.com/getit.habenbrauchenbringen/"
             target="_blank"
+            class="text-white hover:text-tertiary"
             ><svg
               fill="currentColor"
               xmlns="http://www.w3.org/2000/svg"
@@ -50,10 +70,17 @@
         </li>
       </ul>
     </div>
+    <div class="container">
+      <div class="mx-auto text-info select-none text-xs opacity-50 md:mt-5">
+        {{ $t('footer_bar.copyright') }}
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   name: 'FooterBar',
 
@@ -67,6 +94,7 @@ export default {
     locale() {
       return this.$store.state.locale
     },
+    ...mapGetters(['isAdmin']),
   },
   methods: {
     switchLanguage(localeCode) {
@@ -82,7 +110,7 @@ export default {
   @apply flex flex-col;
 
   li {
-    @apply my-1;
+    @apply mt-2;
   }
 }
 </style>

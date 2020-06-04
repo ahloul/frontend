@@ -17,6 +17,22 @@ export const state = () => ({
       code: 'en',
       name: 'English',
     },
+    {
+      code: 'es',
+      name: 'Spanish',
+    },
+    {
+      code: 'tr',
+      name: 'Turkish',
+    },
+    {
+      code: 'it',
+      name: 'Italian',
+    },
+    {
+      code: 'nl',
+      name: 'Dutch',
+    },
   ],
   locale: 'en',
 })
@@ -109,6 +125,7 @@ export const actions = {
 
 export const getters = {
   user: (state) => state.user,
+  isAdmin: (state) => state.user.role === 'admin',
   pending: (state) => state.pending,
   haveShop: (state) => !!state.user.activeShop,
 }

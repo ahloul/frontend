@@ -28,36 +28,7 @@
                 :class="{ active: isActive.underline() }"
                 @click.prevent="commands.underline"
               >
-
                 <u>U</u>
-              </div>
-            </li>
-
-            <li>
-              <div
-                class="button cursor-pointer"
-                :class="{ active: isActive.heading({ level: 1 }) }"
-                @click.prevent="commands.heading({ level: 1 })"
-              >
-                H1
-              </div>
-            </li>
-            <li>
-              <div
-                class="button cursor-pointer"
-                :class="{ active: isActive.heading({ level: 2 }) }"
-                @click.prevent="commands.heading({ level: 2 })"
-              >
-                H2
-              </div>
-            </li>
-            <li>
-              <div
-                class="button cursor-pointer"
-                :class="{ active: isActive.heading({ level: 3 }) }"
-                @click.prevent="commands.heading({ level: 3 })"
-              >
-                H3
               </div>
             </li>
           </ul>
@@ -71,13 +42,11 @@
 
 <script>
 import { Editor, EditorContent, EditorMenuBar } from 'tiptap'
-import { Heading, Bold, Italic, Link, Underline } from 'tiptap-extensions'
-import ClientOnly from 'vue-client-only'
+import { Bold, Italic, Link, Underline } from 'tiptap-extensions'
 export default {
   components: {
     EditorContent,
     EditorMenuBar,
-    ClientOnly,
   },
   props: {
     initialContent: {
@@ -90,13 +59,7 @@ export default {
   }),
   mounted() {
     this.editor = new Editor({
-      extensions: [
-        new Heading({ levels: [1, 2, 3] }),
-        new Link(),
-        new Bold(),
-        new Italic(),
-        new Underline(),
-      ],
+      extensions: [new Link(), new Bold(), new Italic(), new Underline()],
       content: this.initialContent,
       onUpdate: ({ getHTML }) => {
         this.$emit('content', getHTML())
@@ -122,7 +85,7 @@ export default {
 
 .editor {
   &-content {
-    @apply text-base border p-3 rounded-md bg-white;
+    @apply text-base border p-3 rounded-md bg-dark;
     &:focus {
       @apply shadow-none border-primary;
     }

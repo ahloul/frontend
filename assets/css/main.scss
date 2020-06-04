@@ -2,10 +2,13 @@
  * Main scss file which is specified and loaded in the "nuxt.config"
  */
 
-@import "layout";
-@import "button";
-@import "tag";
-@import "forms";
-@import "card";
-@import "animations";
-@import "helper";
+/*! purgecss start ignore */
+@import 'layout';
+@import 'button';
+@import 'tag';
+@import 'forms';
+@import 'card';
+@import 'animations';
+@import 'helper';
+@import 'markdown';
+/*! purgecss end ignore */

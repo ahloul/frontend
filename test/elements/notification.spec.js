@@ -1,6 +1,6 @@
+import { shallowMount, mount } from '@vue/test-utils'
+
 import Notification from '../../components/elements/Notification.vue'
-import { shallowMount } from '@vue/test-utils'
-import { mount } from '@vue/test-utils'
 
 describe('Notification', () => {
   let wrapper

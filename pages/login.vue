@@ -1,118 +1,117 @@
 <template>
   <div class="flex flex-col content-center justify-center p-2">
-    <!-- Headline -->
-    <div class="w-full max-w-sm mx-auto">
-      <img src="/img/logo.svg" width="90" class="mx-auto" alt="" />
-      <h2 class="text-center font-bold text-secondary">
-        get it!
-      </h2>
-    </div>
+    <div class="card max-w-lg mx-auto">
+      <!-- Headline -->
+      <div class="w-full max-w-sm mx-auto">
+        <img src="/img/logo.svg" width="150" class="mx-auto" alt="" />
+      </div>
 
-    <!-- Form -->
-    <div class="w-full max-w-sm mx-auto">
-      <ValidationObserver ref="form" v-slot="{ handleSubmit }" slim>
-        <form @submit.prevent="handleSubmit(localLogin)">
-          <!-- INPUT E-Mail -->
-          <label class="block">
-            <span>E-Mail</span>
-            <validation-provider
-              v-slot="{ errors }"
-              mode="lazy"
-              name="email"
-              rules="email|required"
-            >
-              <input
-                v-model="guest.email"
-                class="form-input"
-                placeholder="lothar@mustermail.com"
-              />
-              <span class="error">{{ errors[0] }}</span>
-            </validation-provider>
-          </label>
+      <!-- Form -->
+      <div class="w-full max-w-sm mx-auto">
+        <ValidationObserver ref="form" v-slot="{ handleSubmit }" slim>
+          <form @submit.prevent="handleSubmit(localLogin)">
+            <!-- INPUT E-Mail -->
+            <label class="block">
+              <span>{{ $t('login.email') }}</span>
+              <validation-provider
+                v-slot="{ errors }"
+                mode="lazy"
+                name="email"
+                rules="email|required"
+              >
+                <input
+                  v-model="guest.email"
+                  class="form-input"
+                  placeholder="lothar@mustermail.com"
+                />
+                <span class="error">{{ errors[0] }}</span>
+              </validation-provider>
+            </label>
 
-          <!-- INPUT Password -->
-          <label class="block">
-            <span>{{ $t('login.password') }}</span>
-            <validation-provider
-              v-slot="{ errors }"
-              name="password"
-              mode="lazy"
-              rules="required|verify_password"
-            >
-              <input
-                v-model="guest.password"
-                class="form-input"
-                type="password"
-                placeholder="******************"
-              />
-              <span class="error">{{ errors[0] }}</span>
-            </validation-provider>
-          </label>
+            <!-- INPUT Password -->
+            <label class="block">
+              <span>{{ $t('login.password') }}</span>
+              <validation-provider
+                v-slot="{ errors }"
+                name="password"
+                mode="lazy"
+                rules="required|verify_password"
+              >
+                <input
+                  v-model="guest.password"
+                  class="form-input"
+                  type="password"
+                  placeholder="******************"
+                />
+                <span class="error">{{ errors[0] }}</span>
+              </validation-provider>
+            </label>
 
-          <div class="mt-5 flex items-center justify-end">
-            <div class="leading-5">
-              <n-link to="/account/forgot">
-                {{ $t('login.help') }}
-              </n-link>
+            <div class="mt-5 flex items-center justify-end">
+              <div class="leading-5">
+                <n-link to="/account/forgot">
+                  {{ $t('login.help') }}
+                </n-link>
+              </div>
+            </div>
+
+            <div class="mt-5">
+              <span class="block w-full">
+                <button
+                  class="cta bg-tertiary w-full"
+                  :class="{ 'spinner-light': pending === 'local' }"
+                  type="submit"
+                >
+                  {{ $t('login.login') }}
+                </button>
+              </span>
+            </div>
+            <div class="mt-3">
+              <span class="block w-full">
+                <button
+                  type="button"
+                  class="cta w-full"
+                  @click.prevent="$router.push('/account/signup')"
+                >
+                  {{ $t('signup.register') }}
+                </button>
+              </span>
+            </div>
+          </form>
+        </ValidationObserver>
+        <!-- Bottom Social Area -->
+        <div class="mt-6">
+          <div class="relative">
+            <div class="absolute inset-0 flex items-center">
+              <div class="w-full border-t"></div>
+            </div>
+            <div class="relative flex justify-center text-sm leading-5">
+              <span class="px-2 bg-white text-primary">
+                {{ $t('login.thirdparty') }}
+              </span>
             </div>
           </div>
 
-          <div class="mt-5">
-            <span class="block w-full">
+          <div class="mt-6 grid grid-cols-2 gap-3">
+            <div>
               <button
-                class="primary w-full"
-                :class="{ 'spinner-light': pending === 'local' }"
-                type="submit"
+                class="cta icon-r w-full"
+                :class="{ 'spinner-dark': pending === 'facebook' }"
+                @click="socialLogin('facebook')"
               >
-                {{ $t('login.login') }}
+                <icon name="facebook" /> {{ $t('login.facebook') }}
               </button>
-            </span>
-          </div>
-          <div class="mt-3">
-            <span class="block w-full">
+            </div>
+
+            <div>
               <button
-                type="button"
-                class="border w-full"
-                @click.prevent="$router.push('/account/signup')"
+                class="cta icon-r w-full"
+                :class="{ 'spinner-dark': pending === 'google' }"
+                @click="socialLogin('google')"
               >
-                {{ $t('signup.register') }}
+                <icon name="google" /> {{ $t('login.google') }}
               </button>
-            </span>
-          </div>
-        </form>
-      </ValidationObserver>
-      <!-- Bottom Social Area -->
-      <div class="mt-6">
-        <div class="relative">
-          <div class="absolute inset-0 flex items-center">
-            <div class="w-full border-t"></div>
-          </div>
-          <div class="relative flex justify-center text-sm leading-5">
-            <span class="px-2 bg-grey text-primary">
-              {{ $t('login.thirdparty') }}
-            </span>
-          </div>
-        </div>
-
-        <div class="mt-6 grid grid-cols-2 gap-3">
-          <div>
-            <button
-              class="bordered icon-r w-full"
-              :class="{ 'spinner-dark': pending === 'facebook' }"
-              @click="socialLogin('facebook')"
-            >
-              <icon name="facebook" /> Facebook
-            </button>
-          </div>
-
-          <div>
-            <button
-              class="bordered icon-r w-full"
-              :class="{ 'spinner-dark': pending === 'google' }"
-              @click="socialLogin('google')"
-            >
-              <icon name="google" /> Google
-            </button>
+            </div>
           </div>
         </div>
       </div>

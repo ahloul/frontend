@@ -2,7 +2,7 @@
   <div class="min-h-screen flex flex-col justify-center">
     <div class="w-full m-auto text-center">
       <h1 class="text-2xl text-info font-bold">
-        Sie werden angemeldet...
+        {{ $t('callback.logging_in') }}
       </h1>
     </div>
   </div>

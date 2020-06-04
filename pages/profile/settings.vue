@@ -15,7 +15,7 @@
       <form @submit.prevent="handleSubmit(updateUser)">
         <!-- INPUT Name -->
         <label class="block">
-          <span>Name</span>
+          <span>{{ $t('profile.name') }}</span>
           <ValidationProvider v-slot="{ errors }" rules="min:2|required">
             <input
               id="userName"

@@ -1,6 +1,6 @@
+import { shallowMount, mount } from '@vue/test-utils'
+
 import Navigation from '../../components/layout/Navigation.vue'
-import { shallowMount } from '@vue/test-utils'
-import { mount } from '@vue/test-utils'
 
 describe('Toggle', () => {
   let wrapper

@@ -3,8 +3,8 @@
     <div
       v-show="show"
       class="modal-bg"
-      @click="$emit('dismiss')"
-      @keyup.esc="$emit('dismiss')"
+      @click="dismiss"
+      @keyup.esc="dismiss"
     ></div>
     <transition name="modalAnimation">
       <div v-show="show" class="modal-wrapper">
@@ -17,6 +17,7 @@
               <slot name="header"></slot>
             </div>
             <div class="mb-6 mt-3">
+              {{ $t(message) }}
               <slot />
             </div>
             <div
@@ -24,18 +25,14 @@
               :class="{ 'justify-center': centered }"
             >
               <button
-                v-if="dismiss"
-                class="w-auto border"
-                @click="$emit('dismiss')"
+                v-if="confirmText"
+                class="cta bg-tertiary w-auto mr-4"
+                @click="modalConfirmation"
               >
-                {{ $t(dismiss) }}
+                {{ $t(confirmText) }}
               </button>
-              <button
-                v-if="confirm"
-                class="primary w-auto ml-4"
-                @click="$emit('confirm')"
-              >
-                {{ $t(confirm) }}
+              <button v-if="dismissText" class="cta w-auto" @click="dismiss">
+                {{ $t(dismissText) }}
               </button>
             </div>
           </div>
@@ -46,6 +43,7 @@
 </template>
 
 <script>
+import { mapMutations, mapGetters } from 'vuex'
 export default {
   name: 'Modal',
   props: {
@@ -57,25 +55,39 @@ export default {
       type: Boolean,
       default: true,
     },
-    confirm: {
-      type: String,
-      default: 'confirm',
-    },
-    dismiss: {
-      type: String,
-      default: 'dismiss',
-    },
   },
+  computed: {
+    ...mapGetters('modal', {
+      showModal: 'showModal',
+      message: 'message',
+      confirmText: 'confirmText',
+      dismissText: 'dismissText',
+    }),
+  },
+
   watch: {
+    // Show Browser Scrollbar
     show(newValue, oldValue) {
       const rootBody = document.getElementsByTagName('body')[0]
       if (newValue) rootBody.classList.add('overflow-hidden')
       else rootBody.classList.remove('overflow-hidden')
     },
   },
+  // Hide Browser Scrollbar
   beforeDestroy() {
     const rootBody = document.getElementsByTagName('body')[0]
     rootBody.classList.remove('overflow-hidden')
+  },
+  methods: {
+    ...mapMutations('modal', {
+      confirm: 'confirm',
+      dismiss: 'dismiss',
+    }),
+    modalConfirmation() {
+      console.log('confirm')
+      this.confirm()
+      this.$emit('confirm')
+    },
   },
 }
 </script>
@@ -108,7 +120,7 @@ export default {
     @apply z-50 fixed top-0 left-0 h-screen w-full bg-light opacity-75;
   }
   &-body {
-    @apply bg-white m-3 max-h-full text-secondary rounded-lg;
+    @apply bg-white m-3 max-h-full text-light rounded-lg;
   }
 }
 </style>

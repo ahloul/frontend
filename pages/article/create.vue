@@ -5,14 +5,13 @@
       :image="article.picture"
       @target="selectImage"
     />
-
     <ValidationObserver v-slot="{ handleSubmit }" slim>
       <form @submit.prevent="handleSubmit(submit)">
         <!-- userLocation INPUT -->
         <label class="block">
           <span>{{ $t('category.title') }}</span>
           <autocomplete
-            endpoint="categories"
+            :endpoint="`categories`"
             :value="articleCategory"
             @selection="selectCategory"
           />
@@ -96,9 +95,11 @@
             name="Steuersatz"
           >
             <select v-model="article.tax" class="form-select w-full">
+              <!-- eslint-disable vue-i18n/no-raw-text -->
               <option :value="19">
                 19 %
               </option>
+              <!-- eslint-disable vue-i18n/no-raw-text -->
               <option :value="7">
                 7 %
               </option>
@@ -139,7 +140,7 @@
 
         <div class="flex justify-end my-5">
           <button
-            class="primary"
+            class="cta bg-tertiary"
             :class="{ 'spinner-light': loadState.create }"
             type="submit"
           >

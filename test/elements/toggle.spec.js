@@ -1,6 +1,6 @@
+import { shallowMount, mount } from '@vue/test-utils'
+
 import Toggle from '../../components/elements/Toggle.vue'
-import { shallowMount } from '@vue/test-utils'
-import { mount } from '@vue/test-utils'
 
 describe('Toggle', () => {
   let wrapper

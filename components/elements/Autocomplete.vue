@@ -24,7 +24,9 @@
           :key="index"
           class="dropdown-item"
           @click="suggestionClick(suggestion)"
-        >{{ suggestion[displayName] }}</li>
+        >
+          {{ suggestion[displayName] }}
+        </li>
       </ul>
       <span class="error">{{ errors[0] }}</span>
     </ValidationProvider>
@@ -32,8 +34,9 @@
 </template>
 
 <script>
-import { ValidationProvider } from "vee-validate"
 import { debounce, clone, isEmpty } from 'lodash'
+import { ValidationProvider } from 'vee-validate'
+
 export default {
   name: 'Autocomplete',
   components: {
@@ -104,13 +107,18 @@ export default {
     //
     change: debounce(async function (e) {
       if (!this.open) this.open = true
-      const rows = await this.$axios.$get(
+      const data = await this.$axios.$get(
         `/api/${this.endpoint}`,
         this.selection[this.displayName]
-          ? { params: { [this.queryname]: this.selection[this.displayName] } }
+          ? {
+              params: {
+                [this.queryname]: this.selection[this.displayName],
+                limit: 5,
+              },
+            }
           : null
       )
-      this.list = rows
+      this.list = data?.rows || data
     }, 750),
 
     // When one of the suggestion is clicked

@@ -15,11 +15,7 @@
 </template>
 
 <script>
-import ClientOnly from 'vue-client-only'
 export default {
-  components: {
-    ClientOnly,
-  },
   name: 'Icon',
   props: {
     // Name of the icon

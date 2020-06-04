@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EmptyContent  html should render correctly 1`] = `
+"<div class=\\"animated flex content-center flex-wrap justify-center h-full text-center w-full border-2 rounded-lg border-dashed text-dark mb-4\\">
+  <div class=\\"p-4\\">Kein Content vorhanden</div>
+</div>"
+`;

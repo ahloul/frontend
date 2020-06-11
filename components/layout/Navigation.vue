@@ -4,9 +4,9 @@
       <nav class="bg-white shadow">
         <div class="container navigation">
           <div class="brand">
-            <n-link to="/" exact>
+            <a href="https://getit.market">
               <img src="/img/logo.svg" alt="" width="110" />
-            </n-link>
+            </a>
           </div>
           <div class="ml-3">
             <ul v-if="!haveShop">

@@ -28,6 +28,16 @@ export default {
         content: 'https://getit.market/img/mockup.png',
       },
       {
+        hid: 'og:image:width',
+        property: 'og:image:width',
+        content: '1024',
+      },
+      {
+        hid: 'og:image:width',
+        property: 'og:image:height',
+        content: '683',
+      },
+      {
         hid: 'og:url',
         property: 'og:url',
         content: process.env.VUE_APP_URL,

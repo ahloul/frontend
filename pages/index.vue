@@ -38,10 +38,32 @@ const client = createClient()
 
 export default {
   middleware: 'authenticated',
-  async asyncData({ params }) {
+  async asyncData({ params, store }) {
+    let contentfulLocaleCode
+    switch (store.state.locale) {
+      case 'de':
+        contentfulLocaleCode = 'de-DE'
+        break
+      case 'es':
+        contentfulLocaleCode = 'es-ES'
+        break
+      case 'tr':
+        contentfulLocaleCode = 'tr-TR'
+        break
+      case 'it':
+        contentfulLocaleCode = 'it-IT'
+        break
+      case 'nl':
+        contentfulLocaleCode = 'nl-NL'
+        break
+      default:
+        contentfulLocaleCode = 'en'
+    }
+
     try {
       const { items } = await client.getEntries({
         content_type: 'dealerNews',
+        locale: contentfulLocaleCode,
         order: '-sys.createdAt',
       })
       const news = items.map((i) => i.fields)

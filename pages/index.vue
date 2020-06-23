@@ -39,26 +39,10 @@ const client = createClient()
 export default {
   middleware: 'authenticated',
   async asyncData({ params, store }) {
-    let contentfulLocaleCode
-    switch (store.state.locale) {
-      case 'de':
-        contentfulLocaleCode = 'de-DE'
-        break
-      case 'es':
-        contentfulLocaleCode = 'es-ES'
-        break
-      case 'tr':
-        contentfulLocaleCode = 'tr-TR'
-        break
-      case 'it':
-        contentfulLocaleCode = 'it-IT'
-        break
-      case 'nl':
-        contentfulLocaleCode = 'nl-NL'
-        break
-      default:
-        contentfulLocaleCode = 'en'
-    }
+    const contentfulLocaleCode =
+      store.state.locale === 'en'
+        ? 'en'
+        : store.state.locale + '-' + store.state.locale.toUpperCase()
 
     try {
       const { items } = await client.getEntries({

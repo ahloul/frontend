@@ -8,64 +8,41 @@
 
       <!-- Form -->
       <div class="w-full max-w-sm mx-auto">
+        <!--Test-->
+        <FormulateForm
+          v-model="guest"
+          :errors="{ email: validationError }"
+          @submit="localLogin"
+        >
+          <FormulateInput
+            name="email"
+            type="email"
+            label="Email"
+            validation="bail|required|email"
+          />
+          <FormulateInput
+            name="password"
+            type="password"
+            label="Password"
+            validation="bail|required|password"
+          />
+          <div class="mt-5 flex items-center justify-end">
+            <div class="leading-5">
+              <n-link to="/account/forgot">
+                {{ $t('login.help') }}
+              </n-link>
+            </div>
+          </div>
+          <FormulateInput
+            class="mt-5"
+            type="submit"
+            :label="$t('login.login')"
+          />
+        </FormulateForm>
+        <!--End Test-->
+
         <ValidationObserver ref="form" v-slot="{ handleSubmit }" slim>
           <form @submit.prevent="handleSubmit(localLogin)">
-            <!-- INPUT E-Mail -->
-            <label class="block">
-              <span>{{ $t('login.email') }}</span>
-              <validation-provider
-                v-slot="{ errors }"
-                mode="lazy"
-                name="email"
-                rules="email|required"
-              >
-                <input
-                  v-model="guest.email"
-                  class="form-input"
-                  placeholder="lothar@mustermail.com"
-                />
-                <span class="error">{{ errors[0] }}</span>
-              </validation-provider>
-            </label>
-
-            <!-- INPUT Password -->
-            <label class="block">
-              <span>{{ $t('login.password') }}</span>
-              <validation-provider
-                v-slot="{ errors }"
-                name="password"
-                mode="lazy"
-                rules="required|verify_password"
-              >
-                <input
-                  v-model="guest.password"
-                  class="form-input"
-                  type="password"
-                  placeholder="******************"
-                />
-                <span class="error">{{ errors[0] }}</span>
-              </validation-provider>
-            </label>
-
-            <div class="mt-5 flex items-center justify-end">
-              <div class="leading-5">
-                <n-link to="/account/forgot">
-                  {{ $t('login.help') }}
-                </n-link>
-              </div>
-            </div>
-
-            <div class="mt-5">
-              <span class="block w-full">
-                <button
-                  class="cta bg-tertiary w-full"
-                  :class="{ 'spinner-light': pending === 'local' }"
-                  type="submit"
-                >
-                  {{ $t('login.login') }}
-                </button>
-              </span>
-            </div>
             <div class="mt-3">
               <span class="block w-full">
                 <button
@@ -130,6 +107,7 @@ export default {
   middleware: 'notAuthenticated',
   data: () => ({
     pending: null,
+    validationError: null,
     guest: {
       email: '',
       password: '',
@@ -161,9 +139,7 @@ export default {
       } catch ({ response: { data } }) {
         // TODO: Catch error
         this.pending = null
-        this.$refs.form.setErrors({
-          email: [data.message],
-        })
+        this.validationError = data.message
       }
     },
     async socialLogin(provider) {

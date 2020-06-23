@@ -165,7 +165,12 @@
     "password": "Password",
     "request_new_password": "Request new password",
     "save_new_password": "Save new password",
-    "thirdparty": "Or sign up with"
+    "thirdparty": "Or sign up with",
+    "validation_errors": {
+      "password": "The password must contain at least: 1 uppercase letter, 1 lowercase letter, 1 number, and one special character (E.g. , . _ & ? etc)",
+      "email": "Invalid Email",
+      "required": "is mandatory"
+    }
   },
   "navbar": {
     "create_shop": "New Shop",

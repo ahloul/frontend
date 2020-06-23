@@ -172,6 +172,7 @@ export default {
   plugins: [
     '~/plugins/modules/axios',
     '~/plugins/modules/i18n',
+    '~/plugins/modules/vueFormulate',
     '~/plugins/mixins/components',
     // { src: '~/plugins/modules/localstorage', mode: 'client' },
     { src: '~/plugins/modules/timeago', mode: 'client' },

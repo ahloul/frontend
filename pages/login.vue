@@ -17,14 +17,16 @@
           <FormulateInput
             name="email"
             type="email"
-            label="Email"
+            :label="$t('login.email')"
             validation="bail|required|email"
+            placeholder="lothar@mustermail.com"
           />
           <FormulateInput
             name="password"
             type="password"
-            label="Password"
+            :label="$t('login.password')"
             validation="bail|required|password"
+            placeholder="******************"
           />
           <div class="mt-5 flex items-center justify-end">
             <div class="leading-5">
@@ -38,24 +40,18 @@
             type="submit"
             :label="$t('login.login')"
           />
+          <span class="block w-full">
+            <button
+              type="button"
+              class="cta w-full"
+              @click.prevent="$router.push('/account/signup')"
+            >
+              {{ $t('signup.register') }}
+            </button>
+          </span>
         </FormulateForm>
         <!--End Test-->
 
-        <ValidationObserver ref="form" v-slot="{ handleSubmit }" slim>
-          <form @submit.prevent="handleSubmit(localLogin)">
-            <div class="mt-3">
-              <span class="block w-full">
-                <button
-                  type="button"
-                  class="cta w-full"
-                  @click.prevent="$router.push('/account/signup')"
-                >
-                  {{ $t('signup.register') }}
-                </button>
-              </span>
-            </div>
-          </form>
-        </ValidationObserver>
         <!-- Bottom Social Area -->
         <div class="mt-6">
           <div class="relative">

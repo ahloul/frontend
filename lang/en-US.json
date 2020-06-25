@@ -68,7 +68,10 @@
     "phone_number": "Phone Number",
     "prefix_and_number": "Prefix and Number",
     "section_name": "Contact Data",
-    "website": "Website"
+    "website": "Website",
+    "validation_errors": {
+      "address": "Invalid address"
+    }
   },
   "contact_to_delete": "Please contact us if you wish to delete your account",
   "continue": "Continue",
@@ -151,7 +154,10 @@
     "section_name": "Information",
     "shop_created_confirmation": "You have successfully created a shop!",
     "shop_error_confirmation": "Check again that you have filled in all fields correctly.",
-    "shop_not_found": "Your shop was not found. Create a new one."
+    "shop_not_found": "Your shop was not found. Create a new one.",
+    "validation_errors": {
+      "shopname": "Shopname already exists"
+    }
   },
   "lang_code": "en",
   "login": {

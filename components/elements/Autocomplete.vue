@@ -1,84 +1,47 @@
 <template>
   <div class="relative">
-    <ValidationProvider
-      v-slot="{ errors }"
-      :name="name"
-      :rules="rules"
-      autocomplete="off"
-      mode="lazy"
-    >
-      <!-- Name INPUT -->
-      <input
-        ref="inputValue"
-        v-model="selection[displayName]"
-        :placeholder="placeholder"
-        class="form-input"
-        type="text"
-        autocomplete="__away"
-        @input="change"
-        @blur="handleBlur"
-      />
-      <ul v-if="openSuggestion" class="dropdown w-full">
-        <li
-          v-for="(suggestion, index) in list"
-          :key="index"
-          class="dropdown-item"
-          @click="suggestionClick(suggestion)"
-        >
-          {{ suggestion[displayName] }}
-        </li>
-      </ul>
-      <span class="error">{{ errors[0] }}</span>
-    </ValidationProvider>
+    <!-- Name INPUT -->
+    <input
+      v-model="selection[context.attributes.dname]"
+      v-bind="context.attributes"
+      class="form-input"
+      type="text"
+      autocomplete="__away"
+      @input="change"
+      @blur="handleBlur"
+    />
+    <ul v-if="openSuggestion" class="dropdown w-full">
+      <li
+        v-for="(suggestion, index) in list"
+        :key="index"
+        class="dropdown-item"
+        @click="suggestionClick(suggestion)"
+      >
+        {{ suggestion[context.attributes.dname] }}
+      </li>
+    </ul>
   </div>
 </template>
 
 <script>
 import { debounce, clone, isEmpty } from 'lodash'
-import { ValidationProvider } from 'vee-validate'
 
 export default {
   name: 'Autocomplete',
-  components: {
-    ValidationProvider,
-  },
   props: {
-    name: {
-      type: String,
-      required: false,
-      default: 'autocomplete',
-    },
-    endpoint: {
-      type: String,
-      required: true,
-    },
-    displayName: {
-      type: String,
-      default: 'name',
-    },
-    queryname: {
-      type: String,
-      default: 'search',
-    },
-    value: {
-      type: String,
-      default: '',
-    },
-    placeholder: {
-      type: String,
-      default: '',
-    },
-    label: {
-      type: String,
-      default: '',
-    },
-    rules: {
-      type: [String, Object],
-      default: null,
-    },
-    initial: {
+    context: {
       type: Object,
-      default: () => ({}),
+      // required: true,
+      default: () => {
+        return {
+          attributes: {
+            endpoint: '',
+            dname: 'name',
+            placeholder: '',
+            label: '',
+          },
+        }
+      },
     },
   },
   data: () => ({
@@ -95,24 +58,24 @@ export default {
     },
   },
   beforeMount() {
-    this.selection[this.displayName] = this.value
+    this.selection[this.context.attributes.dname] = this.context.model.display
   },
   mounted() {
-    if (isEmpty(this.initial)) return
-    this.$emit('selection', this.initial)
-    this.selection = clone(this.initial)
+    // if (isEmpty(this.initial)) return
+    this.selection = this.context.model
   },
   methods: {
     // When the user changes input
     //
     change: debounce(async function (e) {
+      const { endpoint, queryname, dname } = this.context.attributes
       if (!this.open) this.open = true
       const data = await this.$axios.$get(
-        `/api/${this.endpoint}`,
-        this.selection[this.displayName]
+        `/api/${endpoint}`,
+        this.selection[dname]
           ? {
               params: {
-                [this.queryname]: this.selection[this.displayName],
+                [queryname]: this.selection[dname],
                 limit: 5,
               },
             }
@@ -124,14 +87,18 @@ export default {
     // When one of the suggestion is clicked
     suggestionClick(selection) {
       if (isEmpty(selection)) return
-      this.$emit('selection', selection)
+      const { address, label, locationId } = selection
+      this.context.model = { ...address, label, locationId }
       this.selection = clone(selection)
       this.open = false
     },
 
     handleBlur: debounce(function () {
+      console.log('handle blur')
       this.open = false
-      if (!this.selection[this.displayName]) return this.$emit('selection', {})
+      this.context.blurHandler()
+      if (!this.selection[this.context.attributes.dname])
+        return (this.context.model = '')
     }, 200),
   },
 }

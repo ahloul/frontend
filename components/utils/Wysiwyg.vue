@@ -51,9 +51,11 @@ export default {
     EditorMenuBar,
   },
   props: {
-    initialContent: {
-      type: String,
-      default: null,
+    context: {
+      type: Object,
+      default: () => {
+        return {}
+      },
     },
   },
   data: () => ({
@@ -62,9 +64,9 @@ export default {
   mounted() {
     this.editor = new Editor({
       extensions: [new Link(), new Bold(), new Italic(), new Underline()],
-      content: this.initialContent,
+      content: this.context.model,
       onUpdate: ({ getHTML }) => {
-        this.$emit('content', getHTML())
+        this.context.model = getHTML()
       },
     })
   },

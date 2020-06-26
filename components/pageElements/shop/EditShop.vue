@@ -56,7 +56,7 @@
 
     <!--TODO skip when validation error-->
     <div class="mt-10">
-      <FormulateForm @submit="submit">
+      <FormulateForm @submit="submit" @submit-raw="submitRaw">
         <div v-show="step === 1">
           <p v-if="!edit" class="tab-heading">
             {{ $t('information.intro') }}
@@ -429,6 +429,11 @@ export default {
     ...mapMutations('modal', {
       showModal: 'showModal',
     }),
+    submitRaw() {
+      if (this.submitButtonText === 'skip') {
+        this.step++
+      }
+    },
     async submit() {
       if (this.edit) await this.updateShop()
       else if (this.step === 5) await this.createShop()

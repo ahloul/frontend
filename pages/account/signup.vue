@@ -8,145 +8,64 @@
 
       <!-- Form -->
       <div class="w-full max-w-sm mx-auto">
-        <ValidationObserver ref="signup" v-slot="{ handleSubmit }" slim>
-          <form
-            autocomplete="__away"
-            @submit.prevent="handleSubmit(localSignup)"
-          >
-            <!-- INPUT Name -->
-            <label class="block">
-              <span>{{ $t('signup.name') }}</span>
-              <validation-provider
-                v-slot="{ errors }"
-                mode="lazy"
-                name="Name"
-                rules="min:2|required"
-              >
-                <input
-                  v-model="guest.name"
-                  class="form-input"
-                  placeholder="Max Mustermann"
-                  autocomplete="__away"
-                />
-                <span class="error">{{ errors[0] }}</span>
-              </validation-provider>
-            </label>
-
-            <!-- INPUT E-Mail -->
-            <label class="block">
-              <span>{{ $t('signup.email') }}</span>
-              <validation-provider
-                v-slot="{ errors }"
-                mode="lazy"
-                name="Email"
-                rules="email|required"
-              >
-                <input
-                  v-model="guest.email"
-                  class="form-input"
-                  placeholder="lothar@mustermail.com"
-                  autocomplete="__away"
-                />
-                <span class="error">{{ errors[0] }}</span>
-              </validation-provider>
-            </label>
-
-            <!-- INPUT Password -->
-            <label class="block">
-              <span>{{ $t('login.password') }}</span>
-              <validation-provider
-                id="password"
-                v-slot="{ errors }"
-                name="Passwort"
-                mode="lazy"
-                rules="required|verify_password"
-              >
-                <input
-                  v-model="guest.password"
-                  class="form-input"
-                  type="password"
-                  placeholder="******************"
-                  autocomplete="__away"
-                />
-                <span class="error">{{ errors[0] }}</span>
-              </validation-provider>
-            </label>
-
-            <!-- INPUT Confirm password -->
-            <label class="block">
-              <span>{{ $t('login.confirm_password') }}</span>
-              <validation-provider
-                v-slot="{ errors }"
-                name="Password wiederholen"
-                mode="lazy"
-                rules="required|password:@Passwort"
-              >
-                <input
-                  id="confirmPassword"
-                  v-model="guest.confirmPassword"
-                  class="form-input"
-                  type="password"
-                  placeholder="******************"
-                  autocomplete="__away"
-                />
-                <span class="error">{{ errors[0] }}</span>
-              </validation-provider>
-            </label>
-
-            <div class="text-sm">
-              <label class="flex items-start">
-                <div class="flex-initial mr-2">
-                  <validation-provider
-                    v-slot="{ errors }"
-                    name="agb"
-                    mode="lazy"
-                    :rules="{ required: { allowFalse: false } }"
-                  >
-                    <input
-                      v-model="legalCheck"
-                      type="checkbox"
-                      class="form-checkbox mt-2 border"
-                      :class="[errors[0] ? 'border-danger' : '']"
-                    />
-                  </validation-provider>
-                </div>
-                <div class="mt-1">
-                  <span
-                    >{{ $t('signup.registration_info') }} .
-                    {{ $t('signup.privacy_policy_info') }}
-                    <n-link to="/privacy">{{
-                      $t('signup.privacy_policy')
-                    }}</n-link>
-                    .
-                  </span>
-                </div>
-              </label>
-            </div>
-            <div class="mt-5">
-              <span class="block w-full">
-                <button
-                  class="cta bg-tertiary w-full"
-                  :class="{ 'spinner-light': pending }"
-                  type="submit"
-                >
-                  {{ $t('signup.register') }}
-                </button>
-              </span>
-            </div>
-            <div class="mt-3">
-              <span class="block w-full">
-                <button
-                  type="button"
-                  class="cta w-full"
-                  :disable="legalCheck"
-                  @click.prevent="$router.push('/')"
-                >
-                  {{ $t('login.back_to_login') }}
-                </button>
-              </span>
-            </div>
-          </form>
-        </ValidationObserver>
+        <FormulateForm v-model="guest" @submit="localSignup">
+          <FormulateInput
+            name="name"
+            type="text"
+            :label="$t('signup.name')"
+            validation="bail|required|min:2,length"
+            placeholder="Max Mustermann"
+          />
+          <FormulateInput
+            name="email"
+            type="text"
+            :label="$t('signup.email')"
+            validation="bail|required|email"
+            placeholder="lothar@mustermail.com"
+          />
+          <FormulateInput
+            name="password"
+            type="password"
+            :label="$t('login.password')"
+            validation="bail|required|password"
+            placeholder="******************"
+          />
+          <FormulateInput
+            name="confirmPassword"
+            type="password"
+            :label="$t('login.confirm_password')"
+            :validation-rules="{
+              passwordMatch: ({ value }) => value === guest.password,
+            }"
+            :validation-messages="{
+              passwordMatch: $t('login.validation_errors.confirm_password'),
+            }"
+            validation="bail|required|passwordMatch"
+            placeholder="******************"
+          />
+          <FormulateInput type="checkbox" validation="required" />
+          <div class="mt-1">
+            <span
+              >{{ $t('signup.registration_info') }} .
+              {{ $t('signup.privacy_policy_info') }}
+              <n-link to="/privacy">{{ $t('signup.privacy_policy') }}</n-link>
+              .
+            </span>
+          </div>
+          <FormulateInput type="submit" :label="$t('signup.register')" />
+        </FormulateForm>
+        <div class="mt-3">
+          <span class="block w-full">
+            <button
+              type="button"
+              class="cta w-full"
+              :disable="legalCheck"
+              @click.prevent="$router.push('/')"
+            >
+              {{ $t('login.back_to_login') }}
+            </button>
+          </span>
+        </div>
       </div>
     </div>
   </div>

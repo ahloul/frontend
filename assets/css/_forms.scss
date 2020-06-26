@@ -5,6 +5,7 @@
 /**
  * Global form settings have to be set in the "tailwind.config.js".
  * Here a plugin from Tailwind called "Tailwind Custom Forms" is used (https://tailwindcss-custom-forms.netlify.app/)
+*/
 
 .formulate-input {
   .formulate-input-error {
@@ -19,7 +20,6 @@
     @apply bg-tertiary w-full;
   }
 }
- */
 
 .form {
   &-input,

@@ -54,7 +54,6 @@
       </button>
     </div>
 
-    <!--TODO skip when validation error-->
     <div class="mt-10">
       <FormulateForm @submit="submit" @submit-raw="submitRaw">
         <div v-show="step === 1">

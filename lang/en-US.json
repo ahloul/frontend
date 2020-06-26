@@ -174,6 +174,7 @@
     "thirdparty": "Or sign up with",
     "validation_errors": {
       "password": "The password must contain at least: 1 uppercase letter, 1 lowercase letter, 1 number, and one special character (E.g. , . _ & ? etc)",
+      "confirm_password": "The passwords do not match",
       "email": "Invalid Email",
       "required": "is mandatory"
     }

@@ -5,11 +5,6 @@ import VueFormulate from '@braid/vue-formulate'
 import Autocomplete from '~/components/elements/Autocomplete'
 import Wysiwyg from '~/components/utils/Wysiwyg'
 
-/*
-Vue.component('autocomplete', Autocomplete)
-Vue.component('wysiwyg', Wysiwyg)
-*/
-
 export default ({ app }, inject) => {
   Vue.use(VueFormulate, {
     components: {

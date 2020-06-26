@@ -54,9 +54,10 @@
       </button>
     </div>
 
+    <!--TODO skip when validation error-->
     <div class="mt-10">
-      <FormulateForm @validation="validation = $event" @submit="submit">
-        <div v-if="step === 1">
+      <FormulateForm @submit="submit">
+        <div v-show="step === 1">
           <p v-if="!edit" class="tab-heading">
             {{ $t('information.intro') }}
           </p>
@@ -93,11 +94,10 @@
           />
         </div>
 
-        <div v-else-if="step === 2">
+        <div v-show="step === 2">
           <p v-if="!edit" class="tab-heading">
             {{ $t('contact_data.intro') }}
           </p>
-          <!--TODO-->
           <FormulateInput
             v-model="shop.address"
             type="autocomplete"
@@ -174,7 +174,7 @@
           />
         </div>
 
-        <div v-if="step === 3">
+        <div v-show="step === 3">
           <FormulateInput
             v-model="shop.deliveryOptions"
             :options="{
@@ -197,7 +197,6 @@
             type="checkbox"
           />
 
-          <!--opening times text-->
           <div class="mt-5">
             <div class="flex justify-center text-sm leading-5 select-none">
               <span class="px-2 bg-grey text-light">
@@ -272,27 +271,30 @@
           </div>
         </div>
 
-        <div v-if="step === 4">
+        <div v-show="step === 4">
           <p class="tab-heading">{{ $t('picture.intro') }}</p>
           <FormulateInput
             type="image"
-            name="headshot"
-            label="Select an image to upload"
-            help="Select a png, jpg or gif to upload."
-            validation="mime:image/jpeg,image/png,image/gif"
+            upload-behavior="delayed"
+            validation="mime:image/jpeg,image/png,image/jpg"
+            :value="[{ url: shop.logo.url }]"
+            label="Logo"
+            name="logo_img"
             :uploader="uploadLogo"
           />
+
           <FormulateInput
             type="image"
-            name="headshot"
-            label="Select an image to upload"
-            help="Select a png, jpg or gif to upload."
-            validation="mime:image/jpeg,image/png,image/gif"
-            :uploader="uploadLogo"
+            upload-behavior="delayed"
+            validation="mime:image/jpeg,image/png,image/jpg"
+            :value="[{ url: shop.picture.url }]"
+            name="shop_img"
+            label="Shop"
+            :uploader="uploadShopImg"
           />
         </div>
 
-        <div v-if="step === 5">
+        <div v-show="step === 5">
           <p class="tab-heading">
             {{ $t('description.intro') }}
           </p>
@@ -324,7 +326,7 @@
 </template>
 
 <script>
-import VueTimepicker from 'vue2-timepicker'
+// import VueTimepicker from 'vue2-timepicker'
 import { mapMutations, mapActions } from 'vuex'
 import { clone, filter } from 'lodash'
 import { difference } from '~/utils/object'
@@ -332,7 +334,7 @@ import { difference } from '~/utils/object'
 export default {
   name: 'EditShopComponent',
   components: {
-    VueTimepicker,
+    // VueTimepicker,
   },
   props: {
     coreShop: {
@@ -401,6 +403,7 @@ export default {
       if (this.edit || this.step === 5) return 'save'
 
       // delivery options and opening times
+
       if (this.step === 3 && this.shop?.deliveryOptions.length === 0) {
         for (const openingHour of Object.entries(this.shop.openingHours)) {
           if (openingHour[1].length !== 0) return 'continue'
@@ -409,6 +412,7 @@ export default {
       }
 
       // logo and shop picture
+
       if (
         this.step === 4 &&
         Object.keys(this.shop.logo).length === 0 &&
@@ -507,11 +511,10 @@ export default {
       const formData = new FormData()
       formData.append('file', file)
       try {
-        progress(0)
         const imgLocal = await this.$axios.$post(`/api/media/logo`, formData)
         this.shop.logo = imgLocal
-        progress(100)
       } catch (err) {
+        console.error(err)
         error(err)
       }
     },
@@ -519,11 +522,10 @@ export default {
       const formData = new FormData()
       formData.append('file', file)
       try {
-        progress(0)
         const imgLocal = await this.$axios.$post(`/api/media/shop`, formData)
         this.shop.picture = imgLocal
-        progress(100)
       } catch (err) {
+        console.error(err)
         error(err)
       }
     },

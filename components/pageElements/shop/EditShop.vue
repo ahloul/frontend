@@ -268,6 +268,17 @@
               <hr class="w-full mt-2" />
             </div>
           </div>
+
+          <FormulateInput
+            v-model="shop.published"
+            type="checkbox"
+            :label="`${$t('delivery_options.public_prefix')} ${
+              shop.published
+                ? $t('delivery_options.public')
+                : $t('delivery_options.non_public')
+            }`"
+            name="published"
+          />
         </div>
 
         <div v-show="step === 4">

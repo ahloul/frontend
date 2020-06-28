@@ -376,6 +376,7 @@ export default {
   components: {
     VueTimepicker,
   },
+  middleware: 'authenticated',
   data() {
     return {
       validation: '',
@@ -439,6 +440,8 @@ export default {
         for (const openingHour of Object.entries(this.shop.openingHours)) {
           if (openingHour[1].length !== 0) return 'continue'
         }
+        if (this.shop.logo !== null || this.shop.picture !== null)
+          return 'continue'
         return 'skip'
       }
 

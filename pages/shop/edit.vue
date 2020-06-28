@@ -55,7 +55,6 @@
     </div>
 
     <div class="mt-10">
-      {{ validation }}
       <FormulateForm v-show="step === 1" @submit="updateShop">
         <FormulateInput
           v-model="shop.name"

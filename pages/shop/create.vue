@@ -55,7 +55,6 @@
     </div>
 
     <div class="mt-10">
-      {{ validation }}
       <FormulateForm v-show="step === 1" @submit="submit">
         <p class="tab-heading">
           {{ $t('information.intro') }}
@@ -313,7 +312,7 @@
         <p class="tab-heading">{{ $t('picture.intro') }}</p>
         <FormulateInput
           type="image"
-          upload-behavior="delayed"
+          upload-behavior="live"
           validation="mime:image/jpeg,image/png,image/jpg"
           :value="[{ url: shop.logo.url }]"
           label="Logo"
@@ -323,7 +322,7 @@
 
         <FormulateInput
           type="image"
-          upload-behavior="delayed"
+          upload-behavior="live"
           validation="mime:image/jpeg,image/png,image/jpg"
           :value="[{ url: shop.picture.url }]"
           name="shop_img"
@@ -337,7 +336,12 @@
         <FormulateInput
           class="mt-5"
           type="submit"
-          :label="$t(submitButtonText)"
+          :label="
+            Object.keys(shop.picture).length > 0 ||
+            Object.keys(shop.logo).length > 0
+              ? $t('continue')
+              : $t('skip')
+          "
           :class="{ 'spinner-dark': loadState.create || loadState.update }"
         />
       </FormulateForm>
@@ -440,8 +444,6 @@ export default {
         for (const openingHour of Object.entries(this.shop.openingHours)) {
           if (openingHour[1].length !== 0) return 'continue'
         }
-        if (this.shop.logo !== null || this.shop.picture !== null)
-          return 'continue'
         return 'skip'
       }
 

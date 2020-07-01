@@ -1,70 +1,40 @@
 <template>
   <div class="max-w-md mt-5">
-    <div class="mt-3 flex justify-center">
-      <div class="max-w-sm p-3 w-40">
-        <image-upload
-          folder="user"
-          placeholder="Profilbild"
-          :image="user.picture"
-          rounded
-          @target="selectImage"
-        />
-      </div>
-    </div>
-    <ValidationObserver v-slot="{ handleSubmit }" slim>
-      <form @submit.prevent="handleSubmit(updateUser)">
-        <!-- INPUT Name -->
-        <label class="block">
-          <span>{{ $t('profile.name') }}</span>
-          <ValidationProvider v-slot="{ errors }" rules="min:2|required">
-            <input
-              id="userName"
-              v-model="user.name"
-              name="Username"
-              type="text"
-              class="form-input"
-              placeholder="Tayfun Gülcan"
-            />
-            <span class="error">{{ errors[0] }}</span>
-          </ValidationProvider>
-        </label>
-
-        <!-- INPUT User location -->
-        <label class="block">
-          <span>{{ $t('profile.city') }}</span>
-          <autocomplete
-            label="Wohnort"
-            :value="userLocation"
-            endpoint="maps/geocode"
-            queryname="query"
-            display-name="label"
-            @selection="selectLocation"
-          />
-        </label>
-
-        <!-- TEXTAREA Description -->
-        <label class="block">
-          <span>{{ $t('profile.description') }}</span>
-          <ValidationProvider v-slot="{ errors }" name="Benutzertext">
-            <wysiwyg
-              :initial-content="user.description"
-              @content="(data) => (user.description = data)"
-            />
-            <span class="error-message">{{ errors[0] }}</span>
-          </ValidationProvider>
-        </label>
-
-        <div class="flex justify-end my-6">
-          <button
-            class="primary"
-            :class="{ 'spinner-light': pending }"
-            type="submit"
-          >
-            {{ $t('save') }}
-          </button>
-        </div>
-      </form>
-    </ValidationObserver>
+    <FormulateInput
+      type="image"
+      upload-behavior="live"
+      validation="mime:image/jpeg,image/png,image/jpg"
+      :value="[{ url: user.picture.url }]"
+      name="user_picture"
+      :uploader="uploadImage"
+    />
+    <FormulateForm @submit="updateUser">
+      <FormulateInput
+        v-model="user.name"
+        name="Username"
+        type="text"
+        :label="$t('profile.name')"
+        validation="bail|min:2,length|required"
+      />
+      <FormulateInput
+        v-model="user.location"
+        type="autocomplete"
+        name="location"
+        endpoint="maps/geocode"
+        queryname="query"
+        dname="label"
+        :label="$t('profile.city')"
+        placeholder="Sesamstrasse 12"
+        validation="bail|address"
+      />
+      <FormulateInput
+        v-model="user.description"
+        :label="$t('profile.description')"
+        type="wysiwyg"
+        name="description"
+      />
+      <FormulateInput type="submit" :label="$t('save')" />
+    </FormulateForm>
   </div>
 </template>
 
@@ -72,18 +42,10 @@
 import { mapActions } from 'vuex'
 import { clone } from 'lodash'
 import { difference } from '~/utils/object'
-import imageUpload from '~/components/utils/ImageUpload'
-import Wysiwyg from '~/components/utils/Wysiwyg'
-import Autocomplete from '~/components/elements/Autocomplete'
 
 export default {
   name: 'ProfileSettings',
   middleware: 'authenticated',
-  components: {
-    imageUpload,
-    Autocomplete,
-    Wysiwyg,
-  },
   async asyncData({ $axios }) {
     const coreUser = await $axios.$get('/api/users/me')
     return { user: clone(coreUser), coreUser }
@@ -91,12 +53,6 @@ export default {
   data: () => ({
     pending: false,
   }),
-  computed: {
-    userLocation() {
-      if (!this.user.location) return
-      return this.user.location?.label
-    },
-  },
   methods: {
     ...mapActions(['getMe']),
     async updateUser() {
@@ -124,12 +80,16 @@ export default {
         this.pending = false
       }
     },
-    selectImage(target) {
-      this.user.picture = target
-    },
-    selectLocation(data) {
-      if (!data.locationId) return
-      this.user.location = data
+    async uploadImage(file, progress, error, options) {
+      const formData = new FormData()
+      formData.append('file', file)
+      try {
+        const imgLocal = await this.$axios.$post(`/api/media/user`, formData)
+        this.user.picture = imgLocal
+      } catch (err) {
+        console.error(err)
+        error(err)
+      }
     },
   },
 }

@@ -5,11 +5,12 @@
       v-model="selection[context.attributes.dname]"
       v-bind="context.attributes"
       class="form-input"
-      type="text"
-      autocomplete="__away"
-      @input="change"
+      type="search"
+      autocomplete="off"
       @blur="handleBlur"
+      @input="change"
     />
+
     <ul v-if="openSuggestion" class="dropdown w-full">
       <li
         v-for="(suggestion, index) in list"
@@ -58,15 +59,15 @@ export default {
     },
   },
   beforeMount() {
-    this.selection[this.context.attributes.dname] = this.context.model.display
+    this.selection[this.context.attributes.dname] =
+      this.context.model.display || {}
   },
   mounted() {
     // if (isEmpty(this.initial)) return
-    this.selection = this.context.model
+    this.selection = this.context.model || {}
   },
   methods: {
-    // When the user changes input
-    //
+    // Refresh the list when the user changes input
     change: debounce(async function (e) {
       const { endpoint, queryname, dname } = this.context.attributes
       if (!this.open) this.open = true
@@ -94,8 +95,8 @@ export default {
     },
 
     handleBlur: debounce(function () {
-      console.log('handle blur')
       this.open = false
+
       this.context.blurHandler()
       if (!this.selection[this.context.attributes.dname])
         return (this.context.model = '')

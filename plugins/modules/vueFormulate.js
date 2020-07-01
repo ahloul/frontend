@@ -59,6 +59,7 @@ export default ({ app }, inject) => {
         }
       }, 500),
       address: ({ value: { postalCode, locationId, street } }) => {
+        if (!postalCode && !locationId && !street) return true
         if (!postalCode || !locationId || !street) return false
         return true
       },

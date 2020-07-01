@@ -6,50 +6,35 @@
       </div>
 
       <div class="w-full max-w-sm mx-auto">
-        <ValidationObserver ref="forgot" v-slot="{ handleSubmit }" slim>
-          <form @submit.prevent="handleSubmit(localForgot)">
-            <!-- INPUT E-Mail -->
-            <label class="block">
-              <span>{{ $t('signup.Email') }}</span>
-              <validation-provider
-                v-slot="{ errors }"
-                mode="lazy"
-                name="email"
-                rules="email|required"
-              >
-                <input
-                  v-model="guest.email"
-                  class="form-input"
-                  placeholder="lothar@mustermail.com"
-                />
-                <span class="error">{{ errors[0] }}</span>
-              </validation-provider>
-            </label>
+        <FormulateForm
+          v-model="guest"
+          :errors="{ email: validationError }"
+          @submit="localForgot"
+        >
+          <FormulateInput
+            :label="$t('signup.email')"
+            name="email"
+            type="text"
+            placeholder="max@mustermail.com"
+            validation="bail|email|required"
+          />
+          <FormulateInput
+            type="submit"
+            :label="$t('login.request_new_password')"
+          />
+        </FormulateForm>
 
-            <div class="mt-5">
-              <span class="block w-full">
-                <button
-                  class="cta bg-tertiary w-full"
-                  :class="{ 'spinner-light': pending }"
-                  type="submit"
-                >
-                  {{ $t('login.request_new_password') }}
-                </button>
-              </span>
-            </div>
-            <div class="mt-3">
-              <span class="block w-full">
-                <button
-                  type="button"
-                  class="cta w-full"
-                  @click.prevent="$router.push('/')"
-                >
-                  {{ $t('login.back_to_login') }}
-                </button>
-              </span>
-            </div>
-          </form>
-        </ValidationObserver>
+        <div class="mt-3">
+          <span class="block w-full">
+            <button
+              type="button"
+              class="cta w-full"
+              @click.prevent="$router.push('/')"
+            >
+              {{ $t('login.back_to_login') }}
+            </button>
+          </span>
+        </div>
       </div>
     </div>
   </div>
@@ -68,6 +53,7 @@ export default {
       link: `${process.env.VUE_APP_URL}/account/forgot`,
       token: process.env.VUE_APP_MASTER_KEY,
     },
+    validationError: '',
   }),
   methods: {
     async localForgot(e) {
@@ -90,9 +76,7 @@ export default {
       } catch ({ response: { data } }) {
         // TODO: Catch error
         this.pending = null
-        this.$refs.forgot.setErrors({
-          email: [data.message],
-        })
+        this.validationError = data.message
       }
     },
   },

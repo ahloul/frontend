@@ -1,34 +1,16 @@
 <template>
   <div class="max-w-md mt-5">
-    <ValidationObserver ref="category" v-slot="{ handleSubmit }" slim>
-      <form @submit.prevent="handleSubmit(submit)">
-        <!-- categoryName INPUT -->
-        <label class="block">
-          <ValidationProvider v-slot="{ errors }" mode="lazy" rules="required">
-            <span>{{ $t('category.name') }}</span>
-            <input
-              id="categoryName"
-              v-model="category.name"
-              name="Kategorie"
-              type="text"
-              class="form-input"
-              :placeholder="$t('category.hint')"
-            />
-            <div class="error">{{ errors[0] }}</div>
-          </ValidationProvider>
-        </label>
-
-        <div class="flex justify-end my-5">
-          <button
-            class="primary"
-            :class="{ 'spinner-light': loadState.create }"
-            type="submit"
-          >
-            {{ $t('category.create') }}
-          </button>
-        </div>
-      </form>
-    </ValidationObserver>
+    <FormulateForm @submit="submit">
+      <FormulateInput
+        v-model="category.name"
+        type="text"
+        name="Kategorie"
+        :label="$t('category.name')"
+        :placeholder="$t('category.hint')"
+        validation="required"
+      />
+      <FormulateInput type="submit" :label="$t('category.create')" />
+    </FormulateForm>
   </div>
 </template>
 
@@ -41,6 +23,7 @@ export default {
     loadState: {
       create: false,
     },
+    validationError: '',
   }),
   methods: {
     async submit() {
@@ -48,15 +31,12 @@ export default {
         this.loadState.create = true
         await this.$axios.post(`/api/categories`, this.category)
         this.loadState.create = false
-        this.$nextTick(() => {
-          this.category = {}
-          this.$refs.category.reset()
-        })
         this.$store.dispatch('toast/add', { message: `toast.created_category` })
         await this.$router.push('/category')
       } catch (error) {
         this.loadState.create = false
         console.log(error)
+        this.validationError = error
       }
     },
   },

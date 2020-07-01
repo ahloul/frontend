@@ -16,72 +16,47 @@
         </p>
       </div>
       <div class="w-full max-w-sm mx-auto">
-        <ValidationObserver ref="newPassword" v-slot="{ handleSubmit }" slim>
-          <form @submit.prevent="handleSubmit(localNewPassword)">
-            <!-- INPUT Password -->
-            <label class="block">
-              <span>{{ $t('login.password') }}</span>
-              <validation-provider
-                id="password"
-                v-slot="{ errors }"
-                name="Passwort"
-                mode="lazy"
-                rules="required|verify_password"
-              >
-                <input
-                  v-model="password"
-                  class="form-input"
-                  type="password"
-                  placeholder="******************"
-                />
-                <span class="error">{{ errors[0] }}</span>
-              </validation-provider>
-            </label>
-
-            <!-- INPUT Confirm password -->
-            <label class="block">
-              <span>{{ $t('login.confirm_password') }}</span>
-              <validation-provider
-                v-slot="{ errors }"
-                name="Password wiederholen"
-                mode="lazy"
-                rules="required|password:@Passwort"
-              >
-                <input
-                  id="confirmPassword"
-                  v-model="confirmPassword"
-                  class="form-input"
-                  type="password"
-                  placeholder="******************"
-                />
-                <span class="error">{{ errors[0] }}</span>
-              </validation-provider>
-            </label>
-
-            <div class="mt-5">
-              <span class="block w-full">
-                <button
-                  class="cta bg-tertiary w-full"
-                  :class="{ 'spinner-light': pending }"
-                  type="submit"
-                >
-                  {{ $t('login.save_new_password') }}
-                </button>
-              </span>
-            </div>
-            <div class="mt-3">
-              <span class="block w-full">
-                <button
-                  type="button"
-                  class="cta w-full"
-                  @click.prevent="$router.push('/')"
-                >
-                  {{ $t('login.back_to_login') }}
-                </button>
-              </span>
-            </div>
-          </form>
-        </ValidationObserver>
+        <FormulateForm
+          :errors="{ password: validationError }"
+          @submit="localNewPassword"
+        >
+          <FormulateInput
+            v-model="password"
+            name="password"
+            type="password"
+            placeholder="******************"
+            validation="bail|required|password"
+            :label="$t('login.password')"
+          />
+          <FormulateInput
+            name="confirmPassword"
+            type="password"
+            placeholder="******************"
+            :validation-rules="{
+              passwordMatch: ({ value }) => value === password,
+            }"
+            :validation-messages="{
+              passwordMatch: $t('login.validation_errors.confirm_password'),
+            }"
+            validation="bail|required|passwordMatch"
+            :label="$t('login.confirm_password')"
+          />
+          <FormulateInput
+            type="submit"
+            :label="$t('login.save_new_password')"
+          />
+        </FormulateForm>
+        <div class="mt-3">
+          <span class="block w-full">
+            <button
+              type="button"
+              class="cta w-full"
+              @click.prevent="$router.push('/')"
+            >
+              {{ $t('login.back_to_login') }}
+            </button>
+          </span>
+        </div>
       </div>
     </div>
   </div>
@@ -109,6 +84,7 @@ export default {
     password: '',
     confirmPassword: '',
     token: process.env.VUE_APP_MASTER_KEY,
+    validationError: '',
   }),
   methods: {
     async localNewPassword(e) {
@@ -134,9 +110,7 @@ export default {
       } catch ({ response: { data } }) {
         // TODO: Catch error
         this.pending = null
-        this.$refs.newPassword.setErrors({
-          password: [data.message],
-        })
+        this.validationError = data.message
       }
     },
   },

@@ -60,7 +60,7 @@ export default {
   },
   beforeMount() {
     this.selection[this.context.attributes.dname] =
-      this.context.model.display || {}
+      this.context.model?.display || {}
   },
   mounted() {
     // if (isEmpty(this.initial)) return

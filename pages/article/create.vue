@@ -5,6 +5,44 @@
       :image="article.picture"
       @target="selectImage"
     />
+    <FormulateForm @submit="submit">
+      <FormulateInput
+        type="image"
+        upload-behavior="live"
+        validation="mime:image/jpeg,image/png,image/jpg"
+        :value="[{ url: article.picture.url }]"
+        name="article_picture"
+        :uploader="uploadImage"
+      />
+      <!--
+      <FormulateInput
+        v-model="article.category"
+        type="autocomplete"
+        endpoint="categories"
+        :label="$t('category.title')"
+      />
+    -->
+
+      <FormulateInput
+        v-model="article.name"
+        type="text"
+        name="Name"
+        :label="$t('article.name')"
+        :placeholder="$t('article.name_hint')"
+        validation="required"
+      />
+      <FormulateInput
+        v-model="article.price"
+        type="currency"
+        name="price"
+        :label="$t('article.unit_price')"
+        :placeholder="$t('article.price_hint')"
+        validation="bail|required"
+      />
+
+      <FormulateInput type="submit" :label="$t('save')" />
+    </FormulateForm>
+
     <ValidationObserver v-slot="{ handleSubmit }" slim>
       <form @submit.prevent="handleSubmit(submit)">
         <!-- userLocation INPUT -->
@@ -16,22 +54,6 @@
             @selection="selectCategory"
           />
         </label>
-
-        <ValidationProvider v-slot="{ errors }" rules="required">
-          <!-- INPUT articleName -->
-          <label class="block">
-            <span>{{ $t('article.name') }}</span>
-            <input
-              id="articleName"
-              v-model="article.name"
-              name="Artikel"
-              type="text"
-              class="form-input"
-              :placeholder="$t('article.name_hint')"
-            />
-            <div class="error">{{ errors[0] }}</div>
-          </label>
-        </ValidationProvider>
 
         <!-- INPUT articleStock -->
         <label class="block" for="articleStock">
@@ -66,6 +88,7 @@
         </label>
 
         <!-- INPUT articlePrice -->
+        <!--
         <label class="block" for="articlePrice">
           <span>{{ $t('article.unit_price') }}</span>
           <ValidationProvider
@@ -73,7 +96,6 @@
             name="Preis"
             rules="decimal|required"
           >
-            <!-- articlePrice INPUT -->
             <currency-input
               v-model="article.price"
               class="form-input"
@@ -83,6 +105,7 @@
             <span class="error">{{ errors[0] }}</span>
           </ValidationProvider>
         </label>
+      -->
 
         <!-- TAX INPUT -->
         <label class="block">
@@ -203,6 +226,17 @@ export default {
   methods: {
     selectImage(target) {
       this.article.picture = target
+    },
+    async uploadImage(file, progress, error, options) {
+      const formData = new FormData()
+      formData.append('file', file)
+      try {
+        const imgLocal = await this.$axios.$post(`/api/media/user`, formData)
+        this.article.picture = imgLocal
+      } catch (err) {
+        console.error(err)
+        error(err)
+      }
     },
     selectCategory(category) {
       this.article.category = category._id

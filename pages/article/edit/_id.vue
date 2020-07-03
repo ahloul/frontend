@@ -13,188 +13,96 @@
       </button>
     </div>
 
-    <FormulateForm>
+    <FormulateForm @submit="submit">
+      <FormulateInput
+        type="image"
+        upload-behavior="live"
+        validation="mime:image/jpeg,image/png,image/jpg"
+        :value="[{ url: article.picture.url }]"
+        name="article_picture"
+        :uploader="uploadImage"
+      />
       <FormulateInput
         v-model="article.category"
+        :initial="category"
         type="autocomplete"
         endpoint="categories"
         :label="$t('category.title')"
+        :placeholder="$t('category.hint')"
       />
+      <FormulateInput
+        v-model="article.name"
+        type="text"
+        name="article name"
+        :label="$t('article.name')"
+        :placeholder="$t('article.name_hint')"
+        validation="required"
+      />
+      <FormulateInput
+        v-model="article.price"
+        type="currency"
+        name="price"
+        :label="$t('article.unit_price')"
+        :placeholder="$t('article.price_hint')"
+        validation="bail|required"
+      />
+      {{ article.tax }}
+      <FormulateInput
+        v-model="article.tax"
+        name="tax rate"
+        :options="{
+          19: '19%',
+          7: '7%',
+          0: $t('article.tax_free'),
+        }"
+        type="select"
+        :label="$t('article.tax_rate')"
+        validation="bail|required"
+      />
+
+      <div v-if="haveStock">
+        <FormulateInput
+          v-model="article.stock"
+          name="stock"
+          type="number"
+          :label="$t('article.stock')"
+          validation="bail|number|min:0,value"
+          :placeholder="$t('article.stock_example')"
+        />
+        <button class="w-auto" @click="removeStock">
+          <icon name="close-outline" fill="currentColor" width="20" />
+        </button>
+      </div>
+      <button v-else class="primary" @click="addStock">
+        {{ $t('article.create_stock') }}
+      </button>
+
+      <FormulateInput
+        v-model="article.description"
+        :label="$t('article.description')"
+        type="wysiwyg"
+        name="description"
+      />
+      <FormulateInput
+        v-model="article.published"
+        type="checkbox"
+        :label="`${$t('article.public_prefix')} ${$t(
+          article.published ? 'article.public' : 'article.non_public'
+        )} ${$t('article.public_suffix')}`"
+        name="published"
+      />
+      <FormulateInput type="submit" :label="$t('save')" />
     </FormulateForm>
-
-    <div class="max-w-md mx-auto mt-5">
-      <image-upload
-        folder="article"
-        :image="article.picture"
-        @target="selectImage"
-      />
-
-      <ValidationObserver v-slot="{ handleSubmit }" slim>
-        <form @submit.prevent="handleSubmit(submit)">
-          <!-- userLocation INPUT -->
-          <!--
-          <label class="block">
-            <span>{{ $t('category.title') }}</span>
-            <autocomplete
-              endpoint="categories"
-              :value="articleCategory"
-              @selection="selectCategory"
-            />
-          </label>
-        -->
-
-          <ValidationProvider v-slot="{ errors }" rules="required">
-            <!-- INPUT articleName -->
-            <label class="block">
-              <span>{{ $t('article.name') }}</span>
-              <input
-                id="articleName"
-                v-model="article.name"
-                name="Artikel"
-                type="text"
-                class="form-input"
-                :placeholder="$t('article.name_hint')"
-              />
-              <div class="error">{{ errors[0] }}</div>
-            </label>
-          </ValidationProvider>
-
-          <!-- INPUT articleStock -->
-          <label class="block" for="articleStock">
-            <span>{{ $t('article.stock') }}</span>
-            <ValidationProvider
-              v-if="haveStock"
-              v-slot="{ errors }"
-              tag="div"
-              name="Lagerbestand"
-              rules="numeric"
-            >
-              <div class="flex">
-                <input
-                  id="articleStock"
-                  v-model.number="article.stock"
-                  type="number"
-                  class="form-input block w-full"
-                  placeholder="z.B. 250"
-                />
-                <button class="w-auto" @click="removeStock">
-                  <icon name="close-outline" fill="currentColor" width="20" />
-                </button>
-
-                <span class="error">{{ errors[0] }}</span>
-              </div>
-            </ValidationProvider>
-            <div v-else>
-              <button class="primary" @click="addStock">
-                {{ $t('article.create_stock') }}
-              </button>
-            </div>
-          </label>
-
-          <!-- INPUT articlePrice -->
-          <!--
-          <label class="block" for="articlePrice">
-            <span>{{ $t('article.unit_price') }}</span>
-            <ValidationProvider
-              v-slot="{ errors }"
-              name="Preis"
-              rules="decimal|required"
-            >
-              <currency-input
-                v-model="article.price"
-                class="form-input"
-                locale="de"
-                :placeholder="$t('article.price_hint')"
-              />
-              <span class="error">{{ errors[0] }}</span>
-            </ValidationProvider>
-          </label>
--->
-          <!-- TAX INPUT -->
-          <label class="block">
-            <span>{{ $t('article.tax_rate') }}</span>
-            <ValidationProvider
-              v-slot="{ errors }"
-              mode="lazy"
-              slim
-              rules="required"
-              name="Steuersatz"
-            >
-              <select v-model="article.tax" class="form-select w-full">
-                <!-- eslint-disable vue-i18n/no-raw-text -->
-                <option :value="19">
-                  19 %
-                </option>
-                <!-- eslint-disable vue-i18n/no-raw-text -->
-                <option :value="7">
-                  7 %
-                </option>
-                <option :value="0">
-                  {{ $t('article.tax_free') }}
-                </option>
-              </select>
-              <span class="error">{{ errors[0] }}</span>
-            </ValidationProvider>
-          </label>
-          <!-- TEXTAREA Description -->
-          <label class="block mb-3">
-            <span>{{ $t('article.description') }}</span>
-            <ValidationProvider v-slot="{ errors }" name="Artikelbeschreibung">
-              <wysiwyg
-                :initial-content="article.description"
-                @content="(data) => (article.description = data)"
-              />
-              <span class="error-message">{{ errors[0] }}</span>
-            </ValidationProvider>
-          </label>
-
-          <!-- CHECKBOX published -->
-          <label class="inline-block my-3">
-            <input
-              v-model="article.published"
-              type="checkbox"
-              class="form-checkbox"
-              checked
-            />
-            <span class="ml-2"
-              >{{ $t('article.public_prefix') }}
-              <span class="font-bold">{{
-                article.published
-                  ? $t('article.public')
-                  : $t('article.non_public')
-              }}</span>
-              {{ $t('article.public_suffix') }}.</span
-            >
-          </label>
-
-          <div class="flex justify-end my-5">
-            <button
-              class="primary"
-              :class="{ 'spinner-light': loadState.create }"
-              type="submit"
-            >
-              {{ $t('save') }}
-            </button>
-          </div>
-        </form>
-      </ValidationObserver>
-    </div>
   </div>
 </template>
 
 <script>
 import { clone } from 'lodash'
 import { difference } from '~/utils/object'
-import imageUpload from '~/components/utils/ImageUpload'
-import Wysiwyg from '~/components/utils/Wysiwyg'
 
 export default {
   name: 'CreateArticle',
   middleware: 'authenticated',
-  components: {
-    imageUpload,
-    Wysiwyg,
-  },
   async asyncData({ $axios, params }) {
     try {
       const coreArticle = await $axios.$get(`/api/articles/${params.id}`)
@@ -229,12 +137,16 @@ export default {
     },
   },
   methods: {
-    selectImage(target) {
-      this.article.picture = target
-    },
-    selectCategory(category) {
-      this.article.category = category._id
-      this.$router.replace({ query: { id: category._id } })
+    async uploadImage(file, progress, error, options) {
+      const formData = new FormData()
+      formData.append('file', file)
+      try {
+        const imgLocal = await this.$axios.$post(`/api/media/user`, formData)
+        this.article.picture = imgLocal
+      } catch (err) {
+        console.error(err)
+        error(err)
+      }
     },
     addStock() {
       this.article.stock = 0

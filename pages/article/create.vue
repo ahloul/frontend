@@ -1,6 +1,6 @@
 <template>
   <div class="max-w-md mt-5">
-    <FormulateForm @submit="submit" @submit-raw="submitRaw">
+    <FormulateForm @submit="submit">
       <FormulateInput
         type="image"
         upload-behavior="live"
@@ -156,9 +156,6 @@ export default {
       } catch (error) {
         console.log(error)
       }
-    },
-    submitRaw() {
-      console.log(this.article)
     },
   },
 }

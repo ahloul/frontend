@@ -25,6 +25,7 @@
     "public_suffix": "published",
     "published": "published",
     "stock": "Inventory",
+    "stock_example": "e.g. 250",
     "tax_free": "Tax Free",
     "tax_rate": "Tax Rate",
     "unit_price": "Unit Price"
@@ -258,5 +259,8 @@
     "shop": {
       "delete_confirmation": "Are you sure you want to delete this shop permanently?"
     }
+  },
+  "validation": {
+    "min": "Value must be at least "
   }
 }

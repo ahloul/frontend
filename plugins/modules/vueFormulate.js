@@ -3,6 +3,7 @@ import { debounce } from 'lodash'
 import VueFormulate from '@braid/vue-formulate'
 
 import CurrencyInput from '~/components/elements/CurrencyInput'
+import Stock from '~/components/elements/Stock'
 import Autocomplete from '~/components/elements/Autocomplete'
 import Wysiwyg from '~/components/utils/Wysiwyg'
 
@@ -12,6 +13,7 @@ export default ({ app }, inject) => {
       Autocomplete,
       Wysiwyg,
       CurrencyInput,
+      Stock,
     },
     library: {
       autocomplete: {
@@ -26,12 +28,19 @@ export default ({ app }, inject) => {
         classification: 'text',
         component: 'CurrencyInput',
       },
+      stock: {
+        classification: 'text',
+        component: 'Stock',
+      },
     },
     locales: {
       // en is default, handle all langs through i18n
       en: {
         required() {
           return app.i18n.t('login.validation_errors.required')
+        },
+        min({ args }) {
+          return app.i18n.t('validation.min') + args[0]
         },
         email() {
           return app.i18n.t('login.validation_errors.email')

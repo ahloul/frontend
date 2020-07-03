@@ -12,6 +12,16 @@
         <icon name="trash-outline" />
       </button>
     </div>
+
+    <FormulateForm>
+      <FormulateInput
+        v-model="article.category"
+        type="autocomplete"
+        endpoint="categories"
+        :label="$t('category.title')"
+      />
+    </FormulateForm>
+
     <div class="max-w-md mx-auto mt-5">
       <image-upload
         folder="article"
@@ -22,6 +32,7 @@
       <ValidationObserver v-slot="{ handleSubmit }" slim>
         <form @submit.prevent="handleSubmit(submit)">
           <!-- userLocation INPUT -->
+          <!--
           <label class="block">
             <span>{{ $t('category.title') }}</span>
             <autocomplete
@@ -30,6 +41,7 @@
               @selection="selectCategory"
             />
           </label>
+        -->
 
           <ValidationProvider v-slot="{ errors }" rules="required">
             <!-- INPUT articleName -->
@@ -80,6 +92,7 @@
           </label>
 
           <!-- INPUT articlePrice -->
+          <!--
           <label class="block" for="articlePrice">
             <span>{{ $t('article.unit_price') }}</span>
             <ValidationProvider
@@ -87,7 +100,6 @@
               name="Preis"
               rules="decimal|required"
             >
-              <!-- articlePrice INPUT -->
               <currency-input
                 v-model="article.price"
                 class="form-input"
@@ -97,7 +109,7 @@
               <span class="error">{{ errors[0] }}</span>
             </ValidationProvider>
           </label>
-
+-->
           <!-- TAX INPUT -->
           <label class="block">
             <span>{{ $t('article.tax_rate') }}</span>
@@ -173,7 +185,6 @@
 <script>
 import { clone } from 'lodash'
 import { difference } from '~/utils/object'
-import Autocomplete from '~/components/elements/Autocomplete'
 import imageUpload from '~/components/utils/ImageUpload'
 import Wysiwyg from '~/components/utils/Wysiwyg'
 
@@ -181,7 +192,6 @@ export default {
   name: 'CreateArticle',
   middleware: 'authenticated',
   components: {
-    Autocomplete,
     imageUpload,
     Wysiwyg,
   },

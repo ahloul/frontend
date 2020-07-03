@@ -21,8 +21,6 @@
         type="autocomplete"
         name="location"
         endpoint="maps/geocode"
-        queryname="query"
-        dname="label"
         :label="$t('profile.city')"
         placeholder="Sesamstrasse 12"
         validation="bail|address"

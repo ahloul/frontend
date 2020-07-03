@@ -108,8 +108,6 @@
           type="autocomplete"
           name="address"
           endpoint="maps/geocode"
-          queryname="query"
-          dname="label"
           :label="$t('contact_data.full_address')"
           placeholder="Sesamstrasse 12"
           validation="bail|required|address"

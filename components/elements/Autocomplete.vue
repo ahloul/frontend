@@ -1,8 +1,7 @@
 <template>
   <div class="relative">
-    <!-- Name INPUT -->
     <input
-      v-model="selection[context.attributes.dname]"
+      v-model="selection[label]"
       v-bind="context.attributes"
       class="form-input"
       type="search"
@@ -11,14 +10,14 @@
       @input="change"
     />
 
-    <ul v-if="openSuggestion" class="dropdown w-full">
+    <ul v-if="open" class="dropdown w-full">
       <li
         v-for="(suggestion, index) in list"
         :key="index"
         class="dropdown-item"
         @click="suggestionClick(suggestion)"
       >
-        {{ suggestion[context.attributes.dname] }}
+        {{ suggestion[label] }}
       </li>
     </ul>
   </div>
@@ -32,51 +31,38 @@ export default {
   props: {
     context: {
       type: Object,
-      // required: true,
       default: () => {
         return {
-          attributes: {
-            endpoint: '',
-            dname: 'name',
-            placeholder: '',
-            label: '',
-          },
+          attributes: {},
         }
       },
     },
   },
   data: () => ({
     open: false,
-    selection: {
-      name: null,
-    },
+    selection: {},
+    label: 'name',
     list: [],
   }),
-  computed: {
-    // The flag
-    openSuggestion() {
-      return this.open === true
-    },
-  },
   beforeMount() {
-    this.selection[this.context.attributes.dname] =
-      this.context.model?.display || {}
-  },
-  mounted() {
-    // if (isEmpty(this.initial)) return
-    this.selection = this.context.model || {}
+    const { endpoint, initial } = this.context.attributes
+    if (endpoint === 'maps/geocode') this.label = 'label'
+    if (endpoint === 'categories') this.label = 'name'
+
+    if (initial) this.selection = initial
+    else this.selection[this.label] = this.context.model[this.label]
   },
   methods: {
     // Refresh the list when the user changes input
     change: debounce(async function (e) {
-      const { endpoint, queryname, dname } = this.context.attributes
+      const { endpoint } = this.context.attributes
       if (!this.open) this.open = true
       const data = await this.$axios.$get(
         `/api/${endpoint}`,
-        this.selection[dname]
+        this.selection[this.label]
           ? {
               params: {
-                [queryname]: this.selection[dname],
+                query: this.selection[this.label],
                 limit: 5,
               },
             }
@@ -88,18 +74,19 @@ export default {
     // When one of the suggestion is clicked
     suggestionClick(selection) {
       if (isEmpty(selection)) return
-      const { address, label, locationId } = selection
-      this.context.model = { ...address, label, locationId }
+      const { address, label, _id, locationId } = selection
+      this.context.model = label ? { ...address, label, locationId } : _id
       this.selection = clone(selection)
       this.open = false
     },
 
     handleBlur: debounce(function () {
       this.open = false
-
       this.context.blurHandler()
-      if (!this.selection[this.context.attributes.dname])
+      if (!this.selection[this.label]) {
+        this.selection = {}
         return (this.context.model = '')
+      }
     }, 200),
   },
 }

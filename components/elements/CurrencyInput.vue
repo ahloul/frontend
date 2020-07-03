@@ -5,7 +5,7 @@
       v-currency="{ currency: 'EUR', locale: 'de' }"
       v-bind="context.attributes"
       class="form-input"
-      @blur="context.blurHandler()"
+      @blur="context.blurHandler"
     />
   </div>
 </template>

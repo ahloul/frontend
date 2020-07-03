@@ -1,17 +1,19 @@
 <template>
   <div>
+    {{ context.model }}
     <input
-      v-model="context.model"
+      v-model="displayPrice"
       v-currency="{ currency: 'EUR', locale: 'de' }"
       v-bind="context.attributes"
       class="form-input"
-      @blur="context.blurHandler"
+      @blur="blur"
     />
   </div>
 </template>
 
 <script>
-import { CurrencyDirective } from 'vue-currency-input'
+import { CurrencyDirective, parseCurrency } from 'vue-currency-input'
+import { clone } from 'lodash'
 export default {
   name: 'FCurrencyInput',
   directives: {
@@ -23,6 +25,20 @@ export default {
       default: () => {
         return {}
       },
+    },
+  },
+  data() {
+    return {
+      displayPrice: clone(this.context.model),
+    }
+  },
+  methods: {
+    blur() {
+      this.context.model = parseCurrency(this.displayPrice, {
+        locale: 'de',
+        currency: 'EUR',
+      })
+      this.context.blurHandler()
     },
   },
 }

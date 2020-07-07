@@ -46,7 +46,6 @@
         :placeholder="$t('article.price_hint')"
         validation="bail|required"
       />
-      {{ article.tax }}
       <FormulateInput
         v-model="article.tax"
         name="tax rate"

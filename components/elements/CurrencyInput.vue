@@ -1,44 +1,35 @@
 <template>
   <div>
-    {{ context.model }}
     <input
-      v-model="displayPrice"
+      v-model="context.model"
       v-currency="{ currency: 'EUR', locale: 'de' }"
-      v-bind="context.attributes"
+      v-bind="context.attributes || {}"
       class="form-input"
-      @blur="blur"
     />
   </div>
 </template>
 
 <script>
-import { CurrencyDirective, parseCurrency } from 'vue-currency-input'
-import { clone } from 'lodash'
+import { CurrencyDirective } from 'vue-currency-input'
 export default {
-  name: 'FCurrencyInput',
+  name: 'CurrencyInput',
   directives: {
     currency: CurrencyDirective,
   },
   props: {
     context: {
+      required: true,
       type: Object,
       default: () => {
-        return {}
+        return {
+          attributes: {},
+        }
       },
-    },
-  },
-  data() {
-    return {
-      displayPrice: clone(this.context.model),
-    }
-  },
-  methods: {
-    blur() {
-      this.context.model = parseCurrency(this.displayPrice, {
-        locale: 'de',
-        currency: 'EUR',
-      })
-      this.context.blurHandler()
+      validator: ({ attributes, blurHandler }) => {
+        return (
+          typeof attributes === 'object' && typeof blurHandler === 'function'
+        )
+      },
     },
   },
 }

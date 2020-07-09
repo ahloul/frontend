@@ -3,23 +3,78 @@ import { jestPreset } from 'ts-jest'
 import Autocomplete from '../../components/elements/Autocomplete.vue'
 
 describe('Autocomplete', () => {
-  let wrapper
-
-  test('is a Vue instance', () => {
-    wrapper = mount(Autocomplete)
-    expect(wrapper.isVueInstance()).toBeTruthy()
-  })
-  test('computed openSuggestion function', () => {
-    const cmp = mount(Autocomplete, {
-      data: () => ({
-        open: false,
-      }),
+  describe('props', () => {
+    const contextPropValidator = Autocomplete.props.context.validator
+    test('if props without context -> prop required error', () => {
+      expect(Autocomplete.props.context.required).toBe(true)
     })
-    expect(cmp.vm.$data.open).toBe(false)
-    expect(cmp.find('li').exists()).toEqual(false)
-    cmp.setData({ open: true })
-    expect(cmp.vm.$data.open).toBe(true)
+
+    test('if context without attributes -> prop validator error', () => {
+      const invalidProps = {
+        hallo: {},
+        blurHandler: () => {},
+        model: { name: '123' },
+      }
+      expect(contextPropValidator(invalidProps)).toBe(false)
+    })
+
+    test('if context without blurHandler function -> prop validator error', () => {
+      const invalidProps = {
+        attributes: {},
+        blurHandler: '',
+        model: { name: '123' },
+      }
+      expect(contextPropValidator(invalidProps)).toBe(false)
+    })
+
+    test('if context model without label or name -> prop validator error', () => {
+      const invalidProps = {
+        attributes: {},
+        blurHandler: () => {},
+        model: '123',
+      }
+      // expect(contextPropValidator(invalidProps)).toBeFalsy()
+
+      const valid = {
+        attributes: {},
+        blurHandler: () => {},
+        model: { name: '123' },
+      }
+
+      expect(contextPropValidator(invalidProps)).toBe(false)
+    })
+
+    test('if valid props -> pass validator', () => {
+      const validProps = {
+        attributes: {},
+        blurHandler: () => {},
+        model: { name: '123' },
+      }
+      expect(contextPropValidator(validProps)).toBe(true)
+    })
   })
+
+  describe('xy', () => {
+    const propsData = {
+      context: {
+        attributes: {},
+        blurHandler: () => {},
+        model: { name: '123' },
+      },
+    }
+    const wrapper = shallowMount(Autocomplete, { propsData })
+    test('if successful mount --> is Vue instance', () => {
+      expect(wrapper.isVueInstance()).toBeTruthy()
+    })
+
+    test.only('computed openSuggestion function', () => {
+      expect(wrapper.vm.$data.open).toBe(false)
+      expect(wrapper.find('li').exists()).toEqual(false)
+      wrapper.setData({ open: true })
+      expect(wrapper.vm.$data.open).toBe(true)
+    })
+  })
+
   test('emitted selection', async () => {
     wrapper = mount(Autocomplete)
     wrapper.vm.$emit('selection', 'start')

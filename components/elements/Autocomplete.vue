@@ -30,11 +30,18 @@ export default {
   name: 'Autocomplete',
   props: {
     context: {
+      required: true,
       type: Object,
       default: () => {
         return {
           attributes: {},
         }
+      },
+      validator: ({ attributes, blurHandler, model: { label, name } }) => {
+        if (!label && !name) return false
+        if (typeof attributes !== 'object') return false
+        if (typeof blurHandler !== 'function') return false
+        return true
       },
     },
   },

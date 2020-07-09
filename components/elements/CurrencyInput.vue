@@ -25,10 +25,8 @@ export default {
           attributes: {},
         }
       },
-      validator: ({ attributes, blurHandler }) => {
-        return (
-          typeof attributes === 'object' && typeof blurHandler === 'function'
-        )
+      validator: ({ attributes }) => {
+        return typeof attributes === 'object'
       },
     },
   },

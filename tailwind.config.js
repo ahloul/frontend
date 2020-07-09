@@ -4,12 +4,13 @@
  ** Docs: https://tailwindcss.com/docs/configuration
  ** Default: https://github.com/tailwindcss/tailwindcss/blob/master/stubs/defaultConfig.stub.js
  */
-const defaultTheme = require('tailwindcss/defaultTheme')
+// const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
   theme: {
     fontFamily: {
-      sans: ['Montserrat', ...defaultTheme.fontFamily.sans],
+      sans: ['Montserrat', 'sans-serif'],
+      serif: ['Merriweather', 'serif'],
     },
     colors: {
       transparent: 'transparent',
@@ -27,7 +28,7 @@ module.exports = {
         light: '#BBBBBB',
         lighter: '#DADBDD',
       },
-      danger: { default: '#FE6347', lighter: '#FFDBCF' },
+      danger: { default: '#FE6347', lighter: '#FFE1E9' },
       warning: { default: '#FFB100', light: '#FFD662', lighter: '#FAF3E3' },
       success: '#00A96D',
       info: '#E6F6F1 ',

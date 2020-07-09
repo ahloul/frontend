@@ -157,10 +157,7 @@ export default {
    */
   webfontloader: {
     google: {
-      families: [
-        'Merriweather:900&display=swap',
-        'Montserrat:400,600,700&display=swap',
-      ],
+      families: ['Montserrat:400,600,700', 'Merriweather:900'],
     },
   },
 

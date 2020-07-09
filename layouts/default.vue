@@ -6,6 +6,8 @@
     <div v-if="!haveToken" class="container mx-auto mt-10 px-2">
       <n-link to="/">{{ $t('back') }}</n-link>
     </div>
+    <h1>Merriweather</h1>
+    <div style="font-weight: 400;">Bodytext 24 (Regular/400)</div>
     <nuxt class="container flex-1 mx-auto px-2 mb-20 md:mb-10" />
     <navbar v-if="haveToken" class="block md:hidden fixed bottom-0 w-full" />
     <footer-bar

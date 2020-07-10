@@ -215,7 +215,7 @@
               <div class="w-full border-t"></div>
             </div>
             <div class="relative flex justify-center text-sm leading-5">
-              <span class="px-2 bg-grey text-dark">
+              <span class="px-2 bg-primary-lightest text-dark">
                 {{ $t('contact_data.optional') }}
               </span>
             </div>
@@ -307,7 +307,7 @@
           </div>
           <div class="mt-5">
             <div class="flex justify-center text-sm leading-5 select-none">
-              <span class="px-2 bg-grey text-dark">
+              <span class="px-2 bg-primary-lightest text-dark">
                 {{ $t('delivery_options.opening_times') }}
               </span>
             </div>

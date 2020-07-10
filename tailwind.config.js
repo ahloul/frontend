@@ -49,7 +49,7 @@ module.exports = {
           backgroundColor: theme('colors.grey.lighter'),
           '&:focus': {
             boxShadow: undefined,
-            borderColor: theme('colors.primary'),
+            borderColor: theme('colors.primary.default'),
           },
         },
         'checkbox, radio': {
@@ -57,11 +57,11 @@ module.exports = {
           height: theme('spacing.5'),
           '&:focus': {
             boxShadow: undefined,
-            borderColor: theme('colors.primary'),
+            borderColor: theme('colors.primary.default'),
           },
           '&:checked': {
             boxShadow: undefined,
-            backgroundColor: theme('colors.primary'),
+            backgroundColor: theme('colors.primary.default'),
             outline: undefined,
           },
         },

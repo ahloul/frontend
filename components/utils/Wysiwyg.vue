@@ -87,7 +87,7 @@ export default {
 
 .editor {
   &-content {
-    @apply text-base border p-3 rounded-md bg-dark;
+    @apply text-base border p-3 rounded-md bg-grey-lighter;
     &:focus {
       @apply shadow-none border-primary;
     }

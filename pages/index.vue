@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <div class="card text-light mt-3 max-w-3xl mx-auto">
+    <div class="card text-dark mt-3 max-w-3xl mx-auto">
       <p class="max-w-md mx-auto pb-3 text-center">
         {{ $t('processes.intro') }}
       </p>
@@ -17,7 +17,9 @@
           :src="`https:${entry.heroImage.fields.file.url}`"
           alt=""
         />
-        <h2 v-if="entry.title" class="mt-2 leading-snug">{{ entry.title }}</h2>
+        <h2 v-if="entry.title" class="mt-2 leading-snug text-3xl">
+          {{ entry.title }}
+        </h2>
         <client-only>
           <timeago
             v-if="entry.createdAt"

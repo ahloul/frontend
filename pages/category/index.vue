@@ -146,7 +146,8 @@ export default {
 <style lang="scss" scoped>
 .headline {
   @apply transition duration-300 ease-in-out;
-  @apply text-light;
+  @apply text-grey-dark;
+  @apply text-4xl;
   i {
     @apply hidden;
   }
@@ -164,7 +165,7 @@ export default {
   }
 
   &-item {
-    @apply text-light my-2 block bg-white shadow rounded cursor-pointer select-none;
+    @apply text-dark my-2 block bg-white shadow rounded cursor-pointer select-none;
 
     &:hover {
       @apply shadow-lg;

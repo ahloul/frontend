@@ -156,8 +156,12 @@ export default {
    * Webfontloader
    */
   webfontloader: {
-    google: {
-      families: ['Muli:300,400,500,600,700,800,900&display=swap'],
+    custom: {
+      families: ['Montserrat:n4,n6,n7', 'Merriweather:n9'],
+      urls: [
+        'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap',
+        'https://fonts.googleapis.com/css2?family=Merriweather:wght@900&display=swap',
+      ],
     },
   },
 

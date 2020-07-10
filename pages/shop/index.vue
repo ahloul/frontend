@@ -25,7 +25,7 @@
       </div>
       <div class="ml-2 select-none truncate">
         <h3>{{ shop.name }}</h3>
-        <div v-if="shop.address" class="text-light">
+        <div v-if="shop.address" class="text-dark">
           {{ shop.address.city }}
         </div>
         <div class="hidden md:block mt-2">
@@ -107,7 +107,7 @@
               <span class="font-bold text-primary"
                 >{{ $t(`delivery_options.days_long.${name}`) }}
               </span>
-              <div class="text-light">
+              <div class="text-dark">
                 {{ weekDay.length ? $t('empty') : $t('shop.closed') }}
                 <div v-for="(time, index) in weekDay" :key="index">
                   <span v-if="time.allDayOpen">{{
@@ -124,7 +124,7 @@
             <div class="flex flex-col">
               <div
                 v-if="shop.address.locationId"
-                class="text-sm text-light flex flex-col mb-2"
+                class="text-sm text-dark flex flex-col mb-2"
               >
                 <div class="leading-tight">
                   {{ shop.address.street }} {{ shop.address.houseNumber }}

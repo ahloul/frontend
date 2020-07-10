@@ -30,8 +30,8 @@ module.exports = {
       },
       danger: { default: '#FE6347', lighter: '#FFE1E9' },
       warning: { default: '#FFB100', light: '#FFD662', lighter: '#FAF3E3' },
-      success: '#00A96D',
-      info: '#E6F6F1 ',
+      success: '#19AE9D',
+      info: '#006174',
     },
     container: {
       center: true,
@@ -44,9 +44,9 @@ module.exports = {
     customForms: (theme) => ({
       default: {
         'input, textarea, multiselect, select': {
-          borderRadius: theme('borderRadius.lg'),
-          borderColor: theme('colors.dark'),
-          backgroundColor: theme('colors.dark'),
+          borderRadius: theme('borderRadius.sm'),
+          borderColor: theme('colors.grey.lighter'),
+          backgroundColor: theme('colors.grey.lighter'),
           '&:focus': {
             boxShadow: undefined,
             borderColor: theme('colors.primary'),

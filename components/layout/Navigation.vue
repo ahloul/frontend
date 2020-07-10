@@ -106,7 +106,7 @@ export default {
 
     a {
       @apply flex items-center;
-      @apply text-light px-3 py-2 mx-0 rounded-md uppercase text-xs font-bold tracking-wider no-underline;
+      @apply text-dark px-3 py-2 mx-0 rounded-md uppercase text-xs font-bold tracking-wider no-underline;
       @apply transition duration-200 ease-in-out;
 
       &:hover {

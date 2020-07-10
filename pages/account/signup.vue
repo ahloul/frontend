@@ -126,7 +126,7 @@
               <span class="block w-full">
                 <button
                   class="cta bg-tertiary w-full"
-                  :class="{ 'spinner-light': pending }"
+                  :class="{ 'spinner-dark': pending }"
                   type="submit"
                 >
                   {{ $t('signup.register') }}

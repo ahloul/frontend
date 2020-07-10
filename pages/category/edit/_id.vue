@@ -28,7 +28,7 @@
           </button>
           <button
             class="primary ml-auto"
-            :class="{ 'spinner-light': loadState.update }"
+            :class="{ 'spinner-dark': loadState.update }"
             type="submit"
           >
             {{ $t('save') }}

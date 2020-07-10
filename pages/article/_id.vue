@@ -18,7 +18,7 @@
         <div class="card">
           <div>
             <h2 class="leading-none text-secondary">{{ article.name }}</h2>
-            <span class="text-light">{{ article.category.name }}</span>
+            <span class="text-dark">{{ article.category.name }}</span>
             <!-- eslint-disable vue-i18n/no-raw-text -->
             <div class="bg-grey p-3 rounded text-sm mt-3">
               {{ article.price }} €
@@ -27,7 +27,7 @@
               </span>
               <span
                 class="font-bold"
-                :class="[article.published ? 'text-success' : 'text-light']"
+                :class="[article.published ? 'text-success' : 'text-dark']"
                 >{{
                   article.published
                     ? $t('article.published')
@@ -70,7 +70,7 @@
           </ValidationProvider>
         </label>
 
-        <div class="mt-10 mb-3 text-light">{{ $t('article.description') }}</div>
+        <div class="mt-10 mb-3 text-dark">{{ $t('article.description') }}</div>
         <div
           v-if="article.description"
           class="w-full"

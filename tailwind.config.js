@@ -38,7 +38,7 @@ module.exports = {
     },
     extend: {
       borderColor: (theme) => ({
-        default: theme('colors.dark', 'currentColor'),
+        default: theme('colors.grey.lighter', 'currentColor'),
       }),
     },
     customForms: (theme) => ({

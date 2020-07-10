@@ -56,7 +56,7 @@
               </div>
             </div>
           </div>
-          <div class="right-icon text-light pr-5">
+          <div class="right-icon text-dark pr-5">
             <icon name="chevron-right" />
           </div>
         </div>
@@ -121,7 +121,8 @@ export default {
 <style lang="scss" scoped>
 .headline {
   @apply transition duration-300 ease-in-out;
-  @apply text-light;
+  @apply text-dark;
+  @apply text-4xl;
   i {
     @apply hidden;
   }
@@ -138,7 +139,7 @@ export default {
   }
 
   &-item {
-    @apply text-light block bg-white shadow rounded cursor-pointer select-none;
+    @apply text-dark block bg-white shadow rounded cursor-pointer select-none;
 
     &:hover {
       @apply shadow-lg;

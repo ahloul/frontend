@@ -59,7 +59,7 @@
               <span class="block w-full">
                 <button
                   class="cta bg-tertiary w-full"
-                  :class="{ 'spinner-light': pending === 'local' }"
+                  :class="{ 'spinner-dark': pending === 'local' }"
                   type="submit"
                 >
                   {{ $t('login.login') }}

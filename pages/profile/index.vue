@@ -16,7 +16,7 @@
       </div>
 
       <div class="text-center my-3">
-        <h2 class="text-lg font-semibold leading-none text-light mt-4 md:mt-0">
+        <h2 class="text-lg font-semibold leading-none text-dark mt-4 md:mt-0">
           {{ user.name }}
         </h2>
         <div v-if="user.location" class="text-primary leading-snug text-sm">
@@ -31,7 +31,7 @@
         <hr v-if="user.description" class="my-5 w-32 mx-auto" />
         <div
           v-if="user.description"
-          class="break-words mt-3 text-light"
+          class="break-words mt-3 text-dark"
           v-html="user.description"
         />
       </div>

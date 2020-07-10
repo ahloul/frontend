@@ -44,13 +44,13 @@
         <div class="flex items-center">
           <h3 class="mt-2 leading-snug">{{ article.name }}</h3>
           <!-- eslint-disable vue-i18n/no-raw-text -->
-          <div class="text-light text-sm ml-auto mt-2">
+          <div class="text-dark text-sm ml-auto mt-2">
             {{ article.price }} €
           </div>
         </div>
         <div
           v-if="article.description"
-          class="text-light text-sm break-all"
+          class="text-dark text-sm break-all"
           v-html="article.description"
         />
       </div>

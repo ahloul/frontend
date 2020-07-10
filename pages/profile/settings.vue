@@ -57,7 +57,7 @@
         <div class="flex justify-end my-6">
           <button
             class="primary"
-            :class="{ 'spinner-light': pending }"
+            :class="{ 'spinner-dark': pending }"
             type="submit"
           >
             {{ $t('save') }}

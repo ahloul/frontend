@@ -158,7 +158,7 @@
           <div class="flex justify-end my-5">
             <button
               class="primary"
-              :class="{ 'spinner-light': loadState.create }"
+              :class="{ 'spinner-dark': loadState.create }"
               type="submit"
             >
               {{ $t('save') }}

@@ -169,7 +169,7 @@
         </label>
       </div>
     </div>
-    <!-- Toggle 
+    <!-- Toggle
     <h2 class="my-5">Toggle</h2>
     <toggle />
     -->

@@ -79,5 +79,25 @@ export default ({ app }, inject) => {
         return true
       },
     },
+    classes: {
+      outer: 'mb-4',
+      input(context) {
+        switch (context.classification) {
+          case 'file':
+            return ''
+          case 'button':
+            return 'cta bg-tertiary'
+          case 'text':
+            return 'form-input'
+          case 'box':
+            return ''
+          default:
+            return 'form-input'
+        }
+      },
+      label: 'font-medium text-sm',
+      help: 'text-xs mb-1 text-grey-light',
+      error: 'text-danger text-xs mb-1',
+    },
   })
 }

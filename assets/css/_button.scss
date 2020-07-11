@@ -59,7 +59,7 @@ button,
 
   // Primary
   &.cta {
-    @apply border border-2 border-tertiary text-white;
+    @apply border border-2 border-tertiary text-light;
 
     &:hover {
       @apply border border-2 border-warning bg-warning;

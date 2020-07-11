@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-md mt-5">
+  <div class="max-w-sm mx-auto">
     <FormulateForm @submit="submit">
       <FormulateInput
         type="image"

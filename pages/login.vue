@@ -6,15 +6,14 @@
         <img src="/img/logo.svg" width="150" class="mx-auto" alt="" />
       </div>
 
-      <!-- Form -->
       <div class="w-full max-w-sm mx-auto">
-        <!--Test-->
         <FormulateForm
           v-model="guest"
           :errors="{ email: validationError }"
           @submit="localLogin"
         >
           <FormulateInput
+            input-class="form-input"
             name="email"
             type="email"
             :label="$t('login.email')"
@@ -22,12 +21,14 @@
             placeholder="lothar@mustermail.com"
           />
           <FormulateInput
+            input-class="form-input"
             name="password"
             type="password"
             :label="$t('login.password')"
             validation="bail|required|password"
             placeholder="******************"
           />
+
           <div class="mt-5 flex items-center justify-end">
             <div class="leading-5">
               <n-link to="/account/forgot">
@@ -35,11 +36,14 @@
               </n-link>
             </div>
           </div>
+
           <FormulateInput
             class="mt-5"
+            input-class="cta w-full bg-tertiary"
             type="submit"
             :label="$t('login.login')"
           />
+
           <span class="block w-full">
             <button
               type="button"
@@ -50,8 +54,6 @@
             </button>
           </span>
         </FormulateForm>
-        <!--End Test-->
-
         <!-- Bottom Social Area -->
         <div class="mt-6">
           <div class="relative">

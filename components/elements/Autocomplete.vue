@@ -3,7 +3,7 @@
     <input
       v-model="selection[label]"
       v-bind="context.attributes"
-      class="form-input"
+      input-class="form-input"
       type="search"
       autocomplete="off"
       @blur="handleBlur"
@@ -38,9 +38,15 @@ export default {
         }
       },
       validator: ({ attributes, blurHandler, model: { label, name } }) => {
-        if (!label && !name) return false
         if (typeof attributes !== 'object') return false
         if (typeof blurHandler !== 'function') return false
+        if (
+          !attributes.initial?.label &&
+          !attributes.initial?.name &&
+          !label &&
+          !name
+        )
+          return false
         return true
       },
     },

@@ -54,7 +54,7 @@
       </button>
     </div>
 
-    <div class="mt-10">
+    <div class="mt-10 mx-auto max-w-md">
       <FormulateForm v-show="step === 1" @submit="updateShop">
         <FormulateInput
           v-model="shop.name"
@@ -169,7 +169,7 @@
           placeholder="https://"
         />
 
-        <FormulateInput type="button" @click="step--">
+        <FormulateInput input-class="mt-0" type="button" @click="step--">
           {{ $t('back') }}
         </FormulateInput>
 

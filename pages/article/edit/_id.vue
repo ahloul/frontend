@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="max-w-sm mx-auto">
     <div class="flex justify-between my-4">
       <n-link :to="`/article/${article.id}`" class="button icon-r"
         ><icon name="arrow-ios-back-outline" /> {{ $t('back') }}</n-link

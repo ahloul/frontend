@@ -107,10 +107,10 @@ export default {
     @apply z-50 fixed top-0 left-0 bottom-0 right-0 bg-transparent shadow;
   }
   &-bg {
-    @apply z-50 fixed top-0 left-0 h-screen w-full bg-light opacity-75;
+    @apply z-50 fixed top-0 left-0 h-screen w-full bg-dark opacity-75;
   }
   &-body {
-    @apply bg-white m-3 max-h-full text-light rounded-lg;
+    @apply bg-white m-3 max-h-full text-dark rounded-lg;
   }
 }
 </style>

@@ -119,7 +119,7 @@ export default {
 .dropbox {
   @apply transition-all duration-100 ease-in-out;
   @apply flex content-center justify-center flex-wrap;
-  @apply bg-grey text-primary border-2 border-dashed border-2 rounded text-center h-40 cursor-pointer;
+  @apply bg-grey-lighter text-primary border-2 border-dashed border-2 rounded text-center h-40 cursor-pointer;
   &:hover {
     @apply bg-white;
   }

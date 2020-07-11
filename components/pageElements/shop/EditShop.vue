@@ -113,10 +113,10 @@
             class="flex flex-col bg-white text-primary rounded-lg border p-3 mt-3"
           >
             <div class="font-bold">{{ shop.name }}</div>
-            <div class="leading-tight text-light">
+            <div class="leading-tight text-dark">
               {{ shop.address.street }} {{ shop.address.houseNumber }}
             </div>
-            <div class="leading-tight text-light">
+            <div class="leading-tight text-dark">
               {{ shop.address.postalCode }} {{ shop.address.city }}
               {{
                 shop.address.district === shop.address.city
@@ -141,7 +141,7 @@
               <div class="w-full border-t"></div>
             </div>
             <div class="relative flex justify-center text-sm leading-5">
-              <span class="px-2 bg-grey text-light">
+              <span class="px-2 bg-primary-darkest text-dark">
                 {{ $t('contact_data.optional') }}
               </span>
             </div>
@@ -198,7 +198,7 @@
 
           <div class="mt-5">
             <div class="flex justify-center text-sm leading-5 select-none">
-              <span class="px-2 bg-grey text-light">
+              <span class="px-2 bg-primary-lightest text-dark">
                 {{ $t('delivery_options.opening_times') }}
               </span>
             </div>
@@ -550,10 +550,10 @@ export default {
 <style lang="scss" scoped>
 .tab {
   &-heading {
-    @apply text-center font-bold text-light;
+    @apply text-center font-bold text-dark;
   }
   &-section {
-    @apply w-full max-w-md mt-10 mx-auto text-light;
+    @apply w-full max-w-md mt-10 mx-auto text-dark;
   }
 }
 .tooltip {

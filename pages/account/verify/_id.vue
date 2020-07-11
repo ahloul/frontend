@@ -25,7 +25,7 @@
           <n-link
             to="/login"
             class="button cta"
-            :class="{ 'spinner-light': pending }"
+            :class="{ 'spinner-dark': pending }"
             >{{ $t('login.back_to_login') }}</n-link
           >
         </div>

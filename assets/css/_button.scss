@@ -4,7 +4,7 @@
 
 button,
 .button {
-  @apply flex justify-center py-3 px-4 text-xs font-semibold uppercase  text-white tracking-widest select-none;
+  @apply flex justify-center py-3 px-4 text-xs font-semibold uppercase  text-dark tracking-widest select-none;
 
   // Add animation on hover
   @extend .animated;

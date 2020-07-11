@@ -58,7 +58,7 @@
                 </div>
               </div>
             </div>
-            <div class="right-icon text-light">
+            <div class="right-icon text-dark">
               <icon name="chevron-right" />
             </div>
           </div>
@@ -146,7 +146,7 @@ export default {
 <style lang="scss" scoped>
 .headline {
   @apply transition duration-300 ease-in-out;
-  @apply text-grey-dark;
+  @apply text-dark;
   @apply text-4xl;
   i {
     @apply hidden;

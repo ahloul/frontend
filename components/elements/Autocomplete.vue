@@ -105,7 +105,7 @@ export default {
   &-item {
     @apply p-3 text-sm w-full;
     &:hover {
-      @apply bg-grey cursor-pointer;
+      @apply bg-grey-lighter cursor-pointer;
     }
   }
 }

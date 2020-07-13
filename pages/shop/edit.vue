@@ -303,6 +303,7 @@
       <FormulateForm v-show="step === 4" @submit="updateShop">
         <FormulateInput
           type="image"
+          input-class="opacity-0 w-full h-full cursor-pointer bg-primary inline-block;"
           upload-behavior="delayed"
           validation="mime:image/jpeg,image/png,image/jpg"
           :value="[{ url: shop.logo.url }]"

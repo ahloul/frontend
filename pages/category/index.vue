@@ -19,11 +19,15 @@
           {{ $t(`components.type.${shop.components[0]}`) }}
           <icon name="edit-outline" />
         </h1>
-        <search-input
-          v-if="!showEmpty"
-          class="block w-full ml-auto md:max-w-sm mr-2"
-          @search="applySearch"
-        />
+        <FormulateForm class="block w-full ml-auto md:max-w-sm mr-2">
+          <FormulateInput
+            v-if="!showEmpty"
+            type="search"
+            :placeholder="$t('search')"
+            validation="max:100,length"
+            @search="applySearch"
+          />
+        </FormulateForm>
       </div>
       <div class="flex">
         <n-link to="/category/create" class="ml-auto button primary icon-r"
@@ -86,7 +90,6 @@
 <script>
 import { mapGetters } from 'vuex'
 
-import SearchInput from '~/components/elements/SearchInput'
 import StaticModal from '~/components/elements/StaticModal'
 import EmptyState from '~/components/elements/EmptyState'
 import ChangeType from '~/components/pageElements/category/ChangeType'
@@ -94,7 +97,6 @@ export default {
   name: 'Categories',
   middleware: 'authenticated',
   components: {
-    SearchInput,
     EmptyState,
     StaticModal,
     ChangeType,

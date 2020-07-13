@@ -10,6 +10,7 @@
     "deactivate": "Deactivate",
     "detail": "Detail"
   },
+  "search": "Search",
   "add": "Add",
   "article": {
     "create_stock": "Create Inventory",
@@ -261,6 +262,7 @@
     }
   },
   "validation": {
-    "min": "Value must be at least "
+    "min": "Value must be at least ",
+    "max": "must be less than or equal to "
   }
 }

@@ -180,7 +180,6 @@ export default {
     '~/plugins/mixins/components',
     // { src: '~/plugins/modules/localstorage', mode: 'client' },
     { src: '~/plugins/modules/timeago', mode: 'client' },
-    { src: '~/plugins/modules/validation', mode: 'client' },
     { src: '~/plugins/modules/socialAuthentication', mode: 'client' },
     { src: '~/plugins/modules/heremaps', mode: 'client' },
   ],

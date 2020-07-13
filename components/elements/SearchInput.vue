@@ -1,40 +1,43 @@
 <template>
-  <ValidationObserver v-slot="{ handleSubmit }" slim>
-    <form autocomplete="off" @submit.prevent="handleSubmit(submit)">
-      <ValidationProvider v-slot="{ errors }" name="Suche" rules="max:100">
-        <!-- articleName INPUT -->
-        <label for="searchInput">
-          <input
-            id="searchInput"
-            v-model.trim="searchtext"
-            type="text"
-            class="form-input block w-full"
-            :placeholder="placeholder"
-            autocomplete="off"
-          />
-          <span class="error-message">{{ errors[0] }}</span>
-        </label>
-      </ValidationProvider>
-    </form>
-  </ValidationObserver>
+  <input
+    id="searchInput"
+    v-model.trim="context.model"
+    type="text"
+    class="form-input block w-full"
+    v-bind="context.attributes"
+    autocomplete="off"
+    @blur="context.blurHandler"
+    @input="submit"
+  />
 </template>
 
 <script>
+import { debounce } from 'lodash'
 export default {
   name: 'SearchInput',
   props: {
-    placeholder: {
-      type: String,
-      default: 'Suche',
+    context: {
+      required: true,
+      type: Object,
+      default: () => {
+        return {
+          attributes: {},
+        }
+      },
+      validator: ({ attributes, blurHandler, model: { label, name } }) => {
+        if (typeof attributes !== 'object') return false
+        if (typeof blurHandler !== 'function') return false
+        return true
+      },
     },
   },
   data: () => ({
     searchtext: null,
   }),
   methods: {
-    submit() {
-      this.$emit('search', this.searchtext)
-    },
+    submit: debounce(function () {
+      this.$emit('search', this.context.model)
+    }, 750),
   },
 }
 </script>

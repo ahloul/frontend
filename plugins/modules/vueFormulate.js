@@ -6,6 +6,7 @@ import CurrencyInput from '~/components/elements/CurrencyInput'
 import Stock from '~/components/elements/Stock'
 import Autocomplete from '~/components/elements/Autocomplete'
 import Wysiwyg from '~/components/utils/Wysiwyg'
+import SearchInput from '~/components/elements/SearchInput'
 
 export default ({ app }, inject) => {
   Vue.use(VueFormulate, {
@@ -14,6 +15,7 @@ export default ({ app }, inject) => {
       Wysiwyg,
       CurrencyInput,
       Stock,
+      SearchInput,
     },
     library: {
       autocomplete: {
@@ -32,6 +34,10 @@ export default ({ app }, inject) => {
         classification: 'text',
         component: 'Stock',
       },
+      search: {
+        classification: 'text',
+        component: 'SearchInput',
+      },
     },
     locales: {
       // en is default, handle all langs through i18n
@@ -41,6 +47,9 @@ export default ({ app }, inject) => {
         },
         min({ args }) {
           return app.i18n.t('validation.min') + args[0]
+        },
+        max({ args, name }) {
+          return name + ' ' + app.i18n.t('validation.max') + args[0]
         },
         email() {
           return app.i18n.t('login.validation_errors.email')

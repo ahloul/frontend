@@ -19,15 +19,14 @@
           {{ $t(`components.type.${shop.components[0]}`) }}
           <icon name="edit-outline" />
         </h1>
-        <FormulateForm class="block w-full ml-auto md:max-w-sm mr-2">
-          <FormulateInput
-            v-if="!showEmpty"
-            type="search"
-            :placeholder="$t('search')"
-            validation="max:100,length"
-            @search="applySearch"
-          />
-        </FormulateForm>
+        <FormulateInput
+          class="block w-full ml-auto md:max-w-sm mr-2"
+          v-if="!showEmpty"
+          type="search"
+          :placeholder="$t('search')"
+          validation="max:100,length"
+          @search="applySearch"
+        />
       </div>
       <div class="flex">
         <n-link to="/category/create" class="ml-auto button primary icon-r"

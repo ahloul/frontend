@@ -1,8 +1,11 @@
 <template>
   <div>
     <admin-bar />
-    <search-input
+    <FormulateInput
       class="block w-full ml-auto md:max-w-sm mx-auto mt-5"
+      type="search"
+      :placeholder="$t('search')"
+      validation="max:100,length"
       @search="applySearch"
     />
     <list-all-users :users.sync="users" :user="user" :count="count" />
@@ -26,14 +29,12 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex'
-import SearchInput from '~/components/elements/SearchInput'
 import ListAllUsers from '~/components/pageElements/admin/ListAllUsers'
 import AdminBar from '~/components/pageElements/admin/AdminBar'
 export default {
   name: 'AdminUsers',
   middleware: ['admin'],
   components: {
-    SearchInput,
     ListAllUsers,
     AdminBar,
   },
@@ -48,7 +49,14 @@ export default {
       return { users: rows, nextPage, prevPage, count }
     } catch (error) {
       console.log(error)
-      return { categories: [], showEmpty: true, nextPage: 0, prevPage: 0 }
+      return {
+        categories: [],
+        showEmpty: true,
+        nextPage: 0,
+        prevPage: 0,
+        users: [],
+        count: 0,
+      }
     }
   },
   data: () => ({

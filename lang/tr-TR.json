@@ -1,241 +1,241 @@
 {
-	"account": {
-		"verify_content": "Tekrar hoşgeldiniz! Doğrulamanız için teşekkürler"
-	},
-	"action": {
-		"call": "Telefon etmek",
-		"changed": "değişmiş",
-		"close": "Kapat",
-		"created": "düzenlendi",
-		"deactivate": "Devre dışı bırakmak",
-		"detail": "Detay"
-	},
-	"add": "Eklemek",
-	"article": {
-		"create_stock": "Envanter Oluştur",
-		"delete_confirmation": "Bu makaleyi kalıcı olarak silmek istediğinizden emin misiniz?",
-		"description": "Makale açıklaması",
-		"empty": "Makale Yok",
-		"name": "Makalenin Adı",
-		"name_hint": "yani tükenmez kalemler",
-		"non_public": "halka açık olmayan",
-		"price_hint": "yani 12,00",
-		"public": "Halk, umumi, kamu",
-		"public_prefix": "Makale olacak",
-		"public_suffix": "Yayınlanan",
-		"published": "Yayınlanan",
-		"stock": "Envanter",
-		"tax_free": "Vergisiz",
-		"tax_rate": "Vergi oranı",
-		"unit_price": "Birim fiyat"
-	},
-	"back": "Geri",
-	"back_to_start": "Başlangıca geri dön",
-	"call": "Bizi arayın",
-	"callback": {
-		"logging_in": "Giriş yapacaksınız ..."
-	},
-	"category": {
-		"article": "makale",
-		"create": "Kategori Oluştur",
-		"delete_confirmation": "Kategoriyi silmek istediğinizden emin misiniz? İçindeki makaleler de geri alınamayacak şekilde silinecek!",
-		"euro": "€",
-		"hint": "yani içecekler",
-		"name": "Kategorinin Adı",
-		"title": "Kategori"
-	},
-	"components": {
-		"menu": {
-			"create": "Oluştur menüsü",
-			"name": "Menü"
-		},
-		"productlist": {
-			"create": "Ürün listesi oluştur",
-			"name": "Ürün Listesi"
-		},
-		"type": {
-			"menu": "Menü",
-			"products": "Ürün"
-		}
-	},
-	"confirm": "tamam",
-	"contact_data": {
-		"facebook": "Facebook",
-		"full_address": "Açık Adres",
-		"instagram": "Instagram",
-		"intro": "Başkalarının sizi nerede bulacağını bilmesi için mağazanızın adresini girin.",
-		"optional": "İsteğe bağlı",
-		"phone_number": "Telefon numarası",
-		"prefix_and_number": "Önek ve Sayı",
-		"section_name": "İletişim Verileri",
-		"website": "Web sitesi"
-	},
-	"contact_to_delete": "Hesabınızı silmek istiyorsanız lütfen bizimle iletişime geçin.",
-	"continue": "Devam et",
-	"delivery_options": {
-		"all_day": "Gün boyu açık",
-		"days_long": {
-			"friday": "Cuma",
-			"monday": "Pazartesi",
-			"saturday": "Cumartesi",
-			"sunday": "Pazar",
-			"thursday": "Perşembe",
-			"tuesday": "Salı",
-			"wednesday": "Çarşamba"
-		},
-		"days_short": {
-			"friday": "Cu",
-			"monday": "Mo",
-			"saturday": "Sa",
-			"sunday": "su",
-			"thursday": "th",
-			"tuesday": "Tu",
-			"wednesday": "Biz"
-		},
-		"non_public": "herkese açık değil ve herkes tarafından görülemiyor",
-		"offer_prefix": "teklif ediyorum",
-		"offer_suffix": "",
-		"opening_times": "Açılış saatleri",
-		"options": {
-			"local_delivery": {
-				"description": "Müşterilerimizin mallarını hemen almasını sağlıyoruz",
-				"name": "Yerel teslimat"
-			},
-			"parcel": {
-				"description": "Talep üzerine paketleri mektup ve posta ile de gönderiyoruz",
-				"name": "Posta ve paket teslimatı"
-			},
-			"pickup": {
-				"description": "Müşteriler ayrıca ürünlerimizi tesisten alabilir",
-				"name": "Almak"
-			}
-		},
-		"public": "herkese açık ve herkes tarafından görülebilir",
-		"public_prefix": "Dükkan olacak",
-		"section_name": "Teslim seçenekleri"
-	},
-	"description": {
-		"intro": "İsterseniz, işletmenizi birkaç cümleyle açıklayın. Yaratıcılığınızı serbest bırakın!",
-		"section_name": "Açıklama"
-	},
-	"dismiss": "İptal",
-	"edit": "Düzenle",
-	"empty": "",
-	"enter_login": "Giriş için",
-	"enter_shop": "Mağazaya",
-	"enter_website": "Web sitesine",
-	"error": {
-		"connection": "Muhtemelen internetinizle ilgili sorunlarınız"
-	},
-	"footer_bar": {
-		"admin": "admin",
-		"copyright": "Copyright getit! © 2020"
-	},
-	"information": {
-		"error_occurred": "Bir hata oluştu. Lütfen sayfayı yenileyin.",
-		"go_to_shop": "Dükkana git!",
-		"intro": "Sadece birkaç adımda mağazanızı oluşturmanıza yardımcı oluyoruz. İşte başlıyoruz!",
-		"legal_form": "Yasal şekli",
-		"legal_form_options": {
-			"independent": "Bağımsız",
-			"non_profit": "Kâr amacı gütmeyen / Dernek",
-			"partnership": "ortaklık",
-			"private_partnership": "Özel şirket",
-			"sole": "Tek mal sahibi",
-			"stock_company": "Anonim şirket"
-		},
-		"name_of_shop": "Mağazanızın Adı",
-		"name_of_shop_example": "yani Sam ve Ortak",
-		"no_of_employees": "Çalışan Sayısı",
-		"ready_to_start": "Şimdi başlamaya hazırsınız.",
-		"section_name": "bilgi",
-		"shop_created_confirmation": "Başarıyla bir dükkan yarattınız!",
-		"shop_error_confirmation": "Tüm alanları doğru doldurup doldurmadığınızı tekrar kontrol edin.",
-		"shop_not_found": "Dükkan bulunamadı. Yeni bir tane oluşturun."
-	},
-	"lang_code": "TR",
-	"login": {
-		"back_to_login": "Giriş sayfasına geri dön",
-		"confirm_password": "Şifreyi Onayla",
-		"email": "E-posta",
-		"facebook": "Facebook",
-		"google": "Google",
-		"help": "Kayıt ile ilgili yardım?",
-		"login": "Oturum aç",
-		"password": "Parola",
-		"request_new_password": "yeni şifre isteği",
-		"save_new_password": "Yeni şifreyi kaydet",
-		"thirdparty": "Veya kayıt olun"
-	},
-	"navbar": {
-		"create_shop": "Yeni Mağaza",
-		"imprint": "damga",
-		"news": "HABERLER",
-		"privacy_policy": "Gizlilik Politikası",
-		"processes": "Süreçler",
-		"shop": "Dükkan",
-		"stock": "Stok",
-		"terms": "şartlar ve koşullar"
-	},
-	"no_description": "Açıklama yok.",
-	"no_items": "Henüz hiç girişiniz yok",
-	"picture": {
-		"intro": "Dükkanınızı bir fotoğraf ve logonuzla gösterin.",
-		"logo": "logo",
-		"section_name": "resimler",
-		"shop_picture": "Dükkanın resmi"
-	},
-	"processes": {
-		"add_article": "Makale Ekle",
-		"add_product": "Ürün ekle",
-		"intro": "Şu anda yapım aşamasındayız. Artık ilk makalelerinizi ekleyerek mağazanıza hayat verebilirsiniz. Bu, platformumuzu daha da geliştirmemize yardımcı olacaktır.",
-		"next": "Sonraki",
-		"previous": "Önceki",
-		"welcome": "Sıcak bir karşılama"
-	},
-	"profile": {
-		"add_shop": "Başka bir mağaza oluştur",
-		"admin": "",
-		"city": "Kent",
-		"description": "profil açıklaması",
-		"logout": "Çıkış Yap",
-		"name": "isim",
-		"your_shops": "Mağazalarınız"
-	},
-	"refresh_now": "Şimdi yenile",
-	"remove": "Kaldır",
-	"save": "Kayıt etmek",
-	"select_image": "Fotoğraf seç",
-	"shop": {
-		"closed": "kapalı",
-		"open_all_day": "Tüm gün açık",
-		"settings": "ayarlar"
-	},
-	"signup": {
-		"email": "E-posta",
-		"name": "isim",
-		"privacy_policy": "Gizlilik Politikası",
-		"privacy_policy_info": "Kişisel verilerinizi nasıl kullandığımız hakkında daha fazla bilgiyi",
-		"register": "Kayıt olmak",
-		"registration_info": "Kaydol'a tıklayarak gizlilik politikamızı kabul etmiş olursunuz.",
-		"successful_registration": "Kaydınız başarılı oldu! Gelen kutunuzu kontrol edin ve e-posta adresinizi onaylayın.",
-		"terms_of_use": "Kullanım Şartları"
-	},
-	"skip": "atlamak",
-	"toast": {
-		"created_article": "Makale Oluşturuldu",
-		"created_category": "Kategori Oluşturuldu",
-		"created_menu": "Menü Oluşturuldu",
-		"deleted_article": "Silinmiş Makale",
-		"logout": "Oturumu kapatıldı 👋",
-		"not_authorized": "yetkili değilsin",
-		"saved_profile": "Kayıtlı Profil",
-		"shop_changed": "Mağaza değişti!",
-		"something_wrong": "Bir şeyler ters gitti 👎",
-		"updated_category": "Güncellenmiş Kategori",
-		"updated_profile": "Güncellenmiş Profil",
-		"updated_shop": "Güncellenmiş Mağaza",
-		"updated_stock": "Güncellenmiş Stok",
-		"you_got_mail": "Postanız var ✉️!"
-	}
+  "account": {
+    "verify_content": "Tekrar hoşgeldiniz! Doğrulamanız için teşekkürler"
+  },
+  "action": {
+    "call": "Telefon etmek",
+    "changed": "değişmiş",
+    "close": "Kapat",
+    "created": "düzenlendi",
+    "deactivate": "Devre dışı bırakmak",
+    "detail": "Detay"
+  },
+  "add": "Eklemek",
+  "article": {
+    "create_stock": "Envanter Oluştur",
+    "delete_confirmation": "Bu makaleyi kalıcı olarak silmek istediğinizden emin misiniz?",
+    "description": "Makale açıklaması",
+    "empty": "Makale Yok",
+    "name": "Makalenin Adı",
+    "name_hint": "yani tükenmez kalemler",
+    "non_public": "halka açık olmayan",
+    "price_hint": "yani 12,00",
+    "public": "Halk, umumi, kamu",
+    "public_prefix": "Makale olacak",
+    "public_suffix": "Yayınlanan",
+    "published": "Yayınlanan",
+    "stock": "Envanter",
+    "tax_free": "Vergisiz",
+    "tax_rate": "Vergi oranı",
+    "unit_price": "Birim fiyat"
+  },
+  "back": "Geri",
+  "back_to_start": "Başlangıca geri dön",
+  "call": "Bizi arayın",
+  "callback": {
+    "logging_in": "Giriş yapacaksınız ..."
+  },
+  "category": {
+    "article": "makale",
+    "create": "Kategori Oluştur",
+    "delete_confirmation": "Kategoriyi silmek istediğinizden emin misiniz? İçindeki makaleler de geri alınamayacak şekilde silinecek!",
+    "euro": "€",
+    "hint": "yani içecekler",
+    "name": "Kategorinin Adı",
+    "title": "Kategori"
+  },
+  "components": {
+    "menu": {
+      "create": "Oluştur menüsü",
+      "name": "Menü"
+    },
+    "productlist": {
+      "create": "Ürün listesi oluştur",
+      "name": "Ürün Listesi"
+    },
+    "type": {
+      "menu": "Menü",
+      "products": "Ürün"
+    }
+  },
+  "confirm": "tamam",
+  "contact_data": {
+    "facebook": "Facebook",
+    "full_address": "Açık Adres",
+    "instagram": "Instagram",
+    "intro": "Başkalarının sizi nerede bulacağını bilmesi için mağazanızın adresini girin.",
+    "optional": "İsteğe bağlı",
+    "phone_number": "Telefon numarası",
+    "prefix_and_number": "Önek ve Sayı",
+    "section_name": "İletişim Verileri",
+    "website": "Web sitesi"
+  },
+  "contact_to_delete": "Hesabınızı silmek istiyorsanız lütfen bizimle iletişime geçin.",
+  "continue": "Devam et",
+  "delivery_options": {
+    "all_day": "Gün boyu açık",
+    "days_long": {
+      "friday": "Cuma",
+      "monday": "Pazartesi",
+      "saturday": "Cumartesi",
+      "sunday": "Pazar",
+      "thursday": "Perşembe",
+      "tuesday": "Salı",
+      "wednesday": "Çarşamba"
+    },
+    "days_short": {
+      "friday": "Cu",
+      "monday": "Mo",
+      "saturday": "Sa",
+      "sunday": "su",
+      "thursday": "th",
+      "tuesday": "Tu",
+      "wednesday": "Biz"
+    },
+    "non_public": "herkese açık değil ve herkes tarafından görülemiyor",
+    "offer_prefix": "teklif ediyorum",
+    "offer_suffix": "",
+    "opening_times": "Açılış saatleri",
+    "options": {
+      "local_delivery": {
+        "description": "Müşterilerimizin mallarını hemen almasını sağlıyoruz",
+        "name": "Yerel teslimat"
+      },
+      "parcel": {
+        "description": "Talep üzerine paketleri mektup ve posta ile de gönderiyoruz",
+        "name": "Posta ve paket teslimatı"
+      },
+      "pickup": {
+        "description": "Müşteriler ayrıca ürünlerimizi tesisten alabilir",
+        "name": "Almak"
+      }
+    },
+    "public": "herkese açık ve herkes tarafından görülebilir",
+    "public_prefix": "Dükkan olacak",
+    "section_name": "Teslim seçenekleri"
+  },
+  "description": {
+    "intro": "İsterseniz, işletmenizi birkaç cümleyle açıklayın. Yaratıcılığınızı serbest bırakın!",
+    "section_name": "Açıklama"
+  },
+  "dismiss": "İptal",
+  "edit": "Düzenle",
+  "empty": "",
+  "enter_login": "Giriş için",
+  "enter_shop": "Mağazaya",
+  "enter_website": "Web sitesine",
+  "error": {
+    "connection": "Muhtemelen internetinizle ilgili sorunlarınız"
+  },
+  "footer_bar": {
+    "admin": "admin",
+    "copyright": "Copyright locabees © 2020"
+  },
+  "information": {
+    "error_occurred": "Bir hata oluştu. Lütfen sayfayı yenileyin.",
+    "go_to_shop": "Dükkana git!",
+    "intro": "Sadece birkaç adımda mağazanızı oluşturmanıza yardımcı oluyoruz. İşte başlıyoruz!",
+    "legal_form": "Yasal şekli",
+    "legal_form_options": {
+      "independent": "Bağımsız",
+      "non_profit": "Kâr amacı gütmeyen / Dernek",
+      "partnership": "ortaklık",
+      "private_partnership": "Özel şirket",
+      "sole": "Tek mal sahibi",
+      "stock_company": "Anonim şirket"
+    },
+    "name_of_shop": "Mağazanızın Adı",
+    "name_of_shop_example": "yani Sam ve Ortak",
+    "no_of_employees": "Çalışan Sayısı",
+    "ready_to_start": "Şimdi başlamaya hazırsınız.",
+    "section_name": "bilgi",
+    "shop_created_confirmation": "Başarıyla bir dükkan yarattınız!",
+    "shop_error_confirmation": "Tüm alanları doğru doldurup doldurmadığınızı tekrar kontrol edin.",
+    "shop_not_found": "Dükkan bulunamadı. Yeni bir tane oluşturun."
+  },
+  "lang_code": "TR",
+  "login": {
+    "back_to_login": "Giriş sayfasına geri dön",
+    "confirm_password": "Şifreyi Onayla",
+    "email": "E-posta",
+    "facebook": "Facebook",
+    "google": "Google",
+    "help": "Kayıt ile ilgili yardım?",
+    "login": "Oturum aç",
+    "password": "Parola",
+    "request_new_password": "yeni şifre isteği",
+    "save_new_password": "Yeni şifreyi kaydet",
+    "thirdparty": "Veya kayıt olun"
+  },
+  "navbar": {
+    "create_shop": "Yeni Mağaza",
+    "imprint": "damga",
+    "news": "HABERLER",
+    "privacy_policy": "Gizlilik Politikası",
+    "processes": "Süreçler",
+    "shop": "Dükkan",
+    "stock": "Stok",
+    "terms": "şartlar ve koşullar"
+  },
+  "no_description": "Açıklama yok.",
+  "no_items": "Henüz hiç girişiniz yok",
+  "picture": {
+    "intro": "Dükkanınızı bir fotoğraf ve logonuzla gösterin.",
+    "logo": "logo",
+    "section_name": "resimler",
+    "shop_picture": "Dükkanın resmi"
+  },
+  "processes": {
+    "add_article": "Makale Ekle",
+    "add_product": "Ürün ekle",
+    "intro": "Şu anda yapım aşamasındayız. Artık ilk makalelerinizi ekleyerek mağazanıza hayat verebilirsiniz. Bu, platformumuzu daha da geliştirmemize yardımcı olacaktır.",
+    "next": "Sonraki",
+    "previous": "Önceki",
+    "welcome": "Sıcak bir karşılama"
+  },
+  "profile": {
+    "add_shop": "Başka bir mağaza oluştur",
+    "admin": "",
+    "city": "Kent",
+    "description": "profil açıklaması",
+    "logout": "Çıkış Yap",
+    "name": "isim",
+    "your_shops": "Mağazalarınız"
+  },
+  "refresh_now": "Şimdi yenile",
+  "remove": "Kaldır",
+  "save": "Kayıt etmek",
+  "select_image": "Fotoğraf seç",
+  "shop": {
+    "closed": "kapalı",
+    "open_all_day": "Tüm gün açık",
+    "settings": "ayarlar"
+  },
+  "signup": {
+    "email": "E-posta",
+    "name": "isim",
+    "privacy_policy": "Gizlilik Politikası",
+    "privacy_policy_info": "Kişisel verilerinizi nasıl kullandığımız hakkında daha fazla bilgiyi",
+    "register": "Kayıt olmak",
+    "registration_info": "Kaydol'a tıklayarak gizlilik politikamızı kabul etmiş olursunuz.",
+    "successful_registration": "Kaydınız başarılı oldu! Gelen kutunuzu kontrol edin ve e-posta adresinizi onaylayın.",
+    "terms_of_use": "Kullanım Şartları"
+  },
+  "skip": "atlamak",
+  "toast": {
+    "created_article": "Makale Oluşturuldu",
+    "created_category": "Kategori Oluşturuldu",
+    "created_menu": "Menü Oluşturuldu",
+    "deleted_article": "Silinmiş Makale",
+    "logout": "Oturumu kapatıldı 👋",
+    "not_authorized": "yetkili değilsin",
+    "saved_profile": "Kayıtlı Profil",
+    "shop_changed": "Mağaza değişti!",
+    "something_wrong": "Bir şeyler ters gitti 👎",
+    "updated_category": "Güncellenmiş Kategori",
+    "updated_profile": "Güncellenmiş Profil",
+    "updated_shop": "Güncellenmiş Mağaza",
+    "updated_stock": "Güncellenmiş Stok",
+    "you_got_mail": "Postanız var ✉️!"
+  }
 }

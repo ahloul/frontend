@@ -20,8 +20,8 @@
           <icon name="edit-outline" />
         </h1>
         <FormulateInput
-          class="block w-full ml-auto md:max-w-sm mr-2"
           v-if="!showEmpty"
+          class="block w-full ml-auto md:max-w-sm mr-2"
           type="search"
           :placeholder="$t('search')"
           validation="max:100,length"

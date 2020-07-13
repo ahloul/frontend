@@ -89,7 +89,30 @@ export default ({ app }, inject) => {
       },
     },
     classes: {
-      outer: 'mb-4',
+      outer(context) {
+        switch (context.classification) {
+          case 'file':
+            return ''
+          default:
+            return ''
+        }
+      },
+      wrapper(context) {
+        switch (context.classification) {
+          case 'file':
+            return ''
+          default:
+            return ''
+        }
+      },
+      element(context) {
+        switch (context.classification) {
+          case 'file':
+            return ''
+          default:
+            return ''
+        }
+      },
       input(context) {
         switch (context.classification) {
           case 'file':

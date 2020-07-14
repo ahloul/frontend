@@ -47,28 +47,18 @@
             <div class="my-auto ml-2">{{ article.author.name }}</div>
           </div>
         </div>
-        <label v-if="article.haveStock" class="block" for="articleStock">
-          <span>{{ $t('article.stock') }}</span>
-          <ValidationProvider
-            v-slot="{ errors }"
-            tag="div"
-            name="Lagerbestand"
-            rules="numeric|required"
-          >
-            <div class="flex">
-              <input
-                id="articleStock"
-                v-model.number="article.stock"
-                type="number"
-                class="form-input block w-full"
-                :placeholder="$t('article.price_hint')"
-                @blur="change"
-                @keyup.enter="change"
-              />
-              <span class="error">{{ errors[0] }}</span>
-            </div>
-          </ValidationProvider>
-        </label>
+        <div v-if="article.haveStock" class="block" for="articleStock">
+          <FormulateInput
+            name="stock"
+            v-model.number="article.stock"
+            type="number"
+            :label="$t('article.stock')"
+            :placeholder="$t('article.price_hint')"
+            validation="required"
+            @blur="change"
+            @keyup.enter="change"
+          />
+        </div>
 
         <div class="mt-10 mb-3 text-dark">{{ $t('article.description') }}</div>
         <div

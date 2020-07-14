@@ -91,8 +91,8 @@ export default ({ app }, inject) => {
     classes: {
       outer(context) {
         switch (context.classification) {
-          case 'file':
-            return ''
+          case 'box':
+            return 'bg-transparent'
           default:
             return ''
         }
@@ -101,6 +101,8 @@ export default ({ app }, inject) => {
         switch (context.classification) {
           case 'file':
             return ''
+          case 'box':
+            return 'flex'
           default:
             return ''
         }
@@ -109,6 +111,8 @@ export default ({ app }, inject) => {
         switch (context.classification) {
           case 'file':
             return ''
+          case 'box':
+            return 'content-center mr-5 my-auto'
           default:
             return ''
         }
@@ -116,18 +120,26 @@ export default ({ app }, inject) => {
       input(context) {
         switch (context.classification) {
           case 'file':
-            return ''
+            console.log(context)
+            return 'dropbox'
           case 'button':
             return 'cta bg-tertiary'
           case 'text':
             return 'form-input'
           case 'box':
-            return ''
+            return 'bg-transparent'
           default:
             return 'form-input'
         }
       },
-      label: 'font-medium text-sm',
+      label(context) {
+        switch (context.classification) {
+          case 'box':
+            return 'font-medium text-sm flex-initial  my-auto'
+          default:
+            return 'font-medium text-sm'
+        }
+      },
       help: 'text-xs mb-1 text-grey-light',
       error: 'text-danger text-xs mb-1',
     },

@@ -120,7 +120,6 @@ export default ({ app }, inject) => {
       input(context) {
         switch (context.classification) {
           case 'file':
-            console.log(context)
             return 'dropbox'
           case 'button':
             return 'cta bg-tertiary'
